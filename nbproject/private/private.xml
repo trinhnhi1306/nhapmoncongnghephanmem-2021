@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QLDocGia.java</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QLMuonSach.java</file>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/TrangChu.java</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/ketnoi/KetNoiSQL.java</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QLTaiLieu.java</file>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/LoginForm.java</file>
-=======
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Apple%20Bee/Documents/NetBeansProjects/QuanLyThuVien/src/view/TrangChu.java</file>
->>>>>>> 057f7fcab27497dc1511407bc26a291ab59f438f
         </group>
     </open-files>
 </project-private>
