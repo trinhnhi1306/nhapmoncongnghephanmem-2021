@@ -29,9 +29,9 @@ public class KetNoiSQL {
         }
         return ketNoi;
     }
-    public static void main(String[] args) {
-        // TODO code application logic here
-        KetNoiSQL kn = new KetNoiSQL();
-        kn.layKetNoi();
-    }
+//    public static void main(String[] args) {
+//        // TODO code application logic here
+//        KetNoiSQL kn = new KetNoiSQL();
+//        kn.layKetNoi();
+//    }
 }
