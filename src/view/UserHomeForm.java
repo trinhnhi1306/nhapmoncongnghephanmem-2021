@@ -12,12 +12,12 @@ import javax.swing.ImageIcon;
  *
  * @author COMPUTER
  */
-public class AdminHoneForm extends javax.swing.JFrame {
+public class UserHomeForm extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHoneForm
      */
-    public AdminHoneForm() {
+    public UserHomeForm() {
         initComponents();
     }
 
@@ -69,11 +69,11 @@ public class AdminHoneForm extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/settings.png"))); // NOI18N
 
         jPanel28.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Admin ", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Độc giả", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         jButton15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/book1.png"))); // NOI18N
-        jButton15.setText("Quản lý sách");
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cv.png"))); // NOI18N
+        jButton15.setText("Thay đổi thông tin cá nhân");
         jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton15.setPreferredSize(new java.awt.Dimension(135, 97));
         jButton15.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -84,8 +84,8 @@ public class AdminHoneForm extends javax.swing.JFrame {
         });
 
         jButton16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/reader.png"))); // NOI18N
-        jButton16.setText("Quản lý độc giả");
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/book (1).png"))); // NOI18N
+        jButton16.setText("Mượn/trả sách");
         jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton16.setPreferredSize(new java.awt.Dimension(157, 97));
         jButton16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -96,8 +96,8 @@ public class AdminHoneForm extends javax.swing.JFrame {
         });
 
         jButton17.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/book (1).png"))); // NOI18N
-        jButton17.setText("Quản lý mượn sách");
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/password.png"))); // NOI18N
+        jButton17.setText("Đổi mật khẩu");
         jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton17.setPreferredSize(new java.awt.Dimension(231, 97));
         jButton17.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -132,8 +132,8 @@ public class AdminHoneForm extends javax.swing.JFrame {
         });
 
         jButton20.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/password.png"))); // NOI18N
-        jButton20.setText("Đổi mật khẩu");
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/help.png"))); // NOI18N
+        jButton20.setText("Báo lỗi/Trợ giúp");
         jButton20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton20.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton20.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +194,7 @@ public class AdminHoneForm extends javax.swing.JFrame {
         );
 
         jPanel31.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Thống kê ", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Thống kê", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         jPanel6.setBackground(new java.awt.Color(255, 102, 0));
         jPanel6.setLayout(null);
@@ -372,20 +372,21 @@ public class AdminHoneForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminHoneForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserHomeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminHoneForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserHomeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminHoneForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserHomeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminHoneForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserHomeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminHoneForm().setVisible(true);
+                new UserHomeForm().setVisible(true);
             }
         });
     }
