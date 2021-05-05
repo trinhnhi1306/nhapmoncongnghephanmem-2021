@@ -12,12 +12,12 @@ import javax.swing.ImageIcon;
  *
  * @author COMPUTER
  */
-public class UserHomeWindow extends javax.swing.JFrame {
+public class TrangChuDocGia extends javax.swing.JFrame {
 
     /**
      * Creates new form AdminHoneForm
      */
-    public UserHomeWindow() {
+    public TrangChuDocGia() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -792,14 +792,18 @@ public class UserHomeWindow extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserHomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserHomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserHomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserHomeWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -808,7 +812,7 @@ public class UserHomeWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserHomeWindow().setVisible(true);
+                new TrangChuDocGia().setVisible(true);
             }
         });
     }
