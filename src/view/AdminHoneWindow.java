@@ -19,6 +19,7 @@ public class AdminHoneWindow extends javax.swing.JFrame {
      */
     public AdminHoneWindow() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

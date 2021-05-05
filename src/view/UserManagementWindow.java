@@ -16,6 +16,7 @@ public class UserManagementWindow extends javax.swing.JFrame {
      */
     public UserManagementWindow() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
