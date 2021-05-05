@@ -28,6 +28,8 @@ public class MuonTraSach extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupTheo1 = new javax.swing.ButtonGroup();
+        buttonGroupTheo2 = new javax.swing.ButtonGroup();
         jPanel15 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -192,23 +194,28 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
+        buttonGroupTheo1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton2.setSelected(true);
         jRadioButton2.setText("Mã sách");
         jPanel4.add(jRadioButton2);
 
+        buttonGroupTheo1.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton3.setText("Tên sách");
         jPanel4.add(jRadioButton3);
 
+        buttonGroupTheo1.add(jRadioButton4);
         jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton4.setText("Tác giả");
         jPanel4.add(jRadioButton4);
 
+        buttonGroupTheo1.add(jRadioButton5);
         jRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton5.setText("NXB");
         jPanel4.add(jRadioButton5);
 
+        buttonGroupTheo1.add(jRadioButton6);
         jRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton6.setText("Thể loại");
         jPanel4.add(jRadioButton6);
@@ -530,23 +537,28 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel19.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
+        buttonGroupTheo2.add(jRadioButton12);
         jRadioButton12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton12.setSelected(true);
         jRadioButton12.setText("Mã sách");
         jPanel19.add(jRadioButton12);
 
+        buttonGroupTheo2.add(jRadioButton13);
         jRadioButton13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton13.setText("Tên sách");
         jPanel19.add(jRadioButton13);
 
+        buttonGroupTheo2.add(jRadioButton14);
         jRadioButton14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton14.setText("Tác giả");
         jPanel19.add(jRadioButton14);
 
+        buttonGroupTheo2.add(jRadioButton15);
         jRadioButton15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton15.setText("NXB");
         jPanel19.add(jRadioButton15);
 
+        buttonGroupTheo2.add(jRadioButton16);
         jRadioButton16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton16.setText("Thể loại");
         jPanel19.add(jRadioButton16);
@@ -857,6 +869,8 @@ public class MuonTraSach extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupTheo1;
+    private javax.swing.ButtonGroup buttonGroupTheo2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
