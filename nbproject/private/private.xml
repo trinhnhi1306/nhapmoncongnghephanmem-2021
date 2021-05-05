@@ -5,15 +5,21 @@
         <group>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QLDocGia.java</file>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QLMuonSach.java</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/AdminHoneWindow.java</file>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/TrangChu.java</file>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/ketnoi/KetNoiSQL.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QLTaiLieu.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/AdminHoneForm.java</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/BookManagementWindow.java</file>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/LoginForm.java</file>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/icon/anhtrangchu.jpg</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/icon/delete.png</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/icon/exit.png</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/icon/reader.png</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QLTaiLieu.java</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/icon/cancel.png</file>
             <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/images/pexels-janko-ferlic-590493.jpg</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/UserHomeForm.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/BookManagementForm.java</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/icon/cv.png</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/icon/customer%20(1).png</file>
+            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/UserHomeWindow.java</file>
         </group>
     </open-files>
 </project-private>
