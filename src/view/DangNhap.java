@@ -37,7 +37,7 @@ public class DangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialogRegister = new javax.swing.JDialog();
+        jDialogDangKy = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -67,9 +67,9 @@ public class DangNhap extends javax.swing.JFrame {
         jLabelDangKy = new javax.swing.JLabel();
         jTextField_Password = new javax.swing.JPasswordField();
 
-        jDialogRegister.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialogRegister.setTitle("Form đăng ký");
-        jDialogRegister.setModal(true);
+        jDialogDangKy.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogDangKy.setTitle("Form đăng ký");
+        jDialogDangKy.setModal(true);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -147,14 +147,14 @@ public class DangNhap extends javax.swing.JFrame {
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialogRegisterLayout = new javax.swing.GroupLayout(jDialogRegister.getContentPane());
-        jDialogRegister.getContentPane().setLayout(jDialogRegisterLayout);
-        jDialogRegisterLayout.setHorizontalGroup(
-            jDialogRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialogDangKyLayout = new javax.swing.GroupLayout(jDialogDangKy.getContentPane());
+        jDialogDangKy.getContentPane().setLayout(jDialogDangKyLayout);
+        jDialogDangKyLayout.setHorizontalGroup(
+            jDialogDangKyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialogRegisterLayout.setVerticalGroup(
-            jDialogRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialogDangKyLayout.setVerticalGroup(
+            jDialogDangKyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -356,9 +356,9 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void jLabelDangKyMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDangKyMouseReleased
         // TODO add your handling code here:
-        jDialogRegister.pack();
-        jDialogRegister.setLocationRelativeTo(this);
-        jDialogRegister.setVisible(true);
+        jDialogDangKy.pack();
+        jDialogDangKy.setLocationRelativeTo(this);
+        jDialogDangKy.setVisible(true);
     }//GEN-LAST:event_jLabelDangKyMouseReleased
 
     /**
@@ -404,7 +404,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton_DangNhap;
     private javax.swing.JButton jButton_Thoat;
-    private javax.swing.JDialog jDialogRegister;
+    private javax.swing.JDialog jDialogDangKy;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

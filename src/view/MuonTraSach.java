@@ -107,7 +107,7 @@ public class MuonTraSach extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jTabbedPane2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
