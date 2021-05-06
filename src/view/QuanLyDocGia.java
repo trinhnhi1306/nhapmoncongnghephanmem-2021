@@ -9,7 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,14 +25,16 @@ import model.DocGia;
  * @author COMPUTER
  */
 public class QuanLyDocGia extends javax.swing.JFrame {
-
+    private static final String tatCaDG = "select * from DOCGIA where not MADOCGIA = 'admin'";
+    private DefaultTableModel model;
     /**
      * Creates new form ManageBookForm
      */
     public QuanLyDocGia() {
         initComponents();
         setLocationRelativeTo(null);
-        showDocGia("select * from DOCGIA where not MADOCGIA = 'admin'");
+        model = (DefaultTableModel) jTable_DSDocGia.getModel();
+        showDocGia(tatCaDG);
     }
 
     /**
@@ -416,8 +421,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel24.setText("Ngày đăng ký");
 
-        jDateChooser_NgaySinh.setDateFormatString("yyyy-MM-dd");
-
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel25.setText("Tên độc giả");
 
@@ -665,9 +668,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public ArrayList<DocGia> dsDocGia (String str) {
+    public ArrayList<DocGia> dsDocGia (String sql) {
         ArrayList<DocGia> dsDocGia = new ArrayList<>();
-        String sql = str;
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -688,7 +690,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     
     public void showDocGia (String sql) {
         ArrayList<DocGia> dsDocGia = dsDocGia(sql);
-        DefaultTableModel model = (DefaultTableModel) jTable_DSDocGia.getModel();
         model.setNumRows(0);
         for (DocGia dg: dsDocGia) {
             model.addRow(new Object[] {
@@ -731,7 +732,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         String tuKhoa = jTextField_TuKhoa.getText();
         String sql;
         if (tuKhoa.equalsIgnoreCase("")) {
-            showDocGia("select * from DOCGIA where not MADOCGIA = 'admin'");
+            showDocGia(tatCaDG);
         }
         else {
             if (jRadioButton_MaDG.isSelected()) {
@@ -755,12 +756,66 @@ public class QuanLyDocGia extends javax.swing.JFrame {
 
     private void jTable_DSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSDocGiaMouseClicked
         // TODO add your handling code here:
-        
+        int row = jTable_DSDocGia.getSelectedRow();
+        jTextField_MaDG.setText((String) model.getValueAt(row, 0));
+        jTextField_TenDG.setText((String) model.getValueAt(row, 1));
+        String gioiTinh = (String) model.getValueAt(row, 2);
+            if (gioiTinh.equalsIgnoreCase("Nữ")) {
+                jRadioButton_Nu.setSelected(true);
+            }
+            else {
+                jRadioButton_Nam.setSelected(true);
+            }
+        String ngaySinh = (String) model.getValueAt(row, 3);
+            if (ngaySinh == null) {
+                jDateChooser_NgaySinh.setDate(null);
+            }
+            else {
+                try {
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(ngaySinh);
+                jDateChooser_NgaySinh.setDate(date);
+                }
+                catch (ParseException ex) {
+                    System.out.println(ex.getMessage());
+
+                }
+            }
+        jTextField_DiaChiDG.setText((String) model.getValueAt(row, 4));
+        jTextField_sdtDG.setText((String) model.getValueAt(row, 5));
+        jTextField_Email.setText((String) model.getValueAt(row, 6));
+        String ngayDangKy = (String) model.getValueAt(row, 7);
+            if (ngayDangKy == null) {
+                jDateChooser_NgayDangKy.setDate(null);
+            }
+            else {
+                try {
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(ngayDangKy);
+                jDateChooser_NgayDangKy.setDate(date);
+                }
+                catch (ParseException ex) {
+                    System.out.println(ex.getMessage());
+
+                }
+            }
+        String ngayHetHan = (String) model.getValueAt(row, 8);
+            if (ngayHetHan == null) {
+                jDateChooser_NgayHetHan.setDate(null);
+            }
+            else {
+                try {
+                Date date = new SimpleDateFormat("yyyy-MM-dd").parse(ngayHetHan);
+                jDateChooser_NgayHetHan.setDate(date);
+                }
+                catch (ParseException ex) {
+                    System.out.println(ex.getMessage());
+
+                }
+            }
     }//GEN-LAST:event_jTable_DSDocGiaMouseClicked
 
     private void jTextField_TuKhoaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TuKhoaKeyPressed
         // TODO add your handling code here:
-        showDocGia("select * from DOCGIA where not MADOCGIA = 'admin'");
+        showDocGia(tatCaDG);
     }//GEN-LAST:event_jTextField_TuKhoaKeyPressed
 
     /**

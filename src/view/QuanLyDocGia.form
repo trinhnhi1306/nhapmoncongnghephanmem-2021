@@ -846,9 +846,6 @@
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser_NgaySinh">
-              <Properties>
-                <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField_TenDG">
             </Component>
