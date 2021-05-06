@@ -29,7 +29,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     public QuanLyDocGia() {
         initComponents();
         setLocationRelativeTo(null);
-        showDocGia();
+        showDocGia("select * from DOCGIA where not MADOCGIA = 'admin'");
     }
 
     /**
@@ -294,9 +294,20 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
+        jTextField_TuKhoa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField_TuKhoaKeyPressed(evt);
+            }
+        });
+
         jButton_TimKiem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton_TimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
         jButton_TimKiem.setText("Tìm kiếm");
+        jButton_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -339,6 +350,11 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             }
         });
         jTable_DSDocGia.setFillsViewportHeight(true);
+        jTable_DSDocGia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_DSDocGiaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_DSDocGia);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -649,9 +665,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public ArrayList<DocGia> dsDocGia () {
+    public ArrayList<DocGia> dsDocGia (String str) {
         ArrayList<DocGia> dsDocGia = new ArrayList<>();
-        String sql = "select * from DOCGIA where not MADOCGIA = 'admin'";
+        String sql = str;
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -666,12 +682,12 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
         return dsDocGia;
     }
     
-    public void showDocGia () {
-        ArrayList<DocGia> dsDocGia = dsDocGia();
+    public void showDocGia (String sql) {
+        ArrayList<DocGia> dsDocGia = dsDocGia(sql);
         DefaultTableModel model = (DefaultTableModel) jTable_DSDocGia.getModel();
         model.setNumRows(0);
         for (DocGia dg: dsDocGia) {
@@ -708,6 +724,44 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println(jDateChooser_NgaySinh.getDate());
     }//GEN-LAST:event_jButton_ThoatActionPerformed
+
+    
+    private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
+        // TODO add your handling code here:
+        String tuKhoa = jTextField_TuKhoa.getText();
+        String sql;
+        if (tuKhoa.equalsIgnoreCase("")) {
+            showDocGia("select * from DOCGIA where not MADOCGIA = 'admin'");
+        }
+        else {
+            if (jRadioButton_MaDG.isSelected()) {
+                sql = "select * from DOCGIA where MADOCGIA = '" + tuKhoa + "'";
+                showDocGia(sql);
+            }
+            if (jRadioButton_TenDG.isSelected()) {
+                sql = "select * from DOCGIA where TENDOCGIA = N'" + tuKhoa + "'";
+                showDocGia(sql);
+            }
+            if (jRadioButton_SDT.isSelected()) {
+                sql = "select * from DOCGIA where SDT = '" + tuKhoa + "'";
+                showDocGia(sql);
+            }
+            if (jRadioButton_Email.isSelected()) {
+                sql = "select * from DOCGIA where EMAIL = '" + tuKhoa + "'";
+                showDocGia(sql);
+            }
+        }
+    }//GEN-LAST:event_jButton_TimKiemActionPerformed
+
+    private void jTable_DSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSDocGiaMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTable_DSDocGiaMouseClicked
+
+    private void jTextField_TuKhoaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TuKhoaKeyPressed
+        // TODO add your handling code here:
+        showDocGia("select * from DOCGIA where not MADOCGIA = 'admin'");
+    }//GEN-LAST:event_jTextField_TuKhoaKeyPressed
 
     /**
      * @param args the command line arguments
