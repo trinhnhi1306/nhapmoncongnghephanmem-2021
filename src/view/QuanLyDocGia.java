@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ketnoi.KetNoiSQL;
 import model.DocGia;
@@ -548,6 +549,11 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jButton_XoaDG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_XoaDG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
         jButton_XoaDG.setText("Xóa");
+        jButton_XoaDG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XoaDGActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -812,11 +818,97 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 }
             }
     }//GEN-LAST:event_jTable_DSDocGiaMouseClicked
-
+        public int kiemTraSachMuon (String maDG) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from MUONSACH where MADOCGIA ='" + maDG + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
+    public int kiemTraDocGia(String maDG) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from DOCGIA where MADOCGIA ='" + maDG + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
+    public void xoaDocGia (String maDG) {
+        String sql = "delete from DOCGIA where MADOCGIA = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maDG);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
     private void jTextField_TuKhoaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TuKhoaKeyPressed
         // TODO add your handling code here:
         showDocGia(tatCaDG);
     }//GEN-LAST:event_jTextField_TuKhoaKeyPressed
+
+    private void jButton_XoaDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaDGActionPerformed
+        // TODO add your handling code here:
+        String maDG = jTextField_MaDG.getText();
+        int kt;
+        int kiemTraMaDG = 0;  //0: Đã nhập Mã DG; 1: Chưa nhập Mã DG.
+        if (maDG.equals("")) {
+            kiemTraMaDG = 1;
+            JOptionPane.showMessageDialog(this, "Hãy nhập Mã độc giả bạn muốn xóa");
+        }
+        else if (kiemTraMaDG != 1) {
+            kt = kiemTraDocGia(maDG);
+            if (kt == 1) {
+                if (kiemTraSachMuon(maDG) == 1) {
+                    JOptionPane.showMessageDialog(this, "Độc giả này chưa trả sách, bạn hãy yêu cầu độc giả trả sách!");
+                }
+                else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
+                if(luaChon == JOptionPane.CANCEL_OPTION)
+                    return;
+                else  if(luaChon == JOptionPane.OK_OPTION)
+                {
+                    xoaDocGia(maDG);
+                    JOptionPane.showMessageDialog(this, "Xóa độc giả thành công");               
+                    showDocGia(tatCaDG);
+                }
+                }
+            } 
+            else {
+                JOptionPane.showMessageDialog(this, "Độc giả này chưa có, bạn hãy thêm thông tin độc giả vào hệ thống");
+            }
+        }
+    }//GEN-LAST:event_jButton_XoaDGActionPerformed
 
     /**
      * @param args the command line arguments
