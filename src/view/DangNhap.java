@@ -59,13 +59,13 @@ public class DangNhap extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField_ID = new javax.swing.JTextField();
+        jTextFieldMaDocGia = new javax.swing.JTextField();
         jButton_DangNhap = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabelDangKy = new javax.swing.JLabel();
-        jTextField_Password = new javax.swing.JPasswordField();
+        jTextFieldMatKhau = new javax.swing.JPasswordField();
 
         jDialogDangKy.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogDangKy.setTitle("Form đăng ký");
@@ -238,11 +238,11 @@ public class DangNhap extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_Password, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+                                .addComponent(jTextFieldMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_ID))))
+                                .addComponent(jTextFieldMaDocGia))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,12 +266,12 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jTextField_ID))
+                        .addComponent(jTextFieldMaDocGia))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jTextField_Password))
+                    .addComponent(jTextFieldMatKhau))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,24 +325,27 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
         // TODO add your handling code here:
-        Connection con = KetNoiSQL.layKetNoi();
-        String sql = "SELECT * FROM USER WHERE ID = ? AND PASSWORD = ?";
-        String id = jTextField_ID.getText();
-        String pass = jTextField_Password.getText();
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.setString(2, pass);
+        String sql = "SELECT * FROM DOCGIA WHERE MADOCGIA = ? AND MATKHAU = ?";
+        String maDocGia = jTextFieldMaDocGia.getText();
+        String matKhau = String.valueOf(jTextFieldMatKhau.getPassword());
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, maDocGia);
+            ps.setString(2, matKhau);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
-                this.dispose();
-                   
-                
+                dispose();
+                if (maDocGia.equals("admin") && matKhau.equals("admin")) {
+                    new TrangChuAdmin().setVisible(true);
+                } else {
+                    new TrangChuDocGia().setVisible(true);
+                }
             }
             else {
-                JOptionPane.showMessageDialog(this, "Username hoặc Password sai!");
+                JOptionPane.showMessageDialog(this, "Mã độc giả hoặc mật khẩu không chính xác! Vui lòng thử lại.");
             }
+            rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -421,7 +424,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField_ID;
-    private javax.swing.JPasswordField jTextField_Password;
+    private javax.swing.JTextField jTextFieldMaDocGia;
+    private javax.swing.JPasswordField jTextFieldMatKhau;
     // End of variables declaration//GEN-END:variables
 }

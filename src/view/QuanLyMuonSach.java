@@ -46,7 +46,7 @@ public class QuanLyMuonSach extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableDSMuon = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -199,7 +199,7 @@ public class QuanLyMuonSach extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Danh sách mượn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDSMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -215,8 +215,8 @@ public class QuanLyMuonSach extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setFillsViewportHeight(true);
-        jScrollPane1.setViewportView(jTable1);
+        jTableDSMuon.setFillsViewportHeight(true);
+        jScrollPane1.setViewportView(jTableDSMuon);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -575,7 +575,7 @@ public class QuanLyMuonSach extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableDSMuon;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField11;

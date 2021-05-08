@@ -279,12 +279,12 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel2" min="-2" pref="86" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_Password" pref="295" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldMatKhau" pref="295" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel3" min="-2" pref="86" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_ID" max="32767" attributes="0"/>
+                                      <Component id="jTextFieldMaDocGia" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -318,14 +318,14 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                              <Component id="jTextField_ID" max="32767" attributes="0"/>
+                              <Component id="jTextFieldMaDocGia" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jLabel3" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel2" pref="29" max="32767" attributes="0"/>
-                          <Component id="jTextField_Password" max="32767" attributes="0"/>
+                          <Component id="jTextFieldMatKhau" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -370,7 +370,7 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; &#x111;&#x1ed9;c gi&#x1ea3;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_ID">
+            <Component class="javax.swing.JTextField" name="jTextFieldMaDocGia">
             </Component>
             <Component class="javax.swing.JButton" name="jButton_DangNhap">
               <Properties>
@@ -454,7 +454,7 @@
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelDangKyMouseReleased"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="jTextField_Password">
+            <Component class="javax.swing.JPasswordField" name="jTextFieldMatKhau">
             </Component>
           </SubComponents>
         </Container>

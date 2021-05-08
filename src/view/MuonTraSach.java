@@ -5,18 +5,25 @@
  */
 package view;
 
+import java.util.ArrayList;
+import model.Sach;
+import ketnoi.KetNoiSQL;
+import java.sql.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author COMPUTER
  */
 public class MuonTraSach extends javax.swing.JFrame {
-
+    private String tatCaSach = "SELECT * FROM SACH";
     /**
      * Creates new form BorrowReturnBookWindow
      */
     public MuonTraSach() {
         initComponents();
         setLocationRelativeTo(null);
+        showDSSach(tatCaSach);
     }
 
     /**
@@ -39,7 +46,7 @@ public class MuonTraSach extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableDSSach = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -77,7 +84,7 @@ public class MuonTraSach extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTableDSSachMuon = new javax.swing.JTable();
         jPanel19 = new javax.swing.JPanel();
         jRadioButton12 = new javax.swing.JRadioButton();
         jRadioButton13 = new javax.swing.JRadioButton();
@@ -154,7 +161,7 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 204));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Danh sách", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDSSach.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -170,8 +177,8 @@ public class MuonTraSach extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setFillsViewportHeight(true);
-        jScrollPane1.setViewportView(jTable1);
+        jTableDSSach.setFillsViewportHeight(true);
+        jScrollPane1.setViewportView(jTableDSSach);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -497,7 +504,7 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel18.setBackground(new java.awt.Color(255, 255, 204));
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Danh sách sách mượn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDSSachMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -513,8 +520,8 @@ public class MuonTraSach extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable3.setFillsViewportHeight(true);
-        jScrollPane3.setViewportView(jTable3);
+        jTableDSSachMuon.setFillsViewportHeight(true);
+        jScrollPane3.setViewportView(jTableDSSachMuon);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -824,6 +831,41 @@ public class MuonTraSach extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public ArrayList<Sach> getDSSach(String sql) {
+        ArrayList<Sach> ds = new ArrayList<>();
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Sach sach = new Sach(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
+                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+                ds.add(sach);
+            }
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(QuanLySach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        return ds;
+    }
+    
+    public void showDSSach(String sql) {
+        ArrayList<Sach> ds = getDSSach(sql);
+        DefaultTableModel dtm = (DefaultTableModel) jTableDSSach.getModel();
+        dtm.setRowCount(0);
+        for (Sach sach : ds) {
+            dtm.addRow(new Object[] {
+                sach.getMaSach(),
+                sach.getTenSach(),
+                sach.getTacGia(),
+                sach.getNxb(),
+                sach.getTheLoai(),
+                sach.getNgayNhap(),
+                sach.getGia(),
+                sach.getViTri(),
+                sach.getSoLuong(),
+            });
+        }
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -927,8 +969,8 @@ public class MuonTraSach extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTableDSSach;
+    private javax.swing.JTable jTableDSSachMuon;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField19;
