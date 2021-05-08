@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -68,7 +69,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jButton_Them1 = new javax.swing.JButton();
         jButton_TroVe1 = new javax.swing.JButton();
-        jComboBox_GioiTinh = new javax.swing.JComboBox<>();
+        jComboBox_GioiTinh1 = new javax.swing.JComboBox<>();
         jDateChooser_NgayDangKy1 = new com.toedter.calendar.JDateChooser();
         jDateChooser_NgayHetHan1 = new com.toedter.calendar.JDateChooser();
         jDateChooser_NgaySinh1 = new com.toedter.calendar.JDateChooser();
@@ -170,7 +171,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             }
         });
 
-        jComboBox_GioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        jComboBox_GioiTinh1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -215,7 +216,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                                     .addComponent(jTextField_sdtDG1)
                                     .addComponent(jDateChooser_NgayDangKy1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDateChooser_NgayHetHan1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox_GioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jComboBox_GioiTinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jButton_Them1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,7 +243,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_GioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_GioiTinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -413,6 +414,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel21.setText("Mã độc giả");
 
+        jTextField_MaDG.setEditable(false);
+
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel22.setText("Địa chỉ");
 
@@ -562,21 +565,20 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jButton_ThemDG, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
+                .addGap(71, 71, 71)
                 .addComponent(jButton_SuaDG, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jButton_XoaDG, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ThemDG, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_SuaDG, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_XoaDG, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 204));
@@ -609,11 +611,10 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -697,41 +698,144 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     public void showDocGia (String sql) {
         ArrayList<DocGia> dsDocGia = dsDocGia(sql);
         model.setNumRows(0);
-        for (DocGia dg: dsDocGia) {
+        dsDocGia.forEach(dg -> {
             model.addRow(new Object[] {
-            dg.getMaDG(),
-            dg.getTenDG(),
-            dg.getGioiTinh(),
-            dg.getNgaySinh(),
-            dg.getDiaChi(),
-            dg.getSdt(),
-            dg.getEmail(),
-            dg.getNgayDangKy(),
-            dg.getNgayHetHan()
+                dg.getMaDG(),
+                dg.getTenDG(),
+                dg.getGioiTinh(),
+                dg.getNgaySinh(),
+                dg.getDiaChi(),
+                dg.getSdt(),
+                dg.getEmail(),
+                dg.getNgayDangKy(),
+                dg.getNgayHetHan()
             });
-        }
+        });
     }
     
     private void jButton_ThemDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemDGActionPerformed
         // TODO add your handling code here:
+        xoaDuLieuDialog();
+        Calendar ngayDK = Calendar.getInstance();
+        Calendar ngayHH = Calendar.getInstance();
+        ngayHH.roll(Calendar.YEAR, 4);
+        jDateChooser_NgayDangKy1.setDate(ngayDK.getTime());
+        jDateChooser_NgayHetHan1.setDate(ngayHH.getTime());
         jDialogThemDocGia.pack();
         jDialogThemDocGia.setLocationRelativeTo(this);
         jDialogThemDocGia.setVisible(true);
     }//GEN-LAST:event_jButton_ThemDGActionPerformed
 
+    public void themMoiDocGia (String maDG, String matKhauDG, String tenDG, String gioiTinhDG, String ngaySinhDG, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email) {
+        String sql = "insert into DOCGIA values (?,?,?,?,?,?,?,?,?,?,?)";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maDG);
+            ps.setString(2, matKhauDG);
+            ps.setString(3, tenDG);
+            ps.setString(4, gioiTinhDG);
+            ps.setString(5, ngaySinhDG);
+            ps.setString(6, ngayDangKy);
+            ps.setString(7, ngayHetHan);
+            ps.setString(8, diaChi);
+            ps.setString(9, sdt);
+            ps.setString(10, email);
+            ps.setString(11, "");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void xoaDuLieuDialog () {
+        jTextField_MaDG1.setText("");
+        jTextField_TenDG1.setText("");
+        jDateChooser_NgaySinh1.setDate(null);
+        jComboBox_GioiTinh1.setSelectedItem("Nam");
+        jTextField_sdtDG1.setText("");
+        jTextField_EmailDG1.setText("");
+        jTextField_DiaChiDG1.setText("");
+    }
+    
+    public void xoaDuLieuForm () {
+        jTextField_MaDG.setText("");
+        jTextField_TenDG.setText("");
+        jDateChooser_NgaySinh.setDate(null);
+        jRadioButton_Nam.setSelected(true);
+        jTextField_sdtDG.setText("");
+        jTextField_Email.setText("");
+        jTextField_DiaChiDG.setText("");
+    }
+    
+    
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String maDG = jTextField_MaDG1.getText();
+        String matKhauDG = jTextField_MaDG1.getText();
+        String tenDG = jTextField_TenDG1.getText();
+        String gioiTinhDG = (String) jComboBox_GioiTinh1.getSelectedItem();
+        String ngaySinhDG;
+        Date date = jDateChooser_NgaySinh1.getDate();
+        if (date == null){
+            ngaySinhDG = null;
+        }
+        else {
+            ngaySinhDG = sdf.format(jDateChooser_NgaySinh1.getDate());
+        }
+        String ngayDangKy = sdf.format(jDateChooser_NgayDangKy1.getDate());
+        String ngayHetHan = sdf.format(jDateChooser_NgayHetHan1.getDate());
+        String diaChi = jTextField_DiaChiDG1.getText();
+        String sdt = jTextField_sdtDG1.getText();
+        String email = jTextField_EmailDG1.getText();
+        
+        if (maDG.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả không được để trống!");
+        }
+        else if (tenDG.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(jDialogThemDocGia, "Tên độc giả không được để trống!");
+        }
+        else {
+            if (kiemTraDocGia(maDG) == 1) {
+                JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả đã tồn tại!");
+            }
+            else if(!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
+                JOptionPane.showMessageDialog(jDialogThemDocGia, "Số điện thoại không hợp lệ!");
+            }
+            else if(!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
+                JOptionPane.showMessageDialog(jDialogThemDocGia, "Email không hợp lệ!");
+            }
+            else {
+                themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email);
+                JOptionPane.showMessageDialog(jDialogThemDocGia, "Thêm độc giả thành công!");
+                jDialogThemDocGia.dispose();
+                showDocGia(tatCaDG);
+            }
+        }
     }//GEN-LAST:event_jButton_Them1ActionPerformed
 
     private void jButton_TroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe1ActionPerformed
         // TODO add your handling code here:
+        jDialogThemDocGia.dispose();
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
     private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
         // TODO add your handling code here:
-        System.out.println(jDateChooser_NgaySinh.getDate());
+        this.dispose();
     }//GEN-LAST:event_jButton_ThoatActionPerformed
 
+    private String chuanHoaDanhTuRieng(String str) {
+        str = str.trim();
+        String temp[] = str.split("\\s+");
+        str = ""; // ? ^-^
+        for (int i = 0; i < temp.length; i++) {
+            str += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1).toLowerCase();
+            if (i < temp.length - 1) // ? ^-^
+                str += " ";
+        }
+        return str;
+    }
     
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
         // TODO add your handling code here:
@@ -763,6 +867,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private void jTable_DSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSDocGiaMouseClicked
         // TODO add your handling code here:
         int row = jTable_DSDocGia.getSelectedRow();
+        if (row == -1) return;
         jTextField_MaDG.setText((String) model.getValueAt(row, 0));
         jTextField_TenDG.setText((String) model.getValueAt(row, 1));
         String gioiTinh = (String) model.getValueAt(row, 2);
@@ -818,7 +923,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 }
             }
     }//GEN-LAST:event_jTable_DSDocGiaMouseClicked
-        public int kiemTraSachMuon (String maDG) {
+        
+    public int kiemTraSachMuon (String maDG) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
         String sql = "select * from MUONSACH where MADOCGIA ='" + maDG + "'";
@@ -884,7 +990,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         int kiemTraMaDG = 0;  //0: Đã nhập Mã DG; 1: Chưa nhập Mã DG.
         if (maDG.equals("")) {
             kiemTraMaDG = 1;
-            JOptionPane.showMessageDialog(this, "Hãy nhập Mã độc giả bạn muốn xóa");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả bạn muốn xóa");
         }
         else if (kiemTraMaDG != 1) {
             kt = kiemTraDocGia(maDG);
@@ -893,15 +999,16 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Độc giả này chưa trả sách, bạn hãy yêu cầu độc giả trả sách!");
                 }
                 else {
-                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
-                    return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
-                    xoaDocGia(maDG);
-                    JOptionPane.showMessageDialog(this, "Xóa độc giả thành công");               
-                    showDocGia(tatCaDG);
-                }
+                    int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
+                    if(luaChon == JOptionPane.CANCEL_OPTION)
+                        return;
+                    else  if(luaChon == JOptionPane.OK_OPTION)
+                    {
+                        xoaDocGia(maDG);
+                        JOptionPane.showMessageDialog(this, "Xóa độc giả thành công");  
+                        xoaDuLieuForm();
+                        showDocGia(tatCaDG);
+                    }
                 }
             } 
             else {
@@ -971,7 +1078,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe;
     private javax.swing.JButton jButton_TroVe1;
     private javax.swing.JButton jButton_XoaDG;
-    private javax.swing.JComboBox<String> jComboBox_GioiTinh;
+    private javax.swing.JComboBox<String> jComboBox_GioiTinh1;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayDangKy;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayDangKy1;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayHetHan;
