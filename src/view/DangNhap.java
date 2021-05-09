@@ -19,7 +19,12 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class DangNhap extends javax.swing.JFrame {
+    private static String maDocGia;
 
+    public static String getMaDocGia() {
+        return maDocGia;
+    }
+    
     /**
      * Creates new form NewJFrame
      */
@@ -326,7 +331,7 @@ public class DangNhap extends javax.swing.JFrame {
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
         // TODO add your handling code here:
         String sql = "SELECT * FROM DOCGIA WHERE MADOCGIA = ? AND MATKHAU = ?";
-        String maDocGia = jTextFieldMaDocGia.getText();
+        maDocGia = jTextFieldMaDocGia.getText();
         String matKhau = String.valueOf(jTextFieldMatKhau.getPassword());
         try (
                 Connection con = KetNoiSQL.layKetNoi();
@@ -401,7 +406,6 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

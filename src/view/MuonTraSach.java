@@ -7,9 +7,10 @@ package view;
 
 import java.util.ArrayList;
 import model.Sach;
-import ketnoi.KetNoiSQL;
 import java.sql.*;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import ketnoi.KetNoiSQL;
 
 /**
  *
@@ -17,13 +18,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MuonTraSach extends javax.swing.JFrame {
     private String tatCaSach = "SELECT * FROM SACH";
+    private String sachDuocMuonBoiDocGiaDangNhap = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
+            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaDocGia() + "'";
     /**
      * Creates new form BorrowReturnBookWindow
      */
     public MuonTraSach() {
         initComponents();
         setLocationRelativeTo(null);
-        showDSSach(tatCaSach);
+        showDSSach(jTableDSSach, tatCaSach);
+        showDSSach(jTableDSSachMuon, sachDuocMuonBoiDocGiaDangNhap);
     }
 
     /**
@@ -42,17 +46,17 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTextFieldKeyword1 = new javax.swing.JTextField();
+        jButtonTimKiem1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableDSSach = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
+        jRadioButtonMaSach1 = new javax.swing.JRadioButton();
+        jRadioButtonTenSach1 = new javax.swing.JRadioButton();
+        jRadioButtonTacGia1 = new javax.swing.JRadioButton();
+        jRadioButtonNXB1 = new javax.swing.JRadioButton();
+        jRadioButtonTheLoai1 = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -75,22 +79,22 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonTroVe1 = new javax.swing.JButton();
+        jButtonThoat1 = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
-        jTextField19 = new javax.swing.JTextField();
-        jButton13 = new javax.swing.JButton();
+        jTextFieldKeyword2 = new javax.swing.JTextField();
+        jButtonTimKiem2 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableDSSachMuon = new javax.swing.JTable();
         jPanel19 = new javax.swing.JPanel();
-        jRadioButton12 = new javax.swing.JRadioButton();
-        jRadioButton13 = new javax.swing.JRadioButton();
-        jRadioButton14 = new javax.swing.JRadioButton();
-        jRadioButton15 = new javax.swing.JRadioButton();
-        jRadioButton16 = new javax.swing.JRadioButton();
+        jRadioButtonMaSach2 = new javax.swing.JRadioButton();
+        jRadioButtonTenSach2 = new javax.swing.JRadioButton();
+        jRadioButtonTacGia2 = new javax.swing.JRadioButton();
+        jRadioButtonNXB2 = new javax.swing.JRadioButton();
+        jRadioButtonTheLoai2 = new javax.swing.JRadioButton();
         jPanel20 = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
         jTextField20 = new javax.swing.JTextField();
@@ -113,8 +117,8 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel21 = new javax.swing.JPanel();
         jButton14 = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
+        jButtonTroVe2 = new javax.swing.JButton();
+        jButtonThoat2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -133,9 +137,20 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
-        jButton1.setText("Tìm kiếm");
+        jTextFieldKeyword1.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextFieldKeyword1CaretUpdate(evt);
+            }
+        });
+
+        jButtonTimKiem1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonTimKiem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
+        jButtonTimKiem1.setText("Tìm kiếm");
+        jButtonTimKiem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimKiem1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -143,9 +158,9 @@ public class MuonTraSach extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldKeyword1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(jButtonTimKiem1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -153,8 +168,8 @@ public class MuonTraSach extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jButtonTimKiem1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKeyword1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(17, 17, 17))
         );
 
@@ -201,31 +216,31 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
-        buttonGroupTheo1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton2.setSelected(true);
-        jRadioButton2.setText("Mã sách");
-        jPanel4.add(jRadioButton2);
+        buttonGroupTheo1.add(jRadioButtonMaSach1);
+        jRadioButtonMaSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaSach1.setSelected(true);
+        jRadioButtonMaSach1.setText("Mã sách");
+        jPanel4.add(jRadioButtonMaSach1);
 
-        buttonGroupTheo1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton3.setText("Tên sách");
-        jPanel4.add(jRadioButton3);
+        buttonGroupTheo1.add(jRadioButtonTenSach1);
+        jRadioButtonTenSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTenSach1.setText("Tên sách");
+        jPanel4.add(jRadioButtonTenSach1);
 
-        buttonGroupTheo1.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton4.setText("Tác giả");
-        jPanel4.add(jRadioButton4);
+        buttonGroupTheo1.add(jRadioButtonTacGia1);
+        jRadioButtonTacGia1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTacGia1.setText("Tác giả");
+        jPanel4.add(jRadioButtonTacGia1);
 
-        buttonGroupTheo1.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton5.setText("NXB");
-        jPanel4.add(jRadioButton5);
+        buttonGroupTheo1.add(jRadioButtonNXB1);
+        jRadioButtonNXB1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonNXB1.setText("NXB");
+        jPanel4.add(jRadioButtonNXB1);
 
-        buttonGroupTheo1.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton6.setText("Thể loại");
-        jPanel4.add(jRadioButton6);
+        buttonGroupTheo1.add(jRadioButtonTheLoai1);
+        jRadioButtonTheLoai1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTheLoai1.setText("Thể loại");
+        jPanel4.add(jRadioButtonTheLoai1);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -390,13 +405,23 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 204));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Khác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
-        jButton5.setText("Trở về");
+        jButtonTroVe1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTroVe1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
+        jButtonTroVe1.setText("Trở về");
+        jButtonTroVe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTroVe1ActionPerformed(evt);
+            }
+        });
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/remove-button.png"))); // NOI18N
-        jButton6.setText("Thoát");
+        jButtonThoat1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonThoat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/remove-button.png"))); // NOI18N
+        jButtonThoat1.setText("Thoát");
+        jButtonThoat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThoat1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -404,9 +429,9 @@ public class MuonTraSach extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonTroVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonThoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
         jPanel7Layout.setVerticalGroup(
@@ -414,8 +439,8 @@ public class MuonTraSach extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonTroVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonThoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -476,9 +501,20 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel17.setBackground(new java.awt.Color(255, 255, 204));
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
-        jButton13.setText("Tìm kiếm");
+        jTextFieldKeyword2.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextFieldKeyword2CaretUpdate(evt);
+            }
+        });
+
+        jButtonTimKiem2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonTimKiem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
+        jButtonTimKiem2.setText("Tìm kiếm");
+        jButtonTimKiem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimKiem2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -486,9 +522,9 @@ public class MuonTraSach extends javax.swing.JFrame {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldKeyword2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(jButtonTimKiem2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -496,8 +532,8 @@ public class MuonTraSach extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jButtonTimKiem2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKeyword2, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(17, 17, 17))
         );
 
@@ -544,31 +580,31 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel19.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
-        buttonGroupTheo2.add(jRadioButton12);
-        jRadioButton12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton12.setSelected(true);
-        jRadioButton12.setText("Mã sách");
-        jPanel19.add(jRadioButton12);
+        buttonGroupTheo2.add(jRadioButtonMaSach2);
+        jRadioButtonMaSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaSach2.setSelected(true);
+        jRadioButtonMaSach2.setText("Mã sách");
+        jPanel19.add(jRadioButtonMaSach2);
 
-        buttonGroupTheo2.add(jRadioButton13);
-        jRadioButton13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton13.setText("Tên sách");
-        jPanel19.add(jRadioButton13);
+        buttonGroupTheo2.add(jRadioButtonTenSach2);
+        jRadioButtonTenSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTenSach2.setText("Tên sách");
+        jPanel19.add(jRadioButtonTenSach2);
 
-        buttonGroupTheo2.add(jRadioButton14);
-        jRadioButton14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton14.setText("Tác giả");
-        jPanel19.add(jRadioButton14);
+        buttonGroupTheo2.add(jRadioButtonTacGia2);
+        jRadioButtonTacGia2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTacGia2.setText("Tác giả");
+        jPanel19.add(jRadioButtonTacGia2);
 
-        buttonGroupTheo2.add(jRadioButton15);
-        jRadioButton15.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton15.setText("NXB");
-        jPanel19.add(jRadioButton15);
+        buttonGroupTheo2.add(jRadioButtonNXB2);
+        jRadioButtonNXB2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonNXB2.setText("NXB");
+        jPanel19.add(jRadioButtonNXB2);
 
-        buttonGroupTheo2.add(jRadioButton16);
-        jRadioButton16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton16.setText("Thể loại");
-        jPanel19.add(jRadioButton16);
+        buttonGroupTheo2.add(jRadioButtonTheLoai2);
+        jRadioButtonTheLoai2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTheLoai2.setText("Thể loại");
+        jPanel19.add(jRadioButtonTheLoai2);
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 204));
         jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -732,13 +768,23 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel22.setBackground(new java.awt.Color(255, 255, 204));
         jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Khác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
-        jButton17.setText("Trở về");
+        jButtonTroVe2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTroVe2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
+        jButtonTroVe2.setText("Trở về");
+        jButtonTroVe2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTroVe2ActionPerformed(evt);
+            }
+        });
 
-        jButton18.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/remove-button.png"))); // NOI18N
-        jButton18.setText("Thoát");
+        jButtonThoat2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonThoat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/remove-button.png"))); // NOI18N
+        jButtonThoat2.setText("Thoát");
+        jButtonThoat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonThoat2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -746,9 +792,9 @@ public class MuonTraSach extends javax.swing.JFrame {
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonTroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonThoat2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
         jPanel22Layout.setVerticalGroup(
@@ -756,8 +802,8 @@ public class MuonTraSach extends javax.swing.JFrame {
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonTroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonThoat2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -848,9 +894,9 @@ public class MuonTraSach extends javax.swing.JFrame {
         return ds;
     }
     
-    public void showDSSach(String sql) {
+    public void showDSSach(JTable jTable, String sql) {
         ArrayList<Sach> ds = getDSSach(sql);
-        DefaultTableModel dtm = (DefaultTableModel) jTableDSSach.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
         dtm.setRowCount(0);
         for (Sach sach : ds) {
             dtm.addRow(new Object[] {
@@ -866,6 +912,7 @@ public class MuonTraSach extends javax.swing.JFrame {
             });
         }
     }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -873,6 +920,116 @@ public class MuonTraSach extends javax.swing.JFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButtonTroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTroVe1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new TrangChuDocGia().setVisible(true);
+    }//GEN-LAST:event_jButtonTroVe1ActionPerformed
+
+    private void jButtonTroVe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTroVe2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new TrangChuDocGia().setVisible(true);
+    }//GEN-LAST:event_jButtonTroVe2ActionPerformed
+
+    private void jButtonThoat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoat2ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonThoat2ActionPerformed
+
+    private void jButtonThoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonThoat1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonThoat1ActionPerformed
+
+    private void jTextFieldKeyword2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeyword2CaretUpdate
+        // TODO add your handling code here:
+        String keyword = jTextFieldKeyword2.getText(); // tim kiem khong phan biet chu hoa thuong
+        String sql = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
+            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaDocGia() + "' AND ";
+        if (keyword.equals("")) {
+            showDSSach(jTableDSSachMuon, sachDuocMuonBoiDocGiaDangNhap);
+        } else {
+            if (jRadioButtonMaSach2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(S.MASACH) LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTenSach2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(TENSACH) LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTacGia2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(TACGIA) LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonNXB2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(NXB) LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTheLoai2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(THELOAI) LIKE N'%" + keyword + "%'");
+            }
+        }
+    }//GEN-LAST:event_jTextFieldKeyword2CaretUpdate
+
+    private void jTextFieldKeyword1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeyword1CaretUpdate
+        // TODO add your handling code here:
+        String keyword = jTextFieldKeyword1.getText(); // tim kiem khong phan biet chu hoa thuong
+        if (keyword.equals("")) {
+            showDSSach(jTableDSSach, tatCaSach);
+        } else {
+            if (jRadioButtonMaSach1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE MASACH LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTenSach1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TENSACH LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTacGia1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TACGIA LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonNXB1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE NXb LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTheLoai1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE THELOAI LIKE N'%" + keyword + "%'");
+            }
+        }
+//        DefaultTableModel dtm = (DefaultTableModel) jTableDSSach.getModel();
+//        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+//        jTableDSSach.setRowSorter(trs);
+//        trs.setRowFilter(RowFilter.regexFilter(keyword));
+    }//GEN-LAST:event_jTextFieldKeyword1CaretUpdate
+
+    private void jButtonTimKiem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiem1ActionPerformed
+        // TODO add your handling code here:
+        String keyword = jTextFieldKeyword1.getText(); // tim kiem khong phan biet chu hoa thuong
+        if (keyword.equals("")) {
+            showDSSach(jTableDSSach, tatCaSach);
+        } else {
+            if (jRadioButtonMaSach1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE MASACH LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTenSach1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TENSACH LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTacGia1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TACGIA LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonNXB1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE NXb LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTheLoai1.isSelected()) {
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE THELOAI LIKE N'%" + keyword + "%'");
+            }
+        }
+    }//GEN-LAST:event_jButtonTimKiem1ActionPerformed
+
+    private void jButtonTimKiem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiem2ActionPerformed
+        // TODO add your handling code here:
+        String keyword = jTextFieldKeyword2.getText(); // tim kiem khong phan biet chu hoa thuong
+        String sql = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
+            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaDocGia() + "' AND ";
+        if (keyword.equals("")) {
+            showDSSach(jTableDSSachMuon, sachDuocMuonBoiDocGiaDangNhap);
+        } else {
+            if (jRadioButtonMaSach2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(S.MASACH) LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTenSach2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(TENSACH) LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTacGia2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(TACGIA) LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonNXB2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(NXB) LIKE N'%" + keyword + "%'");
+            } else if (jRadioButtonTheLoai2.isSelected()) {
+                showDSSach(jTableDSSachMuon, sql + "LOWER(THELOAI) LIKE N'%" + keyword + "%'");
+            }
+        }
+    }//GEN-LAST:event_jButtonTimKiem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -913,14 +1070,14 @@ public class MuonTraSach extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupTheo1;
     private javax.swing.ButtonGroup buttonGroupTheo2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonThoat1;
+    private javax.swing.JButton jButtonThoat2;
+    private javax.swing.JButton jButtonTimKiem1;
+    private javax.swing.JButton jButtonTimKiem2;
+    private javax.swing.JButton jButtonTroVe1;
+    private javax.swing.JButton jButtonTroVe2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -956,24 +1113,22 @@ public class MuonTraSach extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton12;
-    private javax.swing.JRadioButton jRadioButton13;
-    private javax.swing.JRadioButton jRadioButton14;
-    private javax.swing.JRadioButton jRadioButton15;
-    private javax.swing.JRadioButton jRadioButton16;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JRadioButton jRadioButtonMaSach1;
+    private javax.swing.JRadioButton jRadioButtonMaSach2;
+    private javax.swing.JRadioButton jRadioButtonNXB1;
+    private javax.swing.JRadioButton jRadioButtonNXB2;
+    private javax.swing.JRadioButton jRadioButtonTacGia1;
+    private javax.swing.JRadioButton jRadioButtonTacGia2;
+    private javax.swing.JRadioButton jRadioButtonTenSach1;
+    private javax.swing.JRadioButton jRadioButtonTenSach2;
+    private javax.swing.JRadioButton jRadioButtonTheLoai1;
+    private javax.swing.JRadioButton jRadioButtonTheLoai2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTableDSSach;
     private javax.swing.JTable jTableDSSachMuon;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
@@ -991,5 +1146,7 @@ public class MuonTraSach extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldKeyword1;
+    private javax.swing.JTextField jTextFieldKeyword2;
     // End of variables declaration//GEN-END:variables
 }

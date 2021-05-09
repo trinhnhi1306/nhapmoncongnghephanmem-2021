@@ -7,7 +7,8 @@ package view;
 
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
-
+import ketnoi.KetNoiSQL;
+import java.sql.*;
 /**
  *
  * @author COMPUTER
@@ -20,6 +21,17 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     public TrangChuDocGia() {
         initComponents();
         setLocationRelativeTo(null);
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement("SELECT TENDOCGIA FROM DOCGIA WHERE MADOCGIA = ?")) {
+            ps.setString(1, DangNhap.getMaDocGia());
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            jLabelTenDocGia.setText(rs.getString(1));
+            rs.close();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(QuanLySach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -103,7 +115,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jLabel65 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelTenDocGia = new javax.swing.JLabel();
 
         jDialogDoiMatKhau.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -661,11 +673,11 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Xin chào");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("What is your name?");
-        jLabel3.setToolTipText("");
+        jLabelTenDocGia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelTenDocGia.setForeground(new java.awt.Color(255, 0, 0));
+        jLabelTenDocGia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelTenDocGia.setText("What is your name?");
+        jLabelTenDocGia.setToolTipText("");
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
@@ -678,7 +690,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(345, 345, 345)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelTenDocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11))
@@ -701,7 +713,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
                         .addGroup(jPanel32Layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelTenDocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -854,7 +866,6 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel57;
@@ -868,6 +879,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelTenDocGia;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
