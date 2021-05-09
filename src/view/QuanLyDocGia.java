@@ -588,6 +588,11 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jButton_TroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_TroVe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
         jButton_TroVe.setText("Trở về");
+        jButton_TroVe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TroVeActionPerformed(evt);
+            }
+        });
 
         jButton_Thoat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_Thoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/remove-button.png"))); // NOI18N
@@ -824,7 +829,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
 
     private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_jButton_ThoatActionPerformed
 
     private String chuanHoaDanhTuRieng(String str) {
@@ -1018,6 +1023,12 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton_XoaDGActionPerformed
+
+    private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new TrangChuAdmin().setVisible(true);
+    }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     /**
      * @param args the command line arguments
