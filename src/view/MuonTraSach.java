@@ -41,6 +41,19 @@ public class MuonTraSach extends javax.swing.JFrame {
 
         buttonGroupTheo1 = new javax.swing.ButtonGroup();
         buttonGroupTheo2 = new javax.swing.ButtonGroup();
+        jDialogMuonSach = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField_MaDG1 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jButtonMuon = new javax.swing.JButton();
+        jButtonTroVe = new javax.swing.JButton();
+        jDateChooser_NgayDangKy1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser_NgayHetHan1 = new com.toedter.calendar.JDateChooser();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField_MaDG2 = new javax.swing.JTextField();
         jPanel15 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -77,7 +90,7 @@ public class MuonTraSach extends javax.swing.JFrame {
         jTextField10 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        jButtonMuonSach = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jButtonTroVe1 = new javax.swing.JButton();
         jButtonThoat1 = new javax.swing.JButton();
@@ -119,6 +132,112 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel22 = new javax.swing.JPanel();
         jButtonTroVe2 = new javax.swing.JButton();
         jButtonThoat2 = new javax.swing.JButton();
+
+        jDialogMuonSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel8.setBackground(new java.awt.Color(204, 255, 255));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 255, 0));
+        jLabel11.setText("PHIẾU MƯỢN SÁCH");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("Mã phiếu");
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setText("Ngày mượn");
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel20.setText("Ngày trả");
+
+        jButtonMuon.setBackground(new java.awt.Color(153, 255, 153));
+        jButtonMuon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-borrow-book-32.png"))); // NOI18N
+        jButtonMuon.setText("Mượn");
+
+        jButtonTroVe.setBackground(new java.awt.Color(153, 255, 153));
+        jButtonTroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTroVe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
+        jButtonTroVe.setText("Trở về");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel13.setText("Tên sách");
+
+        jTextField_MaDG2.setEditable(false);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField_MaDG1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser_NgayDangKy1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser_NgayHetHan1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_MaDG2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jButtonMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButtonTroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jLabel11)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_MaDG1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_MaDG2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser_NgayDangKy1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonTroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jDateChooser_NgayHetHan1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialogMuonSachLayout = new javax.swing.GroupLayout(jDialogMuonSach.getContentPane());
+        jDialogMuonSach.getContentPane().setLayout(jDialogMuonSachLayout);
+        jDialogMuonSachLayout.setHorizontalGroup(
+            jDialogMuonSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDialogMuonSachLayout.setVerticalGroup(
+            jDialogMuonSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -375,13 +494,13 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 204));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-borrow-book-32.png"))); // NOI18N
-        jButton2.setText("Mượn sách");
-        jButton2.setToolTipText("");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMuonSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-borrow-book-32.png"))); // NOI18N
+        jButtonMuonSach.setText("Mượn sách");
+        jButtonMuonSach.setToolTipText("");
+        jButtonMuonSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonMuonSachActionPerformed(evt);
             }
         });
 
@@ -391,14 +510,14 @@ public class MuonTraSach extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(203, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonMuonSach, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(186, 186, 186))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonMuonSach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -753,16 +872,16 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(196, Short.MAX_VALUE)
+                .addContainerGap(193, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
+                .addGap(191, 191, 191))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel22.setBackground(new java.awt.Color(255, 255, 204));
@@ -856,7 +975,7 @@ public class MuonTraSach extends javax.swing.JFrame {
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane2)
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -913,9 +1032,12 @@ public class MuonTraSach extends javax.swing.JFrame {
         }
     }
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonMuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMuonSachActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        jDialogMuonSach.pack(); 
+        jDialogMuonSach.setLocationRelativeTo(this);
+        jDialogMuonSach.setVisible(true);
+    }//GEN-LAST:event_jButtonMuonSachActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
@@ -983,6 +1105,7 @@ public class MuonTraSach extends javax.swing.JFrame {
                 showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE THELOAI LIKE N'%" + keyword + "%'");
             }
         }
+        // What the hell... it doesn't work
 //        DefaultTableModel dtm = (DefaultTableModel) jTableDSSach.getModel();
 //        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
 //        jTableDSSach.setRowSorter(trs);
@@ -1002,7 +1125,7 @@ public class MuonTraSach extends javax.swing.JFrame {
             } else if (jRadioButtonTacGia1.isSelected()) {
                 showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TACGIA LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonNXB1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE NXb LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE NXB LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTheLoai1.isSelected()) {
                 showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE THELOAI LIKE N'%" + keyword + "%'");
             }
@@ -1018,15 +1141,15 @@ public class MuonTraSach extends javax.swing.JFrame {
             showDSSach(jTableDSSachMuon, sachDuocMuonBoiDocGiaDangNhap);
         } else {
             if (jRadioButtonMaSach2.isSelected()) {
-                showDSSach(jTableDSSachMuon, sql + "LOWER(S.MASACH) LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSachMuon, sql + "S.MASACH LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTenSach2.isSelected()) {
-                showDSSach(jTableDSSachMuon, sql + "LOWER(TENSACH) LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSachMuon, sql + "TENSACH LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTacGia2.isSelected()) {
-                showDSSach(jTableDSSachMuon, sql + "LOWER(TACGIA) LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSachMuon, sql + "TACGIA LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonNXB2.isSelected()) {
-                showDSSach(jTableDSSachMuon, sql + "LOWER(NXB) LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSachMuon, sql + "NXB LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTheLoai2.isSelected()) {
-                showDSSach(jTableDSSachMuon, sql + "LOWER(THELOAI) LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSachMuon, sql + "THELOAI LIKE N'%" + keyword + "%'");
             }
         }
     }//GEN-LAST:event_jButtonTimKiem2ActionPerformed
@@ -1071,14 +1194,24 @@ public class MuonTraSach extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupTheo1;
     private javax.swing.ButtonGroup buttonGroupTheo2;
     private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonMuon;
+    private javax.swing.JButton jButtonMuonSach;
     private javax.swing.JButton jButtonThoat1;
     private javax.swing.JButton jButtonThoat2;
     private javax.swing.JButton jButtonTimKiem1;
     private javax.swing.JButton jButtonTimKiem2;
+    private javax.swing.JButton jButtonTroVe;
     private javax.swing.JButton jButtonTroVe1;
     private javax.swing.JButton jButtonTroVe2;
+    private com.toedter.calendar.JDateChooser jDateChooser_NgayDangKy1;
+    private com.toedter.calendar.JDateChooser jDateChooser_NgayHetHan1;
+    private javax.swing.JDialog jDialogMuonSach;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1113,6 +1246,7 @@ public class MuonTraSach extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JRadioButton jRadioButtonMaSach1;
     private javax.swing.JRadioButton jRadioButtonMaSach2;
     private javax.swing.JRadioButton jRadioButtonNXB1;
@@ -1148,5 +1282,7 @@ public class MuonTraSach extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField jTextFieldKeyword1;
     private javax.swing.JTextField jTextFieldKeyword2;
+    private javax.swing.JTextField jTextField_MaDG1;
+    private javax.swing.JTextField jTextField_MaDG2;
     // End of variables declaration//GEN-END:variables
 }
