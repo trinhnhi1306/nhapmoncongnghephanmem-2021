@@ -18,7 +18,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import model.DocGia;
 
@@ -27,7 +29,6 @@ import model.DocGia;
  * @author COMPUTER
  */
 public class QuanLyDocGia extends javax.swing.JFrame {
-    private static final String tatCaDG = "select * from DOCGIA where not MADOCGIA = 'admin'";
     private DefaultTableModel model;
     /**
      * Creates new form ManageBookForm
@@ -36,7 +37,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         model = (DefaultTableModel) jTable_DSDocGia.getModel();
-        showDocGia(tatCaDG);
+        showDocGia();
     }
 
     /**
@@ -316,9 +317,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTextField_TuKhoa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField_TuKhoaKeyPressed(evt);
+        jTextField_TuKhoa.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField_TuKhoaCaretUpdate(evt);
             }
         });
 
@@ -702,11 +703,11 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public ArrayList<DocGia> dsDocGia (String sql) {
+    public ArrayList<DocGia> dsDocGia () {
         ArrayList<DocGia> dsDocGia = new ArrayList<>();
         Connection con = KetNoiSQL.layKetNoi();
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement("select * from DOCGIA where not MADOCGIA = 'admin'");
             ResultSet rs = ps.executeQuery();
             DocGia dg;
             while (rs.next()) {
@@ -724,8 +725,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         return dsDocGia;
     }
     
-    public void showDocGia (String sql) {
-        ArrayList<DocGia> dsDocGia = dsDocGia(sql);
+    public void showDocGia () {
+        ArrayList<DocGia> dsDocGia = dsDocGia();
         model.setNumRows(0);
         dsDocGia.forEach(dg -> {
             model.addRow(new Object[] {
@@ -841,7 +842,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email);
                 JOptionPane.showMessageDialog(jDialogThemDocGia, "Thêm độc giả thành công!");
                 jDialogThemDocGia.dispose();
-                showDocGia(tatCaDG);
+                showDocGia();
             }
         }
     }//GEN-LAST:event_jButton_Them1ActionPerformed
@@ -870,28 +871,22 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
         // TODO add your handling code here:
+        
         String tuKhoa = jTextField_TuKhoa.getText();
-        String sql;
-        if (tuKhoa.equalsIgnoreCase("")) {
-            showDocGia(tatCaDG);
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        jTable_DSDocGia.setRowSorter(trs);
+        
+        if (jRadioButton_MaDG.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
         }
-        else {
-            if (jRadioButton_MaDG.isSelected()) {
-                sql = "select * from DOCGIA where MADOCGIA = '" + tuKhoa + "'";
-                showDocGia(sql);
-            }
-            if (jRadioButton_TenDG.isSelected()) {
-                sql = "select * from DOCGIA where TENDOCGIA = N'" + tuKhoa + "'";
-                showDocGia(sql);
-            }
-            if (jRadioButton_SDT.isSelected()) {
-                sql = "select * from DOCGIA where SDT = '" + tuKhoa + "'";
-                showDocGia(sql);
-            }
-            if (jRadioButton_Email.isSelected()) {
-                sql = "select * from DOCGIA where EMAIL = '" + tuKhoa + "'";
-                showDocGia(sql);
-            }
+        if (jRadioButton_TenDG.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
+        if (jRadioButton_SDT.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 5));
+        }
+        if (jRadioButton_Email.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 6));
         }
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
 
@@ -1009,11 +1004,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         } 
     }
     
-    private void jTextField_TuKhoaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TuKhoaKeyPressed
-        // TODO add your handling code here:
-        showDocGia(tatCaDG);
-    }//GEN-LAST:event_jTextField_TuKhoaKeyPressed
-
     private void jButton_XoaDGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaDGActionPerformed
         // TODO add your handling code here:
         String maDG = jTextField_MaDG.getText();
@@ -1034,7 +1024,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                     xoaDocGia(maDG);
                     JOptionPane.showMessageDialog(this, "Xóa độc giả thành công");  
                     xoaDuLieuForm();
-                    showDocGia(tatCaDG);
+                    showDocGia();
                 }
             }
         }
@@ -1119,12 +1109,32 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                     {
                         chinhSuaDocGia(maDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email);
                         JOptionPane.showMessageDialog(this, "Chỉnh sửa độc giả thành công!");
-                        showDocGia(tatCaDG);
+                        showDocGia();
                     }
                 }
             }
         }
     }//GEN-LAST:event_jButton_SuaDGActionPerformed
+
+    private void jTextField_TuKhoaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_TuKhoaCaretUpdate
+        // TODO add your handling code here:
+        String tuKhoa = jTextField_TuKhoa.getText();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        jTable_DSDocGia.setRowSorter(trs);
+        
+        if (jRadioButton_MaDG.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenDG.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
+        if (jRadioButton_SDT.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 5));
+        }
+        if (jRadioButton_Email.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 6));
+        }
+    }//GEN-LAST:event_jTextField_TuKhoaCaretUpdate
 
     /**
      * @param args the command line arguments
