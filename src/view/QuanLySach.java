@@ -63,8 +63,8 @@ public class QuanLySach extends javax.swing.JFrame {
         jTextField_SoLuong1 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jDateChooser_NgayNhap1 = new com.toedter.calendar.JDateChooser();
-        jButton_Them1Sach = new javax.swing.JButton();
-        jButton_TroVeThemSach = new javax.swing.JButton();
+        jButton_Them = new javax.swing.JButton();
+        jButton_TroVe = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -98,12 +98,15 @@ public class QuanLySach extends javax.swing.JFrame {
         jTextField_Gia = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jTextField_SoLuong = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        jButton_ThemSach = new javax.swing.JButton();
-        jButton_SuaSach = new javax.swing.JButton();
-        jButton_XoaSach = new javax.swing.JButton();
+        jButton_Them1 = new javax.swing.JButton();
+        jButton_Sua = new javax.swing.JButton();
+        jButton_Xoa = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jButton_TroVeQLSach = new javax.swing.JButton();
+        jButton_TroVe1 = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
 
         jDialogThemSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -119,17 +122,29 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Mã sách");
 
+        jTextField_MaSach1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Tên sách");
 
+        jTextField_TenSach1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTextField_TacGia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Tác giả");
+        jLabel14.setText("Mã tác giả");
+
+        jTextField_NXB1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("NXB");
+        jLabel15.setText("Mã NXB");
+
+        jTextField_TheLoai1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Thể loại");
+        jLabel16.setText("Mã thể loại");
+
+        jTextField_Gia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Giá");
@@ -140,26 +155,32 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setText("Vị trí");
 
+        jTextField_ViTri1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTextField_SoLuong1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setText("Số lượng");
 
-        jButton_Them1Sach.setBackground(new java.awt.Color(153, 255, 153));
-        jButton_Them1Sach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Them1Sach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
-        jButton_Them1Sach.setText("Thêm");
-        jButton_Them1Sach.addActionListener(new java.awt.event.ActionListener() {
+        jDateChooser_NgayNhap1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jButton_Them.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_Them.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
+        jButton_Them.setText("Thêm");
+        jButton_Them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Them1SachActionPerformed(evt);
+                jButton_ThemActionPerformed(evt);
             }
         });
 
-        jButton_TroVeThemSach.setBackground(new java.awt.Color(153, 255, 153));
-        jButton_TroVeThemSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_TroVeThemSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
-        jButton_TroVeThemSach.setText("Trở về");
-        jButton_TroVeThemSach.addActionListener(new java.awt.event.ActionListener() {
+        jButton_TroVe.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_TroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_TroVe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
+        jButton_TroVe.setText("Trở về");
+        jButton_TroVe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_TroVeThemSachActionPerformed(evt);
+                jButton_TroVeActionPerformed(evt);
             }
         });
 
@@ -211,9 +232,9 @@ public class QuanLySach extends javax.swing.JFrame {
                                 .addComponent(jTextField_MaSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jButton_Them1Sach, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton_TroVeThemSach, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -262,8 +283,8 @@ public class QuanLySach extends javax.swing.JFrame {
                     .addComponent(jTextField_SoLuong1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Them1Sach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_TroVeThemSach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -292,6 +313,7 @@ public class QuanLySach extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
+        jTextField_Keyword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField_Keyword.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 jTextField_KeywordCaretUpdate(evt);
@@ -313,18 +335,18 @@ public class QuanLySach extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField_Keyword, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jTextField_Keyword, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(7, 7, 7))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jTextField_Keyword, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_Keyword, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
 
@@ -336,11 +358,11 @@ public class QuanLySach extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Tác giả", "NXB", "Thể loại", "Ngày nhập", "Giá", "Vị trí", "Số lượng"
+                "Mã sách", "Tên sách", "Mã tác giả", "Mã NXB", "Mã thể loại", "Ngày nhập", "Giá", "Vị trí", "Số lượng có", "Số lượng còn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -384,17 +406,17 @@ public class QuanLySach extends javax.swing.JFrame {
 
         buttonGroupTheo.add(jRadioButton_TacGia);
         jRadioButton_TacGia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_TacGia.setText("Tác giả");
+        jRadioButton_TacGia.setText("Mã tác giả");
         jPanel4.add(jRadioButton_TacGia);
 
         buttonGroupTheo.add(jRadioButton_NXB);
         jRadioButton_NXB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_NXB.setText("NXB");
+        jRadioButton_NXB.setText("Mã NXB");
         jPanel4.add(jRadioButton_NXB);
 
         buttonGroupTheo.add(jRadioButton_TheLoai);
         jRadioButton_TheLoai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_TheLoai.setText("Thể loại");
+        jRadioButton_TheLoai.setText("Mã thể loại");
         jPanel4.add(jRadioButton_TheLoai);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 204));
@@ -403,8 +425,12 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel21.setText("Mã sách");
 
+        jTextField_MaSach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel22.setText("NXB");
+        jLabel22.setText("Mã NXB");
+
+        jTextField_NXB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel23.setText("Ngày nhập");
@@ -412,20 +438,42 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel24.setText("Vị trí");
 
+        jTextField_ViTri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jDateChooser_NgayNhap.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTextField_TenSach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setText("Tên sách");
 
+        jTextField_TacGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel26.setText("Tác giả");
+        jLabel26.setText("Mã tác giả");
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel27.setText("Thể loại");
+        jLabel27.setText("Mã thể loại");
+
+        jTextField_TheLoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel28.setText("Giá");
 
+        jTextField_Gia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setText("Số lượng");
+
+        jTextField_SoLuong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Có");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Còn");
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -458,20 +506,30 @@ public class QuanLySach extends javax.swing.JFrame {
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField_NXB, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDateChooser_NgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_ViTri, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1))
+                            .addComponent(jTextField_ViTri, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(25, 25, 25))
         );
         jPanel5Layout.setVerticalGroup(
@@ -499,36 +557,38 @@ public class QuanLySach extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel29)
-                        .addComponent(jTextField_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel28)
-                        .addComponent(jTextField_Gia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextField_Gia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel29)
+                        .addComponent(jLabel2)
+                        .addComponent(jTextField_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel26)
-                        .addComponent(jTextField_TacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField_TacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 204));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton_ThemSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_ThemSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
-        jButton_ThemSach.setText("Thêm");
-        jButton_ThemSach.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Them1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Them1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
+        jButton_Them1.setText("Thêm");
+        jButton_Them1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ThemSachActionPerformed(evt);
+                jButton_Them1ActionPerformed(evt);
             }
         });
 
-        jButton_SuaSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_SuaSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
-        jButton_SuaSach.setText("Sửa");
+        jButton_Sua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
+        jButton_Sua.setText("Sửa");
 
-        jButton_XoaSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_XoaSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
-        jButton_XoaSach.setText("Xóa");
+        jButton_Xoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
+        jButton_Xoa.setText("Xóa");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -536,11 +596,11 @@ public class QuanLySach extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton_ThemSach, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Them1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(jButton_SuaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton_XoaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         jPanel6Layout.setVerticalGroup(
@@ -548,21 +608,21 @@ public class QuanLySach extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_ThemSach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_SuaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_XoaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Them1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 204));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Khác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton_TroVeQLSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_TroVeQLSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
-        jButton_TroVeQLSach.setText("Trở về");
-        jButton_TroVeQLSach.addActionListener(new java.awt.event.ActionListener() {
+        jButton_TroVe1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_TroVe1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
+        jButton_TroVe1.setText("Trở về");
+        jButton_TroVe1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_TroVeQLSachActionPerformed(evt);
+                jButton_TroVe1ActionPerformed(evt);
             }
         });
 
@@ -581,7 +641,7 @@ public class QuanLySach extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jButton_TroVeQLSach, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_TroVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
@@ -591,7 +651,7 @@ public class QuanLySach extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_TroVeQLSach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_TroVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -610,15 +670,15 @@ public class QuanLySach extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -703,22 +763,22 @@ public class QuanLySach extends javax.swing.JFrame {
 //        return str;
 //    }
     
-    private void jButton_ThemSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemSachActionPerformed
+    private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
         jDialogThemSach.pack(); //Tự động thay đổi kích thước của JFrame dựa trên kích thước của các component mà nó chứa
         jDialogThemSach.setLocationRelativeTo(this);
         jDialogThemSach.setVisible(true);
-    }//GEN-LAST:event_jButton_ThemSachActionPerformed
+    }//GEN-LAST:event_jButton_Them1ActionPerformed
 
-    private void jButton_Them1SachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1SachActionPerformed
+    private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Them1SachActionPerformed
+    }//GEN-LAST:event_jButton_ThemActionPerformed
 
-    private void jButton_TroVeThemSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeThemSachActionPerformed
+    private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
         dispose();
         new QuanLySach().setVisible(true);
-    }//GEN-LAST:event_jButton_TroVeThemSachActionPerformed
+    }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     private void jTextField_KeywordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordCaretUpdate
         //Được gọi khi con trỏ văn bản di chuyển
@@ -788,11 +848,11 @@ public class QuanLySach extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton_ThoatActionPerformed
 
-    private void jButton_TroVeQLSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeQLSachActionPerformed
+    private void jButton_TroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe1ActionPerformed
         // TODO add your handling code here:
         dispose();
         new TrangChuAdmin().setVisible(true);
-    }//GEN-LAST:event_jButton_TroVeQLSachActionPerformed
+    }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -838,14 +898,14 @@ public class QuanLySach extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupTheo;
-    private javax.swing.JButton jButton_SuaSach;
-    private javax.swing.JButton jButton_Them1Sach;
-    private javax.swing.JButton jButton_ThemSach;
+    private javax.swing.JButton jButton_Sua;
+    private javax.swing.JButton jButton_Them;
+    private javax.swing.JButton jButton_Them1;
     private javax.swing.JButton jButton_Thoat;
     private javax.swing.JButton jButton_TimKiem;
-    private javax.swing.JButton jButton_TroVeQLSach;
-    private javax.swing.JButton jButton_TroVeThemSach;
-    private javax.swing.JButton jButton_XoaSach;
+    private javax.swing.JButton jButton_TroVe;
+    private javax.swing.JButton jButton_TroVe1;
+    private javax.swing.JButton jButton_Xoa;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayNhap;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayNhap1;
     private javax.swing.JDialog jDialogThemSach;
@@ -859,6 +919,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -869,6 +930,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -884,6 +946,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton_TheLoai;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_DSSach;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField_Gia;
     private javax.swing.JTextField jTextField_Gia1;
     private javax.swing.JTextField jTextField_Keyword;
