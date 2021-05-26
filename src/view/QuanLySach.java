@@ -42,7 +42,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroupTheo = new javax.swing.ButtonGroup();
-        jDialogThemSach = new javax.swing.JDialog();
+        jDialog_ThemSach = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -109,9 +109,9 @@ public class QuanLySach extends javax.swing.JFrame {
         jButton_TroVe1 = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
 
-        jDialogThemSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialogThemSach.setTitle("Thêm sách");
-        jDialogThemSach.setModal(true);
+        jDialog_ThemSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThemSach.setTitle("Thêm sách");
+        jDialog_ThemSach.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -288,14 +288,14 @@ public class QuanLySach extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialogThemSachLayout = new javax.swing.GroupLayout(jDialogThemSach.getContentPane());
-        jDialogThemSach.getContentPane().setLayout(jDialogThemSachLayout);
-        jDialogThemSachLayout.setHorizontalGroup(
-            jDialogThemSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog_ThemSachLayout = new javax.swing.GroupLayout(jDialog_ThemSach.getContentPane());
+        jDialog_ThemSach.getContentPane().setLayout(jDialog_ThemSachLayout);
+        jDialog_ThemSachLayout.setHorizontalGroup(
+            jDialog_ThemSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialogThemSachLayout.setVerticalGroup(
-            jDialogThemSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_ThemSachLayout.setVerticalGroup(
+            jDialog_ThemSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -765,9 +765,9 @@ public class QuanLySach extends javax.swing.JFrame {
     
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
-        jDialogThemSach.pack(); //Tự động thay đổi kích thước của JFrame dựa trên kích thước của các component mà nó chứa
-        jDialogThemSach.setLocationRelativeTo(this);
-        jDialogThemSach.setVisible(true);
+        jDialog_ThemSach.pack(); //Tự động thay đổi kích thước của JFrame dựa trên kích thước của các component mà nó chứa
+        jDialog_ThemSach.setLocationRelativeTo(this);
+        jDialog_ThemSach.setVisible(true);
     }//GEN-LAST:event_jButton_Them1ActionPerformed
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
@@ -776,8 +776,7 @@ public class QuanLySach extends javax.swing.JFrame {
 
     private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new QuanLySach().setVisible(true);
+        jDialog_ThemSach.dispose();
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     private void jTextField_KeywordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordCaretUpdate
@@ -851,7 +850,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private void jButton_TroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe1ActionPerformed
         // TODO add your handling code here:
         dispose();
-        new TrangChuAdmin().setVisible(true);
+        new TrangChuThuKho().setVisible(true);
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
     /**
@@ -908,7 +907,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Xoa;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayNhap;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayNhap1;
-    private javax.swing.JDialog jDialogThemSach;
+    private javax.swing.JDialog jDialog_ThemSach;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -30,7 +30,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialogThongBao = new javax.swing.JDialog();
+        jDialog_ThongBao = new javax.swing.JDialog();
         jPanel9 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -39,7 +39,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton_TroVe = new javax.swing.JButton();
-        jDialogSuaThongTinCaNhan = new javax.swing.JDialog();
+        jDialog_SuaThongTinCaNhan = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -62,7 +62,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jDateChooser5 = new com.toedter.calendar.JDateChooser();
         jDateChooser6 = new com.toedter.calendar.JDateChooser();
         jDateChooser7 = new com.toedter.calendar.JDateChooser();
-        jDialogDoiMatKhau = new javax.swing.JDialog();
+        jDialog_DoiMatKhau = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -102,7 +102,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel65 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        jDialogThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -130,6 +130,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_TroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_TroVe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
         jButton_TroVe.setText("Trở về");
+        jButton_TroVe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TroVeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -173,18 +178,18 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialogThongBaoLayout = new javax.swing.GroupLayout(jDialogThongBao.getContentPane());
-        jDialogThongBao.getContentPane().setLayout(jDialogThongBaoLayout);
-        jDialogThongBaoLayout.setHorizontalGroup(
-            jDialogThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog_ThongBaoLayout = new javax.swing.GroupLayout(jDialog_ThongBao.getContentPane());
+        jDialog_ThongBao.getContentPane().setLayout(jDialog_ThongBaoLayout);
+        jDialog_ThongBaoLayout.setHorizontalGroup(
+            jDialog_ThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialogThongBaoLayout.setVerticalGroup(
-            jDialogThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_ThongBaoLayout.setVerticalGroup(
+            jDialog_ThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jDialogSuaThongTinCaNhan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_SuaThongTinCaNhan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -238,6 +243,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_TroVe1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_TroVe1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
         jButton_TroVe1.setText("Trở về");
+        jButton_TroVe1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TroVe1ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
@@ -353,18 +363,18 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialogSuaThongTinCaNhanLayout = new javax.swing.GroupLayout(jDialogSuaThongTinCaNhan.getContentPane());
-        jDialogSuaThongTinCaNhan.getContentPane().setLayout(jDialogSuaThongTinCaNhanLayout);
-        jDialogSuaThongTinCaNhanLayout.setHorizontalGroup(
-            jDialogSuaThongTinCaNhanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog_SuaThongTinCaNhanLayout = new javax.swing.GroupLayout(jDialog_SuaThongTinCaNhan.getContentPane());
+        jDialog_SuaThongTinCaNhan.getContentPane().setLayout(jDialog_SuaThongTinCaNhanLayout);
+        jDialog_SuaThongTinCaNhanLayout.setHorizontalGroup(
+            jDialog_SuaThongTinCaNhanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialogSuaThongTinCaNhanLayout.setVerticalGroup(
-            jDialogSuaThongTinCaNhanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_SuaThongTinCaNhanLayout.setVerticalGroup(
+            jDialog_SuaThongTinCaNhanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jDialogDoiMatKhau.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_DoiMatKhau.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -390,7 +400,12 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_TroVe2.setBackground(new java.awt.Color(153, 255, 153));
         jButton_TroVe2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_TroVe2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
-        jButton_TroVe2.setText("Trờ về");
+        jButton_TroVe2.setText("Trở về");
+        jButton_TroVe2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TroVe2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -437,14 +452,14 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        javax.swing.GroupLayout jDialogDoiMatKhauLayout = new javax.swing.GroupLayout(jDialogDoiMatKhau.getContentPane());
-        jDialogDoiMatKhau.getContentPane().setLayout(jDialogDoiMatKhauLayout);
-        jDialogDoiMatKhauLayout.setHorizontalGroup(
-            jDialogDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog_DoiMatKhauLayout = new javax.swing.GroupLayout(jDialog_DoiMatKhau.getContentPane());
+        jDialog_DoiMatKhau.getContentPane().setLayout(jDialog_DoiMatKhauLayout);
+        jDialog_DoiMatKhauLayout.setHorizontalGroup(
+            jDialog_DoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialogDoiMatKhauLayout.setVerticalGroup(
-            jDialogDoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_DoiMatKhauLayout.setVerticalGroup(
+            jDialog_DoiMatKhauLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -463,6 +478,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_QuanLySach.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_QuanLySach.setPreferredSize(new java.awt.Dimension(135, 97));
         jButton_QuanLySach.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_QuanLySach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_QuanLySachActionPerformed(evt);
+            }
+        });
 
         jButton_ThongTinCaNhan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton_ThongTinCaNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cv.png"))); // NOI18N
@@ -470,6 +490,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_ThongTinCaNhan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_ThongTinCaNhan.setPreferredSize(new java.awt.Dimension(157, 97));
         jButton_ThongTinCaNhan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_ThongTinCaNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ThongTinCaNhanActionPerformed(evt);
+            }
+        });
 
         jButton_DangXuat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton_DangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout (1).png"))); // NOI18N
@@ -477,6 +502,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_DangXuat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton_DangXuat.setIconTextGap(10);
         jButton_DangXuat.setPreferredSize(new java.awt.Dimension(115, 97));
+        jButton_DangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_DangXuatActionPerformed(evt);
+            }
+        });
 
         jButton_Thoat.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton_Thoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/cancel.png"))); // NOI18N
@@ -484,18 +514,33 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_Thoat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton_Thoat.setIconTextGap(10);
         jButton_Thoat.setPreferredSize(new java.awt.Dimension(97, 97));
+        jButton_Thoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ThoatActionPerformed(evt);
+            }
+        });
 
         jButton_DoiMatKhau.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton_DoiMatKhau.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/password.png"))); // NOI18N
         jButton_DoiMatKhau.setText("Đổi mật khẩu");
         jButton_DoiMatKhau.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_DoiMatKhau.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_DoiMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_DoiMatKhauActionPerformed(evt);
+            }
+        });
 
         jButton_ThongBao.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton_ThongBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/notification.png"))); // NOI18N
         jButton_ThongBao.setText("Thông báo");
         jButton_ThongBao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_ThongBao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_ThongBao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ThongBaoActionPerformed(evt);
+            }
+        });
 
         jButton_TacGiaNXBTheLoai.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton_TacGiaNXBTheLoai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tacgia.png"))); // NOI18N
@@ -503,6 +548,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_TacGiaNXBTheLoai.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_TacGiaNXBTheLoai.setPreferredSize(new java.awt.Dimension(135, 97));
         jButton_TacGiaNXBTheLoai.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_TacGiaNXBTheLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TacGiaNXBTheLoaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -677,6 +727,65 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_ThongTinCaNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinCaNhanActionPerformed
+        // TODO add your handling code here:
+        jDialog_SuaThongTinCaNhan.pack();
+        jDialog_SuaThongTinCaNhan.setLocationRelativeTo(this);
+        jDialog_SuaThongTinCaNhan.setVisible(true);
+    }//GEN-LAST:event_jButton_ThongTinCaNhanActionPerformed
+
+    private void jButton_TroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe1ActionPerformed
+        // TODO add your handling code here:
+        jDialog_SuaThongTinCaNhan.dispose();
+    }//GEN-LAST:event_jButton_TroVe1ActionPerformed
+
+    private void jButton_QuanLySachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuanLySachActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new QuanLySach().setVisible(true);
+    }//GEN-LAST:event_jButton_QuanLySachActionPerformed
+
+    private void jButton_TacGiaNXBTheLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TacGiaNXBTheLoaiActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new QuanLyTacGiaNXBTheLoai().setVisible(true);
+    }//GEN-LAST:event_jButton_TacGiaNXBTheLoaiActionPerformed
+
+    private void jButton_DoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DoiMatKhauActionPerformed
+        // TODO add your handling code here:
+        jDialog_DoiMatKhau.pack();
+        jDialog_DoiMatKhau.setLocationRelativeTo(this);
+        jDialog_DoiMatKhau.setVisible(true);
+    }//GEN-LAST:event_jButton_DoiMatKhauActionPerformed
+
+    private void jButton_TroVe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe2ActionPerformed
+        // TODO add your handling code here:
+        jDialog_DoiMatKhau.dispose();
+    }//GEN-LAST:event_jButton_TroVe2ActionPerformed
+
+    private void jButton_ThongBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongBaoActionPerformed
+        // TODO add your handling code here:
+        jDialog_ThongBao.pack();
+        jDialog_ThongBao.setLocationRelativeTo(this);
+        jDialog_ThongBao.setVisible(true);
+    }//GEN-LAST:event_jButton_ThongBaoActionPerformed
+
+    private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
+        // TODO add your handling code here:
+        jDialog_ThongBao.dispose();
+    }//GEN-LAST:event_jButton_TroVeActionPerformed
+
+    private void jButton_DangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangXuatActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new DangNhap().setVisible(true);
+    }//GEN-LAST:event_jButton_DangXuatActionPerformed
+
+    private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton_ThoatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -729,9 +838,9 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser5;
     private com.toedter.calendar.JDateChooser jDateChooser6;
     private com.toedter.calendar.JDateChooser jDateChooser7;
-    private javax.swing.JDialog jDialogDoiMatKhau;
-    private javax.swing.JDialog jDialogSuaThongTinCaNhan;
-    private javax.swing.JDialog jDialogThongBao;
+    private javax.swing.JDialog jDialog_DoiMatKhau;
+    private javax.swing.JDialog jDialog_SuaThongTinCaNhan;
+    private javax.swing.JDialog jDialog_ThongBao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

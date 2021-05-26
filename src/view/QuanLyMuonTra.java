@@ -42,7 +42,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         buttonGroupTheo1 = new javax.swing.ButtonGroup();
         buttonGroupTheo2 = new javax.swing.ButtonGroup();
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jDialogMuonSach = new javax.swing.JDialog();
+        jDialog_PhieuMuon = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -112,7 +112,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jButton_TroVe2 = new javax.swing.JButton();
         jButton_Thoat1 = new javax.swing.JButton();
 
-        jDialogMuonSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_PhieuMuon.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -140,6 +140,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jButton_TroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_TroVe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
         jButton_TroVe.setText("Trở về");
+        jButton_TroVe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TroVeActionPerformed(evt);
+            }
+        });
 
         jDateChooser_NgayDangKy1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -214,14 +219,14 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialogMuonSachLayout = new javax.swing.GroupLayout(jDialogMuonSach.getContentPane());
-        jDialogMuonSach.getContentPane().setLayout(jDialogMuonSachLayout);
-        jDialogMuonSachLayout.setHorizontalGroup(
-            jDialogMuonSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog_PhieuMuonLayout = new javax.swing.GroupLayout(jDialog_PhieuMuon.getContentPane());
+        jDialog_PhieuMuon.getContentPane().setLayout(jDialog_PhieuMuonLayout);
+        jDialog_PhieuMuonLayout.setHorizontalGroup(
+            jDialog_PhieuMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialogMuonSachLayout.setVerticalGroup(
-            jDialogMuonSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_PhieuMuonLayout.setVerticalGroup(
+            jDialog_PhieuMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -936,9 +941,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     
     private void jButton_MuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MuonSachActionPerformed
         // TODO add your handling code here:
-        jDialogMuonSach.pack(); 
-        jDialogMuonSach.setLocationRelativeTo(this);
-        jDialogMuonSach.setVisible(true);
+        jDialog_PhieuMuon.pack(); 
+        jDialog_PhieuMuon.setLocationRelativeTo(this);
+        jDialog_PhieuMuon.setVisible(true);
     }//GEN-LAST:event_jButton_MuonSachActionPerformed
 
     private void jButton_TraSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TraSachActionPerformed
@@ -948,13 +953,13 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private void jButton_TroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe1ActionPerformed
         // TODO add your handling code here:
         dispose();
-        new TrangChuDocGia().setVisible(true);
+        new TrangChuThuThu().setVisible(true);
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
     private void jButton_TroVe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe2ActionPerformed
         // TODO add your handling code here:
         dispose();
-        new TrangChuDocGia().setVisible(true);
+        new TrangChuThuThu().setVisible(true);
     }//GEN-LAST:event_jButton_TroVe2ActionPerformed
 
     private void jButton_Thoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Thoat1ActionPerformed
@@ -1068,6 +1073,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_TimKiem1ActionPerformed
 
+    private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
+        // TODO add your handling code here:
+        jDialog_PhieuMuon.dispose();
+    }//GEN-LAST:event_jButton_TroVeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1124,7 +1134,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe2;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayDangKy1;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayHetHan1;
-    private javax.swing.JDialog jDialogMuonSach;
+    private javax.swing.JDialog jDialog_PhieuMuon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

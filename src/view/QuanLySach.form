@@ -4,7 +4,7 @@
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="buttonGroupTheo">
     </Component>
-    <Container class="javax.swing.JDialog" name="jDialogThemSach">
+    <Container class="javax.swing.JDialog" name="jDialog_ThemSach">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
         <Property name="title" type="java.lang.String" value="Th&#xea;m s&#xe1;ch"/>

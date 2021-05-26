@@ -119,7 +119,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jButton_Them = new javax.swing.JButton();
         jButton_Sua = new javax.swing.JButton();
         jButton_Xoa = new javax.swing.JButton();
-        jButton_ThongKe = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jButton_TroVe = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
@@ -653,29 +652,18 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             }
         });
 
-        jButton_ThongKe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_ThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/thongke.png"))); // NOI18N
-        jButton_ThongKe.setText("Thống kê");
-        jButton_ThongKe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ThongKeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_ThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -684,8 +672,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_ThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -1119,7 +1106,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
         dispose();
-        new TrangChuAdmin().setVisible(true);
+        new TrangChuThuThu().setVisible(true);
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     public void chinhSuaDocGia (String maDG, String tenDG, String gioiTinhDG, String ngaySinhDG, String ngayDangKy,
@@ -1222,10 +1209,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField_TuKhoaCaretUpdate
 
-    private void jButton_ThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongKeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_ThongKeActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1283,7 +1266,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Them;
     private javax.swing.JButton jButton_Them1;
     private javax.swing.JButton jButton_Thoat;
-    private javax.swing.JButton jButton_ThongKe;
     private javax.swing.JButton jButton_TimKiem;
     private javax.swing.JButton jButton_TroVe;
     private javax.swing.JButton jButton_TroVe1;

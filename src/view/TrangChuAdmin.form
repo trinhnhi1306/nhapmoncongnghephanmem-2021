@@ -2,7 +2,7 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Container class="javax.swing.JDialog" name="jDialogDoiMatKhau">
+    <Container class="javax.swing.JDialog" name="jDialog_DoiMatKhau">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -148,12 +148,15 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tr&#x1edf; v&#x1ec1;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_TroVeActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JDialog" name="jDialogSuaThongTinCaNhan">
+    <Container class="javax.swing.JDialog" name="jDialog_SuaThongTinCaNhan">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
       </Properties>
@@ -461,6 +464,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tr&#x1edf; v&#x1ec1;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_TroVe1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox1">
               <Properties>
@@ -503,7 +509,7 @@
         </Container>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JDialog" name="jDialogThongBao">
+    <Container class="javax.swing.JDialog" name="jDialog_ThongBao">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
       </Properties>
@@ -650,6 +656,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tr&#x1edf; v&#x1ec1;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_TroVe2ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -774,7 +783,7 @@
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jButton_QLNguoiDung" pref="280" max="32767" attributes="0"/>
-                          <Component id="jButton_ĐoiMatKhau" max="32767" attributes="0"/>
+                          <Component id="jButton_DoiMatKhau" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -807,7 +816,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton_Thoat" min="-2" pref="50" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton_ĐoiMatKhau" max="32767" attributes="0"/>
+                          <Component id="jButton_DoiMatKhau" max="32767" attributes="0"/>
                           <Component id="jButton_ThongBao" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
@@ -865,7 +874,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_LopKhoaVaiTroActionPerformed1"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton_&#x110;oiMatKhau">
+            <Component class="javax.swing.JButton" name="jButton_DoiMatKhau">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="16" style="1"/>
@@ -878,7 +887,7 @@
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_&#x110;oiMatKhauActionPerformed1"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_DoiMatKhauActionPerformed1"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton_ThongBao">

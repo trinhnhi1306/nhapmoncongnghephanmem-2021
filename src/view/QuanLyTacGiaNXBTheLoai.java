@@ -1383,7 +1383,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
     private void jButton_TroVe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe3ActionPerformed
         // TODO add your handling code here:
         dispose();
-        new TrangChuAdmin().setVisible(true);
+        new TrangChuThuKho().setVisible(true);
     }//GEN-LAST:event_jButton_TroVe3ActionPerformed
 
     private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
@@ -1405,10 +1405,13 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
 
     private void jButton_TroVe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe4ActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new TrangChuThuKho().setVisible(true);
     }//GEN-LAST:event_jButton_TroVe4ActionPerformed
 
     private void jButton_Thoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Thoat1ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButton_Thoat1ActionPerformed
 
     private void jTextField_Keyword2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_Keyword2CaretUpdate
@@ -1425,10 +1428,13 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
 
     private void jButton_TroVe5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe5ActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new TrangChuThuKho().setVisible(true);
     }//GEN-LAST:event_jButton_TroVe5ActionPerformed
 
     private void jButton_Thoat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Thoat2ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButton_Thoat2ActionPerformed
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
@@ -1437,8 +1443,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
 
     private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new QuanLySach().setVisible(true);
+        jDialog_ThemTacGia.dispose();
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
@@ -1447,6 +1452,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
 
     private void jButton_TroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe1ActionPerformed
         // TODO add your handling code here:
+        jDialog_ThemNXB.dispose();
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
     private void jButton_Them2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them2ActionPerformed
@@ -1455,6 +1461,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
 
     private void jButton_TroVe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe2ActionPerformed
         // TODO add your handling code here:
+        jDialog_ThemTheLoai.dispose();
     }//GEN-LAST:event_jButton_TroVe2ActionPerformed
 
     /**

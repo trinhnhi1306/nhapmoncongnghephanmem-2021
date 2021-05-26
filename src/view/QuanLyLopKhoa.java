@@ -27,7 +27,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialogThemLop = new javax.swing.JDialog();
+        jDialog_ThemLop = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -38,7 +38,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButton_Them = new javax.swing.JButton();
         jButton_TroVe = new javax.swing.JButton();
-        jDialogThemKhoa = new javax.swing.JDialog();
+        jDialog_ThemKhoa = new javax.swing.JDialog();
         jPanel9 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -134,9 +134,9 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jButton_TroVe5 = new javax.swing.JButton();
         jButton_Thoat2 = new javax.swing.JButton();
 
-        jDialogThemLop.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialogThemLop.setTitle("Thêm sách");
-        jDialogThemLop.setModal(true);
+        jDialog_ThemLop.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThemLop.setTitle("Thêm sách");
+        jDialog_ThemLop.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -234,20 +234,20 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialogThemLopLayout = new javax.swing.GroupLayout(jDialogThemLop.getContentPane());
-        jDialogThemLop.getContentPane().setLayout(jDialogThemLopLayout);
-        jDialogThemLopLayout.setHorizontalGroup(
-            jDialogThemLopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog_ThemLopLayout = new javax.swing.GroupLayout(jDialog_ThemLop.getContentPane());
+        jDialog_ThemLop.getContentPane().setLayout(jDialog_ThemLopLayout);
+        jDialog_ThemLopLayout.setHorizontalGroup(
+            jDialog_ThemLopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialogThemLopLayout.setVerticalGroup(
-            jDialogThemLopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_ThemLopLayout.setVerticalGroup(
+            jDialog_ThemLopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jDialogThemKhoa.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialogThemKhoa.setTitle("Thêm sách");
-        jDialogThemKhoa.setModal(true);
+        jDialog_ThemKhoa.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThemKhoa.setTitle("Thêm sách");
+        jDialog_ThemKhoa.setModal(true);
 
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -332,14 +332,14 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialogThemKhoaLayout = new javax.swing.GroupLayout(jDialogThemKhoa.getContentPane());
-        jDialogThemKhoa.getContentPane().setLayout(jDialogThemKhoaLayout);
-        jDialogThemKhoaLayout.setHorizontalGroup(
-            jDialogThemKhoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog_ThemKhoaLayout = new javax.swing.GroupLayout(jDialog_ThemKhoa.getContentPane());
+        jDialog_ThemKhoa.getContentPane().setLayout(jDialog_ThemKhoaLayout);
+        jDialog_ThemKhoaLayout.setHorizontalGroup(
+            jDialog_ThemKhoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialogThemKhoaLayout.setVerticalGroup(
-            jDialogThemKhoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_ThemKhoaLayout.setVerticalGroup(
+            jDialog_ThemKhoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1311,14 +1311,12 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
 
     private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new QuanLySach().setVisible(true);
+        jDialog_ThemLop.dispose();
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     private void jButton_TroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe1ActionPerformed
         // TODO add your handling code here:
-        dispose();
-        new QuanLySach().setVisible(true);
+        jDialog_ThemKhoa.dispose();
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
@@ -1362,10 +1360,13 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
 
     private void jButton_TroVe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe4ActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new TrangChuAdmin().setVisible(true);
     }//GEN-LAST:event_jButton_TroVe4ActionPerformed
 
     private void jButton_Thoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Thoat1ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButton_Thoat1ActionPerformed
 
     private void jTextField_Keyword2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_Keyword2CaretUpdate
@@ -1382,10 +1383,13 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
 
     private void jButton_TroVe5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe5ActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new TrangChuAdmin().setVisible(true);
     }//GEN-LAST:event_jButton_TroVe5ActionPerformed
 
     private void jButton_Thoat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Thoat2ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButton_Thoat2ActionPerformed
 
     private void jButton_Them2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them2ActionPerformed
@@ -1394,6 +1398,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
 
     private void jButton_TroVe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe2ActionPerformed
         // TODO add your handling code here:
+        jDialog_ThemVaiTro.dispose();
     }//GEN-LAST:event_jButton_TroVe2ActionPerformed
 
     /**
@@ -1459,8 +1464,8 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Xoa;
     private javax.swing.JButton jButton_Xoa1;
     private javax.swing.JButton jButton_Xoa2;
-    private javax.swing.JDialog jDialogThemKhoa;
-    private javax.swing.JDialog jDialogThemLop;
+    private javax.swing.JDialog jDialog_ThemKhoa;
+    private javax.swing.JDialog jDialog_ThemLop;
     private javax.swing.JDialog jDialog_ThemVaiTro;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -29,7 +29,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jDialogThemNguoiDung = new javax.swing.JDialog();
+        jDialog_ThemDocGia = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -104,9 +104,9 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
         jButton_TroVe1 = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
 
-        jDialogThemNguoiDung.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialogThemNguoiDung.setTitle("Thêm người dùng");
-        jDialogThemNguoiDung.setModal(true);
+        jDialog_ThemDocGia.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThemDocGia.setTitle("Thêm người dùng");
+        jDialog_ThemDocGia.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -323,16 +323,16 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        javax.swing.GroupLayout jDialogThemNguoiDungLayout = new javax.swing.GroupLayout(jDialogThemNguoiDung.getContentPane());
-        jDialogThemNguoiDung.getContentPane().setLayout(jDialogThemNguoiDungLayout);
-        jDialogThemNguoiDungLayout.setHorizontalGroup(
-            jDialogThemNguoiDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialogThemNguoiDungLayout.createSequentialGroup()
+        javax.swing.GroupLayout jDialog_ThemDocGiaLayout = new javax.swing.GroupLayout(jDialog_ThemDocGia.getContentPane());
+        jDialog_ThemDocGia.getContentPane().setLayout(jDialog_ThemDocGiaLayout);
+        jDialog_ThemDocGiaLayout.setHorizontalGroup(
+            jDialog_ThemDocGiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_ThemDocGiaLayout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jDialogThemNguoiDungLayout.setVerticalGroup(
-            jDialogThemNguoiDungLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_ThemDocGiaLayout.setVerticalGroup(
+            jDialog_ThemDocGiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -780,6 +780,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
 
     private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
+        jDialog_ThemDocGia.dispose();
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     private void jTextField_TuKhoaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_TuKhoaCaretUpdate
@@ -870,7 +871,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser_NgayHetHan1;
     private com.toedter.calendar.JDateChooser jDateChooser_NgaySinh;
     private com.toedter.calendar.JDateChooser jDateChooser_NgaySinh1;
-    private javax.swing.JDialog jDialogThemNguoiDung;
+    private javax.swing.JDialog jDialog_ThemDocGia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -8,7 +8,7 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
     </Component>
-    <Container class="javax.swing.JDialog" name="jDialogMuonSach">
+    <Container class="javax.swing.JDialog" name="jDialog_PhieuMuon">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
       </Properties>
@@ -184,6 +184,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tr&#x1edf; v&#x1ec1;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_TroVeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser_NgayDangKy1">
               <Properties>
