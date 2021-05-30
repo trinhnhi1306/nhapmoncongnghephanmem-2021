@@ -40,17 +40,18 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel14" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_TacGia1" min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Component id="jComboBox_MaKhoaCuaLop1" min="-2" pref="168" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel13" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_TenSach1" min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Component id="jTextField_TenLop1" min="-2" pref="295" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel12" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_MaSach1" min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Component id="jTextField_MaLop1" min="-2" pref="295" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -60,7 +61,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                              <Component id="jButton_Them" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="jButton_ThemLop1" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton_TroVe" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
@@ -77,21 +78,21 @@
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jTextField_MaSach1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jTextField_MaLop1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jTextField_TenSach1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jTextField_TenLop1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jComboBox_MaKhoaCuaLop1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jTextField_TacGia1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton_Them" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="jButton_ThemLop1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="jButton_TroVe" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="29" max="32767" attributes="0"/>
@@ -119,7 +120,7 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; l&#x1edb;p"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_MaSach1">
+            <Component class="javax.swing.JTextField" name="jTextField_MaLop1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -134,14 +135,7 @@
                 <Property name="text" type="java.lang.String" value="T&#xea;n l&#x1edb;p"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_TenSach1">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_TacGia1">
+            <Component class="javax.swing.JTextField" name="jTextField_TenLop1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -156,7 +150,7 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; khoa"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton_Them">
+            <Component class="javax.swing.JButton" name="jButton_ThemLop1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="ff" red="99" type="rgb"/>
@@ -170,7 +164,7 @@
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ThemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ThemLop1ActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton_TroVe">
@@ -189,6 +183,16 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_TroVeActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jComboBox_MaKhoaCuaLop1">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -232,12 +236,12 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel23" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_TenSach2" min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Component id="jTextField_TenKhoa1" min="-2" pref="295" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel22" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_MaSach2" min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Component id="jTextField_MaKhoa1" min="-2" pref="295" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -247,7 +251,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="jButton_Them1" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="jButton_ThemKhoa1" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton_TroVe1" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
@@ -264,16 +268,16 @@
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel22" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jTextField_MaSach2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jTextField_MaKhoa1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel23" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jTextField_TenSach2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jTextField_TenKhoa1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton_Them1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="jButton_ThemKhoa1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="jButton_TroVe1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="31" max="32767" attributes="0"/>
@@ -301,7 +305,7 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; khoa"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_MaSach2">
+            <Component class="javax.swing.JTextField" name="jTextField_MaKhoa1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -316,14 +320,14 @@
                 <Property name="text" type="java.lang.String" value="T&#xea;n khoa"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_TenSach2">
+            <Component class="javax.swing.JTextField" name="jTextField_TenKhoa1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton_Them1">
+            <Component class="javax.swing.JButton" name="jButton_ThemKhoa1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="ff" red="99" type="rgb"/>
@@ -337,7 +341,7 @@
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_Them1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ThemKhoa1ActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton_TroVe1">
@@ -399,18 +403,18 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel17" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_TenSach3" min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Component id="jTextField_TenVaiTro1" min="-2" pref="295" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel16" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_MaSach5" min="-2" pref="295" max="-2" attributes="0"/>
+                                      <Component id="jTextField_MaVaiTro1" min="-2" pref="295" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                              <Component id="jButton_Them2" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="jButton_ThemVaiTro1" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton_TroVe2" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
@@ -431,16 +435,16 @@
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jTextField_MaSach5" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jTextField_MaVaiTro1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel17" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                          <Component id="jTextField_TenSach3" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="jTextField_TenVaiTro1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton_Them2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="jButton_ThemVaiTro1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="jButton_TroVe2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="22" max="32767" attributes="0"/>
@@ -468,7 +472,7 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; vai tr&#xf2;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_MaSach5">
+            <Component class="javax.swing.JTextField" name="jTextField_MaVaiTro1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -483,14 +487,14 @@
                 <Property name="text" type="java.lang.String" value="T&#xea;n vai tr&#xf2;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField_TenSach3">
+            <Component class="javax.swing.JTextField" name="jTextField_TenVaiTro1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton_Them2">
+            <Component class="javax.swing.JButton" name="jButton_ThemVaiTro1">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="ff" red="99" type="rgb"/>
@@ -504,7 +508,7 @@
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_Them2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ThemVaiTro1ActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton_TroVe2">
@@ -696,7 +700,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_Keyword" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Component id="jTextField_KeywordKhoa" min="-2" pref="301" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton_TimKiem" pref="157" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -708,7 +712,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField_Keyword" alignment="3" pref="27" max="32767" attributes="0"/>
+                                  <Component id="jTextField_KeywordKhoa" alignment="3" pref="27" max="32767" attributes="0"/>
                                   <Component id="jButton_TimKiem" alignment="3" pref="27" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -717,14 +721,14 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextField_Keyword">
+                    <Component class="javax.swing.JTextField" name="jTextField_KeywordKhoa">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_KeywordCaretUpdate"/>
+                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_KeywordKhoaCaretUpdate"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton_TimKiem">
@@ -788,7 +792,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable_DSSach">
+                        <Component class="javax.swing.JTable" name="jTable_DSKhoa">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="2" rowCount="0">
@@ -815,6 +819,9 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_DSKhoaMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -842,7 +849,7 @@
                     <Property name="verticalGap" type="int" value="10"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton_MaSach">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton_MaKhoa">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup1"/>
@@ -854,7 +861,7 @@
                         <Property name="text" type="java.lang.String" value="M&#xe3; khoa"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton_TenSach">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton_TenKhoa">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup1"/>
@@ -891,11 +898,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel24" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_MaSach" min="-2" pref="229" max="-2" attributes="0"/>
+                              <Component id="jTextField_MaKhoa" min="-2" pref="229" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="jLabel25" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_NXB" min="-2" pref="229" max="-2" attributes="0"/>
+                              <Component id="jTextField_TenKhoa" min="-2" pref="229" max="-2" attributes="0"/>
                               <EmptySpace pref="357" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -906,9 +913,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_MaSach" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_MaKhoa" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_NXB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_TenKhoa" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -924,8 +931,9 @@
                         <Property name="text" type="java.lang.String" value="M&#xe3; khoa"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_MaSach">
+                    <Component class="javax.swing.JTextField" name="jTextField_MaKhoa">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
@@ -939,7 +947,7 @@
                         <Property name="text" type="java.lang.String" value="T&#xea;n khoa"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_NXB">
+                    <Component class="javax.swing.JTextField" name="jTextField_TenKhoa">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
@@ -970,11 +978,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jButton_Them3" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_ThemKhoa" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                              <Component id="jButton_Sua" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_SuaKhoa" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace pref="71" max="32767" attributes="0"/>
-                              <Component id="jButton_Xoa" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_XoaKhoa" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -984,9 +992,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton_Them3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jButton_Sua" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jButton_Xoa" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_ThemKhoa" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_SuaKhoa" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_XoaKhoa" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="23" max="32767" attributes="0"/>
                           </Group>
@@ -994,7 +1002,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton_Them3">
+                    <Component class="javax.swing.JButton" name="jButton_ThemKhoa">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -1005,10 +1013,10 @@
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_Them3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ThemKhoaActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton_Sua">
+                    <Component class="javax.swing.JButton" name="jButton_SuaKhoa">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -1018,8 +1026,11 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_SuaKhoaActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton_Xoa">
+                    <Component class="javax.swing.JButton" name="jButton_XoaKhoa">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -1029,6 +1040,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_XoaKhoaActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1211,7 +1225,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_Keyword1" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Component id="jTextField_KeywordLop" min="-2" pref="301" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton_TimKiem1" pref="157" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -1223,7 +1237,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField_Keyword1" alignment="3" pref="27" max="32767" attributes="0"/>
+                                  <Component id="jTextField_KeywordLop" alignment="3" pref="27" max="32767" attributes="0"/>
                                   <Component id="jButton_TimKiem1" alignment="3" pref="27" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -1232,14 +1246,14 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextField_Keyword1">
+                    <Component class="javax.swing.JTextField" name="jTextField_KeywordLop">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_Keyword1CaretUpdate"/>
+                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_KeywordLopCaretUpdate"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton_TimKiem1">
@@ -1303,7 +1317,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable_DSSach1">
+                        <Component class="javax.swing.JTable" name="jTable_DSLop">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="3" rowCount="0">
@@ -1336,6 +1350,9 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_DSLopMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1363,7 +1380,7 @@
                     <Property name="verticalGap" type="int" value="10"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton_MaLop">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup2"/>
@@ -1372,7 +1389,7 @@
                         <Property name="text" type="java.lang.String" value="M&#xe3; l&#x1edb;p"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton_TenSach1">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton_TenLop">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup2"/>
@@ -1383,7 +1400,7 @@
                         <Property name="text" type="java.lang.String" value="T&#xea;n l&#x1edb;p"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton_MaSach1">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton_MaKhoaCuaLop">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup2"/>
@@ -1420,16 +1437,16 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel26" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_MaSach3" min="-2" pref="229" max="-2" attributes="0"/>
+                              <Component id="jTextField_MaLop" min="-2" pref="229" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="jLabel27" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_NXB1" min="-2" pref="229" max="-2" attributes="0"/>
+                              <Component id="jTextField_TenLop" min="-2" pref="229" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextField1" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jComboBox_MaKhoaCuaLop" min="-2" pref="168" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1437,13 +1454,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_MaSach3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_NXB1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jComboBox_MaKhoaCuaLop" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_MaLop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextField_TenLop" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1459,8 +1478,9 @@
                         <Property name="text" type="java.lang.String" value="M&#xe3; l&#x1edb;p"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_MaSach3">
+                    <Component class="javax.swing.JTextField" name="jTextField_MaLop">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
@@ -1474,7 +1494,7 @@
                         <Property name="text" type="java.lang.String" value="T&#xea;n l&#x1edb;p"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_NXB1">
+                    <Component class="javax.swing.JTextField" name="jTextField_TenLop">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
@@ -1489,12 +1509,15 @@
                         <Property name="text" type="java.lang.String" value="M&#xe3; khoa"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField1">
+                    <Component class="javax.swing.JComboBox" name="jComboBox_MaKhoaCuaLop">
                       <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="14" style="0"/>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1520,11 +1543,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jButton_Them4" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_ThemLop" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                              <Component id="jButton_Sua1" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_SuaLop" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace pref="71" max="32767" attributes="0"/>
-                              <Component id="jButton_Xoa1" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_XoaLop" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1534,9 +1557,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton_Them4" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jButton_Sua1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jButton_Xoa1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_ThemLop" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_SuaLop" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_XoaLop" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="23" max="32767" attributes="0"/>
                           </Group>
@@ -1544,7 +1567,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton_Them4">
+                    <Component class="javax.swing.JButton" name="jButton_ThemLop">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -1555,10 +1578,10 @@
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_Them4ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ThemLopActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton_Sua1">
+                    <Component class="javax.swing.JButton" name="jButton_SuaLop">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -1568,8 +1591,11 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_SuaLopActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton_Xoa1">
+                    <Component class="javax.swing.JButton" name="jButton_XoaLop">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -1579,6 +1605,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_XoaLopActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1761,7 +1790,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_Keyword2" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Component id="jTextField_KeywordVaiTro" min="-2" pref="301" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton_TimKiem2" pref="157" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -1773,7 +1802,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField_Keyword2" alignment="3" pref="27" max="32767" attributes="0"/>
+                                  <Component id="jTextField_KeywordVaiTro" alignment="3" pref="27" max="32767" attributes="0"/>
                                   <Component id="jButton_TimKiem2" alignment="3" pref="27" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -1782,14 +1811,14 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextField_Keyword2">
+                    <Component class="javax.swing.JTextField" name="jTextField_KeywordVaiTro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="12" style="0"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_Keyword2CaretUpdate"/>
+                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_KeywordVaiTroCaretUpdate"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton_TimKiem2">
@@ -1853,7 +1882,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable_DSSach2">
+                        <Component class="javax.swing.JTable" name="jTable_DSVaiTro">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="2" rowCount="0">
@@ -1880,6 +1909,9 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_DSVaiTroMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1907,7 +1939,7 @@
                     <Property name="verticalGap" type="int" value="10"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton_MaSach2">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton_MaVaiTro">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup3"/>
@@ -1919,7 +1951,7 @@
                         <Property name="text" type="java.lang.String" value="M&#xe3; vai tr&#xf2;"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="jRadioButton_TenSach2">
+                    <Component class="javax.swing.JRadioButton" name="jRadioButton_TenVaiTro">
                       <Properties>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="buttonGroup3"/>
@@ -1956,11 +1988,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel28" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_MaSach4" min="-2" pref="229" max="-2" attributes="0"/>
+                              <Component id="jTextField_MaVaiTro" min="-2" pref="229" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="jLabel29" min="-2" pref="72" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField_NXB2" min="-2" pref="229" max="-2" attributes="0"/>
+                              <Component id="jTextField_TenVaiTro" min="-2" pref="229" max="-2" attributes="0"/>
                               <EmptySpace pref="357" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1971,9 +2003,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_MaSach4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_MaVaiTro" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_NXB2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextField_TenVaiTro" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1989,8 +2021,9 @@
                         <Property name="text" type="java.lang.String" value="M&#xe3; vai tr&#xf2;"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_MaSach4">
+                    <Component class="javax.swing.JTextField" name="jTextField_MaVaiTro">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
@@ -2004,7 +2037,7 @@
                         <Property name="text" type="java.lang.String" value="T&#xea;n vai tr&#xf2;"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField_NXB2">
+                    <Component class="javax.swing.JTextField" name="jTextField_TenVaiTro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
@@ -2035,11 +2068,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jButton_Them5" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_ThemVaiTro" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                              <Component id="jButton_Sua2" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_SuaVaiTro" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace pref="71" max="32767" attributes="0"/>
-                              <Component id="jButton_Xoa2" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="jButton_XoaVaiTro" min="-2" pref="129" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -2049,9 +2082,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton_Them5" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jButton_Sua2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="jButton_Xoa2" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_ThemVaiTro" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_SuaVaiTro" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                                  <Component id="jButton_XoaVaiTro" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="23" max="32767" attributes="0"/>
                           </Group>
@@ -2059,7 +2092,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton_Them5">
+                    <Component class="javax.swing.JButton" name="jButton_ThemVaiTro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -2070,10 +2103,10 @@
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_Them5ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ThemVaiTroActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton_Sua2">
+                    <Component class="javax.swing.JButton" name="jButton_SuaVaiTro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -2083,8 +2116,11 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_SuaVaiTroActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton_Xoa2">
+                    <Component class="javax.swing.JButton" name="jButton_XoaVaiTro">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="1"/>
@@ -2094,6 +2130,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_XoaVaiTroActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

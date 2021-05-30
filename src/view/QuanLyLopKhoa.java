@@ -5,17 +5,42 @@
  */
 package view;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import ketnoi.KetNoiSQL;
+import model.Lop;
+import model.Khoa;
+import model.VaiTro;
 /**
  *
  * @author Admin
  */
 public class QuanLyLopKhoa extends javax.swing.JFrame {
-
+    private DefaultTableModel modelKhoa;
+    private DefaultTableModel modelLop;
+    private DefaultTableModel modelVaiTro;
     /**
      * Creates new form QuanLyLopKhoa
      */
     public QuanLyLopKhoa() {
         initComponents();
+        setLocationRelativeTo(null);
+        modelKhoa = (DefaultTableModel) jTable_DSKhoa.getModel();
+        modelLop = (DefaultTableModel) jTable_DSLop.getModel();
+        modelVaiTro = (DefaultTableModel) jTable_DSVaiTro.getModel();
+        showKhoa();
+        showLop();
+        showMaKhoa();
+        showVaiTro();
     }
 
     /**
@@ -31,30 +56,30 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField_MaSach1 = new javax.swing.JTextField();
+        jTextField_MaLop1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField_TenSach1 = new javax.swing.JTextField();
-        jTextField_TacGia1 = new javax.swing.JTextField();
+        jTextField_TenLop1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jButton_Them = new javax.swing.JButton();
+        jButton_ThemLop1 = new javax.swing.JButton();
         jButton_TroVe = new javax.swing.JButton();
+        jComboBox_MaKhoaCuaLop1 = new javax.swing.JComboBox<>();
         jDialog_ThemKhoa = new javax.swing.JDialog();
         jPanel9 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jTextField_MaSach2 = new javax.swing.JTextField();
+        jTextField_MaKhoa1 = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        jTextField_TenSach2 = new javax.swing.JTextField();
-        jButton_Them1 = new javax.swing.JButton();
+        jTextField_TenKhoa1 = new javax.swing.JTextField();
+        jButton_ThemKhoa1 = new javax.swing.JButton();
         jButton_TroVe1 = new javax.swing.JButton();
         jDialog_ThemVaiTro = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField_MaSach5 = new javax.swing.JTextField();
+        jTextField_MaVaiTro1 = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        jTextField_TenSach3 = new javax.swing.JTextField();
-        jButton_Them2 = new javax.swing.JButton();
+        jTextField_TenVaiTro1 = new javax.swing.JTextField();
+        jButton_ThemVaiTro1 = new javax.swing.JButton();
         jButton_TroVe2 = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
@@ -64,72 +89,72 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
-        jTextField_Keyword = new javax.swing.JTextField();
+        jTextField_KeywordKhoa = new javax.swing.JTextField();
         jButton_TimKiem = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable_DSSach = new javax.swing.JTable();
+        jTable_DSKhoa = new javax.swing.JTable();
         jPanel23 = new javax.swing.JPanel();
-        jRadioButton_MaSach = new javax.swing.JRadioButton();
-        jRadioButton_TenSach = new javax.swing.JRadioButton();
+        jRadioButton_MaKhoa = new javax.swing.JRadioButton();
+        jRadioButton_TenKhoa = new javax.swing.JRadioButton();
         jPanel24 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        jTextField_MaSach = new javax.swing.JTextField();
+        jTextField_MaKhoa = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        jTextField_NXB = new javax.swing.JTextField();
+        jTextField_TenKhoa = new javax.swing.JTextField();
         jPanel25 = new javax.swing.JPanel();
-        jButton_Them3 = new javax.swing.JButton();
-        jButton_Sua = new javax.swing.JButton();
-        jButton_Xoa = new javax.swing.JButton();
+        jButton_ThemKhoa = new javax.swing.JButton();
+        jButton_SuaKhoa = new javax.swing.JButton();
+        jButton_XoaKhoa = new javax.swing.JButton();
         jPanel26 = new javax.swing.JPanel();
         jButton_TroVe3 = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
         jPanel27 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
-        jTextField_Keyword1 = new javax.swing.JTextField();
+        jTextField_KeywordLop = new javax.swing.JTextField();
         jButton_TimKiem1 = new javax.swing.JButton();
         jPanel29 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable_DSSach1 = new javax.swing.JTable();
+        jTable_DSLop = new javax.swing.JTable();
         jPanel30 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton_TenSach1 = new javax.swing.JRadioButton();
-        jRadioButton_MaSach1 = new javax.swing.JRadioButton();
+        jRadioButton_MaLop = new javax.swing.JRadioButton();
+        jRadioButton_TenLop = new javax.swing.JRadioButton();
+        jRadioButton_MaKhoaCuaLop = new javax.swing.JRadioButton();
         jPanel31 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
-        jTextField_MaSach3 = new javax.swing.JTextField();
+        jTextField_MaLop = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        jTextField_NXB1 = new javax.swing.JTextField();
+        jTextField_TenLop = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jComboBox_MaKhoaCuaLop = new javax.swing.JComboBox<>();
         jPanel32 = new javax.swing.JPanel();
-        jButton_Them4 = new javax.swing.JButton();
-        jButton_Sua1 = new javax.swing.JButton();
-        jButton_Xoa1 = new javax.swing.JButton();
+        jButton_ThemLop = new javax.swing.JButton();
+        jButton_SuaLop = new javax.swing.JButton();
+        jButton_XoaLop = new javax.swing.JButton();
         jPanel33 = new javax.swing.JPanel();
         jButton_TroVe4 = new javax.swing.JButton();
         jButton_Thoat1 = new javax.swing.JButton();
         jPanel34 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel35 = new javax.swing.JPanel();
-        jTextField_Keyword2 = new javax.swing.JTextField();
+        jTextField_KeywordVaiTro = new javax.swing.JTextField();
         jButton_TimKiem2 = new javax.swing.JButton();
         jPanel36 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTable_DSSach2 = new javax.swing.JTable();
+        jTable_DSVaiTro = new javax.swing.JTable();
         jPanel37 = new javax.swing.JPanel();
-        jRadioButton_MaSach2 = new javax.swing.JRadioButton();
-        jRadioButton_TenSach2 = new javax.swing.JRadioButton();
+        jRadioButton_MaVaiTro = new javax.swing.JRadioButton();
+        jRadioButton_TenVaiTro = new javax.swing.JRadioButton();
         jPanel38 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        jTextField_MaSach4 = new javax.swing.JTextField();
+        jTextField_MaVaiTro = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
-        jTextField_NXB2 = new javax.swing.JTextField();
+        jTextField_TenVaiTro = new javax.swing.JTextField();
         jPanel39 = new javax.swing.JPanel();
-        jButton_Them5 = new javax.swing.JButton();
-        jButton_Sua2 = new javax.swing.JButton();
-        jButton_Xoa2 = new javax.swing.JButton();
+        jButton_ThemVaiTro = new javax.swing.JButton();
+        jButton_SuaVaiTro = new javax.swing.JButton();
+        jButton_XoaVaiTro = new javax.swing.JButton();
         jPanel40 = new javax.swing.JPanel();
         jButton_TroVe5 = new javax.swing.JButton();
         jButton_Thoat2 = new javax.swing.JButton();
@@ -147,25 +172,23 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Mã lớp");
 
-        jTextField_MaSach1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_MaLop1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Tên lớp");
 
-        jTextField_TenSach1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jTextField_TacGia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_TenLop1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Mã khoa");
 
-        jButton_Them.setBackground(new java.awt.Color(153, 255, 153));
-        jButton_Them.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Them.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
-        jButton_Them.setText("Thêm");
-        jButton_Them.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThemLop1.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_ThemLop1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_ThemLop1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
+        jButton_ThemLop1.setText("Thêm");
+        jButton_ThemLop1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ThemActionPerformed(evt);
+                jButton_ThemLop1ActionPerformed(evt);
             }
         });
 
@@ -191,21 +214,22 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_TacGia1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBox_MaKhoaCuaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(127, 127, 127))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_TenSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField_TenLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_MaSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextField_MaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_ThemLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -218,18 +242,18 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_MaSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_MaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_TenSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jTextField_TenLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_TacGia1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(jComboBox_MaKhoaCuaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_ThemLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -258,20 +282,20 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel22.setText("Mã khoa");
 
-        jTextField_MaSach2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_MaKhoa1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel23.setText("Tên khoa");
 
-        jTextField_TenSach2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_TenKhoa1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jButton_Them1.setBackground(new java.awt.Color(153, 255, 153));
-        jButton_Them1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Them1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
-        jButton_Them1.setText("Thêm");
-        jButton_Them1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThemKhoa1.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_ThemKhoa1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_ThemKhoa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
+        jButton_ThemKhoa1.setText("Thêm");
+        jButton_ThemKhoa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Them1ActionPerformed(evt);
+                jButton_ThemKhoa1ActionPerformed(evt);
             }
         });
 
@@ -297,17 +321,17 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_TenSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField_TenKhoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_MaSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextField_MaKhoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jLabel21))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jButton_Them1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_ThemKhoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton_TroVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -320,14 +344,14 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_MaSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_MaKhoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_TenSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_TenKhoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Them1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_ThemKhoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_TroVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
@@ -356,20 +380,20 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Mã vai trò");
 
-        jTextField_MaSach5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_MaVaiTro1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Tên vai trò");
 
-        jTextField_TenSach3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_TenVaiTro1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jButton_Them2.setBackground(new java.awt.Color(153, 255, 153));
-        jButton_Them2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Them2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
-        jButton_Them2.setText("Thêm");
-        jButton_Them2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThemVaiTro1.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_ThemVaiTro1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_ThemVaiTro1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
+        jButton_ThemVaiTro1.setText("Thêm");
+        jButton_ThemVaiTro1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Them2ActionPerformed(evt);
+                jButton_ThemVaiTro1ActionPerformed(evt);
             }
         });
 
@@ -395,14 +419,14 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_TenSach3, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField_TenVaiTro1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_MaSach5, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTextField_MaVaiTro1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jButton_Them2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_ThemVaiTro1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
@@ -418,14 +442,14 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_MaSach5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_MaVaiTro1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_TenSach3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_TenVaiTro1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Them2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_ThemVaiTro1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -457,10 +481,10 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel13.setBackground(new java.awt.Color(255, 255, 204));
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTextField_Keyword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField_Keyword.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextField_KeywordKhoa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextField_KeywordKhoa.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField_KeywordCaretUpdate(evt);
+                jTextField_KeywordKhoaCaretUpdate(evt);
             }
         });
 
@@ -479,7 +503,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField_Keyword, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_KeywordKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addGap(7, 7, 7))
@@ -489,7 +513,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Keyword, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jTextField_KeywordKhoa, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
@@ -497,7 +521,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel14.setBackground(new java.awt.Color(255, 255, 204));
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Danh sách", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTable_DSSach.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_DSKhoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -513,8 +537,13 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable_DSSach.setFillsViewportHeight(true);
-        jScrollPane5.setViewportView(jTable_DSSach);
+        jTable_DSKhoa.setFillsViewportHeight(true);
+        jTable_DSKhoa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_DSKhoaMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jTable_DSKhoa);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -537,16 +566,16 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel23.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
-        buttonGroup1.add(jRadioButton_MaSach);
-        jRadioButton_MaSach.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_MaSach.setSelected(true);
-        jRadioButton_MaSach.setText("Mã khoa");
-        jPanel23.add(jRadioButton_MaSach);
+        buttonGroup1.add(jRadioButton_MaKhoa);
+        jRadioButton_MaKhoa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_MaKhoa.setSelected(true);
+        jRadioButton_MaKhoa.setText("Mã khoa");
+        jPanel23.add(jRadioButton_MaKhoa);
 
-        buttonGroup1.add(jRadioButton_TenSach);
-        jRadioButton_TenSach.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_TenSach.setText("Tên khoa");
-        jPanel23.add(jRadioButton_TenSach);
+        buttonGroup1.add(jRadioButton_TenKhoa);
+        jRadioButton_TenKhoa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_TenKhoa.setText("Tên khoa");
+        jPanel23.add(jRadioButton_TenKhoa);
 
         jPanel24.setBackground(new java.awt.Color(255, 255, 204));
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -554,12 +583,13 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel24.setText("Mã khoa");
 
-        jTextField_MaSach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_MaKhoa.setEditable(false);
+        jTextField_MaKhoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setText("Tên khoa");
 
-        jTextField_NXB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_TenKhoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -569,11 +599,11 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_MaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_MaKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_NXB, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_TenKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(357, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
@@ -582,31 +612,41 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(jTextField_MaSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_MaKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25)
-                    .addComponent(jTextField_NXB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_TenKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel25.setBackground(new java.awt.Color(255, 255, 204));
         jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton_Them3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Them3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
-        jButton_Them3.setText("Thêm");
-        jButton_Them3.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThemKhoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_ThemKhoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
+        jButton_ThemKhoa.setText("Thêm");
+        jButton_ThemKhoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Them3ActionPerformed(evt);
+                jButton_ThemKhoaActionPerformed(evt);
             }
         });
 
-        jButton_Sua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
-        jButton_Sua.setText("Sửa");
+        jButton_SuaKhoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_SuaKhoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
+        jButton_SuaKhoa.setText("Sửa");
+        jButton_SuaKhoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SuaKhoaActionPerformed(evt);
+            }
+        });
 
-        jButton_Xoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
-        jButton_Xoa.setText("Xóa");
+        jButton_XoaKhoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_XoaKhoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
+        jButton_XoaKhoa.setText("Xóa");
+        jButton_XoaKhoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XoaKhoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -614,11 +654,11 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton_Them3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_ThemKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_SuaKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_XoaKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         jPanel25Layout.setVerticalGroup(
@@ -626,9 +666,9 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Them3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_ThemKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_SuaKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_XoaKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -730,10 +770,10 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel28.setBackground(new java.awt.Color(255, 255, 204));
         jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTextField_Keyword1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField_Keyword1.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextField_KeywordLop.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextField_KeywordLop.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField_Keyword1CaretUpdate(evt);
+                jTextField_KeywordLopCaretUpdate(evt);
             }
         });
 
@@ -752,7 +792,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField_Keyword1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_KeywordLop, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_TimKiem1, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addGap(7, 7, 7))
@@ -762,7 +802,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Keyword1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jTextField_KeywordLop, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(jButton_TimKiem1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
@@ -770,7 +810,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel29.setBackground(new java.awt.Color(255, 255, 204));
         jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Danh sách", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTable_DSSach1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_DSLop.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -786,8 +826,13 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable_DSSach1.setFillsViewportHeight(true);
-        jScrollPane6.setViewportView(jTable_DSSach1);
+        jTable_DSLop.setFillsViewportHeight(true);
+        jTable_DSLop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_DSLopMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jTable_DSLop);
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -810,20 +855,20 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel30.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
-        buttonGroup2.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Mã lớp");
-        jPanel30.add(jRadioButton1);
+        buttonGroup2.add(jRadioButton_MaLop);
+        jRadioButton_MaLop.setSelected(true);
+        jRadioButton_MaLop.setText("Mã lớp");
+        jPanel30.add(jRadioButton_MaLop);
 
-        buttonGroup2.add(jRadioButton_TenSach1);
-        jRadioButton_TenSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_TenSach1.setText("Tên lớp");
-        jPanel30.add(jRadioButton_TenSach1);
+        buttonGroup2.add(jRadioButton_TenLop);
+        jRadioButton_TenLop.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_TenLop.setText("Tên lớp");
+        jPanel30.add(jRadioButton_TenLop);
 
-        buttonGroup2.add(jRadioButton_MaSach1);
-        jRadioButton_MaSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_MaSach1.setText("Mã khoa");
-        jPanel30.add(jRadioButton_MaSach1);
+        buttonGroup2.add(jRadioButton_MaKhoaCuaLop);
+        jRadioButton_MaKhoaCuaLop.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_MaKhoaCuaLop.setText("Mã khoa");
+        jPanel30.add(jRadioButton_MaKhoaCuaLop);
 
         jPanel31.setBackground(new java.awt.Color(255, 255, 204));
         jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -831,17 +876,16 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel26.setText("Mã lớp");
 
-        jTextField_MaSach3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_MaLop.setEditable(false);
+        jTextField_MaLop.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel27.setText("Tên lớp");
 
-        jTextField_NXB1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_TenLop.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Mã khoa");
-
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -851,50 +895,61 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_MaSach3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_MaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_NXB1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_TenLop, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1)
-                .addContainerGap())
+                .addComponent(jComboBox_MaKhoaCuaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(jTextField_MaSach3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27)
-                    .addComponent(jTextField_NXB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jComboBox_MaKhoaCuaLop)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel26)
+                        .addComponent(jTextField_MaLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel27)
+                        .addComponent(jTextField_TenLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel32.setBackground(new java.awt.Color(255, 255, 204));
         jPanel32.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton_Them4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Them4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
-        jButton_Them4.setText("Thêm");
-        jButton_Them4.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThemLop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_ThemLop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
+        jButton_ThemLop.setText("Thêm");
+        jButton_ThemLop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Them4ActionPerformed(evt);
+                jButton_ThemLopActionPerformed(evt);
             }
         });
 
-        jButton_Sua1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Sua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
-        jButton_Sua1.setText("Sửa");
+        jButton_SuaLop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_SuaLop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
+        jButton_SuaLop.setText("Sửa");
+        jButton_SuaLop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SuaLopActionPerformed(evt);
+            }
+        });
 
-        jButton_Xoa1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Xoa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
-        jButton_Xoa1.setText("Xóa");
+        jButton_XoaLop.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_XoaLop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
+        jButton_XoaLop.setText("Xóa");
+        jButton_XoaLop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XoaLopActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
@@ -902,11 +957,11 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton_Them4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_ThemLop, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(jButton_Sua1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_SuaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton_Xoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_XoaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         jPanel32Layout.setVerticalGroup(
@@ -914,9 +969,9 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Them4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Sua1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Xoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_ThemLop, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_SuaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_XoaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -1018,10 +1073,10 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel35.setBackground(new java.awt.Color(255, 255, 204));
         jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTextField_Keyword2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField_Keyword2.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextField_KeywordVaiTro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextField_KeywordVaiTro.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField_Keyword2CaretUpdate(evt);
+                jTextField_KeywordVaiTroCaretUpdate(evt);
             }
         });
 
@@ -1040,7 +1095,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField_Keyword2, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_KeywordVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_TimKiem2, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addGap(7, 7, 7))
@@ -1050,7 +1105,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Keyword2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jTextField_KeywordVaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                     .addComponent(jButton_TimKiem2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
@@ -1058,7 +1113,7 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel36.setBackground(new java.awt.Color(255, 255, 204));
         jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Danh sách", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTable_DSSach2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_DSVaiTro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -1074,8 +1129,13 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable_DSSach2.setFillsViewportHeight(true);
-        jScrollPane7.setViewportView(jTable_DSSach2);
+        jTable_DSVaiTro.setFillsViewportHeight(true);
+        jTable_DSVaiTro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable_DSVaiTroMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(jTable_DSVaiTro);
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
@@ -1098,16 +1158,16 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jPanel37.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel37.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
-        buttonGroup3.add(jRadioButton_MaSach2);
-        jRadioButton_MaSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_MaSach2.setSelected(true);
-        jRadioButton_MaSach2.setText("Mã vai trò");
-        jPanel37.add(jRadioButton_MaSach2);
+        buttonGroup3.add(jRadioButton_MaVaiTro);
+        jRadioButton_MaVaiTro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_MaVaiTro.setSelected(true);
+        jRadioButton_MaVaiTro.setText("Mã vai trò");
+        jPanel37.add(jRadioButton_MaVaiTro);
 
-        buttonGroup3.add(jRadioButton_TenSach2);
-        jRadioButton_TenSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_TenSach2.setText("Tên vai trò");
-        jPanel37.add(jRadioButton_TenSach2);
+        buttonGroup3.add(jRadioButton_TenVaiTro);
+        jRadioButton_TenVaiTro.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_TenVaiTro.setText("Tên vai trò");
+        jPanel37.add(jRadioButton_TenVaiTro);
 
         jPanel38.setBackground(new java.awt.Color(255, 255, 204));
         jPanel38.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -1115,12 +1175,13 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel28.setText("Mã vai trò");
 
-        jTextField_MaSach4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_MaVaiTro.setEditable(false);
+        jTextField_MaVaiTro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setText("Tên vai trò");
 
-        jTextField_NXB2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_TenVaiTro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
@@ -1130,11 +1191,11 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_MaSach4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_MaVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_NXB2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField_TenVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(357, Short.MAX_VALUE))
         );
         jPanel38Layout.setVerticalGroup(
@@ -1143,31 +1204,41 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jTextField_MaSach4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_MaVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29)
-                    .addComponent(jTextField_NXB2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_TenVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel39.setBackground(new java.awt.Color(255, 255, 204));
         jPanel39.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton_Them5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Them5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
-        jButton_Them5.setText("Thêm");
-        jButton_Them5.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThemVaiTro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_ThemVaiTro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add.png"))); // NOI18N
+        jButton_ThemVaiTro.setText("Thêm");
+        jButton_ThemVaiTro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Them5ActionPerformed(evt);
+                jButton_ThemVaiTroActionPerformed(evt);
             }
         });
 
-        jButton_Sua2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Sua2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
-        jButton_Sua2.setText("Sửa");
+        jButton_SuaVaiTro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_SuaVaiTro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
+        jButton_SuaVaiTro.setText("Sửa");
+        jButton_SuaVaiTro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SuaVaiTroActionPerformed(evt);
+            }
+        });
 
-        jButton_Xoa2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Xoa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
-        jButton_Xoa2.setText("Xóa");
+        jButton_XoaVaiTro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_XoaVaiTro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
+        jButton_XoaVaiTro.setText("Xóa");
+        jButton_XoaVaiTro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XoaVaiTroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
         jPanel39.setLayout(jPanel39Layout);
@@ -1175,11 +1246,11 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton_Them5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_ThemVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addComponent(jButton_Sua2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_SuaVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jButton_Xoa2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_XoaVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
         jPanel39Layout.setVerticalGroup(
@@ -1187,9 +1258,9 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Them5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Sua2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Xoa2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_ThemVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_SuaVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_XoaVaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -1305,9 +1376,158 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
+    public ArrayList<Khoa> dsKhoa () {
+        ArrayList<Khoa> dsKhoa = new ArrayList<>();
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement("select * from KHOA");
+            ResultSet rs = ps.executeQuery();
+            Khoa k;
+            while (rs.next()) {
+                k = new Khoa(rs.getString(1), rs.getString(2));
+                dsKhoa.add(k);
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return dsKhoa;
+    }
+    
+    public void showKhoa () {
+        ArrayList<Khoa> dsKhoa = dsKhoa();
+        modelKhoa.setNumRows(0);
+        dsKhoa.forEach(k -> {
+            modelKhoa.addRow(new Object[] {
+                k.getMaKhoa(),
+                k.getTenKhoa()
+            });
+        });
+    }
+    
+    public ArrayList<Lop> dsLop () {
+        ArrayList<Lop> dsLop = new ArrayList<>();
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement("select * from LOP");
+            ResultSet rs = ps.executeQuery();
+            Lop l;
+            while (rs.next()) {
+                l = new Lop(rs.getString(1), rs.getString(2), rs.getString(3));
+                dsLop.add(l);
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return dsLop;
+    }
+    
+    public void showLop () {
+        ArrayList<Lop> dsLop = dsLop();
+        modelLop.setNumRows(0);
+        dsLop.forEach(l -> {
+            modelLop.addRow(new Object[] {
+                l.getMaLop(),
+                l.getTenLop(),
+                l.getMaKhoa()
+            });
+        });
+    }
+    
+    public void showMaKhoa () {
+        jComboBox_MaKhoaCuaLop.removeAllItems();
+        jComboBox_MaKhoaCuaLop1.removeAllItems();
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement("select * from KHOA");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                jComboBox_MaKhoaCuaLop.addItem(rs.getString(1));
+                jComboBox_MaKhoaCuaLop1.addItem(rs.getString(1));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public ArrayList<VaiTro> dsVaiTro () {
+        ArrayList<VaiTro> dsVaiTro = new ArrayList<>();
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement("select * from VAITRO");
+            ResultSet rs = ps.executeQuery();
+            VaiTro vt;
+            while (rs.next()) {
+                vt = new VaiTro(rs.getString(1), rs.getString(2));
+                dsVaiTro.add(vt);
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return dsVaiTro;
+    }
+    
+    public void showVaiTro () {
+        ArrayList<VaiTro> dsVaiTro = dsVaiTro();
+        modelVaiTro.setNumRows(0);
+        dsVaiTro.forEach(vt -> {
+            modelVaiTro.addRow(new Object[] {
+                vt.getMaVaiTro(),
+                vt.getTenVaiTro()
+            });
+        });
+    }
+    
+    public void themMoiLop (String maLop, String tenLop, String maKhoa) {
+        
+        String sql = "insert into LOP values (?,?,?)";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maLop);
+            ps.setString(2, tenLop);
+            ps.setString(3, maKhoa);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void jButton_ThemLop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemLop1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_ThemActionPerformed
+        String maLop = jTextField_MaLop1.getText();
+        String tenLop = jTextField_TenLop1.getText();
+        String maKhoa = (String) jComboBox_MaKhoaCuaLop1.getSelectedItem();
+        
+        if (maLop.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã Lớp không được để trống!");
+        }
+        else if (tenLop.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemLop, "Tên lớp không được để trống!");
+        }
+        else {
+            if (kiemTraLop(maLop) == 1) {
+                JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã lớp đã tồn tại!");
+            }
+            else {
+                themMoiLop(maLop, tenLop, maKhoa);
+                JOptionPane.showMessageDialog(jDialog_ThemLop, "Thêm lớp thành công!");
+                jDialog_ThemLop.dispose();
+                showLop();
+            }
+        }
+    }//GEN-LAST:event_jButton_ThemLop1ActionPerformed
 
     private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
@@ -1319,21 +1539,69 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         jDialog_ThemKhoa.dispose();
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
-    private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
+    public void themMoiKhoa (String maKhoa, String tenKhoa) {
+        
+        String sql = "insert into KHOA values (?,?)";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maKhoa);
+            ps.setString(2, tenKhoa);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void jButton_ThemKhoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemKhoa1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Them1ActionPerformed
+        String tenKhoa = jTextField_TenKhoa1.getText();
+        String maKhoa = jTextField_MaKhoa1.getText();
+        
+        if (maKhoa.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Mã khoa không được để trống!");
+        }
+        else if (tenKhoa.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Tên khoa không được để trống!");
+        }
+        else {
+            if (kiemTraKhoa(maKhoa) == 1) {
+                JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Mã khoa đã tồn tại!");
+            }
+            else {
+                themMoiKhoa(maKhoa, tenKhoa);
+                JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Thêm khoa thành công!");
+                jDialog_ThemKhoa.dispose();
+                showKhoa();
+                showMaKhoa();
+            }
+        }
+    }//GEN-LAST:event_jButton_ThemKhoa1ActionPerformed
 
-    private void jTextField_KeywordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordCaretUpdate
+    private void jTextField_KeywordKhoaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordKhoaCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_KeywordCaretUpdate
+        String tuKhoa = jTextField_KeywordKhoa.getText();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelKhoa);
+        jTable_DSKhoa.setRowSorter(trs);
+        
+        if (jRadioButton_MaKhoa.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenKhoa.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
+    }//GEN-LAST:event_jTextField_KeywordKhoaCaretUpdate
 
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
 
-    private void jButton_Them3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them3ActionPerformed
+    private void jButton_ThemKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemKhoaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Them3ActionPerformed
+        jDialog_ThemKhoa.pack();
+        jDialog_ThemKhoa.setLocationRelativeTo(this);
+        jDialog_ThemKhoa.setVisible(true);
+    }//GEN-LAST:event_jButton_ThemKhoaActionPerformed
 
     private void jButton_TroVe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe3ActionPerformed
         // TODO add your handling code here:
@@ -1346,17 +1614,33 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton_ThoatActionPerformed
 
-    private void jTextField_Keyword1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_Keyword1CaretUpdate
+    private void jTextField_KeywordLopCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordLopCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Keyword1CaretUpdate
+        String tuKhoa = jTextField_KeywordLop.getText();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelLop);
+        jTable_DSLop.setRowSorter(trs);
+        
+        if (jRadioButton_MaLop.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenLop.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
+        if (jRadioButton_MaKhoaCuaLop.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 2));
+        }
+    }//GEN-LAST:event_jTextField_KeywordLopCaretUpdate
 
     private void jButton_TimKiem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_TimKiem1ActionPerformed
 
-    private void jButton_Them4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them4ActionPerformed
+    private void jButton_ThemLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemLopActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Them4ActionPerformed
+        jDialog_ThemLop.pack();
+        jDialog_ThemLop.setLocationRelativeTo(this);
+        jDialog_ThemLop.setVisible(true);
+    }//GEN-LAST:event_jButton_ThemLopActionPerformed
 
     private void jButton_TroVe4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe4ActionPerformed
         // TODO add your handling code here:
@@ -1369,17 +1653,30 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton_Thoat1ActionPerformed
 
-    private void jTextField_Keyword2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_Keyword2CaretUpdate
+    private void jTextField_KeywordVaiTroCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordVaiTroCaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_Keyword2CaretUpdate
+        String tuKhoa = jTextField_KeywordVaiTro.getText();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelVaiTro);
+        jTable_DSVaiTro.setRowSorter(trs);
+        
+        if (jRadioButton_MaVaiTro.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenVaiTro.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
+    }//GEN-LAST:event_jTextField_KeywordVaiTroCaretUpdate
 
     private void jButton_TimKiem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_TimKiem2ActionPerformed
 
-    private void jButton_Them5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them5ActionPerformed
+    private void jButton_ThemVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemVaiTroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Them5ActionPerformed
+        jDialog_ThemVaiTro.pack();
+        jDialog_ThemVaiTro.setLocationRelativeTo(this);
+        jDialog_ThemVaiTro.setVisible(true);
+    }//GEN-LAST:event_jButton_ThemVaiTroActionPerformed
 
     private void jButton_TroVe5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe5ActionPerformed
         // TODO add your handling code here:
@@ -1392,14 +1689,391 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton_Thoat2ActionPerformed
 
-    private void jButton_Them2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them2ActionPerformed
+    public void themMoiVaiTro (String maVaiTro, String tenVaiTro) {
+        
+        String sql = "insert into VAITRO values (?,?)";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maVaiTro);
+            ps.setString(2, tenVaiTro);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void jButton_ThemVaiTro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemVaiTro1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Them2ActionPerformed
+        String tenVaiTro = jTextField_TenVaiTro1.getText();
+        String maVaiTro = jTextField_MaVaiTro1.getText();
+        
+        if (maVaiTro.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Mã vai trò không được để trống!");
+        }
+        else if (tenVaiTro.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Tên vai trò không được để trống!");
+        }
+        else {
+            if (kiemTraVaiTro(maVaiTro) == 1) {
+                JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Mã vai trò đã tồn tại!");
+            }
+            else {
+                themMoiVaiTro(maVaiTro, tenVaiTro);
+                JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Thêm vai trò thành công!");
+                jDialog_ThemVaiTro.dispose();
+                showVaiTro();
+            }
+        }
+    }//GEN-LAST:event_jButton_ThemVaiTro1ActionPerformed
 
     private void jButton_TroVe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe2ActionPerformed
         // TODO add your handling code here:
         jDialog_ThemVaiTro.dispose();
     }//GEN-LAST:event_jButton_TroVe2ActionPerformed
+
+    private void jTable_DSLopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSLopMouseClicked
+        // TODO add your handling code here:
+        int row = jTable_DSLop.getSelectedRow();
+        if (row == -1) return;
+        jTextField_MaLop.setText((String) modelLop.getValueAt(row, 0));
+        jTextField_TenLop.setText((String) modelLop.getValueAt(row, 1));
+        jComboBox_MaKhoaCuaLop.setSelectedItem(modelLop.getValueAt(row, 2));
+    }//GEN-LAST:event_jTable_DSLopMouseClicked
+
+    private void jTable_DSKhoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSKhoaMouseClicked
+        // TODO add your handling code here:
+        int row = jTable_DSKhoa.getSelectedRow();
+        if (row == -1) return;
+        jTextField_MaKhoa.setText((String) modelKhoa.getValueAt(row, 0));
+        jTextField_TenKhoa.setText((String) modelKhoa.getValueAt(row, 1));
+    }//GEN-LAST:event_jTable_DSKhoaMouseClicked
+
+    private void jTable_DSVaiTroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSVaiTroMouseClicked
+        // TODO add your handling code here:
+        int row = jTable_DSVaiTro.getSelectedRow();
+        if (row == -1) return;
+        jTextField_MaVaiTro.setText((String) modelVaiTro.getValueAt(row, 0));
+        jTextField_TenVaiTro.setText((String) modelVaiTro.getValueAt(row, 1));
+    }//GEN-LAST:event_jTable_DSVaiTroMouseClicked
+
+    public int kiemTraVaiTro (String maVT) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from NGUOIDUNG where MAVAITRO ='" + maVT + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
+    public void xoaVaiTro (String maVT) {
+        String sql = "delete from VAITRO where MAVAITRO = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maVT);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void xoaDuLieuVaiTro () {
+        jTextField_MaVaiTro.setText("");
+        jTextField_TenVaiTro.setText("");
+    }
+    
+    private void jButton_XoaVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaVaiTroActionPerformed
+        // TODO add your handling code here:
+        String maVT = jTextField_MaVaiTro.getText();
+        int kt;
+        if (maVT.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn vai trò bạn muốn xóa");
+        }
+        else {
+            if (kiemTraVaiTro(maVT) == 1) {
+                JOptionPane.showMessageDialog(this, "Vai trò đang có người dùng!");
+            }
+            else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
+                if(luaChon == JOptionPane.CANCEL_OPTION)
+                    return;
+                else  if(luaChon == JOptionPane.OK_OPTION)
+                {
+                    xoaVaiTro(maVT);
+                    JOptionPane.showMessageDialog(this, "Xóa vai trò thành công");  
+                    xoaDuLieuVaiTro();
+                    showVaiTro();
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_XoaVaiTroActionPerformed
+
+    public int kiemTraLop (String maLop) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from NGUOIDUNG where MALOP ='" + maLop + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
+    public void xoaLop (String maLop) {
+        String sql = "delete from LOP where MALOP = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maLop);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void xoaDuLieuLop () {
+        jTextField_MaLop.setText("");
+        jTextField_TenLop.setText("");
+    }
+    
+    private void jButton_XoaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaLopActionPerformed
+        // TODO add your handling code here:
+        String maLop = jTextField_MaLop.getText();
+        int kt;
+        if (maLop.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn lớp bạn muốn xóa");
+        }
+        else {
+            if (kiemTraLop(maLop) == 1) {
+                JOptionPane.showMessageDialog(this, "Lớp đang có sinh viên!");
+            }
+            else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
+                if(luaChon == JOptionPane.CANCEL_OPTION)
+                    return;
+                else  if(luaChon == JOptionPane.OK_OPTION)
+                {
+                    xoaLop(maLop);
+                    JOptionPane.showMessageDialog(this, "Xóa lớp thành công");  
+                    xoaDuLieuLop();
+                    showLop();
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_XoaLopActionPerformed
+
+    public int kiemTraKhoa (String maKhoa) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from LOP where MAKHOA ='" + maKhoa + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
+    public void xoaKhoa (String maKhoa) {
+        String sql = "delete from KHOA where MAKHOA = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maKhoa);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void xoaDuLieuKhoa () {
+        jTextField_MaKhoa.setText("");
+        jTextField_TenKhoa.setText("");
+    }
+    
+    private void jButton_XoaKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaKhoaActionPerformed
+        // TODO add your handling code here:
+        String maKhoa = jTextField_MaKhoa.getText();
+        int kt;
+        if (maKhoa.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn khoa bạn muốn xóa");
+        }
+        else {
+            if (kiemTraKhoa(maKhoa) == 1) {
+                JOptionPane.showMessageDialog(this, "Khoa đang có sinh viên!");
+            }
+            else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
+                if(luaChon == JOptionPane.CANCEL_OPTION)
+                    return;
+                else  if(luaChon == JOptionPane.OK_OPTION)
+                {
+                    xoaKhoa(maKhoa);
+                    JOptionPane.showMessageDialog(this, "Xóa khoa thành công");  
+                    xoaDuLieuKhoa();
+                    showKhoa();
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_XoaKhoaActionPerformed
+
+    public void chinhSuaKhoa(String maKhoa, String tenKhoa) {
+        
+        String sql = "update KHOA set TENKHOA = ? WHERE MAKHOA = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenKhoa);
+            ps.setString(2, maKhoa);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void jButton_SuaKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaKhoaActionPerformed
+        // TODO add your handling code here:
+        String maKhoa = jTextField_MaKhoa.getText();
+        int kt;
+        if (maKhoa.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn khoa bạn muốn chỉnh sửa");
+        }
+        else {
+            String tenKhoa = jTextField_TenKhoa.getText();
+            
+            if (tenKhoa.equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Tên khoa không được để trống!");
+            }
+            else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
+                if(luaChon == JOptionPane.CANCEL_OPTION)
+                    return;
+                else  if(luaChon == JOptionPane.OK_OPTION)
+                {
+                    chinhSuaKhoa(maKhoa, tenKhoa);
+                    JOptionPane.showMessageDialog(this, "Chỉnh sửa khoa thành công!");
+                    showKhoa();
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_SuaKhoaActionPerformed
+
+    public void chinhSuaLop(String maLop, String tenLop, String maKhoa) {
+        
+        String sql = "update LOP set TENLOP = ?, MAKHOA = ? WHERE MALOP = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenLop);
+            ps.setString(2, maKhoa);
+            ps.setString(3, maLop);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void jButton_SuaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaLopActionPerformed
+        // TODO add your handling code here:
+        String maLop = jTextField_MaLop.getText();
+        int kt;
+        if (maLop.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn lớp bạn muốn chỉnh sửa");
+        }
+        else {
+            String tenLop = jTextField_TenLop.getText();
+            String maKhoa = (String) jComboBox_MaKhoaCuaLop.getSelectedItem();
+            if (tenLop.equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Tên lớp không được để trống!");
+            }
+            else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
+                if(luaChon == JOptionPane.CANCEL_OPTION)
+                    return;
+                else  if(luaChon == JOptionPane.OK_OPTION)
+                {
+                    chinhSuaLop(maLop, tenLop, maKhoa);
+                    JOptionPane.showMessageDialog(this, "Chỉnh sửa lớp thành công!");
+                    showLop();
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_SuaLopActionPerformed
+
+    public void chinhSuaVaiTro(String maVaiTro, String tenVaiTro) {
+        
+        String sql = "update VAITRO set TENVAITRO = ? WHERE MAVAITRO = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenVaiTro);
+            ps.setString(2, maVaiTro);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void jButton_SuaVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaVaiTroActionPerformed
+        // TODO add your handling code here:
+        String maVaiTro = jTextField_MaVaiTro.getText();
+        int kt;
+        if (maVaiTro.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn vai trò bạn muốn chỉnh sửa");
+        }
+        else {
+            String tenVaiTro = jTextField_TenVaiTro.getText();
+            if (tenVaiTro.equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(this, "Tên vai trò không được để trống!");
+            }
+            else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
+                if(luaChon == JOptionPane.CANCEL_OPTION)
+                    return;
+                else  if(luaChon == JOptionPane.OK_OPTION)
+                {
+                    chinhSuaVaiTro(maVaiTro, tenVaiTro);
+                    JOptionPane.showMessageDialog(this, "Chỉnh sửa vai trò thành công!");
+                    showVaiTro();
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_SuaVaiTroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1440,15 +2114,15 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JButton jButton_Sua;
-    private javax.swing.JButton jButton_Sua1;
-    private javax.swing.JButton jButton_Sua2;
-    private javax.swing.JButton jButton_Them;
-    private javax.swing.JButton jButton_Them1;
-    private javax.swing.JButton jButton_Them2;
-    private javax.swing.JButton jButton_Them3;
-    private javax.swing.JButton jButton_Them4;
-    private javax.swing.JButton jButton_Them5;
+    private javax.swing.JButton jButton_SuaKhoa;
+    private javax.swing.JButton jButton_SuaLop;
+    private javax.swing.JButton jButton_SuaVaiTro;
+    private javax.swing.JButton jButton_ThemKhoa;
+    private javax.swing.JButton jButton_ThemKhoa1;
+    private javax.swing.JButton jButton_ThemLop;
+    private javax.swing.JButton jButton_ThemLop1;
+    private javax.swing.JButton jButton_ThemVaiTro;
+    private javax.swing.JButton jButton_ThemVaiTro1;
     private javax.swing.JButton jButton_Thoat;
     private javax.swing.JButton jButton_Thoat1;
     private javax.swing.JButton jButton_Thoat2;
@@ -1461,9 +2135,11 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe3;
     private javax.swing.JButton jButton_TroVe4;
     private javax.swing.JButton jButton_TroVe5;
-    private javax.swing.JButton jButton_Xoa;
-    private javax.swing.JButton jButton_Xoa1;
-    private javax.swing.JButton jButton_Xoa2;
+    private javax.swing.JButton jButton_XoaKhoa;
+    private javax.swing.JButton jButton_XoaLop;
+    private javax.swing.JButton jButton_XoaVaiTro;
+    private javax.swing.JComboBox<String> jComboBox_MaKhoaCuaLop;
+    private javax.swing.JComboBox<String> jComboBox_MaKhoaCuaLop1;
     private javax.swing.JDialog jDialog_ThemKhoa;
     private javax.swing.JDialog jDialog_ThemLop;
     private javax.swing.JDialog jDialog_ThemVaiTro;
@@ -1512,36 +2188,34 @@ public class QuanLyLopKhoa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton_MaSach;
-    private javax.swing.JRadioButton jRadioButton_MaSach1;
-    private javax.swing.JRadioButton jRadioButton_MaSach2;
-    private javax.swing.JRadioButton jRadioButton_TenSach;
-    private javax.swing.JRadioButton jRadioButton_TenSach1;
-    private javax.swing.JRadioButton jRadioButton_TenSach2;
+    private javax.swing.JRadioButton jRadioButton_MaKhoa;
+    private javax.swing.JRadioButton jRadioButton_MaKhoaCuaLop;
+    private javax.swing.JRadioButton jRadioButton_MaLop;
+    private javax.swing.JRadioButton jRadioButton_MaVaiTro;
+    private javax.swing.JRadioButton jRadioButton_TenKhoa;
+    private javax.swing.JRadioButton jRadioButton_TenLop;
+    private javax.swing.JRadioButton jRadioButton_TenVaiTro;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable_DSSach;
-    private javax.swing.JTable jTable_DSSach1;
-    private javax.swing.JTable jTable_DSSach2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField_Keyword;
-    private javax.swing.JTextField jTextField_Keyword1;
-    private javax.swing.JTextField jTextField_Keyword2;
-    private javax.swing.JTextField jTextField_MaSach;
-    private javax.swing.JTextField jTextField_MaSach1;
-    private javax.swing.JTextField jTextField_MaSach2;
-    private javax.swing.JTextField jTextField_MaSach3;
-    private javax.swing.JTextField jTextField_MaSach4;
-    private javax.swing.JTextField jTextField_MaSach5;
-    private javax.swing.JTextField jTextField_NXB;
-    private javax.swing.JTextField jTextField_NXB1;
-    private javax.swing.JTextField jTextField_NXB2;
-    private javax.swing.JTextField jTextField_TacGia1;
-    private javax.swing.JTextField jTextField_TenSach1;
-    private javax.swing.JTextField jTextField_TenSach2;
-    private javax.swing.JTextField jTextField_TenSach3;
+    private javax.swing.JTable jTable_DSKhoa;
+    private javax.swing.JTable jTable_DSLop;
+    private javax.swing.JTable jTable_DSVaiTro;
+    private javax.swing.JTextField jTextField_KeywordKhoa;
+    private javax.swing.JTextField jTextField_KeywordLop;
+    private javax.swing.JTextField jTextField_KeywordVaiTro;
+    private javax.swing.JTextField jTextField_MaKhoa;
+    private javax.swing.JTextField jTextField_MaKhoa1;
+    private javax.swing.JTextField jTextField_MaLop;
+    private javax.swing.JTextField jTextField_MaLop1;
+    private javax.swing.JTextField jTextField_MaVaiTro;
+    private javax.swing.JTextField jTextField_MaVaiTro1;
+    private javax.swing.JTextField jTextField_TenKhoa;
+    private javax.swing.JTextField jTextField_TenKhoa1;
+    private javax.swing.JTextField jTextField_TenLop;
+    private javax.swing.JTextField jTextField_TenLop1;
+    private javax.swing.JTextField jTextField_TenVaiTro;
+    private javax.swing.JTextField jTextField_TenVaiTro1;
     // End of variables declaration//GEN-END:variables
 }

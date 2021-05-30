@@ -810,7 +810,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         try {
             PreparedStatement ps = con.prepareStatement("select * from LOP");
             ResultSet rs = ps.executeQuery();
-            DocGia dg;
             while (rs.next()) {
                 jComboBox_MaLop.addItem(rs.getString(1));
                 jComboBox_MaLop1.addItem(rs.getString(1));
