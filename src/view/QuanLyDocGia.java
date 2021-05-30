@@ -38,6 +38,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         model = (DefaultTableModel) jTable_DSDocGia.getModel();
         showDocGia();
+        showLop();
     }
 
     /**
@@ -77,8 +78,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel = new javax.swing.JLabel();
-        jTextField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jComboBox_MaLop1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -90,7 +90,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jRadioButton_MaDG = new javax.swing.JRadioButton();
         jRadioButton_TenDG = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton_MaLop = new javax.swing.JRadioButton();
         jRadioButton_SDT = new javax.swing.JRadioButton();
         jRadioButton_Email = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
@@ -114,7 +114,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jRadioButton_Nam = new javax.swing.JRadioButton();
         jRadioButton_Nu = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jComboBox_MaLop = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jButton_Them = new javax.swing.JButton();
         jButton_Sua = new javax.swing.JButton();
@@ -210,12 +210,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel.setText("Lớp");
 
-        jTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel4.setText("*");
-
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -242,11 +236,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBox_GioiTinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDateChooser_NgaySinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jTextField_TenDG1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField_TenDG1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBox_MaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,9 +283,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jComboBox_MaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox_GioiTinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -405,7 +395,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã", "Họ tên", "Mã lớp", "Giới tính", "Ngày sinh", "Địa chỉ", "SĐT", "Email", "Ngày đăng ký", "Ngày hết hạn"
+                "Mã độc giả", "Họ tên", "Giới tính", "Ngày sinh", "Địa chỉ", "SĐT", "Email", "Ngày đăng ký", "Ngày hết hạn", "Mã lớp"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -448,7 +438,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         buttonGroupTheo.add(jRadioButton_MaDG);
         jRadioButton_MaDG.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton_MaDG.setSelected(true);
-        jRadioButton_MaDG.setText("Mã ");
+        jRadioButton_MaDG.setText("Mã độc giả");
         jPanel4.add(jRadioButton_MaDG);
 
         buttonGroupTheo.add(jRadioButton_TenDG);
@@ -457,9 +447,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jRadioButton_TenDG.setToolTipText("");
         jPanel4.add(jRadioButton_TenDG);
 
-        buttonGroupTheo.add(jRadioButton1);
-        jRadioButton1.setText("Mã lớp");
-        jPanel4.add(jRadioButton1);
+        buttonGroupTheo.add(jRadioButton_MaLop);
+        jRadioButton_MaLop.setText("Mã lớp");
+        jPanel4.add(jRadioButton_MaLop);
 
         buttonGroupTheo.add(jRadioButton_SDT);
         jRadioButton_SDT.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -531,8 +521,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Mã lớp");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -565,7 +553,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                                 .addGap(34, 34, 34)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jComboBox_MaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -616,8 +604,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                         .addComponent(jRadioButton_Nam)
                         .addComponent(jRadioButton_Nu)
                         .addComponent(jLabel5)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel27))
+                        .addComponent(jLabel27)
+                        .addComponent(jComboBox_MaLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDateChooser_NgayHetHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -780,13 +768,13 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         ArrayList<DocGia> dsDocGia = new ArrayList<>();
         Connection con = KetNoiSQL.layKetNoi();
         try {
-            PreparedStatement ps = con.prepareStatement("select * from DOCGIA where not MADOCGIA = 'admin'");
+            PreparedStatement ps = con.prepareStatement("select * from NGUOIDUNG where MAVAITRO = 'VT01'");
             ResultSet rs = ps.executeQuery();
             DocGia dg;
             while (rs.next()) {
                 dg = new DocGia(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
                         rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
-                        rs.getString(11));
+                        rs.getString(12));
                 dsDocGia.add(dg);
             }
             rs.close();
@@ -811,9 +799,28 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 dg.getSdt(),
                 dg.getEmail(),
                 dg.getNgayDangKy(),
-                dg.getNgayHetHan()
+                dg.getNgayHetHan(),
+                dg.getLop()
             });
         });
+    }
+    
+    public void showLop () {
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement("select * from LOP");
+            ResultSet rs = ps.executeQuery();
+            DocGia dg;
+            while (rs.next()) {
+                jComboBox_MaLop.addItem(rs.getString(1));
+                jComboBox_MaLop1.addItem(rs.getString(1));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
     
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
@@ -830,9 +837,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
     public void themMoiDocGia (String maDG, String matKhauDG, String tenDG, String gioiTinhDG, String ngaySinhDG,
-            String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email) {
+            String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String lop) {
         
-        String sql = "insert into DOCGIA values (?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into NGUOIDUNG values (?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -846,7 +853,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             ps.setString(8, diaChi);
             ps.setString(9, sdt);
             ps.setString(10, email);
-            ps.setString(11, "");
+            ps.setString(11, "VT01");
+            ps.setString(12, lop);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
@@ -894,6 +902,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         String diaChi = jTextField_DiaChiDG1.getText();
         String sdt = jTextField_sdtDG1.getText();
         String email = jTextField_EmailDG1.getText();
+        String lop = (String) jComboBox_MaLop1.getSelectedItem();
         
         if (maDG.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả không được để trống!");
@@ -912,7 +921,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jDialogThemDocGia, "Email không hợp lệ!");
             }
             else {
-                themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email);
+                themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
                 JOptionPane.showMessageDialog(jDialogThemDocGia, "Thêm độc giả thành công!");
                 jDialogThemDocGia.dispose();
                 showDocGia();
@@ -960,6 +969,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         }
         if (jRadioButton_Email.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 6));
+        }
+        if (jRadioButton_MaLop.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 9));
         }
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
 
@@ -1021,12 +1033,13 @@ public class QuanLyDocGia extends javax.swing.JFrame {
 
                 }
             }
+        jComboBox_MaLop.setSelectedItem(model.getValueAt(row, 9));
     }//GEN-LAST:event_jTable_DSDocGiaMouseClicked
         
     public int kiemTraSachMuon (String maDG) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
-        String sql = "select * from MUONSACH where MADOCGIA ='" + maDG + "'";
+        String sql = "select * from MUONTRA where MANGUOIDUNG ='" + maDG + "'";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -1046,7 +1059,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     public int kiemTraDocGia(String maDG) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
-        String sql = "select * from DOCGIA where MADOCGIA ='" + maDG + "'";
+        String sql = "select * from NGUOIDUNG where MANGUOIDUNG ='" + maDG + "'";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -1064,7 +1077,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     }
     
     public void xoaDocGia (String maDG) {
-        String sql = "delete from DOCGIA where MADOCGIA = ?";
+        String sql = "delete from NGUOIDUNG where MANGUOIDUNG = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -1110,11 +1123,11 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     public void chinhSuaDocGia (String maDG, String tenDG, String gioiTinhDG, String ngaySinhDG, String ngayDangKy,
-            String ngayHetHan, String diaChi, String sdt, String email) {
+            String ngayHetHan, String diaChi, String sdt, String email, String lop) {
         
-        String sql = "update DOCGIA set TENDOCGIA = ?, GIOITINH = ?, NGAYSINH = ?, "
-                + "NGAYDANGKY = ?, NGAYHETHAN = ?, DIACHI = ?, SDT = ?, EMAIL = ? "
-                + "WHERE MADOCGIA = ?";
+        String sql = "update NGUOIDUNG set TENNGUOIDUNG = ?, GIOITINH = ?, NGAYSINH = ?, "
+                + "NGAYDANGKY = ?, NGAYHETHAN = ?, DIACHI = ?, SDT = ?, EMAIL = ?, MALOP = ? "
+                + "WHERE MANGUOIDUNG = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -1126,7 +1139,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             ps.setString(6, diaChi);
             ps.setString(7, sdt);
             ps.setString(8, email);
-            ps.setString(9, maDG);
+            ps.setString(9, lop);
+            ps.setString(10, maDG);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
@@ -1163,7 +1177,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             String diaChi = jTextField_DiaChiDG.getText();
             String sdt = jTextField_Email.getText();
             String email = jTextField_SDTDG.getText();
-
+            String lop = (String) jComboBox_MaLop.getSelectedItem();
+            
             if (tenDG.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Tên độc giả không được để trống!");
             }
@@ -1180,7 +1195,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                         return;
                     else  if(luaChon == JOptionPane.OK_OPTION)
                     {
-                        chinhSuaDocGia(maDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email);
+                        chinhSuaDocGia(maDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
                         JOptionPane.showMessageDialog(this, "Chỉnh sửa độc giả thành công!");
                         showDocGia();
                     }
@@ -1206,6 +1221,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         }
         if (jRadioButton_Email.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 6));
+        }
+        if (jRadioButton_MaLop.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 9));
         }
     }//GEN-LAST:event_jTextField_TuKhoaCaretUpdate
 
@@ -1271,6 +1289,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe1;
     private javax.swing.JButton jButton_Xoa;
     private javax.swing.JComboBox<String> jComboBox_GioiTinh1;
+    private javax.swing.JComboBox<String> jComboBox_MaLop;
+    private javax.swing.JComboBox<String> jComboBox_MaLop1;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayDangKy;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayDangKy1;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayHetHan;
@@ -1301,7 +1321,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1311,17 +1330,15 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton_Email;
     private javax.swing.JRadioButton jRadioButton_MaDG;
+    private javax.swing.JRadioButton jRadioButton_MaLop;
     private javax.swing.JRadioButton jRadioButton_Nam;
     private javax.swing.JRadioButton jRadioButton_Nu;
     private javax.swing.JRadioButton jRadioButton_SDT;
     private javax.swing.JRadioButton jRadioButton_TenDG;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_DSDocGia;
-    private javax.swing.JTextField jTextField;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField_DiaChiDG;
     private javax.swing.JTextField jTextField_DiaChiDG1;
     private javax.swing.JTextField jTextField_Email;

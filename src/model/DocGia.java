@@ -10,12 +10,12 @@ package model;
  * @author Apple Bee
  */
 public class DocGia {
-    private String maDG, matKhau, tenDG, gioiTinh, ngaySinh, ngayDangKy, ngayHetHan, diaChi, sdt, email, tinNhan;
+    private String maDG, matKhau, tenDG, gioiTinh, ngaySinh, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop;
 
     public DocGia() {
     }
 
-    public DocGia(String maDG, String matKhau, String tenDG, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String tinNhan) {
+    public DocGia(String maDG, String matKhau, String tenDG, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String lop) {
         this.maDG = maDG;
         this.matKhau = matKhau;
         this.tenDG = tenDG;
@@ -26,7 +26,7 @@ public class DocGia {
         this.diaChi = diaChi;
         this.sdt = sdt;
         this.email = email;
-        this.tinNhan = tinNhan;
+        this.lop = lop;
     }
 
     
@@ -87,12 +87,12 @@ public class DocGia {
         this.email = email;
     }
 
-    public String getTinNhan() {
-        return tinNhan;
+    public String getLop() {
+        return lop;
     }
 
-    public void setTinNhan(String tinNhan) {
-        this.tinNhan = tinNhan;
+    public void setLop(String lop) {
+        this.lop = lop;
     }
 
     public String getNgaySinh() {

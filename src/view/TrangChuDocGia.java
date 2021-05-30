@@ -19,6 +19,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
      */
     public TrangChuDocGia() {
         initComponents();
+        jLabel_SLDocGia.setText("28");
     }
 
     /**
@@ -109,15 +110,15 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
+        jLabel_SLDocGia = new javax.swing.JLabel();
         jPanel29 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
+        jLabel_SLSachCo = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
+        jLabel_SLSachDuocMuon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabelTenDocGia = new javax.swing.JLabel();
@@ -825,10 +826,10 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jPanel6.add(jLabel58);
         jLabel58.setBounds(80, 10, 100, 30);
 
-        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel59.setText("0");
-        jPanel6.add(jLabel59);
-        jLabel59.setBounds(150, 70, 100, 50);
+        jLabel_SLDocGia.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLDocGia.setText("0");
+        jPanel6.add(jLabel_SLDocGia);
+        jLabel_SLDocGia.setBounds(150, 70, 100, 50);
 
         jPanel29.setBackground(new java.awt.Color(102, 255, 51));
         jPanel29.setLayout(null);
@@ -843,10 +844,10 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jPanel29.add(jLabel61);
         jLabel61.setBounds(60, 10, 152, 30);
 
-        jLabel62.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel62.setText("0");
-        jPanel29.add(jLabel62);
-        jLabel62.setBounds(150, 70, 100, 50);
+        jLabel_SLSachCo.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachCo.setText("0");
+        jPanel29.add(jLabel_SLSachCo);
+        jLabel_SLSachCo.setBounds(150, 70, 100, 50);
 
         jPanel30.setBackground(new java.awt.Color(0, 255, 204));
         jPanel30.setLayout(null);
@@ -860,10 +861,10 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jPanel30.add(jLabel64);
         jLabel64.setBounds(40, 10, 190, 30);
 
-        jLabel65.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel65.setText("0");
-        jPanel30.add(jLabel65);
-        jLabel65.setBounds(150, 70, 100, 50);
+        jLabel_SLSachDuocMuon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachDuocMuon.setText("0");
+        jPanel30.add(jLabel_SLSachDuocMuon);
+        jLabel_SLSachDuocMuon.setBounds(150, 70, 100, 50);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -1122,16 +1123,16 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelTenDocGia;
+    private javax.swing.JLabel jLabel_SLDocGia;
+    private javax.swing.JLabel jLabel_SLSachCo;
+    private javax.swing.JLabel jLabel_SLSachDuocMuon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel28;

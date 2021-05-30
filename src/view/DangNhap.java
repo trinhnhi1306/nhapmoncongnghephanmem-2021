@@ -78,7 +78,7 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel3.setBackground(new java.awt.Color(0, 255, 51));
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 255, 0));
-        jLabel3.setText("Mã độc giả");
+        jLabel3.setText("Mã người dùng");
 
         jTextFieldMaDocGia.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
@@ -124,21 +124,18 @@ public class DangNhap extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldMaDocGia))))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldMaDocGia)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -205,7 +202,7 @@ public class DangNhap extends javax.swing.JFrame {
 
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
         // TODO add your handling code here:
-        String sql = "SELECT * FROM DOCGIA WHERE MADOCGIA = ? AND MATKHAU = ?";
+        String sql = "SELECT * FROM NGUOIDUNG WHERE MANGUOIDUNG = ? AND MATKHAU = ?";
         maDocGia = jTextFieldMaDocGia.getText();
         String matKhau = String.valueOf(jTextFieldMatKhau.getPassword());
         try (
@@ -216,14 +213,19 @@ public class DangNhap extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 dispose();
-                if (maDocGia.equals("admin") && matKhau.equals("admin")) {
-                    new TrangChuAdmin().setVisible(true);
-                } else {
+                String maVaiTro = rs.getString(11);
+                if (maVaiTro.equalsIgnoreCase("VT01")) {
                     new TrangChuDocGia().setVisible(true);
+                } else if (maVaiTro.equalsIgnoreCase("VT02")){
+                    new TrangChuThuThu().setVisible(true);
+                } else if (maVaiTro.equalsIgnoreCase("VT03")){
+                    new TrangChuThuKho().setVisible(true);
+                } else if (maVaiTro.equalsIgnoreCase("VT04")){
+                    new TrangChuAdmin().setVisible(true);
                 }
             }
             else {
-                JOptionPane.showMessageDialog(this, "Mã độc giả hoặc mật khẩu không chính xác! Vui lòng thử lại.");
+                JOptionPane.showMessageDialog(this, "Mã người dùng hoặc mật khẩu không chính xác! Vui lòng thử lại.");
             }
             rs.close();
         } catch (SQLException ex) {
