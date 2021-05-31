@@ -5,6 +5,14 @@
  */
 package model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import ketnoi.KetNoiSQL;
+import view.DangNhap;
 /**
  *
  * @author Apple Bee
@@ -90,5 +98,43 @@ public class NguoiDung {
         this.email = email;
     }
     
+    public static void chinhSuaTTNguoiDung (String ma, String ten, String gioiTinh, String ngaySinh, String diaChi, String sdt, String email) {
+        String sql = "update NGUOIDUNG set TENNGUOIDUNG = ?, GIOITINH = ?, NGAYSINH = ?, "
+                + "DIACHI = ?, SDT = ?, EMAIL = ? "
+                + "WHERE MANGUOIDUNG = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, ten);
+            ps.setString(2, gioiTinh);
+            ps.setString(3, ngaySinh);
+            ps.setString(4, diaChi);
+            ps.setString(5, sdt);
+            ps.setString(6, email);
+            ps.setString(7, ma);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
+    public static NguoiDung layThongTinNguoiDung () {
+        Connection con = KetNoiSQL.layKetNoi();
+        NguoiDung n = null;
+        String sql = "select * from NGUOIDUNG where MANGUOIDUNG = '" + DangNhap.getMaNguoiDung() + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                n = new NguoiDung (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getString(5), rs.getString(8), rs.getString(9), rs.getString(10));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } 
+        return n;
+    }
 }

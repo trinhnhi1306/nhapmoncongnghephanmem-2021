@@ -1517,7 +1517,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jDialog_ThemLop, "Tên lớp không được để trống!");
         }
         else {
-            if (kiemTraLop(maLop) == 1) {
+            if (kiemTraTonTaiLop(maLop) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã lớp đã tồn tại!");
             }
             else {
@@ -1565,7 +1565,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Tên khoa không được để trống!");
         }
         else {
-            if (kiemTraKhoa(maKhoa) == 1) {
+            if (kiemTraTonTaiKhoa(maKhoa) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Mã khoa đã tồn tại!");
             }
             else {
@@ -1842,6 +1842,26 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         return tonTai;
     }
     
+    public int kiemTraTonTaiLop (String maLop) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from LOP where MALOP ='" + maLop + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
     public void xoaLop (String maLop) {
         String sql = "delete from LOP where MALOP = ?";
         Connection con = KetNoiSQL.layKetNoi();
@@ -1907,6 +1927,26 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         return tonTai;
     }
     
+    public int kiemTraTonTaiKhoa (String maKhoa) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from KHOA where MAKHOA ='" + maKhoa + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
     public void xoaKhoa (String maKhoa) {
         String sql = "delete from KHOA where MAKHOA = ?";
         Connection con = KetNoiSQL.layKetNoi();
@@ -1935,7 +1975,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         }
         else {
             if (kiemTraKhoa(maKhoa) == 1) {
-                JOptionPane.showMessageDialog(this, "Khoa đang có sinh viên!");
+                JOptionPane.showMessageDialog(this, "Khoa đang có lớp!");
             }
             else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);

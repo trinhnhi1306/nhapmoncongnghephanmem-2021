@@ -919,28 +919,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         } 
     }
     
-    public NguoiDung layThongTinNguoiDung () {
-        Connection con = KetNoiSQL.layKetNoi();
-        NguoiDung n = null;
-        String sql = "select * from NGUOIDUNG where MANGUOIDUNG = '" + maNguoiDung + "'";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
-                n = new NguoiDung (rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(8), rs.getString(9), rs.getString(10));
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(TrangChuThuThu.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        return n;
-    }
-    
     public void showThongTinNguoiDung () {
-        NguoiDung n = layThongTinNguoiDung();
+        NguoiDung n = NguoiDung.layThongTinNguoiDung();
         jTextField_MaNguoiDung.setText(n.getMa());
         jTextField_TenNguoiDung.setText(n.getTen());
         jComboBox_GioiTinh.setSelectedItem(n.getGioiTinh());
@@ -1035,26 +1015,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         return str;
     }
     
-    public void chinhSuaTTNguoiDung (String ma, String ten, String gioiTinh, String ngaySinh, String diaChi, String sdt, String email) {
-        String sql = "update NGUOIDUNG set TENNGUOIDUNG = ?, GIOITINH = ?, NGAYSINH = ?, "
-                + "DIACHI = ?, SDT = ?, EMAIL = ? "
-                + "WHERE MANGUOIDUNG = ?";
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, ten);
-            ps.setString(2, gioiTinh);
-            ps.setString(3, ngaySinh);
-            ps.setString(4, diaChi);
-            ps.setString(5, sdt);
-            ps.setString(6, email);
-            ps.setString(7, ma);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     private void jButton_LuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LuuActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -1087,7 +1047,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                     return;
                 else  if(luaChon == JOptionPane.OK_OPTION)
                 {
-                    chinhSuaTTNguoiDung(maNguoiDung, chuanHoaDanhTuRieng(ten), gioiTinh, ngaySinh, diaChi, sdt, email);
+                    NguoiDung.chinhSuaTTNguoiDung(maNguoiDung, chuanHoaDanhTuRieng(ten), gioiTinh, ngaySinh, diaChi, sdt, email);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa thông tin thành công!");
                     showThongTinNguoiDung();
                 }
