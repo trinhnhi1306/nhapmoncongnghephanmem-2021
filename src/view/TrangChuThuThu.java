@@ -6,7 +6,11 @@
 package view;
 
 import java.awt.Graphics;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import ketnoi.KetNoiSQL;
+import java.sql.*;
 
 /**
  *
@@ -19,6 +23,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
      */
     public TrangChuThuThu() {
         initComponents();
+        setLocationRelativeTo(null);
+        demSoLuongDG();
     }
 
     /**
@@ -103,19 +109,19 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        jPanel29 = new javax.swing.JPanel();
+        jLabel_SLDocGia = new javax.swing.JLabel();
+        jPanel_SLSachQuaHan = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
+        jLabel_SLSachQuaHan = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
+        jLabel_SLSachDuocMuon = new javax.swing.JLabel();
         jPanel33 = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
-        jLabel68 = new javax.swing.JLabel();
+        jLabel_SoTienNopPhat = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -772,31 +778,31 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel57.setBounds(10, 60, 70, 70);
 
         jLabel58.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel58.setText("Số độc giả");
+        jLabel58.setText("Số lượng độc giả");
         jPanel6.add(jLabel58);
-        jLabel58.setBounds(70, 10, 100, 30);
+        jLabel58.setBounds(30, 10, 160, 30);
 
-        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel59.setText("0");
-        jPanel6.add(jLabel59);
-        jLabel59.setBounds(110, 70, 100, 50);
+        jLabel_SLDocGia.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLDocGia.setText("0");
+        jPanel6.add(jLabel_SLDocGia);
+        jLabel_SLDocGia.setBounds(110, 70, 100, 50);
 
-        jPanel29.setBackground(new java.awt.Color(102, 255, 51));
-        jPanel29.setLayout(null);
+        jPanel_SLSachQuaHan.setBackground(new java.awt.Color(102, 255, 51));
+        jPanel_SLSachQuaHan.setLayout(null);
 
         jLabel60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/quahan.png"))); // NOI18N
-        jPanel29.add(jLabel60);
+        jPanel_SLSachQuaHan.add(jLabel60);
         jLabel60.setBounds(10, 60, 70, 70);
 
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel61.setText("Số sách mượn quá hạn");
-        jPanel29.add(jLabel61);
+        jPanel_SLSachQuaHan.add(jLabel61);
         jLabel61.setBounds(10, 10, 210, 30);
 
-        jLabel62.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel62.setText("0");
-        jPanel29.add(jLabel62);
-        jLabel62.setBounds(110, 70, 100, 50);
+        jLabel_SLSachQuaHan.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachQuaHan.setText("0");
+        jPanel_SLSachQuaHan.add(jLabel_SLSachQuaHan);
+        jLabel_SLSachQuaHan.setBounds(110, 70, 100, 50);
 
         jPanel30.setBackground(new java.awt.Color(0, 255, 204));
         jPanel30.setLayout(null);
@@ -810,10 +816,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel30.add(jLabel64);
         jLabel64.setBounds(20, 10, 190, 30);
 
-        jLabel65.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel65.setText("0");
-        jPanel30.add(jLabel65);
-        jLabel65.setBounds(110, 70, 100, 50);
+        jLabel_SLSachDuocMuon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachDuocMuon.setText("0");
+        jPanel30.add(jLabel_SLSachDuocMuon);
+        jLabel_SLSachDuocMuon.setBounds(110, 70, 100, 50);
 
         jPanel33.setBackground(new java.awt.Color(255, 255, 0));
         jPanel33.setLayout(null);
@@ -827,10 +833,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel33.add(jLabel67);
         jLabel67.setBounds(20, 10, 190, 30);
 
-        jLabel68.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel68.setText("0");
-        jPanel33.add(jLabel68);
-        jLabel68.setBounds(110, 70, 100, 50);
+        jLabel_SoTienNopPhat.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SoTienNopPhat.setText("0");
+        jPanel33.add(jLabel_SoTienNopPhat);
+        jLabel_SoTienNopPhat.setBounds(110, 70, 100, 50);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -840,7 +846,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_SLSachQuaHan, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -854,7 +860,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                    .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel_SLSachQuaHan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -915,6 +921,22 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void demSoLuongDG () {
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement("select count(MANGUOIDUNG) from NGUOIDUNG where MAVAITRO = 'VT01'");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                jLabel_SLDocGia.setText(rs.getString(1));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChuThuThu.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
     private void jButton_QLDocGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QLDocGiaActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -1052,22 +1074,21 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_SLDocGia;
+    private javax.swing.JLabel jLabel_SLSachDuocMuon;
+    private javax.swing.JLabel jLabel_SLSachQuaHan;
+    private javax.swing.JLabel jLabel_SoTienNopPhat;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel28;
-    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
@@ -1078,6 +1099,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel_SLSachQuaHan;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
