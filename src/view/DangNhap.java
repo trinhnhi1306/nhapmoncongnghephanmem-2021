@@ -19,10 +19,10 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class DangNhap extends javax.swing.JFrame {
-    private static String maDocGia;
+    private static String maNguoiDung;
 
-    public static String getMaDocGia() {
-        return maDocGia;
+    public static String getMaNguoiDung() {
+        return maNguoiDung;
     }
     
     /**
@@ -53,7 +53,7 @@ public class DangNhap extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldMaDocGia = new javax.swing.JTextField();
+        jTextFieldMaNguoiDung = new javax.swing.JTextField();
         jButton_DangNhap = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -80,7 +80,7 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(153, 255, 0));
         jLabel3.setText("Mã người dùng");
 
-        jTextFieldMaDocGia.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextFieldMaNguoiDung.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         jButton_DangNhap.setBackground(new java.awt.Color(153, 153, 153));
         jButton_DangNhap.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
@@ -135,7 +135,7 @@ public class DangNhap extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldMaDocGia)))
+                        .addComponent(jTextFieldMaNguoiDung)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -147,7 +147,7 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jTextFieldMaDocGia))
+                        .addComponent(jTextFieldMaNguoiDung))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -203,12 +203,12 @@ public class DangNhap extends javax.swing.JFrame {
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
         // TODO add your handling code here:
         String sql = "SELECT * FROM NGUOIDUNG WHERE MANGUOIDUNG = ? AND MATKHAU = ?";
-        maDocGia = jTextFieldMaDocGia.getText();
+        maNguoiDung = jTextFieldMaNguoiDung.getText();
         String matKhau = String.valueOf(jTextFieldMatKhau.getPassword());
         try (
                 Connection con = KetNoiSQL.layKetNoi();
                 PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, maDocGia);
+            ps.setString(1, maNguoiDung);
             ps.setString(2, matKhau);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -285,7 +285,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelBackground;
-    private javax.swing.JTextField jTextFieldMaDocGia;
+    private javax.swing.JTextField jTextFieldMaNguoiDung;
     private javax.swing.JPasswordField jTextFieldMatKhau;
     // End of variables declaration//GEN-END:variables
 }

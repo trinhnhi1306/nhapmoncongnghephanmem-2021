@@ -791,8 +791,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         model.setNumRows(0);
         dsDocGia.forEach(dg -> {
             model.addRow(new Object[] {
-                dg.getMaDG(),
-                dg.getTenDG(),
+                dg.getMa(),
+                dg.getTen(),
                 dg.getGioiTinh(),
                 dg.getNgaySinh(),
                 dg.getDiaChi(),
@@ -1174,8 +1174,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             String ngayDangKy = sdf.format(jDateChooser_NgayDangKy.getDate());
             String ngayHetHan = sdf.format(jDateChooser_NgayHetHan.getDate());
             String diaChi = jTextField_DiaChiDG.getText();
-            String sdt = jTextField_Email.getText();
-            String email = jTextField_SDTDG.getText();
+            String sdt = jTextField_SDTDG.getText();
+            String email = jTextField_Email.getText();
             String lop = (String) jComboBox_MaLop.getSelectedItem();
             
             if (tenDG.equalsIgnoreCase("")) {

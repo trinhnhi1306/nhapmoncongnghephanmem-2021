@@ -9,98 +9,17 @@ package model;
  *
  * @author Apple Bee
  */
-public class DocGia {
-    private String maDG, matKhau, tenDG, gioiTinh, ngaySinh, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop;
+public class DocGia extends NguoiDung{
+    private String ngayDangKy, ngayHetHan, lop;
 
     public DocGia() {
     }
 
-    public DocGia(String maDG, String matKhau, String tenDG, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String lop) {
-        this.maDG = maDG;
-        this.matKhau = matKhau;
-        this.tenDG = tenDG;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
+    public DocGia(String ma, String matKhau, String ten, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String lop) {
+        super(ma, matKhau, ten, gioiTinh, ngaySinh, diaChi, sdt, email);
         this.ngayDangKy = ngayDangKy;
         this.ngayHetHan = ngayHetHan;
-        this.diaChi = diaChi;
-        this.sdt = sdt;
-        this.email = email;
         this.lop = lop;
-    }
-
-    
-    
-    public String getMaDG() {
-        return maDG;
-    }
-
-    public void setMaDG(String maDG) {
-        this.maDG = maDG;
-    }
-
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
-
-    public String getTenDG() {
-        return tenDG;
-    }
-
-    public void setTenDG(String tenDG) {
-        this.tenDG = tenDG;
-    }
-
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
-    public String getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getLop() {
-        return lop;
-    }
-
-    public void setLop(String lop) {
-        this.lop = lop;
-    }
-
-    public String getNgaySinh() {
-        return ngaySinh;
-    }
-
-    public void setNgaySinh(String ngaySinh) {
-        this.ngaySinh = ngaySinh;
     }
 
     public String getNgayDangKy() {
@@ -117,6 +36,14 @@ public class DocGia {
 
     public void setNgayHetHan(String ngayHetHan) {
         this.ngayHetHan = ngayHetHan;
+    }
+
+    public String getLop() {
+        return lop;
+    }
+
+    public void setLop(String lop) {
+        this.lop = lop;
     }
     
     

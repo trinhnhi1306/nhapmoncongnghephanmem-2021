@@ -19,7 +19,7 @@ import ketnoi.KetNoiSQL;
 public class QuanLyMuonTra extends javax.swing.JFrame {
     private String tatCaSach = "SELECT * FROM SACH";
     private String sachDuocMuonBoiDocGiaDangNhap = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
-            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaDocGia() + "'";
+            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung()+ "'";
     /**
      * Creates new form BorrowReturnBookWindow
      */
@@ -976,7 +976,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
         String keyword = jTextFieldKeyword2.getText(); // tim kiem khong phan biet chu hoa thuong
         String sql = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
-            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaDocGia() + "' AND ";
+            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung()+ "' AND ";
         if (keyword.equals("")) {
             showDSSach(jTableDSSachMuon, sachDuocMuonBoiDocGiaDangNhap);
         } else {
@@ -1043,7 +1043,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
         String keyword = jTextFieldKeyword2.getText(); // tim kiem khong phan biet chu hoa thuong
         String sql = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
-            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaDocGia() + "' AND ";
+            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung()+ "' AND ";
         if (keyword.equals("")) {
             showDSSach(jTableDSSachMuon, sachDuocMuonBoiDocGiaDangNhap);
         } else {
