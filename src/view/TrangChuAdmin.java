@@ -735,7 +735,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private void jButton_LopKhoaVaiTroActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LopKhoaVaiTroActionPerformed1
         // TODO add your handling code here:
         dispose();
-        new QuanLyLopKhoa().setVisible(true);
+        new QuanLyLopKhoaVaiTro().setVisible(true);
     }//GEN-LAST:event_jButton_LopKhoaVaiTroActionPerformed1
 
     private void jButton_DoiMatKhauActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DoiMatKhauActionPerformed1
