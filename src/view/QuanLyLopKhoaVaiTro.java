@@ -1391,7 +1391,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return dsKhoa;
     }
@@ -1422,7 +1422,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return dsLop;
     }
@@ -1454,7 +1454,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
     
@@ -1473,7 +1473,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         } 
         return dsVaiTro;
     }
@@ -1500,7 +1500,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(3, maKhoa);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -1549,7 +1549,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(2, tenKhoa);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -1699,7 +1699,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(2, tenVaiTro);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -1715,7 +1715,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Tên vai trò không được để trống!");
         }
         else {
-            if (kiemTraVaiTro(maVaiTro) == 1) {
+            if (kiemTraTonTaiVaiTro(maVaiTro) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Mã vai trò đã tồn tại!");
             }
             else {
@@ -1734,7 +1734,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
 
     private void jTable_DSLopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSLopMouseClicked
         // TODO add your handling code here:
-        int row = jTable_DSLop.getSelectedRow();
+        int row = jTable_DSLop.convertRowIndexToModel(jTable_DSLop.getSelectedRow());
         if (row == -1) return;
         jTextField_MaLop.setText((String) modelLop.getValueAt(row, 0));
         jTextField_TenLop.setText((String) modelLop.getValueAt(row, 1));
@@ -1743,7 +1743,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
 
     private void jTable_DSKhoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSKhoaMouseClicked
         // TODO add your handling code here:
-        int row = jTable_DSKhoa.getSelectedRow();
+        int row = jTable_DSKhoa.convertRowIndexToModel(jTable_DSKhoa.getSelectedRow());
         if (row == -1) return;
         jTextField_MaKhoa.setText((String) modelKhoa.getValueAt(row, 0));
         jTextField_TenKhoa.setText((String) modelKhoa.getValueAt(row, 1));
@@ -1751,7 +1751,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
 
     private void jTable_DSVaiTroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSVaiTroMouseClicked
         // TODO add your handling code here:
-        int row = jTable_DSVaiTro.getSelectedRow();
+        int row = jTable_DSVaiTro.convertRowIndexToModel(jTable_DSVaiTro.getSelectedRow());
         if (row == -1) return;
         jTextField_MaVaiTro.setText((String) modelVaiTro.getValueAt(row, 0));
         jTextField_TenVaiTro.setText((String) modelVaiTro.getValueAt(row, 1));
@@ -1771,7 +1771,27 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
+    public int kiemTraTonTaiVaiTro (String maVT) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from VAITRO where MAVAITRO ='" + maVT + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
             
         }
         return tonTai;
@@ -1787,7 +1807,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
     
@@ -1836,7 +1856,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
             
         }
         return tonTai;
@@ -1856,7 +1876,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
             
         }
         return tonTai;
@@ -1872,7 +1892,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
     
@@ -1921,7 +1941,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
             
         }
         return tonTai;
@@ -1941,7 +1961,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
             
         }
         return tonTai;
@@ -1957,7 +1977,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
     
@@ -2002,7 +2022,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(2, maKhoa);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -2044,7 +2064,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(3, maLop);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -2085,7 +2105,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(2, maVaiTro);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

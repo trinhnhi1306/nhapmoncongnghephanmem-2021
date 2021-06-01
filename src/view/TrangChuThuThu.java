@@ -400,6 +400,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jButton_XacNhan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_XacNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/check (1).png"))); // NOI18N
         jButton_XacNhan.setText("Xác nhận");
+        jButton_XacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XacNhanActionPerformed(evt);
+            }
+        });
 
         jButton_TroVe2.setBackground(new java.awt.Color(153, 255, 153));
         jButton_TroVe2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1054,6 +1059,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton_LuuActionPerformed
+
+    private void jButton_XacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_XacNhanActionPerformed
 
     /**
      * @param args the command line arguments

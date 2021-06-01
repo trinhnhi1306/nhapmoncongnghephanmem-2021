@@ -976,7 +976,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
 
     private void jTable_DSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSDocGiaMouseClicked
         // TODO add your handling code here:
-        int row = jTable_DSDocGia.getSelectedRow();
+        int row = jTable_DSDocGia.convertRowIndexToModel(jTable_DSDocGia.getSelectedRow());
         if (row == -1) return;
         jTextField_MaDG.setText((String) model.getValueAt(row, 0));
         jTextField_TenDG.setText((String) model.getValueAt(row, 1));
