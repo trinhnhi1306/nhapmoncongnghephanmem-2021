@@ -1517,8 +1517,14 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã Lớp không được để trống!");
         } else if (tenLop.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemLop, "Tên lớp không được để trống!");
+<<<<<<< HEAD
         } else {
             if (kiemTraLop(maLop) == 1) {
+=======
+        }
+        else {
+            if (kiemTraTonTaiLop(maLop) == 1) {
+>>>>>>> 96aa2d0f011cb33404fab411fdfbbf3947f34a88
                 JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã lớp đã tồn tại!");
             } else {
                 themMoiLop(maLop, tenLop, maKhoa);
@@ -1562,8 +1568,14 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Mã khoa không được để trống!");
         } else if (tenKhoa.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Tên khoa không được để trống!");
+<<<<<<< HEAD
         } else {
             if (kiemTraKhoa(maKhoa) == 1) {
+=======
+        }
+        else {
+            if (kiemTraTonTaiKhoa(maKhoa) == 1) {
+>>>>>>> 96aa2d0f011cb33404fab411fdfbbf3947f34a88
                 JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Mã khoa đã tồn tại!");
             } else {
                 themMoiKhoa(maKhoa, tenKhoa);
@@ -1838,8 +1850,33 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         }
         return tonTai;
     }
+<<<<<<< HEAD
 
     public void xoaLop(String maLop) {
+=======
+    
+    public int kiemTraTonTaiLop (String maLop) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from LOP where MALOP ='" + maLop + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
+    public void xoaLop (String maLop) {
+>>>>>>> 96aa2d0f011cb33404fab411fdfbbf3947f34a88
         String sql = "delete from LOP where MALOP = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1900,8 +1937,33 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         }
         return tonTai;
     }
+<<<<<<< HEAD
 
     public void xoaKhoa(String maKhoa) {
+=======
+    
+    public int kiemTraTonTaiKhoa (String maKhoa) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "select * from KHOA where MAKHOA ='" + maKhoa + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        return tonTai;
+    }
+    
+    public void xoaKhoa (String maKhoa) {
+>>>>>>> 96aa2d0f011cb33404fab411fdfbbf3947f34a88
         String sql = "delete from KHOA where MAKHOA = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1928,8 +1990,14 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn khoa bạn muốn xóa");
         } else {
             if (kiemTraKhoa(maKhoa) == 1) {
+<<<<<<< HEAD
                 JOptionPane.showMessageDialog(this, "Khoa đang có sinh viên!");
             } else {
+=======
+                JOptionPane.showMessageDialog(this, "Khoa đang có lớp!");
+            }
+            else {
+>>>>>>> 96aa2d0f011cb33404fab411fdfbbf3947f34a88
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
                 if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
