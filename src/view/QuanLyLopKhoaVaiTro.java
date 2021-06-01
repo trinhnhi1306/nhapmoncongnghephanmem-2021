@@ -20,14 +20,17 @@ import ketnoi.KetNoiSQL;
 import model.Lop;
 import model.Khoa;
 import model.VaiTro;
+
 /**
  *
  * @author Admin
  */
 public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
+
     private DefaultTableModel modelKhoa;
     private DefaultTableModel modelLop;
     private DefaultTableModel modelVaiTro;
+
     /**
      * Creates new form QuanLyLopKhoa
      */
@@ -1376,7 +1379,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public ArrayList<Khoa> dsKhoa () {
+    public ArrayList<Khoa> dsKhoa() {
         ArrayList<Khoa> dsKhoa = new ArrayList<>();
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1392,22 +1395,22 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return dsKhoa;
     }
-    
-    public void showKhoa () {
+
+    public void showKhoa() {
         ArrayList<Khoa> dsKhoa = dsKhoa();
         modelKhoa.setNumRows(0);
         dsKhoa.forEach(k -> {
-            modelKhoa.addRow(new Object[] {
+            modelKhoa.addRow(new Object[]{
                 k.getMaKhoa(),
                 k.getTenKhoa()
             });
         });
     }
-    
-    public ArrayList<Lop> dsLop () {
+
+    public ArrayList<Lop> dsLop() {
         ArrayList<Lop> dsLop = new ArrayList<>();
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1423,23 +1426,23 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return dsLop;
     }
-    
-    public void showLop () {
+
+    public void showLop() {
         ArrayList<Lop> dsLop = dsLop();
         modelLop.setNumRows(0);
         dsLop.forEach(l -> {
-            modelLop.addRow(new Object[] {
+            modelLop.addRow(new Object[]{
                 l.getMaLop(),
                 l.getTenLop(),
                 l.getMaKhoa()
             });
         });
     }
-    
-    public void showMaKhoa () {
+
+    public void showMaKhoa() {
         jComboBox_MaKhoaCuaLop.removeAllItems();
         jComboBox_MaKhoaCuaLop1.removeAllItems();
         Connection con = KetNoiSQL.layKetNoi();
@@ -1455,10 +1458,10 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
-    
-    public ArrayList<VaiTro> dsVaiTro () {
+
+    public ArrayList<VaiTro> dsVaiTro() {
         ArrayList<VaiTro> dsVaiTro = new ArrayList<>();
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1474,23 +1477,23 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return dsVaiTro;
     }
-    
-    public void showVaiTro () {
+
+    public void showVaiTro() {
         ArrayList<VaiTro> dsVaiTro = dsVaiTro();
         modelVaiTro.setNumRows(0);
         dsVaiTro.forEach(vt -> {
-            modelVaiTro.addRow(new Object[] {
+            modelVaiTro.addRow(new Object[]{
                 vt.getMaVaiTro(),
                 vt.getTenVaiTro()
             });
         });
     }
-    
-    public void themMoiLop (String maLop, String tenLop, String maKhoa) {
-        
+
+    public void themMoiLop(String maLop, String tenLop, String maKhoa) {
+
         String sql = "insert into LOP values (?,?,?)";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1503,24 +1506,21 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_ThemLop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemLop1ActionPerformed
         // TODO add your handling code here:
         String maLop = jTextField_MaLop1.getText();
         String tenLop = jTextField_TenLop1.getText();
         String maKhoa = (String) jComboBox_MaKhoaCuaLop1.getSelectedItem();
-        
+
         if (maLop.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã Lớp không được để trống!");
-        }
-        else if (tenLop.equalsIgnoreCase("")) {
+        } else if (tenLop.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemLop, "Tên lớp không được để trống!");
-        }
-        else {
+        } else {
             if (kiemTraLop(maLop) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã lớp đã tồn tại!");
-            }
-            else {
+            } else {
                 themMoiLop(maLop, tenLop, maKhoa);
                 JOptionPane.showMessageDialog(jDialog_ThemLop, "Thêm lớp thành công!");
                 jDialog_ThemLop.dispose();
@@ -1539,8 +1539,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         jDialog_ThemKhoa.dispose();
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
-    public void themMoiKhoa (String maKhoa, String tenKhoa) {
-        
+    public void themMoiKhoa(String maKhoa, String tenKhoa) {
+
         String sql = "insert into KHOA values (?,?)";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1552,23 +1552,20 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_ThemKhoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemKhoa1ActionPerformed
         // TODO add your handling code here:
         String tenKhoa = jTextField_TenKhoa1.getText();
         String maKhoa = jTextField_MaKhoa1.getText();
-        
+
         if (maKhoa.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Mã khoa không được để trống!");
-        }
-        else if (tenKhoa.equalsIgnoreCase("")) {
+        } else if (tenKhoa.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Tên khoa không được để trống!");
-        }
-        else {
+        } else {
             if (kiemTraKhoa(maKhoa) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Mã khoa đã tồn tại!");
-            }
-            else {
+            } else {
                 themMoiKhoa(maKhoa, tenKhoa);
                 JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Thêm khoa thành công!");
                 jDialog_ThemKhoa.dispose();
@@ -1583,7 +1580,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         String tuKhoa = jTextField_KeywordKhoa.getText();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelKhoa);
         jTable_DSKhoa.setRowSorter(trs);
-        
+
         if (jRadioButton_MaKhoa.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
         }
@@ -1619,7 +1616,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         String tuKhoa = jTextField_KeywordLop.getText();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelLop);
         jTable_DSLop.setRowSorter(trs);
-        
+
         if (jRadioButton_MaLop.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
         }
@@ -1658,7 +1655,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         String tuKhoa = jTextField_KeywordVaiTro.getText();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelVaiTro);
         jTable_DSVaiTro.setRowSorter(trs);
-        
+
         if (jRadioButton_MaVaiTro.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
         }
@@ -1689,8 +1686,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton_Thoat2ActionPerformed
 
-    public void themMoiVaiTro (String maVaiTro, String tenVaiTro) {
-        
+    public void themMoiVaiTro(String maVaiTro, String tenVaiTro) {
+
         String sql = "insert into VAITRO values (?,?)";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1702,23 +1699,20 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_ThemVaiTro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemVaiTro1ActionPerformed
         // TODO add your handling code here:
         String tenVaiTro = jTextField_TenVaiTro1.getText();
         String maVaiTro = jTextField_MaVaiTro1.getText();
-        
+
         if (maVaiTro.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Mã vai trò không được để trống!");
-        }
-        else if (tenVaiTro.equalsIgnoreCase("")) {
+        } else if (tenVaiTro.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Tên vai trò không được để trống!");
-        }
-        else {
+        } else {
             if (kiemTraVaiTro(maVaiTro) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Mã vai trò đã tồn tại!");
-            }
-            else {
+            } else {
                 themMoiVaiTro(maVaiTro, tenVaiTro);
                 JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Thêm vai trò thành công!");
                 jDialog_ThemVaiTro.dispose();
@@ -1735,7 +1729,9 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private void jTable_DSLopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSLopMouseClicked
         // TODO add your handling code here:
         int row = jTable_DSLop.getSelectedRow();
-        if (row == -1) return;
+        if (row == -1) {
+            return;
+        }
         jTextField_MaLop.setText((String) modelLop.getValueAt(row, 0));
         jTextField_TenLop.setText((String) modelLop.getValueAt(row, 1));
         jComboBox_MaKhoaCuaLop.setSelectedItem(modelLop.getValueAt(row, 2));
@@ -1744,7 +1740,9 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private void jTable_DSKhoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSKhoaMouseClicked
         // TODO add your handling code here:
         int row = jTable_DSKhoa.getSelectedRow();
-        if (row == -1) return;
+        if (row == -1) {
+            return;
+        }
         jTextField_MaKhoa.setText((String) modelKhoa.getValueAt(row, 0));
         jTextField_TenKhoa.setText((String) modelKhoa.getValueAt(row, 1));
     }//GEN-LAST:event_jTable_DSKhoaMouseClicked
@@ -1752,12 +1750,14 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private void jTable_DSVaiTroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSVaiTroMouseClicked
         // TODO add your handling code here:
         int row = jTable_DSVaiTro.getSelectedRow();
-        if (row == -1) return;
+        if (row == -1) {
+            return;
+        }
         jTextField_MaVaiTro.setText((String) modelVaiTro.getValueAt(row, 0));
         jTextField_TenVaiTro.setText((String) modelVaiTro.getValueAt(row, 1));
     }//GEN-LAST:event_jTable_DSVaiTroMouseClicked
 
-    public int kiemTraVaiTro (String maVT) {
+    public int kiemTraVaiTro(String maVT) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
         String sql = "select * from NGUOIDUNG where MAVAITRO ='" + maVT + "'";
@@ -1772,12 +1772,12 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         return tonTai;
     }
-    
-    public void xoaVaiTro (String maVT) {
+
+    public void xoaVaiTro(String maVT) {
         String sql = "delete from VAITRO where MAVAITRO = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1788,33 +1788,30 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
-    
-    public void xoaDuLieuVaiTro () {
+
+    public void xoaDuLieuVaiTro() {
         jTextField_MaVaiTro.setText("");
         jTextField_TenVaiTro.setText("");
     }
-    
+
     private void jButton_XoaVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaVaiTroActionPerformed
         // TODO add your handling code here:
         String maVT = jTextField_MaVaiTro.getText();
         int kt;
         if (maVT.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn vai trò bạn muốn xóa");
-        }
-        else {
+        } else {
             if (kiemTraVaiTro(maVT) == 1) {
                 JOptionPane.showMessageDialog(this, "Vai trò đang có người dùng!");
-            }
-            else {
+            } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
+                if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
+                } else if (luaChon == JOptionPane.OK_OPTION) {
                     xoaVaiTro(maVT);
-                    JOptionPane.showMessageDialog(this, "Xóa vai trò thành công");  
+                    JOptionPane.showMessageDialog(this, "Xóa vai trò thành công");
                     xoaDuLieuVaiTro();
                     showVaiTro();
                 }
@@ -1822,7 +1819,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_XoaVaiTroActionPerformed
 
-    public int kiemTraLop (String maLop) {
+    public int kiemTraLop(String maLop) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
         String sql = "select * from NGUOIDUNG where MALOP ='" + maLop + "'";
@@ -1837,12 +1834,12 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         return tonTai;
     }
-    
-    public void xoaLop (String maLop) {
+
+    public void xoaLop(String maLop) {
         String sql = "delete from LOP where MALOP = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1853,33 +1850,30 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
-    
-    public void xoaDuLieuLop () {
+
+    public void xoaDuLieuLop() {
         jTextField_MaLop.setText("");
         jTextField_TenLop.setText("");
     }
-    
+
     private void jButton_XoaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaLopActionPerformed
         // TODO add your handling code here:
         String maLop = jTextField_MaLop.getText();
         int kt;
         if (maLop.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn lớp bạn muốn xóa");
-        }
-        else {
+        } else {
             if (kiemTraLop(maLop) == 1) {
                 JOptionPane.showMessageDialog(this, "Lớp đang có sinh viên!");
-            }
-            else {
+            } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
+                if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
+                } else if (luaChon == JOptionPane.OK_OPTION) {
                     xoaLop(maLop);
-                    JOptionPane.showMessageDialog(this, "Xóa lớp thành công");  
+                    JOptionPane.showMessageDialog(this, "Xóa lớp thành công");
                     xoaDuLieuLop();
                     showLop();
                 }
@@ -1887,7 +1881,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_XoaLopActionPerformed
 
-    public int kiemTraKhoa (String maKhoa) {
+    public int kiemTraKhoa(String maKhoa) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
         String sql = "select * from LOP where MAKHOA ='" + maKhoa + "'";
@@ -1902,12 +1896,12 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         return tonTai;
     }
-    
-    public void xoaKhoa (String maKhoa) {
+
+    public void xoaKhoa(String maKhoa) {
         String sql = "delete from KHOA where MAKHOA = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1918,33 +1912,30 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
-    
-    public void xoaDuLieuKhoa () {
+
+    public void xoaDuLieuKhoa() {
         jTextField_MaKhoa.setText("");
         jTextField_TenKhoa.setText("");
     }
-    
+
     private void jButton_XoaKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaKhoaActionPerformed
         // TODO add your handling code here:
         String maKhoa = jTextField_MaKhoa.getText();
         int kt;
         if (maKhoa.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn khoa bạn muốn xóa");
-        }
-        else {
+        } else {
             if (kiemTraKhoa(maKhoa) == 1) {
                 JOptionPane.showMessageDialog(this, "Khoa đang có sinh viên!");
-            }
-            else {
+            } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
+                if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
+                } else if (luaChon == JOptionPane.OK_OPTION) {
                     xoaKhoa(maKhoa);
-                    JOptionPane.showMessageDialog(this, "Xóa khoa thành công");  
+                    JOptionPane.showMessageDialog(this, "Xóa khoa thành công");
                     xoaDuLieuKhoa();
                     showKhoa();
                 }
@@ -1953,7 +1944,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_XoaKhoaActionPerformed
 
     public void chinhSuaKhoa(String maKhoa, String tenKhoa) {
-        
+
         String sql = "update KHOA set TENKHOA = ? WHERE MAKHOA = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1965,26 +1956,21 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_SuaKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaKhoaActionPerformed
         // TODO add your handling code here:
         String maKhoa = jTextField_MaKhoa.getText();
-        int kt;
         if (maKhoa.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn khoa bạn muốn chỉnh sửa");
-        }
-        else {
+        } else {
             String tenKhoa = jTextField_TenKhoa.getText();
-            
             if (tenKhoa.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Tên khoa không được để trống!");
-            }
-            else {
+            } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
+                if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
+                } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaKhoa(maKhoa, tenKhoa);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa khoa thành công!");
                     showKhoa();
@@ -1994,7 +1980,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_SuaKhoaActionPerformed
 
     public void chinhSuaLop(String maLop, String tenLop, String maKhoa) {
-        
+
         String sql = "update LOP set TENLOP = ?, MAKHOA = ? WHERE MALOP = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -2007,26 +1993,23 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_SuaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaLopActionPerformed
         // TODO add your handling code here:
         String maLop = jTextField_MaLop.getText();
         int kt;
         if (maLop.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn lớp bạn muốn chỉnh sửa");
-        }
-        else {
+        } else {
             String tenLop = jTextField_TenLop.getText();
             String maKhoa = (String) jComboBox_MaKhoaCuaLop.getSelectedItem();
             if (tenLop.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Tên lớp không được để trống!");
-            }
-            else {
+            } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
+                if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
+                } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaLop(maLop, tenLop, maKhoa);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa lớp thành công!");
                     showLop();
@@ -2036,7 +2019,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_SuaLopActionPerformed
 
     public void chinhSuaVaiTro(String maVaiTro, String tenVaiTro) {
-        
+
         String sql = "update VAITRO set TENVAITRO = ? WHERE MAVAITRO = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -2048,25 +2031,22 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_SuaVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaVaiTroActionPerformed
         // TODO add your handling code here:
         String maVaiTro = jTextField_MaVaiTro.getText();
         int kt;
         if (maVaiTro.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn vai trò bạn muốn chỉnh sửa");
-        }
-        else {
+        } else {
             String tenVaiTro = jTextField_TenVaiTro.getText();
             if (tenVaiTro.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Tên vai trò không được để trống!");
-            }
-            else {
+            } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
+                if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
+                } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaVaiTro(maVaiTro, tenVaiTro);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa vai trò thành công!");
                     showVaiTro();
