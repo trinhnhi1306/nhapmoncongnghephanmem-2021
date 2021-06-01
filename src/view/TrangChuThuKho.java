@@ -77,11 +77,13 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField_oldpass = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        jPasswordField_newpass = new javax.swing.JPasswordField();
         jButton_XacNhan = new javax.swing.JButton();
         jButton_TroVe2 = new javax.swing.JButton();
+        jPasswordField_cnfpass = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
         jPanel32 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
@@ -374,17 +376,22 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Mật khẩu mới");
 
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPasswordField_oldpass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Nhập lại mật khẩu");
 
-        jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPasswordField_newpass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jButton_XacNhan.setBackground(new java.awt.Color(153, 255, 153));
         jButton_XacNhan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_XacNhan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/check (1).png"))); // NOI18N
         jButton_XacNhan.setText("Xác nhận");
+        jButton_XacNhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XacNhanActionPerformed(evt);
+            }
+        });
 
         jButton_TroVe2.setBackground(new java.awt.Color(153, 255, 153));
         jButton_TroVe2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -396,19 +403,26 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField_cnfpass.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("Mật khẩu cũ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addGap(12, 12, 12)
+                    .addComponent(jLabel10))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPasswordField2)
-                    .addComponent(jPasswordField1))
+                    .addComponent(jPasswordField_newpass)
+                    .addComponent(jPasswordField_oldpass)
+                    .addComponent(jPasswordField_cnfpass))
                 .addGap(16, 16, 16))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -428,13 +442,17 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPasswordField_oldpass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                    .addComponent(jPasswordField_newpass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPasswordField_cnfpass, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_XacNhan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -845,28 +863,62 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         String sdt = jTextField_SDT.getText();
         String email = jTextField_Email.getText();
         if (ten.equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(this, "Tên người dùng không được để trống!");
+                JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Tên người dùng không được để trống!");
         }
         else {
             if(!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
-                JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ!");
+                JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Số điện thoại không hợp lệ!");
             }
             else if(!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
-                JOptionPane.showMessageDialog(this, "Email không hợp lệ!");
+                JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Email không hợp lệ!");
             }
             else {
-                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
+                int luaChon = JOptionPane.showConfirmDialog(jDialog_SuaThongTinCaNhan, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
                 if(luaChon == JOptionPane.CANCEL_OPTION)
                     return;
                 else  if(luaChon == JOptionPane.OK_OPTION)
                 {
                     NguoiDung.chinhSuaTTNguoiDung(maNguoiDung, chuanHoaDanhTuRieng(ten), gioiTinh, ngaySinh, diaChi, sdt, email);
-                    JOptionPane.showMessageDialog(this, "Chỉnh sửa thông tin thành công!");
+                    JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Chỉnh sửa thông tin thành công!");
                     showThongTinNguoiDung();
                 }
             }
         }
     }//GEN-LAST:event_jButton_LuuActionPerformed
+
+    private void jButton_XacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanActionPerformed
+        // TODO add your handling code here:
+        NguoiDung nd = NguoiDung.layThongTinNguoiDung();
+        String newpass = String.valueOf(jPasswordField_newpass.getPassword());
+        String cnfpass = String.valueOf(jPasswordField_cnfpass.getPassword());
+        String oldpass = String.valueOf(jPasswordField_oldpass.getPassword());
+        
+        if (!oldpass.equals(nd.getMatKhau())) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password cũ không đúng!");
+        }
+        else if(!newpass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password mới không hợp lệ!");
+        }
+        else if(!cnfpass.equals(newpass)) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password bạn nhập lại không hợp lệ!");
+        }
+        else {
+            String sql = "update NGUOIDUNG set MATKHAU = ? where MANGUOIDUNG = ?";
+            Connection con = KetNoiSQL.layKetNoi();
+            try {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setString(1, newpass);
+                ps.setString(2, DangNhap.getMaNguoiDung());
+                ps.executeUpdate();
+                ps.close();
+                con.close();
+                JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Đổi mật khẩu thành công!");
+                jDialog_DoiMatKhau.dispose(); 
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jButton_XacNhanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -922,6 +974,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog_SuaThongTinCaNhan;
     private javax.swing.JDialog jDialog_ThongBao;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -955,8 +1008,9 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField jPasswordField_cnfpass;
+    private javax.swing.JPasswordField jPasswordField_newpass;
+    private javax.swing.JPasswordField jPasswordField_oldpass;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField3;
