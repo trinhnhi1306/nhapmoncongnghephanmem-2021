@@ -598,7 +598,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel58.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel58.setText("Số người dùng");
         jPanel6.add(jLabel58);
-        jLabel58.setBounds(70, 10, 130, 30);
+        jLabel58.setBounds(60, 10, 140, 30);
 
         jLabel59.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel59.setText("0");
