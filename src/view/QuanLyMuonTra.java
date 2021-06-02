@@ -5,25 +5,35 @@
  */
 package view;
 
-import table.TableNguoiDung;
-import table.TableSach;
+import java.util.ArrayList;
+import java.util.Arrays;
+import table.DataFromSQLServer;
 
 /**
  *
  * @author COMPUTER
  */
 public class QuanLyMuonTra extends javax.swing.JFrame {
-
-    private String tatCaSach = "SELECT * FROM SACH";
+    private ArrayList<String> columnTitlesOfJTableSachDangMuon= new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI", 
+                                                                                              "MATACGIA", "MANXB", "MATHELOAI", "NGAYMUON", "HANTRA"));
+    private ArrayList<String> columnTitlesOfJTableDocGia1 = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI", 
+                                                                                          "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
+    private ArrayList<String> columnTitlesOfJTableDocGia2 = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI", 
+                                                                                          "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
+    private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI", 
+                                                                                       "MATACGIA", "MANXB", "MATHELOAI", "SOLUONGCO", "SOLUONGCON"));
+    private String queryForJTableSach = "SELECT * FROM SACH";
+    private String queryForJTableDocGia1 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
+    private String queryForJTableDocGia2 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
     /**
      * Creates new form BorrowReturnBookWindow
      */
     public QuanLyMuonTra() {
         initComponents();
         setLocationRelativeTo(null);
-        TableSach.showSach(jTableSach, tatCaSach);
-        TableNguoiDung.showDocGia(jTableDocGia1);
-        TableNguoiDung.showDocGia(jTableDocGia2);
+        DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
+        DataFromSQLServer.getAndShowData(jTableDocGia1, columnTitlesOfJTableDocGia1, queryForJTableDocGia1);
+        DataFromSQLServer.getAndShowData(jTableDocGia2, columnTitlesOfJTableDocGia2, queryForJTableDocGia2);
     }
 
     /**
@@ -100,7 +110,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jRadioButtonTheLoai2 = new javax.swing.JRadioButton();
         jPanel20 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTableDSSachMuon1 = new javax.swing.JTable();
+        jTableSachDangMuon = new javax.swing.JTable();
         jPanel21 = new javax.swing.JPanel();
         jButton_TraSach = new javax.swing.JButton();
         jButton_BaoHongMat = new javax.swing.JButton();
@@ -377,7 +387,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 947, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -652,6 +662,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
         jTableDocGia2.setFillsViewportHeight(true);
+        jTableDocGia2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jTableDocGia2MouseReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTableDocGia2);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -660,7 +675,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 947, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 948, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
@@ -704,24 +719,24 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel20.setBackground(new java.awt.Color(255, 255, 204));
         jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Sách đang mượn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTableDSSachMuon1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSachDangMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Giá", "Vị trí", "Mã tác giả", "Mã NXB", "Mã thể loại", "Ngày mượn", "Ngày trả"
+                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Mã tác giả", "Mã NXB", "Mã thể loại", "Ngày mượn", "Hạn trả"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTableDSSachMuon1.setFillsViewportHeight(true);
-        jScrollPane4.setViewportView(jTableDSSachMuon1);
+        jTableSachDangMuon.setFillsViewportHeight(true);
+        jScrollPane4.setViewportView(jTableSachDangMuon);
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -966,6 +981,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jDialog_PhieuMuon.dispose();
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
+    private void jTableDocGia2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDocGia2MouseReleased
+        // TODO add your handling code here:
+        int selectedRow = jTableDocGia2.convertRowIndexToModel(jTableDocGia2.getSelectedRow());
+        String maDocGia = (String) jTableDocGia2.getModel().getValueAt(selectedRow, 0);
+        String sql = "SELECT S.MASACH, TENSACH, NGAYNHAP, GIA, VITRI, MATACGIA, MANXB, MATHELOAI, NGAYMUON, HANTRA "
+                   + "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maDocGia + "'";
+        DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, sql);
+    }//GEN-LAST:event_jTableDocGia2MouseReleased
+
     /**
      * @param args the command line arguments
      */
@@ -1068,10 +1092,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTableDSSachMuon1;
     private javax.swing.JTable jTableDocGia1;
     private javax.swing.JTable jTableDocGia2;
     private javax.swing.JTable jTableSach;
+    private javax.swing.JTable jTableSachDangMuon;
     private javax.swing.JTextField jTextFieldKeyword1;
     private javax.swing.JTextField jTextFieldKeyword2;
     private javax.swing.JTextField jTextFieldKeyword4;
