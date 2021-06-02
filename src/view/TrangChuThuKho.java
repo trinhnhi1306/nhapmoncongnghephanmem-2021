@@ -34,6 +34,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         demSoLuongDG();
+        demSoLuongSC();
     }
 
     /**
@@ -108,11 +109,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel29 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
+        jLabel_SLSachCon = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
+        jLabel_SLSachMuon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -632,10 +633,10 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel29.add(jLabel61);
         jLabel61.setBounds(50, 10, 160, 30);
 
-        jLabel62.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel62.setText("0");
-        jPanel29.add(jLabel62);
-        jLabel62.setBounds(150, 70, 100, 50);
+        jLabel_SLSachCon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachCon.setText("0");
+        jPanel29.add(jLabel_SLSachCon);
+        jLabel_SLSachCon.setBounds(150, 70, 100, 50);
 
         jPanel30.setBackground(new java.awt.Color(0, 255, 204));
         jPanel30.setLayout(null);
@@ -649,10 +650,10 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel30.add(jLabel64);
         jLabel64.setBounds(40, 10, 190, 30);
 
-        jLabel65.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel65.setText("0");
-        jPanel30.add(jLabel65);
-        jLabel65.setBounds(150, 70, 100, 50);
+        jLabel_SLSachMuon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachMuon.setText("0");
+        jPanel30.add(jLabel_SLSachMuon);
+        jLabel_SLSachMuon.setBounds(150, 70, 100, 50);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -741,6 +742,21 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 jLabel_SLDocGia.setText(rs.getString(1));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChuThuKho.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    public void demSoLuongSC () {
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement("select SUM(SOLUONGCON) from SACH ");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                jLabel_SLSachCon.setText(rs.getString(1));
             }
             rs.close();
             ps.close();
@@ -992,13 +1008,13 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_SLDocGia;
+    private javax.swing.JLabel jLabel_SLSachCon;
+    private javax.swing.JLabel jLabel_SLSachMuon;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
