@@ -11,40 +11,14 @@ package model;
  */
 public class DocGia extends NguoiDung {
 
-    private String ngayDangKy, ngayHetHan, lop;
-
     public DocGia() {
     }
 
-    public DocGia(String ma, String matKhau, String ten, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String lop) {
-        super(ma, matKhau, ten, gioiTinh, ngaySinh, diaChi, sdt, email);
-        this.ngayDangKy = ngayDangKy;
-        this.ngayHetHan = ngayHetHan;
-        this.lop = lop;
+    public DocGia(String maDG, String matKhau, String tenDG, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String maLop) {
+        super(maDG, matKhau, tenDG, gioiTinh, ngaySinh, ngayDangKy, ngayHetHan, diaChi, sdt, email, maLop);
     }
 
-    public String getNgayDangKy() {
-        return ngayDangKy;
+    public DocGia(String maDG, String matKhau, String tenDG, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String maVaiTro, String maLop) {
+        super(maDG, matKhau, tenDG, gioiTinh, ngaySinh, ngayDangKy, ngayHetHan, diaChi, sdt, email, maVaiTro, maLop);
     }
-
-    public void setNgayDangKy(String ngayDangKy) {
-        this.ngayDangKy = ngayDangKy;
-    }
-
-    public String getNgayHetHan() {
-        return ngayHetHan;
-    }
-
-    public void setNgayHetHan(String ngayHetHan) {
-        this.ngayHetHan = ngayHetHan;
-    }
-
-    public String getLop() {
-        return lop;
-    }
-
-    public void setLop(String lop) {
-        this.lop = lop;
-    }
-
 }

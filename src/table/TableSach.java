@@ -33,7 +33,7 @@ public class TableSach {
                 ds.add(sach);
             }
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(QuanLySach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TableSach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         return ds;
     }

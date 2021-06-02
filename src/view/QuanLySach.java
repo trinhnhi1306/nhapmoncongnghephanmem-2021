@@ -16,12 +16,12 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import model.Sach;
+import table.TableSach;
 
 /**
  *
@@ -35,10 +35,10 @@ public class QuanLySach extends javax.swing.JFrame {
     public QuanLySach() {
         initComponents();
         setLocationRelativeTo(null);
-        showDSSach(jTable_DSSach, "SELECT * FROM SACH");
         getMaTacGia();
         getMaNXB();
         getMaTheLoai();
+        TableSach.showSach(jTable_DSSach, "SELECT * FROM SACH");
     }
 
     /**
@@ -765,44 +765,6 @@ public class QuanLySach extends javax.swing.JFrame {
 //        }
 //        return str;
 //    }
-    private ArrayList<Sach> getDSSach(String sql) {
-        ArrayList<Sach> ds = new ArrayList<>();
-        try (
-                Connection con = KetNoiSQL.layKetNoi();
-                PreparedStatement ps = con.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Sach sach = new Sach(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
-                ds.add(sach);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(QuanLySach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        return ds;
-    }
-
-    private void showDSSach(JTable jTable, String sql) {
-        ArrayList<Sach> ds = getDSSach(sql);
-        DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
-        dtm.setRowCount(0); //Xóa tất cả các hàng
-        for (Sach sach : ds) {
-            dtm.addRow(new Object[]{
-                sach.getMaSach(),
-                sach.getTenSach(),
-                sach.getTacGia(),
-                sach.getNxb(),
-                sach.getTheLoai(),
-                sach.getNgayNhap(),
-                sach.getGia(),
-                sach.getViTri(),
-                sach.getSoLuongCo(),
-                sach.getSoLuongCon()});
-        }
-    }
-
     private void getMaTacGia() {
         jComboBox_MaTacGia.removeAllItems();
         jComboBox_MaTacGia1.removeAllItems();
@@ -903,7 +865,7 @@ public class QuanLySach extends javax.swing.JFrame {
     }
 
     private void chinhSuaSach(String maSach, String tenSach, String maTacGia, String maNXB, String maTheLoai, String gia, String ngayNhap, String viTri, String soLuongThem) {
-        ArrayList<Sach> sach = getDSSach("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
+        ArrayList<Sach> sach = TableSach.getSach("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
         int soLuongCo = Integer.parseInt(sach.get(0).getSoLuongCo());
         int soLuongCon = Integer.parseInt(sach.get(0).getSoLuongCon());
         String sql = "UPDATE SACH SET TENSACH = ?, MATACGIA = ?, MANXB = ?, MATHELOAI = ?, GIA = ?, NGAYNHAP = ?, VITRI = ?, SOLUONGCO = ?, SOLUONGCON = ? WHERE MASACH = ?";
@@ -975,12 +937,12 @@ public class QuanLySach extends javax.swing.JFrame {
         jTextField_SoLuongThem.setText("");
     }
 
-    private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
+    private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
         jDialog_ThemSach.pack(); //Tự động thay đổi kích thước của JFrame dựa trên kích thước của các component mà nó chứa
         jDialog_ThemSach.setLocationRelativeTo(this);
         jDialog_ThemSach.setVisible(true);
-    }//GEN-LAST:event_jButton_ThemActionPerformed
+    }                                            
 
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
@@ -1023,7 +985,7 @@ public class QuanLySach extends javax.swing.JFrame {
                 themMoiSach(maSach, tenSach, maTacGia, maNXB, maTheLoai, gia, ngayNhap, viTri, soLuong);
                 JOptionPane.showMessageDialog(jDialog_ThemSach, "Thêm sách thành công!");
                 jDialog_ThemSach.dispose();
-                showDSSach(jTable_DSSach, "SELECT * FROM SACH");
+                TableSach.showSach(jTable_DSSach, "SELECT * FROM SACH");
             }
         }
     }//GEN-LAST:event_jButton_Them1ActionPerformed
@@ -1057,7 +1019,7 @@ public class QuanLySach extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSSach.setRowSorter(trs);
         if (keyword.equals("")) {
-            showDSSach(jTable_DSSach, "SELECT * FROM SACH");
+            TableSach.showSach(jTable_DSSach, "SELECT * FROM SACH");
         } else {
             if (jRadioButton_MaSach.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1080,7 +1042,7 @@ public class QuanLySach extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSSach.setRowSorter(trs);
         if (keyword.equals("")) {
-            showDSSach(jTable_DSSach, "SELECT * FROM SACH");
+            TableSach.showSach(jTable_DSSach, "SELECT * FROM SACH");
         } else {
             if (jRadioButton_MaSach.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1176,7 +1138,7 @@ public class QuanLySach extends javax.swing.JFrame {
                 if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaSach(maSach, tenSach, maTacGia, maNXB, maTheLoai, gia, ngayNhap, viTri, soLuongThem);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa sách thành công!");
-                    showDSSach(jTable_DSSach, "SELECT * FROM SACH");
+                    TableSach.showSach(jTable_DSSach, "SELECT * FROM SACH");
                 } else {
                     return;
                 }
@@ -1198,7 +1160,7 @@ public class QuanLySach extends javax.swing.JFrame {
                     xoaSach(maSach);
                     JOptionPane.showMessageDialog(this, "Xóa sách thành công!");
                     xoaDuLieuSach();
-                    showDSSach(jTable_DSSach, "SELECT * FROM SACH");
+                    TableSach.showSach(jTable_DSSach, "SELECT * FROM SACH");
                 } else {
                     return;
                 }

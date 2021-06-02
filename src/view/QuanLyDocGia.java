@@ -801,7 +801,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 dg.getEmail(),
                 dg.getNgayDangKy(),
                 dg.getNgayHetHan(),
-                dg.getLop()
+                dg.getMaLop()
             });
         });
     }

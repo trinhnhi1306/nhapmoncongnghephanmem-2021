@@ -5,12 +5,7 @@
  */
 package view;
 
-import java.util.ArrayList;
-import model.Sach;
-import java.sql.*;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import ketnoi.KetNoiSQL;
+import table.TableNguoiDung;
 import table.TableSach;
 
 /**
@@ -27,6 +22,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         TableSach.showSach(jTableSach, tatCaSach);
+        TableNguoiDung.showDocGia(jTableDocGia1);
+        TableNguoiDung.showDocGia(jTableDocGia2);
     }
 
     /**
@@ -291,7 +288,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã", "Họ tên", "Mã lớp", "Giới tính", "Ngày sinh", "Địa chỉ", "SĐT", "Email", "Ngày đăng ký", "Ngày hết hạn"
+                "Mã độc giả", "Tên độc giả", "Giới tính", "Ngày sinh", "Địa chỉ", "SĐT", "Email", "Ngày đăng ký", "Ngày hết hạn", "Mã lớp"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -304,10 +301,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         });
         jTableDocGia1.setFillsViewportHeight(true);
         jScrollPane2.setViewportView(jTableDocGia1);
-        if (jTableDocGia1.getColumnModel().getColumnCount() > 0) {
-            jTableDocGia1.getColumnModel().getColumn(5).setHeaderValue("Ngày nhập");
-            jTableDocGia1.getColumnModel().getColumn(8).setHeaderValue("Số lượng có");
-        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -647,7 +640,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã", "Họ tên", "Mã lớp", "Giới tính", "Ngày sinh", "Địa chỉ", "SĐT", "Email", "Ngày đăng ký", "Ngày hết hạn"
+                "Mã độc giả", "Tên độc giả", "Giới tính", "Ngày sinh", "Địa chỉ", "SĐT", "Email", "Ngày đăng ký", "Ngày hết hạn", "Mã lớp"
             }
         ) {
             boolean[] canEdit = new boolean [] {

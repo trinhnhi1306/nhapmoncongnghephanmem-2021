@@ -17,9 +17,8 @@ import view.DangNhap;
  * @author Apple Bee
  */
 public class NguoiDung {
-
-    private String ma, matKhau, ten, gioiTinh, ngaySinh, diaChi, sdt, email;
-
+    private String ma, matKhau, ten, gioiTinh, ngaySinh, ngayDangKy, ngayHetHan, diaChi, sdt, email, maVaiTro, maLop;
+    
     public NguoiDung() {
     }
 
@@ -33,7 +32,35 @@ public class NguoiDung {
         this.sdt = sdt;
         this.email = email;
     }
-
+    public NguoiDung(String ma, String matKhau, String ten, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String maLop) {
+        this.ma = ma;
+        this.matKhau = matKhau;
+        this.ten = ten;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.ngayDangKy = ngayDangKy;
+        this.ngayHetHan = ngayHetHan;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.email = email;
+        this.maLop = maLop;
+    }
+    public NguoiDung(String ma, String matKhau, String ten, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String maVaiTro, String maLop) {
+        this.ma = ma;
+        this.matKhau = matKhau;
+        this.ten = ten;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.ngayDangKy = ngayDangKy;
+        this.ngayHetHan = ngayHetHan;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.email = email;
+        this.maVaiTro = maVaiTro;
+        this.maLop = maLop;
+    }
+    
+    
     public String getMa() {
         return ma;
     }
@@ -72,6 +99,22 @@ public class NguoiDung {
 
     public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
+    }
+
+    public String getNgayDangKy() {
+        return ngayDangKy;
+    }
+
+    public void setNgayDangKy(String ngayDangKy) {
+        this.ngayDangKy = ngayDangKy;
+    }
+
+    public String getNgayHetHan() {
+        return ngayHetHan;
+    }
+
+    public void setNgayHetHan(String ngayHetHan) {
+        this.ngayHetHan = ngayHetHan;
     }
 
     public String getDiaChi() {
@@ -137,4 +180,20 @@ public class NguoiDung {
         }
         return n;
     }
+    public String getMaVaiTro() {
+        return maVaiTro;
+    }
+
+    public void setMaVaiTro(String maVaiTro) {
+        this.maVaiTro = maVaiTro;
+    }
+
+    public String getMaLop() {
+        return maLop;
+    }
+
+    public void setMaLop(String maLop) {
+        this.maLop = maLop;
+    }
+    
 }
