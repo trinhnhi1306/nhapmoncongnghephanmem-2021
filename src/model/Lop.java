@@ -10,6 +10,7 @@ package model;
  * @author Apple Bee
  */
 public class Lop {
+
     private String maLop, tenLop, maKhoa;
 
     public Lop() {
@@ -24,11 +25,11 @@ public class Lop {
     public String getMaKhoa() {
         return maKhoa;
     }
-    
+
     public void setMaKhoa(String maKhoa) {
         this.maKhoa = maKhoa;
     }
-    
+
     public String getMaLop() {
         return maLop;
     }
@@ -44,6 +45,5 @@ public class Lop {
     public void setTenLop(String tenLop) {
         this.tenLop = tenLop;
     }
-    
-    
+
 }

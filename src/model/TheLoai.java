@@ -10,6 +10,7 @@ package model;
  * @author Admin
  */
 public class TheLoai {
+
     private String maTheLoai, tenTheLoai, ghiChu;
 
     public TheLoai() {
@@ -44,5 +45,5 @@ public class TheLoai {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
-    
+
 }

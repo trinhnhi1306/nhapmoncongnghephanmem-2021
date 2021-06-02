@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -109,6 +110,8 @@ public class QuanLySach extends javax.swing.JFrame {
         jComboBox_MaNXB = new javax.swing.JComboBox<>();
         jComboBox_MaTheLoai = new javax.swing.JComboBox<>();
         jTextField_ViTri = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField_SoLuongThem = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jButton_Them = new javax.swing.JButton();
         jButton_Sua = new javax.swing.JButton();
@@ -471,6 +474,7 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setText("Số lượng");
 
+        jTextField_SoLuongCo.setEditable(false);
         jTextField_SoLuongCo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -479,6 +483,7 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Còn");
 
+        jTextField_SoLuongCon.setEditable(false);
         jTextField_SoLuongCon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jComboBox_MaTacGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -488,6 +493,11 @@ public class QuanLySach extends javax.swing.JFrame {
         jComboBox_MaTheLoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextField_ViTri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Thêm");
+
+        jTextField_SoLuongThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -523,18 +533,22 @@ public class QuanLySach extends javax.swing.JFrame {
                             .addComponent(jComboBox_MaNXB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox_MaTheLoai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(25, 25, 25)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_SoLuongCo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_SoLuongCo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_SoLuongCon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_SoLuongCon, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_SoLuongThem, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -576,9 +590,11 @@ public class QuanLySach extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addComponent(jTextField_SoLuongCo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
-                        .addComponent(jComboBox_MaTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel26)
-                    .addComponent(jTextField_SoLuongCon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBox_MaTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_SoLuongCon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addComponent(jTextField_SoLuongThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel26))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -597,10 +613,20 @@ public class QuanLySach extends javax.swing.JFrame {
         jButton_Sua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_Sua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/write.png"))); // NOI18N
         jButton_Sua.setText("Sửa");
+        jButton_Sua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SuaActionPerformed(evt);
+            }
+        });
 
         jButton_Xoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_Xoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/delete.png"))); // NOI18N
         jButton_Xoa.setText("Xóa");
+        jButton_Xoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -690,7 +716,7 @@ public class QuanLySach extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -739,7 +765,6 @@ public class QuanLySach extends javax.swing.JFrame {
 //        }
 //        return str;
 //    }
-    
     private ArrayList<Sach> getDSSach(String sql) {
         ArrayList<Sach> ds = new ArrayList<>();
         try (
@@ -747,7 +772,7 @@ public class QuanLySach extends javax.swing.JFrame {
                 PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                Sach sach = new Sach(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+                Sach sach = new Sach(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
                 ds.add(sach);
             }
             rs.close();
@@ -773,10 +798,11 @@ public class QuanLySach extends javax.swing.JFrame {
                 sach.getNgayNhap(),
                 sach.getGia(),
                 sach.getViTri(),
-                sach.getSoLuong()});
+                sach.getSoLuongCo(),
+                sach.getSoLuongCon()});
         }
     }
-    
+
     private void getMaTacGia() {
         jComboBox_MaTacGia.removeAllItems();
         jComboBox_MaTacGia1.removeAllItems();
@@ -795,7 +821,7 @@ public class QuanLySach extends javax.swing.JFrame {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void getMaNXB() {
         jComboBox_MaNXB.removeAllItems();
         jComboBox_MaNXB1.removeAllItems();
@@ -814,7 +840,7 @@ public class QuanLySach extends javax.swing.JFrame {
             Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void getMaTheLoai() {
         jComboBox_MaTheLoai.removeAllItems();
         jComboBox_MaTheLoai1.removeAllItems();
@@ -834,6 +860,121 @@ public class QuanLySach extends javax.swing.JFrame {
         }
     }
 
+    private int kiemTraSach(String maSach) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "SELECT * FROM SACH WHERE MASACH = '" + maSach + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tonTai;
+    }
+
+    private void themMoiSach(String maSach, String tenSach, String maTacGia, String maNXB, String maTheLoai, String gia, String ngayNhap, String viTri, String soLuong) {
+        String sql = "INSERT INTO SACH VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maSach);
+            ps.setString(2, tenSach);
+            ps.setString(3, ngayNhap);
+            ps.setString(4, gia);
+            ps.setString(5, viTri);
+            ps.setString(6, maTacGia);
+            ps.setString(7, maNXB);
+            ps.setString(8, maTheLoai);
+            ps.setString(9, soLuong);
+            ps.setString(10, soLuong);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void chinhSuaSach(String maSach, String tenSach, String maTacGia, String maNXB, String maTheLoai, String gia, String ngayNhap, String viTri, String soLuongThem) {
+        ArrayList<Sach> sach = getDSSach("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
+        int soLuongCo = Integer.parseInt(sach.get(0).getSoLuongCo());
+        int soLuongCon = Integer.parseInt(sach.get(0).getSoLuongCon());
+        String sql = "UPDATE SACH SET TENSACH = ?, MATACGIA = ?, MANXB = ?, MATHELOAI = ?, GIA = ?, NGAYNHAP = ?, VITRI = ?, SOLUONGCO = ?, SOLUONGCON = ? WHERE MASACH = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, tenSach);
+            ps.setString(2, maTacGia);
+            ps.setString(3, maNXB);
+            ps.setString(4, maTheLoai);
+            ps.setString(5, gia);
+            ps.setString(6, ngayNhap);
+            ps.setString(7, viTri);
+            ps.setInt(8, soLuongCo + Integer.parseInt(soLuongThem));
+            ps.setInt(9, soLuongCon + Integer.parseInt(soLuongThem));
+            ps.setString(10, maSach);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private int kiemTraSachMuon(String maSach) {
+        Connection con = KetNoiSQL.layKetNoi();
+        int tonTai = 0;
+        String sql = "SELECT * FROM MUONTRA WHERE MASACH = '" + maSach + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tonTai = 1;
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return tonTai;
+    }
+
+    private void xoaSach(String maSach) {
+        String sql = "DELETE FROM SACH WHERE MASACH = ?";
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maSach);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLySach.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void xoaDuLieuSach() {
+        jTextField_MaSach.setText("");
+        jTextField_TenSach.setText("");
+        jComboBox_MaTacGia.setSelectedIndex(0);
+        jComboBox_MaNXB.setSelectedIndex(0);
+        jComboBox_MaTheLoai.setSelectedIndex(0);
+        jTextField_Gia.setText("");
+        jDateChooser_NgayNhap.setDate(null);
+        jTextField_ViTri.setText("");
+        jTextField_SoLuongCo.setText("");
+        jTextField_SoLuongCon.setText("");
+        jTextField_SoLuongThem.setText("");
+    }
+
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
         jDialog_ThemSach.pack(); //Tự động thay đổi kích thước của JFrame dựa trên kích thước của các component mà nó chứa
@@ -843,6 +984,48 @@ public class QuanLySach extends javax.swing.JFrame {
 
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String maSach = jTextField_MaSach1.getText();
+        String tenSach = jTextField_TenSach1.getText();
+        String maTacGia = (String) jComboBox_MaTacGia1.getSelectedItem();
+        String maNXB = (String) jComboBox_MaNXB1.getSelectedItem();
+        String maTheLoai = (String) jComboBox_MaTheLoai1.getSelectedItem();
+        String gia = jTextField_Gia1.getText();
+        String ngayNhap;
+        Date date = jDateChooser_NgayNhap1.getDate();
+        if (date == null) {
+            ngayNhap = null;
+        } else {
+            ngayNhap = sdf.format(date);
+        }
+        String viTri = jTextField_ViTri1.getText();
+        String soLuong = jTextField_SoLuong.getText();
+        if (maSach.equals("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemSach, "Mã sách không được để trống!");
+        } else if (tenSach.equals("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemSach, "Tên sách không được để trống!");
+        } else if (gia.equals("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemSach, "Giá không được để trống!");
+        } else if (!gia.matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(jDialog_ThemSach, "Giá không hợp lệ!");
+        } else if (ngayNhap == null) {
+            JOptionPane.showMessageDialog(jDialog_ThemSach, "Ngày nhập không được để trống!");
+        } else if (viTri.equals("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemSach, "Vị trí không được để trống!");
+        } else if (soLuong.equals("")) {
+            JOptionPane.showMessageDialog(jDialog_ThemSach, "Số lượng không được để trống!");
+        } else if (!soLuong.matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(jDialog_ThemSach, "Số lượng không hợp lệ!");
+        } else {
+            if (kiemTraSach(maSach) == 1) {
+                JOptionPane.showMessageDialog(jDialog_ThemSach, "Mã sách đã tồn tại!");
+            } else {
+                themMoiSach(maSach, tenSach, maTacGia, maNXB, maTheLoai, gia, ngayNhap, viTri, soLuong);
+                JOptionPane.showMessageDialog(jDialog_ThemSach, "Thêm sách thành công!");
+                jDialog_ThemSach.dispose();
+                showDSSach(jTable_DSSach, "SELECT * FROM SACH");
+            }
+        }
     }//GEN-LAST:event_jButton_Them1ActionPerformed
 
     private void jButton_TroVe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe1ActionPerformed
@@ -953,6 +1136,76 @@ public class QuanLySach extends javax.swing.JFrame {
         jTextField_SoLuongCon.setText((String) dtm.getValueAt(row, 9));
     }//GEN-LAST:event_jTable_DSSachMouseClicked
 
+    private void jButton_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String maSach = jTextField_MaSach.getText();
+        if (maSach.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn sách bạn muốn chỉnh sửa!");
+        } else {
+            String tenSach = jTextField_TenSach.getText();
+            String maTacGia = (String) jComboBox_MaTacGia.getSelectedItem();
+            String maNXB = (String) jComboBox_MaNXB.getSelectedItem();
+            String maTheLoai = (String) jComboBox_MaTheLoai.getSelectedItem();
+            String gia = jTextField_Gia.getText();
+            String ngayNhap;
+            Date date = jDateChooser_NgayNhap.getDate();
+            if (date == null) {
+                ngayNhap = null;
+            } else {
+                ngayNhap = sdf.format(date);
+            }
+            String viTri = jTextField_ViTri.getText();
+            String soLuongThem = jTextField_SoLuongThem.getText();
+            if (tenSach.equals("")) {
+                JOptionPane.showMessageDialog(jDialog_ThemSach, "Tên sách không được để trống!");
+            } else if (gia.equals("")) {
+                JOptionPane.showMessageDialog(jDialog_ThemSach, "Giá không được để trống!");
+            } else if (!gia.matches("[0-9]+")) {
+                JOptionPane.showMessageDialog(jDialog_ThemSach, "Giá không hợp lệ!");
+            } else if (ngayNhap == null) {
+                JOptionPane.showMessageDialog(jDialog_ThemSach, "Ngày nhập không được để trống!");
+            } else if (viTri.equals("")) {
+                JOptionPane.showMessageDialog(jDialog_ThemSach, "Vị trí không được để trống!");
+            } else if (soLuongThem.equals("")) {
+                soLuongThem = "0";
+            } else if (!soLuongThem.matches("[0-9]+")) {
+                JOptionPane.showMessageDialog(jDialog_ThemSach, "Số lượng thêm không hợp lệ!");
+            } else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
+                if (luaChon == JOptionPane.OK_OPTION) {
+                    chinhSuaSach(maSach, tenSach, maTacGia, maNXB, maTheLoai, gia, ngayNhap, viTri, soLuongThem);
+                    JOptionPane.showMessageDialog(this, "Chỉnh sửa sách thành công!");
+                    showDSSach(jTable_DSSach, "SELECT * FROM SACH");
+                } else {
+                    return;
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_SuaActionPerformed
+
+    private void jButton_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaActionPerformed
+        // TODO add your handling code here:
+        String maSach = jTextField_MaSach.getText();
+        if (maSach.equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn sách bạn muốn xóa!");
+        } else {
+            if (kiemTraSachMuon(maSach) == 1) {
+                JOptionPane.showMessageDialog(this, "Sách này đang được mượn!");
+            } else {
+                int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
+                if (luaChon == JOptionPane.OK_OPTION) {
+                    xoaSach(maSach);
+                    JOptionPane.showMessageDialog(this, "Xóa sách thành công!");
+                    xoaDuLieuSach();
+                    showDSSach(jTable_DSSach, "SELECT * FROM SACH");
+                } else {
+                    return;
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_XoaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1036,6 +1289,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1059,6 +1313,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_SoLuong;
     private javax.swing.JTextField jTextField_SoLuongCo;
     private javax.swing.JTextField jTextField_SoLuongCon;
+    private javax.swing.JTextField jTextField_SoLuongThem;
     private javax.swing.JTextField jTextField_TenSach;
     private javax.swing.JTextField jTextField_TenSach1;
     private javax.swing.JTextField jTextField_ViTri;

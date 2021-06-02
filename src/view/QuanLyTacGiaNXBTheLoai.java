@@ -1558,7 +1558,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         jTextField_TenTacGia.setText("");
         jTextField_GhiChuTacGia.setText("");
     }
-    
+
     private ArrayList<NXB> getDSNXB(String sql) {
         ArrayList<NXB> dsNXB = new ArrayList<>();
         Connection con = KetNoiSQL.layKetNoi();
@@ -1680,7 +1680,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         jTextField_TenNXB.setText("");
         jTextField_DiaChiNXB.setText("");
     }
-    
+
     private ArrayList<TheLoai> getDSTheLoai(String sql) {
         ArrayList<TheLoai> dsTheLoai = new ArrayList<>();
         Connection con = KetNoiSQL.layKetNoi();

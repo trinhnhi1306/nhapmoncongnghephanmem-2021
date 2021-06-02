@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/PC/Downloads/Nhapmoncongnghephanmem-2021/nhapmoncongnghephanmem-2021/src/model/NguoiDung.java</file>
             <file>file:/C:/Users/PC/Downloads/Nhapmoncongnghephanmem-2021/nhapmoncongnghephanmem-2021/src/view/QuanLySach.java</file>
@@ -10,5 +11,8 @@
             <file>file:/C:/Users/PC/Downloads/Nhapmoncongnghephanmem-2021/nhapmoncongnghephanmem-2021/src/view/TrangChuAdmin.java</file>
             <file>file:/C:/Users/PC/Downloads/Nhapmoncongnghephanmem-2021/nhapmoncongnghephanmem-2021/src/view/TrangChuThuThu.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 60d03d186b45ff1525b0c99ab6319bf0c22c1bd3
     </open-files>
 </project-private>
