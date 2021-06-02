@@ -19,12 +19,13 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class DangNhap extends javax.swing.JFrame {
+
     private static String maNguoiDung;
 
     public static String getMaNguoiDung() {
         return maNguoiDung;
     }
-    
+
     /**
      * Creates new form NewJFrame
      */
@@ -216,22 +217,21 @@ public class DangNhap extends javax.swing.JFrame {
                 String maVaiTro = rs.getString(11);
                 if (maVaiTro.equalsIgnoreCase("VT01")) {
                     new TrangChuDocGia().setVisible(true);
-                } else if (maVaiTro.equalsIgnoreCase("VT02")){
+                } else if (maVaiTro.equalsIgnoreCase("VT02")) {
                     new TrangChuThuThu().setVisible(true);
-                } else if (maVaiTro.equalsIgnoreCase("VT03")){
+                } else if (maVaiTro.equalsIgnoreCase("VT03")) {
                     new TrangChuThuKho().setVisible(true);
-                } else if (maVaiTro.equalsIgnoreCase("VT04")){
+                } else if (maVaiTro.equalsIgnoreCase("VT04")) {
                     new TrangChuAdmin().setVisible(true);
                 }
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(this, "Mã người dùng hoặc mật khẩu không chính xác! Vui lòng thử lại.");
             }
             rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_jButton_DangNhapActionPerformed
 
     private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed

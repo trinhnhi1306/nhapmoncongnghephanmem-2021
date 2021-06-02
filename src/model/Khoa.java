@@ -10,6 +10,7 @@ package model;
  * @author Apple Bee
  */
 public class Khoa {
+
     private String maKhoa, tenKhoa;
 
     public Khoa() {
@@ -35,5 +36,5 @@ public class Khoa {
     public void setTenKhoa(String tenKhoa) {
         this.tenKhoa = tenKhoa;
     }
-    
+
 }

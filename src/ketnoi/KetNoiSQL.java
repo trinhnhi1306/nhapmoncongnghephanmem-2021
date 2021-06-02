@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ketnoi;
+
 import java.sql.*;
 
 /**
@@ -11,11 +12,12 @@ import java.sql.*;
  * @author Admin
  */
 public class KetNoiSQL {
+
     /**
      * @param args the command line arguments
-     */    
-    
-    public static Connection layKetNoi() { 
+     */
+
+    public static Connection layKetNoi() {
         Connection ketNoi = null;
         String uRL = "jdbc:sqlserver://;databaseName=QLTHUVIEN";
         String userName = "sa";

@@ -17,9 +17,11 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class QuanLyMuonTra extends javax.swing.JFrame {
+
     private String tatCaSach = "SELECT * FROM SACH";
     private String sachDuocMuonBoiDocGiaDangNhap = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
-            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung()+ "'";
+            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung() + "'";
+
     /**
      * Creates new form BorrowReturnBookWindow
      */
@@ -911,7 +913,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Sach sach = new Sach(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
                 ds.add(sach);
             }
         } catch (SQLException ex) {
@@ -919,13 +921,13 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         }
         return ds;
     }
-    
+
     public void showDSSach(JTable jTable, String sql) {
         ArrayList<Sach> ds = getDSSach(sql);
         DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
         dtm.setRowCount(0);
-        for (Sach sach : ds) {
-            dtm.addRow(new Object[] {
+        ds.forEach(sach -> {
+            dtm.addRow(new Object[]{
                 sach.getMaSach(),
                 sach.getTenSach(),
                 sach.getTacGia(),
@@ -934,14 +936,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 sach.getNgayNhap(),
                 sach.getGia(),
                 sach.getViTri(),
-                sach.getSoLuong(),
+                sach.getSoLuongCo(),
+                sach.getSoLuongCon()
             });
-        }
+        });
     }
-    
+
     private void jButton_MuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MuonSachActionPerformed
         // TODO add your handling code here:
-        jDialog_PhieuMuon.pack(); 
+        jDialog_PhieuMuon.pack();
         jDialog_PhieuMuon.setLocationRelativeTo(this);
         jDialog_PhieuMuon.setVisible(true);
     }//GEN-LAST:event_jButton_MuonSachActionPerformed
@@ -976,7 +979,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
         String keyword = jTextFieldKeyword2.getText(); // tim kiem khong phan biet chu hoa thuong
         String sql = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
-            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung()+ "' AND ";
+                + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung() + "' AND ";
         if (keyword.equals("")) {
             showDSSach(jTableDSSachMuon, sachDuocMuonBoiDocGiaDangNhap);
         } else {
@@ -1001,15 +1004,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             showDSSach(jTableDSSach, tatCaSach);
         } else {
             if (jRadioButtonMaSach1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE MASACH LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE MASACH LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTenSach1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TENSACH LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE TENSACH LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTacGia1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TACGIA LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE TACGIA LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonNXB1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE NXb LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE NXb LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTheLoai1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE THELOAI LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE THELOAI LIKE N'%" + keyword + "%'");
             }
         }
         // What the hell... it doesn't work
@@ -1026,15 +1029,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             showDSSach(jTableDSSach, tatCaSach);
         } else {
             if (jRadioButtonMaSach1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE MASACH LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE MASACH LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTenSach1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TENSACH LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE TENSACH LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTacGia1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE TACGIA LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE TACGIA LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonNXB1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE NXB LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE NXB LIKE N'%" + keyword + "%'");
             } else if (jRadioButtonTheLoai1.isSelected()) {
-                showDSSach(jTableDSSach,  "SELECT * FROM SACH WHERE THELOAI LIKE N'%" + keyword + "%'");
+                showDSSach(jTableDSSach, "SELECT * FROM SACH WHERE THELOAI LIKE N'%" + keyword + "%'");
             }
         }
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
@@ -1043,7 +1046,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
         String keyword = jTextFieldKeyword2.getText(); // tim kiem khong phan biet chu hoa thuong
         String sql = "SELECT S.* FROM SACH S JOIN MUONSACH MS ON S.MASACH = MS.MASACH "
-            + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung()+ "' AND ";
+                + "WHERE MS.MADOCGIA = N'" + DangNhap.getMaNguoiDung() + "' AND ";
         if (keyword.equals("")) {
             showDSSach(jTableDSSachMuon, sachDuocMuonBoiDocGiaDangNhap);
         } else {

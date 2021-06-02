@@ -10,6 +10,7 @@ package model;
  * @author Admin
  */
 public class TacGia {
+
     private String maTacGia, tenTacGia, ghiChu;
 
     public TacGia() {
@@ -44,5 +45,5 @@ public class TacGia {
     public String getGhiChu() {
         return ghiChu;
     }
-    
+
 }

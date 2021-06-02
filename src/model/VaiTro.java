@@ -10,6 +10,7 @@ package model;
  * @author Apple Bee
  */
 public class VaiTro {
+
     private String maVaiTro, tenVaiTro;
 
     public VaiTro() {
@@ -35,6 +36,5 @@ public class VaiTro {
     public void setTenVaiTro(String tenVaiTro) {
         this.tenVaiTro = tenVaiTro;
     }
-    
-    
+
 }

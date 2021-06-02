@@ -25,7 +25,9 @@ import model.NguoiDung;
  * @author Admin
  */
 public class TrangChuThuKho extends javax.swing.JFrame {
+
     private String maNguoiDung;
+
     /**
      * Creates new form TrangChuThuKho
      */
@@ -734,7 +736,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void demSoLuongDG () {
+    public void demSoLuongDG() {
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement("select count(MANGUOIDUNG) from NGUOIDUNG where MAVAITRO = 'VT01'");
@@ -747,33 +749,31 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(TrangChuThuKho.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
-    
-    public void showThongTinNguoiDung () {
+
+    public void showThongTinNguoiDung() {
         NguoiDung n = NguoiDung.layThongTinNguoiDung();
         jTextField_MaNguoiDung.setText(n.getMa());
         jTextField_TenNguoiDung.setText(n.getTen());
         jComboBox_GioiTinh.setSelectedItem(n.getGioiTinh());
         String ngaySinh = n.getNgaySinh();
-            if (ngaySinh == null) {
-                jDateChooser_NgaySinh.setDate(null);
-            }
-            else {
-                try {
+        if (ngaySinh == null) {
+            jDateChooser_NgaySinh.setDate(null);
+        } else {
+            try {
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(ngaySinh);
                 jDateChooser_NgaySinh.setDate(date);
-                }
-                catch (ParseException ex) {
-                    System.out.println(ex.getMessage());
+            } catch (ParseException ex) {
+                System.out.println(ex.getMessage());
 
-                }
             }
+        }
         jTextField_DiaChi.setText(n.getDiaChi());
         jTextField_SDT.setText(n.getSdt());
         jTextField_Email.setText(n.getEmail());
     }
-    
+
     private void jButton_ThongTinCaNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinCaNhanActionPerformed
         // TODO add your handling code here:
         showThongTinNguoiDung();
@@ -841,43 +841,40 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         for (int i = 0; i < temp.length; i++) {
             str += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1).toLowerCase();
             if (i < temp.length - 1) // ? ^-^
+            {
                 str += " ";
+            }
         }
         return str;
     }
-    
+
     private void jButton_LuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LuuActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String ten = jTextField_TenNguoiDung.getText();
         String gioiTinh = (String) jComboBox_GioiTinh.getSelectedItem();
         String ngaySinh;
-            Date date = jDateChooser_NgaySinh.getDate();
-            if (date == null){
-                ngaySinh = null;
-            }
-            else {
-                ngaySinh = sdf.format(jDateChooser_NgaySinh.getDate());
-            }
+        Date date = jDateChooser_NgaySinh.getDate();
+        if (date == null) {
+            ngaySinh = null;
+        } else {
+            ngaySinh = sdf.format(jDateChooser_NgaySinh.getDate());
+        }
         String diaChi = jTextField_DiaChi.getText();
         String sdt = jTextField_SDT.getText();
         String email = jTextField_Email.getText();
         if (ten.equalsIgnoreCase("")) {
-                JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Tên người dùng không được để trống!");
-        }
-        else {
-            if(!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
+            JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Tên người dùng không được để trống!");
+        } else {
+            if (!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
                 JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Số điện thoại không hợp lệ!");
-            }
-            else if(!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
+            } else if (!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
                 JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Email không hợp lệ!");
-            }
-            else {
+            } else {
                 int luaChon = JOptionPane.showConfirmDialog(jDialog_SuaThongTinCaNhan, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
+                if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
+                } else if (luaChon == JOptionPane.OK_OPTION) {
                     NguoiDung.chinhSuaTTNguoiDung(maNguoiDung, chuanHoaDanhTuRieng(ten), gioiTinh, ngaySinh, diaChi, sdt, email);
                     JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Chỉnh sửa thông tin thành công!");
                     showThongTinNguoiDung();
@@ -892,17 +889,14 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         String newpass = String.valueOf(jPasswordField_newpass.getPassword());
         String cnfpass = String.valueOf(jPasswordField_cnfpass.getPassword());
         String oldpass = String.valueOf(jPasswordField_oldpass.getPassword());
-        
+
         if (!oldpass.equals(nd.getMatKhau())) {
             JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password cũ không đúng!");
-        }
-        else if(!newpass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
+        } else if (!newpass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
             JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password mới không hợp lệ!");
-        }
-        else if(!cnfpass.equals(newpass)) {
+        } else if (!cnfpass.equals(newpass)) {
             JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password bạn nhập lại không hợp lệ!");
-        }
-        else {
+        } else {
             String sql = "update NGUOIDUNG set MATKHAU = ? where MANGUOIDUNG = ?";
             Connection con = KetNoiSQL.layKetNoi();
             try {
@@ -913,7 +907,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                 ps.close();
                 con.close();
                 JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Đổi mật khẩu thành công!");
-                jDialog_DoiMatKhau.dispose(); 
+                jDialog_DoiMatKhau.dispose();
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
             }

@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -29,7 +28,9 @@ import model.DocGia;
  * @author COMPUTER
  */
 public class QuanLyDocGia extends javax.swing.JFrame {
+
     private DefaultTableModel model;
+
     /**
      * Creates new form ManageBookForm
      */
@@ -764,7 +765,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public ArrayList<DocGia> dsDocGia () {
+    public ArrayList<DocGia> dsDocGia() {
         ArrayList<DocGia> dsDocGia = new ArrayList<>();
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -782,15 +783,15 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return dsDocGia;
     }
-    
-    public void showDocGia () {
+
+    public void showDocGia() {
         ArrayList<DocGia> dsDocGia = dsDocGia();
         model.setNumRows(0);
         dsDocGia.forEach(dg -> {
-            model.addRow(new Object[] {
+            model.addRow(new Object[]{
                 dg.getMa(),
                 dg.getTen(),
                 dg.getGioiTinh(),
@@ -804,8 +805,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             });
         });
     }
-    
-    public void showLop () {
+
+    public void showLop() {
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement("select * from LOP");
@@ -819,9 +820,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
-    
+
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
         xoaDuLieuDialog();
@@ -835,9 +836,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jDialogThemDocGia.setVisible(true);
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
-    public void themMoiDocGia (String maDG, String matKhauDG, String tenDG, String gioiTinhDG, String ngaySinhDG,
+    public void themMoiDocGia(String maDG, String matKhauDG, String tenDG, String gioiTinhDG, String ngaySinhDG,
             String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String lop) {
-        
+
         String sql = "insert into NGUOIDUNG values (?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -859,8 +860,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void xoaDuLieuDialog () {
+
+    public void xoaDuLieuDialog() {
         jTextField_MaDG1.setText("");
         jTextField_TenDG1.setText("");
         jDateChooser_NgaySinh1.setDate(null);
@@ -869,8 +870,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jTextField_EmailDG1.setText("");
         jTextField_DiaChiDG1.setText("");
     }
-    
-    public void xoaDuLieuForm () {
+
+    public void xoaDuLieuForm() {
         jTextField_MaDG.setText("");
         jTextField_TenDG.setText("");
         jDateChooser_NgaySinh.setDate(null);
@@ -879,8 +880,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jTextField_SDTDG.setText("");
         jTextField_DiaChiDG.setText("");
     }
-    
-    
+
+
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -890,10 +891,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         String gioiTinhDG = (String) jComboBox_GioiTinh1.getSelectedItem();
         String ngaySinhDG;
         Date date = jDateChooser_NgaySinh1.getDate();
-        if (date == null){
+        if (date == null) {
             ngaySinhDG = null;
-        }
-        else {
+        } else {
             ngaySinhDG = sdf.format(jDateChooser_NgaySinh1.getDate());
         }
         String ngayDangKy = sdf.format(jDateChooser_NgayDangKy1.getDate());
@@ -902,24 +902,19 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         String sdt = jTextField_sdtDG1.getText();
         String email = jTextField_EmailDG1.getText();
         String lop = (String) jComboBox_MaLop1.getSelectedItem();
-        
+
         if (maDG.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả không được để trống!");
-        }
-        else if (tenDG.equalsIgnoreCase("")) {
+        } else if (tenDG.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialogThemDocGia, "Tên độc giả không được để trống!");
-        }
-        else {
+        } else {
             if (kiemTraDocGia(maDG) == 1) {
                 JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả đã tồn tại!");
-            }
-            else if(!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
+            } else if (!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
                 JOptionPane.showMessageDialog(jDialogThemDocGia, "Số điện thoại không hợp lệ!");
-            }
-            else if(!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
+            } else if (!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
                 JOptionPane.showMessageDialog(jDialogThemDocGia, "Email không hợp lệ!");
-            }
-            else {
+            } else {
                 themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
                 JOptionPane.showMessageDialog(jDialogThemDocGia, "Thêm độc giả thành công!");
                 jDialogThemDocGia.dispose();
@@ -945,18 +940,20 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         for (int i = 0; i < temp.length; i++) {
             str += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1).toLowerCase();
             if (i < temp.length - 1) // ? ^-^
+            {
                 str += " ";
+            }
         }
         return str;
     }
-    
+
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
         // TODO add your handling code here:
-        
+
         String tuKhoa = jTextField_TuKhoa.getText();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
         jTable_DSDocGia.setRowSorter(trs);
-        
+
         if (jRadioButton_MaDG.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
         }
@@ -977,65 +974,60 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private void jTable_DSDocGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSDocGiaMouseClicked
         // TODO add your handling code here:
         int row = jTable_DSDocGia.convertRowIndexToModel(jTable_DSDocGia.getSelectedRow());
-        if (row == -1) return;
+        if (row == -1) {
+            return;
+        }
         jTextField_MaDG.setText((String) model.getValueAt(row, 0));
         jTextField_TenDG.setText((String) model.getValueAt(row, 1));
         String gioiTinh = (String) model.getValueAt(row, 2);
-            if (gioiTinh.equalsIgnoreCase("Nữ")) {
-                jRadioButton_Nu.setSelected(true);
-            }
-            else {
-                jRadioButton_Nam.setSelected(true);
-            }
+        if (gioiTinh.equalsIgnoreCase("Nữ")) {
+            jRadioButton_Nu.setSelected(true);
+        } else {
+            jRadioButton_Nam.setSelected(true);
+        }
         String ngaySinh = (String) model.getValueAt(row, 3);
-            if (ngaySinh == null) {
-                jDateChooser_NgaySinh.setDate(null);
-            }
-            else {
-                try {
+        if (ngaySinh == null) {
+            jDateChooser_NgaySinh.setDate(null);
+        } else {
+            try {
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(ngaySinh);
                 jDateChooser_NgaySinh.setDate(date);
-                }
-                catch (ParseException ex) {
-                    System.out.println(ex.getMessage());
+            } catch (ParseException ex) {
+                System.out.println(ex.getMessage());
 
-                }
             }
+        }
         jTextField_DiaChiDG.setText((String) model.getValueAt(row, 4));
         jTextField_Email.setText((String) model.getValueAt(row, 5));
         jTextField_SDTDG.setText((String) model.getValueAt(row, 6));
         String ngayDangKy = (String) model.getValueAt(row, 7);
-            if (ngayDangKy == null) {
-                jDateChooser_NgayDangKy.setDate(null);
-            }
-            else {
-                try {
+        if (ngayDangKy == null) {
+            jDateChooser_NgayDangKy.setDate(null);
+        } else {
+            try {
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(ngayDangKy);
                 jDateChooser_NgayDangKy.setDate(date);
-                }
-                catch (ParseException ex) {
-                    System.out.println(ex.getMessage());
+            } catch (ParseException ex) {
+                System.out.println(ex.getMessage());
 
-                }
             }
+        }
         String ngayHetHan = (String) model.getValueAt(row, 8);
-            if (ngayHetHan == null) {
-                jDateChooser_NgayHetHan.setDate(null);
-            }
-            else {
-                try {
+        if (ngayHetHan == null) {
+            jDateChooser_NgayHetHan.setDate(null);
+        } else {
+            try {
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(ngayHetHan);
                 jDateChooser_NgayHetHan.setDate(date);
-                }
-                catch (ParseException ex) {
-                    System.out.println(ex.getMessage());
+            } catch (ParseException ex) {
+                System.out.println(ex.getMessage());
 
-                }
             }
+        }
         jComboBox_MaLop.setSelectedItem(model.getValueAt(row, 9));
     }//GEN-LAST:event_jTable_DSDocGiaMouseClicked
-        
-    public int kiemTraSachMuon (String maDG) {
+
+    public int kiemTraSachMuon(String maDG) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
         String sql = "select * from MUONTRA where MANGUOIDUNG ='" + maDG + "'";
@@ -1050,11 +1042,11 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         return tonTai;
     }
-    
+
     public int kiemTraDocGia(String maDG) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
@@ -1070,12 +1062,12 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
         return tonTai;
     }
-    
-    public void xoaDocGia (String maDG) {
+
+    public void xoaDocGia(String maDG) {
         String sql = "delete from NGUOIDUNG where MANGUOIDUNG = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1086,28 +1078,25 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
-    
+
     private void jButton_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaActionPerformed
         // TODO add your handling code here:
         String maDG = jTextField_MaDG.getText();
         int kt;
         if (maDG.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả bạn muốn xóa");
-        }
-        else {
+        } else {
             if (kiemTraSachMuon(maDG) == 1) {
                 JOptionPane.showMessageDialog(this, "Độc giả này chưa trả sách, bạn hãy yêu cầu độc giả trả sách!");
-            }
-            else {
+            } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
-                if(luaChon == JOptionPane.CANCEL_OPTION)
+                if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
-                else  if(luaChon == JOptionPane.OK_OPTION)
-                {
+                } else if (luaChon == JOptionPane.OK_OPTION) {
                     xoaDocGia(maDG);
-                    JOptionPane.showMessageDialog(this, "Xóa độc giả thành công");  
+                    JOptionPane.showMessageDialog(this, "Xóa độc giả thành công");
                     xoaDuLieuForm();
                     showDocGia();
                 }
@@ -1121,9 +1110,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         new TrangChuThuThu().setVisible(true);
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
-    public void chinhSuaDocGia (String maDG, String tenDG, String gioiTinhDG, String ngaySinhDG, String ngayDangKy,
+    public void chinhSuaDocGia(String maDG, String tenDG, String gioiTinhDG, String ngaySinhDG, String ngayDangKy,
             String ngayHetHan, String diaChi, String sdt, String email, String lop) {
-        
+
         String sql = "update NGUOIDUNG set TENNGUOIDUNG = ?, GIOITINH = ?, NGAYSINH = ?, "
                 + "NGAYDANGKY = ?, NGAYHETHAN = ?, DIACHI = ?, SDT = ?, EMAIL = ?, MALOP = ? "
                 + "WHERE MANGUOIDUNG = ?";
@@ -1145,30 +1134,27 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaActionPerformed
         // TODO add your handling code here:
         String maDG = jTextField_MaDG.getText();
         int kt;
         if (maDG.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả bạn muốn chỉnh sửa");
-        }
-        else {
+        } else {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String tenDG = jTextField_TenDG.getText();
             String gioiTinhDG;
             if (jRadioButton_Nam.isSelected()) {
                 gioiTinhDG = "Nam";
-            }
-            else {
+            } else {
                 gioiTinhDG = "Nữ";
             }
             String ngaySinhDG;
             Date date = jDateChooser_NgaySinh.getDate();
-            if (date == null){
+            if (date == null) {
                 ngaySinhDG = null;
-            }
-            else {
+            } else {
                 ngaySinhDG = sdf.format(jDateChooser_NgaySinh.getDate());
             }
             String ngayDangKy = sdf.format(jDateChooser_NgayDangKy.getDate());
@@ -1177,23 +1163,19 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             String sdt = jTextField_SDTDG.getText();
             String email = jTextField_Email.getText();
             String lop = (String) jComboBox_MaLop.getSelectedItem();
-            
+
             if (tenDG.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Tên độc giả không được để trống!");
-            }
-            else {
-                if(!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
+            } else {
+                if (!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
                     JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ!");
-                }
-                else if(!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
+                } else if (!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
                     JOptionPane.showMessageDialog(this, "Email không hợp lệ!");
-                }
-                else {
+                } else {
                     int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
-                    if(luaChon == JOptionPane.CANCEL_OPTION)
+                    if (luaChon == JOptionPane.CANCEL_OPTION) {
                         return;
-                    else  if(luaChon == JOptionPane.OK_OPTION)
-                    {
+                    } else if (luaChon == JOptionPane.OK_OPTION) {
                         chinhSuaDocGia(maDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
                         JOptionPane.showMessageDialog(this, "Chỉnh sửa độc giả thành công!");
                         showDocGia();
@@ -1208,7 +1190,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         String tuKhoa = jTextField_TuKhoa.getText();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
         jTable_DSDocGia.setRowSorter(trs);
-        
+
         if (jRadioButton_MaDG.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
         }

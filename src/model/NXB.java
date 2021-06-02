@@ -10,6 +10,7 @@ package model;
  * @author Admin
  */
 public class NXB {
+
     private String maNXB, tenNXB, diaChi;
 
     public NXB() {
@@ -44,5 +45,5 @@ public class NXB {
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
     }
-    
+
 }
