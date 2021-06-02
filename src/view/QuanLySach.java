@@ -474,6 +474,7 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel29.setText("Số lượng");
 
+        jTextField_SoLuongCo.setEditable(false);
         jTextField_SoLuongCo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -482,6 +483,7 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Còn");
 
+        jTextField_SoLuongCon.setEditable(false);
         jTextField_SoLuongCon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jComboBox_MaTacGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
