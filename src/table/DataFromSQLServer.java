@@ -20,12 +20,12 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class DataFromSQLServer {
-    public static void getAndShowData(JTable jTable, ArrayList<String> ColumnTitles, String sql) {
+    public static void getAndShowData(JTable jTable, ArrayList<String> ColumnTitles, String query) {
         DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
         dtm.setRowCount(0);
         try (
                 Connection con = KetNoiSQL.layKetNoi();
-                PreparedStatement ps = con.prepareStatement(sql);
+                PreparedStatement ps = con.prepareStatement(query);
                 ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Vector rowData = new Vector();
@@ -37,5 +37,16 @@ public class DataFromSQLServer {
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(DataFromSQLServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+    }
+    public static boolean recordExists(String query) {
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery()) {
+            return rs.next();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(DataFromSQLServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

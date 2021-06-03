@@ -5,11 +5,18 @@
  */
 package view;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import ketnoi.KetNoiSQL;
 import table.DataFromSQLServer;
 
 /**
@@ -28,6 +35,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private String queryForJTableSach = "SELECT * FROM SACH";
     private String queryForJTableDocGia1 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
     private String queryForJTableDocGia2 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
+    
+    
     /**
      * Creates new form BorrowReturnBookWindow
      */
@@ -51,19 +60,19 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         buttonGroupDocGia1 = new javax.swing.ButtonGroup();
         buttonGroupDocGia2 = new javax.swing.ButtonGroup();
         buttonGroupSach1 = new javax.swing.ButtonGroup();
-        jDialog_PhieuMuon = new javax.swing.JDialog();
+        jDialogMuonSach = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField_MaDG1 = new javax.swing.JTextField();
+        jTextFieldMaDocGia = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jButton_Muon = new javax.swing.JButton();
-        jButton_TroVe = new javax.swing.JButton();
-        jDateChooser_NgayDangKy1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser_NgayHetHan1 = new com.toedter.calendar.JDateChooser();
+        jButtonMuon = new javax.swing.JButton();
+        jButtonTroVe = new javax.swing.JButton();
+        jDateChooserNgayMuon = new com.toedter.calendar.JDateChooser();
+        jDateChooserHanTra = new com.toedter.calendar.JDateChooser();
         jLabel13 = new javax.swing.JLabel();
-        jTextField_MaDG2 = new javax.swing.JTextField();
+        jTextFieldMaSach = new javax.swing.JTextField();
         buttonGroupSach2 = new javax.swing.ButtonGroup();
         jPanel15 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -85,7 +94,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSach = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
-        jButton_MuonSach = new javax.swing.JButton();
+        jButtonMuonSach = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jButton_TroVe1 = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
@@ -131,49 +140,56 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jRadioButtonMaNXB2 = new javax.swing.JRadioButton();
         jRadioButtonMaTheLoai2 = new javax.swing.JRadioButton();
 
-        jDialog_PhieuMuon.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogMuonSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogMuonSach.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 255, 0));
-        jLabel11.setText("PHIẾU MƯỢN SÁCH");
+        jLabel11.setText("MƯỢN SÁCH");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Mã phiếu");
+        jLabel12.setText("Mã độc giả");
 
-        jTextField_MaDG1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldMaDocGia.setEditable(false);
+        jTextFieldMaDocGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setText("Ngày mượn");
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("Ngày trả");
+        jLabel20.setText("Hạn trả");
 
-        jButton_Muon.setBackground(new java.awt.Color(153, 255, 153));
-        jButton_Muon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_Muon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-borrow-book-32.png"))); // NOI18N
-        jButton_Muon.setText("Mượn");
-
-        jButton_TroVe.setBackground(new java.awt.Color(153, 255, 153));
-        jButton_TroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_TroVe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
-        jButton_TroVe.setText("Trở về");
-        jButton_TroVe.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMuon.setBackground(new java.awt.Color(153, 255, 153));
+        jButtonMuon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-borrow-book-32.png"))); // NOI18N
+        jButtonMuon.setText("Mượn");
+        jButtonMuon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_TroVeActionPerformed(evt);
+                jButtonMuonActionPerformed(evt);
             }
         });
 
-        jDateChooser_NgayDangKy1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTroVe.setBackground(new java.awt.Color(153, 255, 153));
+        jButtonTroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTroVe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
+        jButtonTroVe.setText("Trở về");
+        jButtonTroVe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTroVeActionPerformed(evt);
+            }
+        });
 
-        jDateChooser_NgayHetHan1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jDateChooserNgayMuon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jDateChooserHanTra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Tên sách");
+        jLabel13.setText("Mã sách");
 
-        jTextField_MaDG2.setEditable(false);
-        jTextField_MaDG2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextFieldMaSach.setEditable(false);
+        jTextFieldMaSach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -195,17 +211,17 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_MaDG1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser_NgayDangKy1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser_NgayHetHan1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField_MaDG2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldMaDocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooserNgayMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooserHanTra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jButton_Muon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonTroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                        .addGap(125, 125, 125)
                         .addComponent(jLabel11)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -217,36 +233,38 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_MaDG1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMaDocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_MaDG2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser_NgayDangKy1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooserNgayMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_Muon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jDateChooser_NgayHetHan1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                            .addComponent(jButtonMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonTroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jDateChooserHanTra, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialog_PhieuMuonLayout = new javax.swing.GroupLayout(jDialog_PhieuMuon.getContentPane());
-        jDialog_PhieuMuon.getContentPane().setLayout(jDialog_PhieuMuonLayout);
-        jDialog_PhieuMuonLayout.setHorizontalGroup(
-            jDialog_PhieuMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialogMuonSachLayout = new javax.swing.GroupLayout(jDialogMuonSach.getContentPane());
+        jDialogMuonSach.getContentPane().setLayout(jDialogMuonSachLayout);
+        jDialogMuonSachLayout.setHorizontalGroup(
+            jDialogMuonSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialog_PhieuMuonLayout.setVerticalGroup(
-            jDialog_PhieuMuonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jDialogMuonSachLayout.setVerticalGroup(
+            jDialogMuonSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogMuonSachLayout.createSequentialGroup()
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -323,6 +341,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
         jTableDocGia1.setFillsViewportHeight(true);
+        jTableDocGia1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jTableDocGia1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -392,6 +411,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
         jTableSach.setFillsViewportHeight(true);
+        jTableSach.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jTableSach);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -414,13 +434,13 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 204));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Chức năng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton_MuonSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_MuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-borrow-book-32.png"))); // NOI18N
-        jButton_MuonSach.setText("Mượn sách");
-        jButton_MuonSach.setToolTipText("");
-        jButton_MuonSach.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMuonSach.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonMuonSach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-borrow-book-32.png"))); // NOI18N
+        jButtonMuonSach.setText("Mượn sách");
+        jButtonMuonSach.setToolTipText("");
+        jButtonMuonSach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_MuonSachActionPerformed(evt);
+                jButtonMuonSachActionPerformed(evt);
             }
         });
 
@@ -430,13 +450,13 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(191, 191, 191)
-                .addComponent(jButton_MuonSach, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonMuonSach, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(198, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jButton_MuonSach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonMuonSach, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -675,6 +695,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
         jTableDocGia2.setFillsViewportHeight(true);
+        jTableDocGia2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableDocGia2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jTableDocGia2MouseReleased(evt);
@@ -749,6 +770,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
         jTableSachDangMuon.setFillsViewportHeight(true);
+        jTableSachDangMuon.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(jTableSachDangMuon);
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
@@ -979,7 +1001,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane2)
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1002,12 +1024,37 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_MuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MuonSachActionPerformed
+    private void jButtonMuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMuonSachActionPerformed
         // TODO add your handling code here:
-        jDialog_PhieuMuon.pack();
-        jDialog_PhieuMuon.setLocationRelativeTo(this);
-        jDialog_PhieuMuon.setVisible(true);
-    }//GEN-LAST:event_jButton_MuonSachActionPerformed
+        int selectedRowOfJTableDocGia1 = jTableDocGia1.convertRowIndexToModel(jTableDocGia1.getSelectedRow());
+        int selectedRowOfJTableSach = jTableSach.convertRowIndexToModel(jTableSach.getSelectedRow());
+        if (selectedRowOfJTableDocGia1 == -1 || selectedRowOfJTableSach == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả và sách để mượn!");
+            return;
+        }
+        
+        String maDocGia = (String) jTableDocGia1.getModel().getValueAt(selectedRowOfJTableDocGia1, 0);
+        String maSach = (String) jTableSach.getModel().getValueAt(selectedRowOfJTableSach, 0);
+        int soLuongCon = Integer.parseInt((String) jTableSach.getModel().getValueAt(selectedRowOfJTableSach, 9));
+        String query = "SELECT * FROM MUONTRA WHERE MANGUOIDUNG = '" + maDocGia + "' AND MASACH = '" + maSach + "'";
+        if (soLuongCon == 0) {
+            JOptionPane.showMessageDialog(this, "Số lượng sách này đã hết, bạn không thể mượn. Vui lòng chọn sách khác!");
+        } else if (DataFromSQLServer.recordExists(query)) {
+            JOptionPane.showMessageDialog(this, "Không thể mượn sách mà độc giả đang mượn. Vui lòng chọn sách khác!");
+        } else {
+            jTextFieldMaDocGia.setText(maDocGia);
+            jTextFieldMaSach.setText(maSach);
+            
+            Calendar calendar = Calendar.getInstance();
+            jDateChooserNgayMuon.setDate(calendar.getTime());
+            calendar.add(Calendar.DATE, 7);
+            jDateChooserHanTra.setDate(calendar.getTime());
+            
+            jDialogMuonSach.pack();
+            jDialogMuonSach.setLocationRelativeTo(this);
+            jDialogMuonSach.setVisible(true);
+        }
+    }//GEN-LAST:event_jButtonMuonSachActionPerformed
 
     private void jButton_TraSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TraSachActionPerformed
         // TODO add your handling code here:
@@ -1147,10 +1194,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jButtonTimKiemSach1ActionPerformed
 
-    private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
+    private void jButtonTroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTroVeActionPerformed
         // TODO add your handling code here:
-        jDialog_PhieuMuon.dispose();
-    }//GEN-LAST:event_jButton_TroVeActionPerformed
+        jDialogMuonSach.dispose();
+    }//GEN-LAST:event_jButtonTroVeActionPerformed
 
     private void jTableDocGia2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDocGia2MouseReleased
         // TODO add your handling code here:
@@ -1197,6 +1244,44 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jButtonTimKiemSach2ActionPerformed
 
+    private void jButtonMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMuonActionPerformed
+        // TODO add your handling code here:
+        if (jDateChooserHanTra.getDate().after(jDateChooserNgayMuon.getDate())) {
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            String ngayMuon = dateFormatter.format(jDateChooserNgayMuon.getDate());
+            String hanTra = dateFormatter.format(jDateChooserHanTra.getDate());
+            
+            int selectedRowOfJTableDocGia1 = jTableDocGia1.convertRowIndexToModel(jTableDocGia1.getSelectedRow());
+            int selectedRowOfJTableSach = jTableSach.convertRowIndexToModel(jTableSach.getSelectedRow());
+            String maDocGia = (String) jTableDocGia1.getModel().getValueAt(selectedRowOfJTableDocGia1, 0);
+            String maSach = (String) jTableSach.getModel().getValueAt(selectedRowOfJTableSach, 0);
+            int soLuongCon = Integer.parseInt((String) jTableSach.getModel().getValueAt(selectedRowOfJTableSach, 9));
+            
+            try (
+                    Connection con = KetNoiSQL.layKetNoi();
+                    PreparedStatement updateMuonTra = con.prepareStatement("INSERT INTO MUONTRA VALUES(?, ?, ?, ?)");
+                    PreparedStatement updateSach = con.prepareStatement("UPDATE SACH SET SOLUONGCON = ? WHERE MASACH = ?")) {
+                updateMuonTra.setString(1, maDocGia);
+                updateMuonTra.setString(2, maSach);
+                updateMuonTra.setString(3, ngayMuon);
+                updateMuonTra.setString(4, hanTra);
+                updateMuonTra.executeUpdate();
+                
+                updateSach.setInt(1, soLuongCon - 1);
+                updateSach.setString(2, maSach);
+                updateSach.executeUpdate();
+            } catch (SQLException ex) {
+                java.util.logging.Logger.getLogger(QuanLyMuonTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            
+            JOptionPane.showMessageDialog(jDialogMuonSach, "Mượn sách thành công");
+            jDialogMuonSach.dispose();
+            DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
+        } else {
+            JOptionPane.showMessageDialog(jDialogMuonSach, "Hạn trả phải lớn hơn ngày mượn. Vui lòng chọn lại ngày và thử lại!");
+        }
+    }//GEN-LAST:event_jButtonMuonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1240,22 +1325,22 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupDocGia2;
     private javax.swing.ButtonGroup buttonGroupSach1;
     private javax.swing.ButtonGroup buttonGroupSach2;
+    private javax.swing.JButton jButtonMuon;
+    private javax.swing.JButton jButtonMuonSach;
     private javax.swing.JButton jButtonTimKiemDG1;
     private javax.swing.JButton jButtonTimKiemDG2;
     private javax.swing.JButton jButtonTimKiemSach1;
     private javax.swing.JButton jButtonTimKiemSach2;
+    private javax.swing.JButton jButtonTroVe;
     private javax.swing.JButton jButton_BaoHongMat;
-    private javax.swing.JButton jButton_Muon;
-    private javax.swing.JButton jButton_MuonSach;
     private javax.swing.JButton jButton_Thoat;
     private javax.swing.JButton jButton_Thoat1;
     private javax.swing.JButton jButton_TraSach;
-    private javax.swing.JButton jButton_TroVe;
     private javax.swing.JButton jButton_TroVe1;
     private javax.swing.JButton jButton_TroVe2;
-    private com.toedter.calendar.JDateChooser jDateChooser_NgayDangKy1;
-    private com.toedter.calendar.JDateChooser jDateChooser_NgayHetHan1;
-    private javax.swing.JDialog jDialog_PhieuMuon;
+    private com.toedter.calendar.JDateChooser jDateChooserHanTra;
+    private com.toedter.calendar.JDateChooser jDateChooserNgayMuon;
+    private javax.swing.JDialog jDialogMuonSach;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1316,7 +1401,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldKeywordDocGia2;
     private javax.swing.JTextField jTextFieldKeywordSach1;
     private javax.swing.JTextField jTextFieldKeywordSach2;
-    private javax.swing.JTextField jTextField_MaDG1;
-    private javax.swing.JTextField jTextField_MaDG2;
+    private javax.swing.JTextField jTextFieldMaDocGia;
+    private javax.swing.JTextField jTextFieldMaSach;
     // End of variables declaration//GEN-END:variables
 }
