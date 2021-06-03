@@ -7,6 +7,9 @@ package view;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import table.DataFromSQLServer;
 
 /**
@@ -45,9 +48,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupTheo1 = new javax.swing.ButtonGroup();
-        buttonGroupTheo2 = new javax.swing.ButtonGroup();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroupDocGia1 = new javax.swing.ButtonGroup();
+        buttonGroupDocGia2 = new javax.swing.ButtonGroup();
+        buttonGroupSach1 = new javax.swing.ButtonGroup();
         jDialog_PhieuMuon = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -61,22 +64,23 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jDateChooser_NgayHetHan1 = new com.toedter.calendar.JDateChooser();
         jLabel13 = new javax.swing.JLabel();
         jTextField_MaDG2 = new javax.swing.JTextField();
+        buttonGroupSach2 = new javax.swing.ButtonGroup();
         jPanel15 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextFieldKeyword1 = new javax.swing.JTextField();
-        jButton_TimKiem = new javax.swing.JButton();
+        jTextFieldKeywordDocGia1 = new javax.swing.JTextField();
+        jButtonTimKiemDG1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableDocGia1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        jRadioButtonMaSach1 = new javax.swing.JRadioButton();
-        jRadioButtonTenSach1 = new javax.swing.JRadioButton();
-        jRadioButtonTacGia1 = new javax.swing.JRadioButton();
-        jRadioButtonNXB1 = new javax.swing.JRadioButton();
-        jRadioButtonTheLoai1 = new javax.swing.JRadioButton();
+        jRadioButtonMaDG1 = new javax.swing.JRadioButton();
+        jRadioButtonTenDG1 = new javax.swing.JRadioButton();
+        jRadioButtonSDT1 = new javax.swing.JRadioButton();
+        jRadioButtonEmail1 = new javax.swing.JRadioButton();
+        jRadioButtonMaLop1 = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSach = new javax.swing.JTable();
@@ -86,28 +90,28 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jButton_TroVe1 = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
-        jTextFieldKeyword4 = new javax.swing.JTextField();
-        jButton_TimKiem1 = new javax.swing.JButton();
+        jTextFieldKeywordSach1 = new javax.swing.JTextField();
+        jButtonTimKiemSach1 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
-        jRadioButtonMaSach3 = new javax.swing.JRadioButton();
-        jRadioButtonTenSach3 = new javax.swing.JRadioButton();
-        jRadioButtonTacGia3 = new javax.swing.JRadioButton();
-        jRadioButtonNXB3 = new javax.swing.JRadioButton();
-        jRadioButtonTheLoai3 = new javax.swing.JRadioButton();
+        jRadioButtonMaSach1 = new javax.swing.JRadioButton();
+        jRadioButtonTenSach1 = new javax.swing.JRadioButton();
+        jRadioButtonMaTacGia1 = new javax.swing.JRadioButton();
+        jRadioButtonMaNXB1 = new javax.swing.JRadioButton();
+        jRadioButtonMaTheLoai1 = new javax.swing.JRadioButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
-        jTextFieldKeyword2 = new javax.swing.JTextField();
-        jButtonTimKiem2 = new javax.swing.JButton();
+        jTextFieldKeywordDocGia2 = new javax.swing.JTextField();
+        jButtonTimKiemDG2 = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableDocGia2 = new javax.swing.JTable();
         jPanel19 = new javax.swing.JPanel();
-        jRadioButtonMaSach2 = new javax.swing.JRadioButton();
-        jRadioButtonTenSach2 = new javax.swing.JRadioButton();
-        jRadioButtonTacGia2 = new javax.swing.JRadioButton();
-        jRadioButtonNXB2 = new javax.swing.JRadioButton();
-        jRadioButtonTheLoai2 = new javax.swing.JRadioButton();
+        jRadioButtonMaDG2 = new javax.swing.JRadioButton();
+        jRadioButtonTenDG2 = new javax.swing.JRadioButton();
+        jRadioButtonSDT2 = new javax.swing.JRadioButton();
+        jRadioButtonEmail2 = new javax.swing.JRadioButton();
+        jRadioButtonMaLop2 = new javax.swing.JRadioButton();
         jPanel20 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableSachDangMuon = new javax.swing.JTable();
@@ -117,6 +121,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel22 = new javax.swing.JPanel();
         jButton_TroVe2 = new javax.swing.JButton();
         jButton_Thoat1 = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        jTextFieldKeywordSach2 = new javax.swing.JTextField();
+        jButtonTimKiemSach2 = new javax.swing.JButton();
+        jPanel13 = new javax.swing.JPanel();
+        jRadioButtonMaSach2 = new javax.swing.JRadioButton();
+        jRadioButtonTenSach2 = new javax.swing.JRadioButton();
+        jRadioButtonMaTacGia2 = new javax.swing.JRadioButton();
+        jRadioButtonMaNXB2 = new javax.swing.JRadioButton();
+        jRadioButtonMaTheLoai2 = new javax.swing.JRadioButton();
 
         jDialog_PhieuMuon.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -253,19 +266,19 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Độc giả", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTextFieldKeyword1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldKeyword1.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextFieldKeywordDocGia1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldKeywordDocGia1.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextFieldKeyword1CaretUpdate(evt);
+                jTextFieldKeywordDocGia1CaretUpdate(evt);
             }
         });
 
-        jButton_TimKiem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton_TimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
-        jButton_TimKiem.setText("Tìm kiếm");
-        jButton_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTimKiemDG1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonTimKiemDG1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
+        jButtonTimKiemDG1.setText("Tìm kiếm");
+        jButtonTimKiemDG1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_TimKiemActionPerformed(evt);
+                jButtonTimKiemDG1ActionPerformed(evt);
             }
         });
 
@@ -275,9 +288,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldKeyword1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldKeywordDocGia1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(jButtonTimKiemDG1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -285,8 +298,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton_TimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jTextFieldKeyword1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jButtonTimKiemDG1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKeywordDocGia1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(17, 17, 17))
         );
 
@@ -333,31 +346,31 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
-        buttonGroupTheo1.add(jRadioButtonMaSach1);
-        jRadioButtonMaSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaSach1.setSelected(true);
-        jRadioButtonMaSach1.setText("Mã");
-        jPanel4.add(jRadioButtonMaSach1);
+        buttonGroupDocGia1.add(jRadioButtonMaDG1);
+        jRadioButtonMaDG1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaDG1.setSelected(true);
+        jRadioButtonMaDG1.setText("Mã độc giả");
+        jPanel4.add(jRadioButtonMaDG1);
 
-        buttonGroupTheo1.add(jRadioButtonTenSach1);
-        jRadioButtonTenSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTenSach1.setText("Họ tên");
-        jPanel4.add(jRadioButtonTenSach1);
+        buttonGroupDocGia1.add(jRadioButtonTenDG1);
+        jRadioButtonTenDG1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTenDG1.setText("Tên độc giả");
+        jPanel4.add(jRadioButtonTenDG1);
 
-        buttonGroupTheo1.add(jRadioButtonTacGia1);
-        jRadioButtonTacGia1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTacGia1.setText("Mã lớp");
-        jPanel4.add(jRadioButtonTacGia1);
+        buttonGroupDocGia1.add(jRadioButtonSDT1);
+        jRadioButtonSDT1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonSDT1.setText("SĐT");
+        jPanel4.add(jRadioButtonSDT1);
 
-        buttonGroupTheo1.add(jRadioButtonNXB1);
-        jRadioButtonNXB1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonNXB1.setText("SĐT");
-        jPanel4.add(jRadioButtonNXB1);
+        buttonGroupDocGia1.add(jRadioButtonEmail1);
+        jRadioButtonEmail1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonEmail1.setText("Email");
+        jPanel4.add(jRadioButtonEmail1);
 
-        buttonGroupTheo1.add(jRadioButtonTheLoai1);
-        jRadioButtonTheLoai1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTheLoai1.setText("Email");
-        jPanel4.add(jRadioButtonTheLoai1);
+        buttonGroupDocGia1.add(jRadioButtonMaLop1);
+        jRadioButtonMaLop1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaLop1.setText("Mã Lớp");
+        jPanel4.add(jRadioButtonMaLop1);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -471,19 +484,19 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(255, 255, 204));
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Sách", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTextFieldKeyword4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldKeyword4.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextFieldKeywordSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldKeywordSach1.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextFieldKeyword4CaretUpdate(evt);
+                jTextFieldKeywordSach1CaretUpdate(evt);
             }
         });
 
-        jButton_TimKiem1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton_TimKiem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
-        jButton_TimKiem1.setText("Tìm kiếm");
-        jButton_TimKiem1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTimKiemSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonTimKiemSach1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
+        jButtonTimKiemSach1.setText("Tìm kiếm");
+        jButtonTimKiemSach1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_TimKiem1ActionPerformed(evt);
+                jButtonTimKiemSach1ActionPerformed(evt);
             }
         });
 
@@ -493,9 +506,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldKeyword4, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldKeywordSach1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_TimKiem1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(jButtonTimKiemSach1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -503,40 +516,40 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton_TimKiem1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextFieldKeyword4, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jButtonTimKiemSach1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKeywordSach1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(17, 17, 17))
         );
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 204));
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
+        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 25, 10));
 
-        buttonGroup1.add(jRadioButtonMaSach3);
-        jRadioButtonMaSach3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaSach3.setSelected(true);
-        jRadioButtonMaSach3.setText("Mã sách");
-        jPanel11.add(jRadioButtonMaSach3);
+        buttonGroupSach1.add(jRadioButtonMaSach1);
+        jRadioButtonMaSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaSach1.setSelected(true);
+        jRadioButtonMaSach1.setText("Mã sách");
+        jPanel11.add(jRadioButtonMaSach1);
 
-        buttonGroup1.add(jRadioButtonTenSach3);
-        jRadioButtonTenSach3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTenSach3.setText("Tên sách");
-        jPanel11.add(jRadioButtonTenSach3);
+        buttonGroupSach1.add(jRadioButtonTenSach1);
+        jRadioButtonTenSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTenSach1.setText("Tên sách");
+        jPanel11.add(jRadioButtonTenSach1);
 
-        buttonGroup1.add(jRadioButtonTacGia3);
-        jRadioButtonTacGia3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTacGia3.setText("Tác giả");
-        jPanel11.add(jRadioButtonTacGia3);
+        buttonGroupSach1.add(jRadioButtonMaTacGia1);
+        jRadioButtonMaTacGia1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaTacGia1.setText("Mã tác giả");
+        jPanel11.add(jRadioButtonMaTacGia1);
 
-        buttonGroup1.add(jRadioButtonNXB3);
-        jRadioButtonNXB3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonNXB3.setText("NXB");
-        jPanel11.add(jRadioButtonNXB3);
+        buttonGroupSach1.add(jRadioButtonMaNXB1);
+        jRadioButtonMaNXB1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaNXB1.setText("Mã NXB");
+        jPanel11.add(jRadioButtonMaNXB1);
 
-        buttonGroup1.add(jRadioButtonTheLoai3);
-        jRadioButtonTheLoai3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTheLoai3.setText("Thể loại");
-        jPanel11.add(jRadioButtonTheLoai3);
+        buttonGroupSach1.add(jRadioButtonMaTheLoai1);
+        jRadioButtonMaTheLoai1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaTheLoai1.setText("Mã thể loại");
+        jPanel11.add(jRadioButtonMaTheLoai1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -603,21 +616,21 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jLabel3.setIconTextGap(10);
 
         jPanel17.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Độc giả", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTextFieldKeyword2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldKeyword2.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextFieldKeywordDocGia2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldKeywordDocGia2.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextFieldKeyword2CaretUpdate(evt);
+                jTextFieldKeywordDocGia2CaretUpdate(evt);
             }
         });
 
-        jButtonTimKiem2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButtonTimKiem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
-        jButtonTimKiem2.setText("Tìm kiếm");
-        jButtonTimKiem2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTimKiemDG2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonTimKiemDG2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
+        jButtonTimKiemDG2.setText("Tìm kiếm");
+        jButtonTimKiemDG2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTimKiem2ActionPerformed(evt);
+                jButtonTimKiemDG2ActionPerformed(evt);
             }
         });
 
@@ -627,9 +640,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldKeyword2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldKeywordDocGia2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonTimKiem2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(jButtonTimKiemDG2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -637,13 +650,13 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonTimKiem2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                    .addComponent(jTextFieldKeyword2, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jButtonTimKiemDG2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKeywordDocGia2, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(17, 17, 17))
         );
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Danh sách độc giả", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         jTableDocGia2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -682,7 +695,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -690,34 +703,34 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel19.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
-        buttonGroupTheo2.add(jRadioButtonMaSach2);
-        jRadioButtonMaSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaSach2.setSelected(true);
-        jRadioButtonMaSach2.setText("Mã");
-        jPanel19.add(jRadioButtonMaSach2);
+        buttonGroupDocGia2.add(jRadioButtonMaDG2);
+        jRadioButtonMaDG2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaDG2.setSelected(true);
+        jRadioButtonMaDG2.setText("Mã độc giả");
+        jPanel19.add(jRadioButtonMaDG2);
 
-        buttonGroupTheo2.add(jRadioButtonTenSach2);
-        jRadioButtonTenSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTenSach2.setText("Họ tên");
-        jPanel19.add(jRadioButtonTenSach2);
+        buttonGroupDocGia2.add(jRadioButtonTenDG2);
+        jRadioButtonTenDG2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTenDG2.setText("Tên độc giả");
+        jPanel19.add(jRadioButtonTenDG2);
 
-        buttonGroupTheo2.add(jRadioButtonTacGia2);
-        jRadioButtonTacGia2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTacGia2.setText("Mã lớp");
-        jPanel19.add(jRadioButtonTacGia2);
+        buttonGroupDocGia2.add(jRadioButtonSDT2);
+        jRadioButtonSDT2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonSDT2.setText("SĐT");
+        jPanel19.add(jRadioButtonSDT2);
 
-        buttonGroupTheo2.add(jRadioButtonNXB2);
-        jRadioButtonNXB2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonNXB2.setText("SĐT");
-        jPanel19.add(jRadioButtonNXB2);
+        buttonGroupDocGia2.add(jRadioButtonEmail2);
+        jRadioButtonEmail2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonEmail2.setText("Email");
+        jPanel19.add(jRadioButtonEmail2);
 
-        buttonGroupTheo2.add(jRadioButtonTheLoai2);
-        jRadioButtonTheLoai2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonTheLoai2.setText("Email");
-        jPanel19.add(jRadioButtonTheLoai2);
+        buttonGroupDocGia2.add(jRadioButtonMaLop2);
+        jRadioButtonMaLop2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaLop2.setText("Mã lớp");
+        jPanel19.add(jRadioButtonMaLop2);
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Sách đang mượn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         jTableSachDangMuon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -751,7 +764,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -838,28 +851,103 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
+        jPanel12.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Sách đang mượn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+
+        jTextFieldKeywordSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldKeywordSach2.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextFieldKeywordSach2CaretUpdate(evt);
+            }
+        });
+
+        jButtonTimKiemSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonTimKiemSach2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
+        jButtonTimKiemSach2.setText("Tìm kiếm");
+        jButtonTimKiemSach2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimKiemSach2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextFieldKeywordSach2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonTimKiemSach2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonTimKiemSach2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKeywordSach2, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(17, 17, 17))
+        );
+
+        jPanel13.setBackground(new java.awt.Color(255, 255, 204));
+        jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 25, 10));
+
+        buttonGroupSach2.add(jRadioButtonMaSach2);
+        jRadioButtonMaSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaSach2.setSelected(true);
+        jRadioButtonMaSach2.setText("Mã sách");
+        jPanel13.add(jRadioButtonMaSach2);
+
+        buttonGroupSach2.add(jRadioButtonTenSach2);
+        jRadioButtonTenSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTenSach2.setText("Tên sách");
+        jPanel13.add(jRadioButtonTenSach2);
+
+        buttonGroupSach2.add(jRadioButtonMaTacGia2);
+        jRadioButtonMaTacGia2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaTacGia2.setText("Mã tác giả");
+        jPanel13.add(jRadioButtonMaTacGia2);
+
+        buttonGroupSach2.add(jRadioButtonMaNXB2);
+        jRadioButtonMaNXB2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaNXB2.setText("Mã NXB");
+        jPanel13.add(jRadioButtonMaNXB2);
+
+        buttonGroupSach2.add(jRadioButtonMaTheLoai2);
+        jRadioButtonMaTheLoai2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaTheLoai2.setText("Mã thể loại");
+        jPanel13.add(jRadioButtonMaTheLoai2);
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(308, 308, 308))
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel16Layout.createSequentialGroup()
+                            .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel16Layout.createSequentialGroup()
+                            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jPanel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -872,6 +960,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                     .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -943,38 +1035,117 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton_ThoatActionPerformed
 
-    private void jTextFieldKeyword2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeyword2CaretUpdate
+    private void jTextFieldKeywordDocGia2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeywordDocGia2CaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldKeyword2CaretUpdate
+        String keyword = jTextFieldKeywordDocGia2.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTableDocGia2.getModel());
+        jTableDocGia2.setRowSorter(trs);
+        if (jRadioButtonMaDG2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
+        } else if (jRadioButtonTenDG2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButtonSDT2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
+        } else if (jRadioButtonEmail2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
+        } else if (jRadioButtonMaLop2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 9));
+        } 
+    }//GEN-LAST:event_jTextFieldKeywordDocGia2CaretUpdate
 
-    private void jTextFieldKeyword1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeyword1CaretUpdate
+    private void jTextFieldKeywordDocGia1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeywordDocGia1CaretUpdate
         // TODO add your handling code here:
-        // What the hell... it doesn't work
-//        DefaultTableModel dtm = (DefaultTableModel) jTableDSSach.getModel();
-//        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
-//        jTableDSSach.setRowSorter(trs);
-//        trs.setRowFilter(RowFilter.regexFilter(keyword));
-    }//GEN-LAST:event_jTextFieldKeyword1CaretUpdate
+        String keyword = jTextFieldKeywordDocGia1.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTableDocGia1.getModel());
+        jTableDocGia1.setRowSorter(trs);
+        if (jRadioButtonMaDG1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
+        } else if (jRadioButtonTenDG1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButtonSDT1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
+        } else if (jRadioButtonEmail1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
+        } else if (jRadioButtonMaLop1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 9));
+        } 
+    }//GEN-LAST:event_jTextFieldKeywordDocGia1CaretUpdate
 
-    private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
+    private void jButtonTimKiemDG1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemDG1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_TimKiemActionPerformed
+        String keyword = jTextFieldKeywordDocGia1.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTableDocGia1.getModel());
+        jTableDocGia1.setRowSorter(trs);
+        if (jRadioButtonMaDG1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
+        } else if (jRadioButtonTenDG1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButtonSDT1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
+        } else if (jRadioButtonEmail1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
+        } else if (jRadioButtonMaLop1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 9));
+        } 
+    }//GEN-LAST:event_jButtonTimKiemDG1ActionPerformed
 
-    private void jButtonTimKiem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiem2ActionPerformed
+    private void jButtonTimKiemDG2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemDG2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTimKiem2ActionPerformed
+        String keyword = jTextFieldKeywordDocGia2.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTableDocGia2.getModel());
+        jTableDocGia2.setRowSorter(trs);
+        if (jRadioButtonMaDG2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
+        } else if (jRadioButtonTenDG2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButtonSDT2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
+        } else if (jRadioButtonEmail2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
+        } else if (jRadioButtonMaLop2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 9));
+        }
+    }//GEN-LAST:event_jButtonTimKiemDG2ActionPerformed
 
     private void jButton_BaoHongMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BaoHongMatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_BaoHongMatActionPerformed
 
-    private void jTextFieldKeyword4CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeyword4CaretUpdate
+    private void jTextFieldKeywordSach1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeywordSach1CaretUpdate
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldKeyword4CaretUpdate
+        String keyword = jTextFieldKeywordSach1.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTableSach.getModel());
+        jTableSach.setRowSorter(trs);
+        if (jRadioButtonMaSach1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
+        } else if (jRadioButtonTenSach1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButtonMaTacGia1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
+        } else if (jRadioButtonMaNXB1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
+        } else if (jRadioButtonMaTheLoai1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
+        } 
+    }//GEN-LAST:event_jTextFieldKeywordSach1CaretUpdate
 
-    private void jButton_TimKiem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiem1ActionPerformed
+    private void jButtonTimKiemSach1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemSach1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_TimKiem1ActionPerformed
+        String keyword = jTextFieldKeywordSach1.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTableSach.getModel());
+        jTableSach.setRowSorter(trs);
+        if (jRadioButtonMaSach1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
+        } else if (jRadioButtonTenSach1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButtonMaTacGia1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
+        } else if (jRadioButtonMaNXB1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
+        } else if (jRadioButtonMaTheLoai1.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
+        } 
+    }//GEN-LAST:event_jButtonTimKiemSach1ActionPerformed
 
     private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
@@ -989,6 +1160,42 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                    + "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maDocGia + "'";
         DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, sql);
     }//GEN-LAST:event_jTableDocGia2MouseReleased
+
+    private void jTextFieldKeywordSach2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeywordSach2CaretUpdate
+        // TODO add your handling code here:
+        String keyword = jTextFieldKeywordSach2.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTableSachDangMuon.getModel());
+        jTableSachDangMuon.setRowSorter(trs);
+        if (jRadioButtonMaSach2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
+        } else if (jRadioButtonTenSach2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButtonMaTacGia2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
+        } else if (jRadioButtonMaNXB2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
+        } else if (jRadioButtonMaTheLoai2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
+        } 
+    }//GEN-LAST:event_jTextFieldKeywordSach2CaretUpdate
+
+    private void jButtonTimKiemSach2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimKiemSach2ActionPerformed
+        // TODO add your handling code here:
+        String keyword = jTextFieldKeywordSach2.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTableSachDangMuon.getModel());
+        jTableSachDangMuon.setRowSorter(trs);
+        if (jRadioButtonMaSach2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
+        } else if (jRadioButtonTenSach2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButtonMaTacGia2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
+        } else if (jRadioButtonMaNXB2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
+        } else if (jRadioButtonMaTheLoai2.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
+        } 
+    }//GEN-LAST:event_jButtonTimKiemSach2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1029,17 +1236,19 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroupTheo1;
-    private javax.swing.ButtonGroup buttonGroupTheo2;
-    private javax.swing.JButton jButtonTimKiem2;
+    private javax.swing.ButtonGroup buttonGroupDocGia1;
+    private javax.swing.ButtonGroup buttonGroupDocGia2;
+    private javax.swing.ButtonGroup buttonGroupSach1;
+    private javax.swing.ButtonGroup buttonGroupSach2;
+    private javax.swing.JButton jButtonTimKiemDG1;
+    private javax.swing.JButton jButtonTimKiemDG2;
+    private javax.swing.JButton jButtonTimKiemSach1;
+    private javax.swing.JButton jButtonTimKiemSach2;
     private javax.swing.JButton jButton_BaoHongMat;
     private javax.swing.JButton jButton_Muon;
     private javax.swing.JButton jButton_MuonSach;
     private javax.swing.JButton jButton_Thoat;
     private javax.swing.JButton jButton_Thoat1;
-    private javax.swing.JButton jButton_TimKiem;
-    private javax.swing.JButton jButton_TimKiem1;
     private javax.swing.JButton jButton_TraSach;
     private javax.swing.JButton jButton_TroVe;
     private javax.swing.JButton jButton_TroVe1;
@@ -1057,6 +1266,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
@@ -1072,21 +1283,26 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JRadioButton jRadioButtonEmail1;
+    private javax.swing.JRadioButton jRadioButtonEmail2;
+    private javax.swing.JRadioButton jRadioButtonMaDG1;
+    private javax.swing.JRadioButton jRadioButtonMaDG2;
+    private javax.swing.JRadioButton jRadioButtonMaLop1;
+    private javax.swing.JRadioButton jRadioButtonMaLop2;
+    private javax.swing.JRadioButton jRadioButtonMaNXB1;
+    private javax.swing.JRadioButton jRadioButtonMaNXB2;
     private javax.swing.JRadioButton jRadioButtonMaSach1;
     private javax.swing.JRadioButton jRadioButtonMaSach2;
-    private javax.swing.JRadioButton jRadioButtonMaSach3;
-    private javax.swing.JRadioButton jRadioButtonNXB1;
-    private javax.swing.JRadioButton jRadioButtonNXB2;
-    private javax.swing.JRadioButton jRadioButtonNXB3;
-    private javax.swing.JRadioButton jRadioButtonTacGia1;
-    private javax.swing.JRadioButton jRadioButtonTacGia2;
-    private javax.swing.JRadioButton jRadioButtonTacGia3;
+    private javax.swing.JRadioButton jRadioButtonMaTacGia1;
+    private javax.swing.JRadioButton jRadioButtonMaTacGia2;
+    private javax.swing.JRadioButton jRadioButtonMaTheLoai1;
+    private javax.swing.JRadioButton jRadioButtonMaTheLoai2;
+    private javax.swing.JRadioButton jRadioButtonSDT1;
+    private javax.swing.JRadioButton jRadioButtonSDT2;
+    private javax.swing.JRadioButton jRadioButtonTenDG1;
+    private javax.swing.JRadioButton jRadioButtonTenDG2;
     private javax.swing.JRadioButton jRadioButtonTenSach1;
     private javax.swing.JRadioButton jRadioButtonTenSach2;
-    private javax.swing.JRadioButton jRadioButtonTenSach3;
-    private javax.swing.JRadioButton jRadioButtonTheLoai1;
-    private javax.swing.JRadioButton jRadioButtonTheLoai2;
-    private javax.swing.JRadioButton jRadioButtonTheLoai3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1096,9 +1312,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JTable jTableDocGia2;
     private javax.swing.JTable jTableSach;
     private javax.swing.JTable jTableSachDangMuon;
-    private javax.swing.JTextField jTextFieldKeyword1;
-    private javax.swing.JTextField jTextFieldKeyword2;
-    private javax.swing.JTextField jTextFieldKeyword4;
+    private javax.swing.JTextField jTextFieldKeywordDocGia1;
+    private javax.swing.JTextField jTextFieldKeywordDocGia2;
+    private javax.swing.JTextField jTextFieldKeywordSach1;
+    private javax.swing.JTextField jTextFieldKeywordSach2;
     private javax.swing.JTextField jTextField_MaDG1;
     private javax.swing.JTextField jTextField_MaDG2;
     // End of variables declaration//GEN-END:variables
