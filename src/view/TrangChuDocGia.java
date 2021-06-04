@@ -12,13 +12,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import model.NguoiDung;
+import table.DataFromSQLServer;
 
 /**
  *
@@ -27,7 +33,12 @@ import model.NguoiDung;
 public class TrangChuDocGia extends javax.swing.JFrame {
 
     private String maNguoiDung;
+    private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "TENTACGIA", "TENNXB",
+                                                                                    "TENTHELOAI", "GIA", "VITRI", "SOLUONGCON"));
 
+    private String queryForJTableSach = "SELECT * " +
+                                        "FROM SACH S, NHAXUATBAN NXB, TACGIA TG, THELOAI TL " +
+                                        "WHERE S.MANXB = NXB.MANXB AND S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI";
     /**
      * Creates new form AdminHoneForm
      */
@@ -36,6 +47,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         demSoLuongDG();
+        DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTableSach, queryForJTableSach);
     }
 
     /**
@@ -98,7 +110,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jRadioButton_MaSach = new javax.swing.JRadioButton();
         jRadioButton_TenSach = new javax.swing.JRadioButton();
-        jRadioButton_TacGia = new javax.swing.JRadioButton();
+        jRadioButton_TenTacGia = new javax.swing.JRadioButton();
         jRadioButton_NXB = new javax.swing.JRadioButton();
         jRadioButton_TheLoai = new javax.swing.JRadioButton();
         jPanel7 = new javax.swing.JPanel();
@@ -253,6 +265,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Mã người dùng");
 
+        jTextField_MaNguoiDung.setEditable(false);
         jTextField_MaNguoiDung.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -546,7 +559,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Mã tác giả", "Mã NXB", "Mã thể loại", "Giá", "Vị trí", "Số lượng còn"
+                "Mã sách", "Tên sách", "Tên tác giả", "Tên NXB", "Tên thể loại", "Giá", "Vị trí", "Số lượng còn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -590,16 +603,16 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jRadioButton_TenSach.setText("Tên sách");
         jPanel5.add(jRadioButton_TenSach);
 
-        jRadioButton_TacGia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_TacGia.setText("Mã tác giả");
-        jPanel5.add(jRadioButton_TacGia);
+        jRadioButton_TenTacGia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_TenTacGia.setText("Tác giả");
+        jPanel5.add(jRadioButton_TenTacGia);
 
         jRadioButton_NXB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_NXB.setText("Mã NXB");
+        jRadioButton_NXB.setText("Nhà Xuất Bản");
         jPanel5.add(jRadioButton_NXB);
 
         jRadioButton_TheLoai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_TheLoai.setText("Mã thể loại");
+        jRadioButton_TheLoai.setText("Thể loại");
         jPanel5.add(jRadioButton_TheLoai);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 204));
@@ -1010,6 +1023,26 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
     private void jTextField_KeywordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordCaretUpdate
         // TODO add your handling code here:
+        String tuKhoa = jTextField_Keyword.getText();
+        DefaultTableModel model = (DefaultTableModel) jTable_DSSach.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        jTable_DSSach.setRowSorter(trs);
+
+        if (jRadioButton_MaSach.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenSach.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
+        if (jRadioButton_TenTacGia.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 2));
+        }
+        if (jRadioButton_NXB.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 3));
+        }
+        if (jRadioButton_TheLoai.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 4));
+        }
     }//GEN-LAST:event_jTextField_KeywordCaretUpdate
 
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
@@ -1285,8 +1318,8 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField_oldpass;
     private javax.swing.JRadioButton jRadioButton_MaSach;
     private javax.swing.JRadioButton jRadioButton_NXB;
-    private javax.swing.JRadioButton jRadioButton_TacGia;
     private javax.swing.JRadioButton jRadioButton_TenSach;
+    private javax.swing.JRadioButton jRadioButton_TenTacGia;
     private javax.swing.JRadioButton jRadioButton_TheLoai;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
