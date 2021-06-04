@@ -41,6 +41,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         demSoLuongDG();
+        tongTienPhat();
         DataFromSQLServer.getAndShowData(jTable_DSDocGiaNopPhat, columnTitlesOfJTable_DSDocGiaNopPhat, "SELECT * FROM XULYVIPHAM");
     }
 
@@ -138,6 +139,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel67 = new javax.swing.JLabel();
         jLabel_SoTienNopPhat = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -874,10 +877,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel_TienPhat.add(jLabel67);
         jLabel67.setBounds(20, 10, 190, 30);
 
-        jLabel_SoTienNopPhat.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SoTienNopPhat.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel_SoTienNopPhat.setText("0");
         jPanel_TienPhat.add(jLabel_SoTienNopPhat);
-        jLabel_SoTienNopPhat.setBounds(110, 70, 100, 50);
+        jLabel_SoTienNopPhat.setBounds(70, 70, 150, 50);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -912,6 +915,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel1.setText("Thư viện sách");
         jLabel1.setIconTextGap(10);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setText("Xin chào");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel6.setText("What is your name?");
+
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
         jPanel32Layout.setHorizontalGroup(
@@ -921,7 +931,11 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(578, 578, 578)
+                        .addGap(429, 429, 429)
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel11))
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
@@ -935,10 +949,15 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel32Layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel6))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -950,7 +969,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel32, 1018, 1018, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -969,6 +988,22 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 jLabel_SLDocGia.setText(rs.getString(1));
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(TrangChuThuThu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void tongTienPhat() {
+        Connection con = KetNoiSQL.layKetNoi();
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT SUM(PHATQUAHAN) + SUM(PHATHONGMAT) FROM XULYVIPHAM");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                jLabel_SoTienNopPhat.setText(rs.getString(1) + "đ");
             }
             rs.close();
             ps.close();
@@ -1244,10 +1279,12 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel63;
