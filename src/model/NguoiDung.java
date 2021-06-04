@@ -17,49 +17,22 @@ import view.DangNhap;
  * @author Apple Bee
  */
 public class NguoiDung {
-    private String ma, matKhau, ten, gioiTinh, ngaySinh, ngayDangKy, ngayHetHan, diaChi, sdt, email, maVaiTro, maLop;
+    private String ma, matKhau, ten, gioiTinh, ngaySinh, diaChi, sdt, email, maVaiTro;
     
     public NguoiDung() {
     }
 
-    public NguoiDung(String ma, String matKhau, String ten, String gioiTinh, String ngaySinh, String diaChi, String sdt, String email) {
+    public NguoiDung(String ma, String matKhau, String ten, String gioiTinh, String ngaySinh, String diaChi, String sdt, String email, String maVaiTro) {
         this.ma = ma;
         this.matKhau = matKhau;
         this.ten = ten;
         this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
-        this.sdt = sdt;
-        this.email = email;
-    }
-    public NguoiDung(String ma, String matKhau, String ten, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String maLop) {
-        this.ma = ma;
-        this.matKhau = matKhau;
-        this.ten = ten;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.ngayDangKy = ngayDangKy;
-        this.ngayHetHan = ngayHetHan;
-        this.diaChi = diaChi;
-        this.sdt = sdt;
-        this.email = email;
-        this.maLop = maLop;
-    }
-    public NguoiDung(String ma, String matKhau, String ten, String gioiTinh, String ngaySinh, String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String maVaiTro, String maLop) {
-        this.ma = ma;
-        this.matKhau = matKhau;
-        this.ten = ten;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.ngayDangKy = ngayDangKy;
-        this.ngayHetHan = ngayHetHan;
         this.diaChi = diaChi;
         this.sdt = sdt;
         this.email = email;
         this.maVaiTro = maVaiTro;
-        this.maLop = maLop;
     }
-    
     
     public String getMa() {
         return ma;
@@ -101,22 +74,6 @@ public class NguoiDung {
         this.ngaySinh = ngaySinh;
     }
 
-    public String getNgayDangKy() {
-        return ngayDangKy;
-    }
-
-    public void setNgayDangKy(String ngayDangKy) {
-        this.ngayDangKy = ngayDangKy;
-    }
-
-    public String getNgayHetHan() {
-        return ngayHetHan;
-    }
-
-    public void setNgayHetHan(String ngayHetHan) {
-        this.ngayHetHan = ngayHetHan;
-    }
-
     public String getDiaChi() {
         return diaChi;
     }
@@ -141,6 +98,14 @@ public class NguoiDung {
         this.email = email;
     }
 
+    public String getMaVaiTro() {
+        return maVaiTro;
+    }
+
+    public void setMaVaiTro(String maVaiTro) {
+        this.maVaiTro = maVaiTro;
+    }
+    
     public static void chinhSuaTTNguoiDung(String ma, String ten, String gioiTinh, String ngaySinh, String diaChi, String sdt, String email) {
         String sql = "update NGUOIDUNG set TENNGUOIDUNG = ?, GIOITINH = ?, NGAYSINH = ?, "
                 + "DIACHI = ?, SDT = ?, EMAIL = ? "
@@ -170,7 +135,7 @@ public class NguoiDung {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 n = new NguoiDung(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getString(5), rs.getString(8), rs.getString(9), rs.getString(10));
+                        rs.getString(5), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
             }
             rs.close();
             ps.close();
@@ -180,20 +145,4 @@ public class NguoiDung {
         }
         return n;
     }
-    public String getMaVaiTro() {
-        return maVaiTro;
-    }
-
-    public void setMaVaiTro(String maVaiTro) {
-        this.maVaiTro = maVaiTro;
-    }
-
-    public String getMaLop() {
-        return maLop;
-    }
-
-    public void setMaLop(String maLop) {
-        this.maLop = maLop;
-    }
-    
 }
