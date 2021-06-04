@@ -29,13 +29,15 @@ import table.DataFromSQLServer;
  * @author Admin
  */
 public class QuanLyNguoiDung extends javax.swing.JFrame {
-    private DefaultTableModel model;
-    private ArrayList<String> columnTitlesOfJTableNV = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI", 
-                                                                                          "SDT", "EMAIL", "TENVAITRO"));
 
-    private String queryForJTableNV =   "SELECT * " +
-                                        "FROM NGUOIDUNG ND, VAITRO VT " +
-                                        "WHERE ND.MAVAITRO = VT.MAVAITRO AND NOT ND.MAVAITRO = 'VT01' AND NOT ND.MAVAITRO = 'VT04'";
+    private DefaultTableModel model;
+    private ArrayList<String> columnTitlesOfJTableNV = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI",
+            "SDT", "EMAIL", "TENVAITRO"));
+
+    private String queryForJTableNV = "SELECT * "
+            + "FROM NGUOIDUNG ND, VAITRO VT "
+            + "WHERE ND.MAVAITRO = VT.MAVAITRO AND NOT ND.MAVAITRO = 'VT01' AND NOT ND.MAVAITRO = 'VT04'";
+
     /**
      * Creates new form QuanLyNguoiDung
      */
@@ -555,12 +557,13 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jComboBox_VaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(jRadioButton_Nam)
-                    .addComponent(jRadioButton_Nu)
-                    .addComponent(jLabel23)
-                    .addComponent(jDateChooser_NgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDateChooser_NgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel26)
+                        .addComponent(jRadioButton_Nam)
+                        .addComponent(jRadioButton_Nu)
+                        .addComponent(jLabel23)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -718,7 +721,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void layDuLieuVaiTro () {
+    public void layDuLieuVaiTro() {
         Connection con = KetNoiSQL.layKetNoi();
         VaiTro vt = null;
         try {
@@ -736,7 +739,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public int kiemTraNhanVien(String maNV) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
@@ -755,7 +758,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
         }
         return tonTai;
     }
-    
+
     public void themMoiNhanVien(String maNV, String matKhauNV, String tenNV, String gioiTinh, String ngaySinh,
             String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String maVaiTro, String maLop) {
 
@@ -780,7 +783,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -884,10 +887,10 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
         jTextField_DiaChi.setText((String) model.getValueAt(row, 4));
         jTextField_SDT.setText((String) model.getValueAt(row, 5));
         jTextField_Email.setText((String) model.getValueAt(row, 6));
-        
+
         String vaiTro = (String) model.getValueAt(row, 7);
         for (int i = 0; i < jComboBox_VaiTro.getItemCount(); i++) {
-            if(vaiTro.equals(jComboBox_VaiTro.getItemAt(i).getTenVaiTro())) {
+            if (vaiTro.equals(jComboBox_VaiTro.getItemAt(i).getTenVaiTro())) {
                 jComboBox_VaiTro.setSelectedIndex(i);
             }
         }
@@ -913,7 +916,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
         }
         return str;
     }
-    
+
     public void chinhSuaNhanVien(String maNV, String tenNV, String gioiTinh, String ngaySinh, String diaChi, String sdt, String email, String maVaiTro) {
 
         String sql = "update NGUOIDUNG set TENNGUOIDUNG = ?, GIOITINH = ?, NGAYSINH = ?, "
@@ -935,7 +938,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void jButton_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaActionPerformed
         // TODO add your handling code here:
         String maNV = jTextField_MaNV.getText();
@@ -958,7 +961,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             } else {
                 ngaySinh = sdf.format(jDateChooser_NgaySinh.getDate());
             }
-            
+
             String diaChi = jTextField_DiaChi.getText();
             String sdt = jTextField_SDT.getText();
             String email = jTextField_Email.getText();
@@ -998,7 +1001,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void xoaDuLieuForm() {
         jTextField_MaNV.setText("");
         jTextField_TenNV.setText("");
@@ -1009,7 +1012,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
         jTextField_DiaChi.setText("");
         jComboBox_VaiTro.setSelectedIndex(0);
     }
-    
+
     private void jButton_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaActionPerformed
         // TODO add your handling code here:
         String maNV = jTextField_MaNV.getText();
@@ -1017,7 +1020,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
         if (maNV.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên bạn muốn xóa");
         } else {
-            
+
             int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", 0);
             if (luaChon == JOptionPane.CANCEL_OPTION) {
                 return;

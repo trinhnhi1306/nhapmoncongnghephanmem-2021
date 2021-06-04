@@ -34,11 +34,12 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
     private String maNguoiDung;
     private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "TENTACGIA", "TENNXB",
-                                                                                    "TENTHELOAI", "GIA", "VITRI", "SOLUONGCON"));
+            "TENTHELOAI", "GIA", "VITRI", "SOLUONGCON"));
 
-    private String queryForJTableSach = "SELECT * " +
-                                        "FROM SACH S, NHAXUATBAN NXB, TACGIA TG, THELOAI TL " +
-                                        "WHERE S.MANXB = NXB.MANXB AND S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI";
+    private String queryForJTableSach = "SELECT * "
+            + "FROM SACH S, NHAXUATBAN NXB, TACGIA TG, THELOAI TL "
+            + "WHERE S.MANXB = NXB.MANXB AND S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI";
+
     /**
      * Creates new form AdminHoneForm
      */

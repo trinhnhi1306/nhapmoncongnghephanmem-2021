@@ -12,22 +12,25 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import model.Sach;
+import table.DataFromSQLServer;
 
 /**
  *
  * @author COMPUTER
  */
 public class QuanLySach extends javax.swing.JFrame {
+
+    private ArrayList<String> columnTitlesOfJTable_DSSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI", "MATACGIA", "MANXB", "MATHELOAI", "SOLUONGCO", "SOLUONGCON"));
 
     /**
      * Creates new form ManageBookForm
@@ -38,7 +41,7 @@ public class QuanLySach extends javax.swing.JFrame {
         getMaTacGia();
         getMaNXB();
         getMaTheLoai();
-        showSach(jTable_DSSach, "SELECT * FROM SACH");
+        DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
     }
 
     /**
@@ -751,55 +754,26 @@ public class QuanLySach extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public static ArrayList<Sach> getSach(String sql) {
+
+    private ArrayList<Sach> getDSSach(String sql) {
         ArrayList<Sach> ds = new ArrayList<>();
         try (
                 Connection con = KetNoiSQL.layKetNoi();
                 PreparedStatement ps = con.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                Sach sach = new Sach(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), 
-                                     rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+                Sach sach = new Sach(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
                 ds.add(sach);
             }
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(QuanLySach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         return ds;
     }
-    
-    public static void showSach(JTable jTable, String sql) {
-        ArrayList<Sach> ds = getSach(sql);
-        DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
-        dtm.setRowCount(0);
-        for (Sach sach : ds) {
-            dtm.addRow(new Object[] {
-                sach.getMaSach(),
-                sach.getTenSach(),
-                sach.getNgayNhap(),
-                sach.getGia(),
-                sach.getViTri(),
-                sach.getMaTacGia(),
-                sach.getMaNXB(),
-                sach.getMaTheLoai(),
-                sach.getSoLuongCo(),
-                sach.getSoLuongCon()
-            });
-        }
-    }
-//    private String chuanHoaChuThuong(String str) {
-//        str = str.trim(); //Xóa khoảng trắng ở đầu và cuối chuỗi
-//        String temp[] = str.split("\\s+"); //Tách chuỗi tại vị trí có 1 hoặc nhiều hơn các ký tự trắng
-//        str = "";
-//        for (int i = 0; i < temp.length; i++) {
-//            str += temp[i].toLowerCase();
-//            if (i < temp.length - 1) //Thêm " " vào giữa các từ
-//            {
-//                str += " ";
-//            }
-//        }
-//        return str;
-//    }
+
     private void getMaTacGia() {
         jComboBox_MaTacGia.removeAllItems();
         jComboBox_MaTacGia1.removeAllItems();
@@ -900,7 +874,7 @@ public class QuanLySach extends javax.swing.JFrame {
     }
 
     private void chinhSuaSach(String maSach, String tenSach, String maTacGia, String maNXB, String maTheLoai, String gia, String ngayNhap, String viTri, String soLuongThem) {
-        ArrayList<Sach> sach = getSach("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
+        ArrayList<Sach> sach = getDSSach("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
         int soLuongCo = Integer.parseInt(sach.get(0).getSoLuongCo());
         int soLuongCon = Integer.parseInt(sach.get(0).getSoLuongCon());
         String sql = "UPDATE SACH SET TENSACH = ?, MATACGIA = ?, MANXB = ?, MATHELOAI = ?, GIA = ?, NGAYNHAP = ?, VITRI = ?, SOLUONGCO = ?, SOLUONGCON = ? WHERE MASACH = ?";
@@ -972,12 +946,12 @@ public class QuanLySach extends javax.swing.JFrame {
         jTextField_SoLuongThem.setText("");
     }
 
-    private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         jDialog_ThemSach.pack(); //Tự động thay đổi kích thước của JFrame dựa trên kích thước của các component mà nó chứa
         jDialog_ThemSach.setLocationRelativeTo(this);
         jDialog_ThemSach.setVisible(true);
-    }                                            
+    }
 
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
@@ -1020,7 +994,7 @@ public class QuanLySach extends javax.swing.JFrame {
                 themMoiSach(maSach, tenSach, maTacGia, maNXB, maTheLoai, gia, ngayNhap, viTri, soLuong);
                 JOptionPane.showMessageDialog(jDialog_ThemSach, "Thêm sách thành công!");
                 jDialog_ThemSach.dispose();
-                showSach(jTable_DSSach, "SELECT * FROM SACH");
+                DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
             }
         }
     }//GEN-LAST:event_jButton_Them1ActionPerformed
@@ -1032,29 +1006,12 @@ public class QuanLySach extends javax.swing.JFrame {
 
     private void jTextField_KeywordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordCaretUpdate
         //Được gọi khi con trỏ văn bản di chuyển
-        // TODO add your handling code here:
-//        String keyword = chuanHoaChuThuong(jTextField_Keyword.getText());
-//        if (keyword.equals("")) {
-//            showDSSach(jTable_DSSach, "SELECT * FROM SACH");
-//        } else {
-//            if (jRadioButton_MaSach.isSelected()) {
-//                showDSSach(jTable_DSSach, "SELECT * FROM SACH WHERE LOWER(MASACH) LIKE N'%" + keyword + "%'");
-//            } else if (jRadioButton_TenSach.isSelected()) {
-//                showDSSach(jTable_DSSach, "SELECT * FROM SACH WHERE LOWER(TENSACH) LIKE N'%" + keyword + "%'");
-//            } else if (jRadioButton_TacGia.isSelected()) {
-//                showDSSach(jTable_DSSach, "SELECT * FROM SACH WHERE LOWER(TACGIA) LIKE N'%" + keyword + "%'");
-//            } else if (jRadioButton_NXB.isSelected()) {
-//                showDSSach(jTable_DSSach, "SELECT * FROM SACH WHERE LOWER(NXB) LIKE N'%" + keyword + "%'");
-//            } else if (jRadioButton_TheLoai.isSelected()) {
-//                showDSSach(jTable_DSSach, "SELECT * FROM SACH WHERE LOWER(THELOAI) LIKE N'%" + keyword + "%'");
-//            }
-//        } //->Không tối ưu, mỗi lần lặp phải nạp lại dữ liệu
         String keyword = jTextField_Keyword.getText();
         DefaultTableModel dtm = (DefaultTableModel) jTable_DSSach.getModel();
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSSach.setRowSorter(trs);
         if (keyword.equals("")) {
-            showSach(jTable_DSSach, "SELECT * FROM SACH");
+            DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
         } else {
             if (jRadioButton_MaSach.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1077,7 +1034,7 @@ public class QuanLySach extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSSach.setRowSorter(trs);
         if (keyword.equals("")) {
-            showSach(jTable_DSSach, "SELECT * FROM SACH");
+            DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
         } else {
             if (jRadioButton_MaSach.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1173,7 +1130,7 @@ public class QuanLySach extends javax.swing.JFrame {
                 if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaSach(maSach, tenSach, maTacGia, maNXB, maTheLoai, gia, ngayNhap, viTri, soLuongThem);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa sách thành công!");
-                    showSach(jTable_DSSach, "SELECT * FROM SACH");
+                    DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
                 } else {
                     return;
                 }
@@ -1195,7 +1152,7 @@ public class QuanLySach extends javax.swing.JFrame {
                     xoaSach(maSach);
                     JOptionPane.showMessageDialog(this, "Xóa sách thành công!");
                     xoaDuLieuSach();
-                    showSach(jTable_DSSach, "SELECT * FROM SACH");
+                    DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
                 } else {
                     return;
                 }

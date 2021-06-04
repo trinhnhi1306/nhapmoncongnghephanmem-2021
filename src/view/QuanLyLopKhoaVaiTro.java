@@ -18,9 +18,6 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
-import model.Lop;
-import model.Khoa;
-import model.VaiTro;
 import table.DataFromSQLServer;
 
 /**
@@ -28,14 +25,15 @@ import table.DataFromSQLServer;
  * @author Admin
  */
 public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
-    private ArrayList<String> columnTitlesOfJTableKhoa= new ArrayList<>(Arrays.asList("MAKHOA", "TENKHOA"));
+
+    private ArrayList<String> columnTitlesOfJTableKhoa = new ArrayList<>(Arrays.asList("MAKHOA", "TENKHOA"));
     private ArrayList<String> columnTitlesOfJTableLop = new ArrayList<>(Arrays.asList("MALOP", "TENLOP", "MAKHOA"));
     private ArrayList<String> columnTitlesOfJTableVaiTro = new ArrayList<>(Arrays.asList("MAVAITRO", "TENVAITRO"));
-    
+
     private String queryForJTableKhoa = "SELECT * FROM KHOA";
     private String queryForJTableLop = "SELECT * FROM LOP";
     private String queryForJTableVaiTro = "SELECT * FROM VAITRO";
-    
+
     private DefaultTableModel modelKhoa;
     private DefaultTableModel modelLop;
     private DefaultTableModel modelVaiTro;
@@ -1484,7 +1482,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 themMoiKhoa(maKhoa, tenKhoa);
                 JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Thêm khoa thành công!");
                 jDialog_ThemKhoa.dispose();
-                DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);        
+                DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);
                 showMaKhoa();
             }
         }
@@ -1630,7 +1628,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             } else {
                 themMoiVaiTro(maVaiTro, tenVaiTro);
                 JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Thêm vai trò thành công!");
-                jDialog_ThemVaiTro.dispose();                
+                jDialog_ThemVaiTro.dispose();
                 DataFromSQLServer.getAndShowData(jTable_DSVaiTro, columnTitlesOfJTableVaiTro, queryForJTableVaiTro);
             }
         }
@@ -1745,7 +1743,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     xoaVaiTro(maVT);
                     JOptionPane.showMessageDialog(this, "Xóa vai trò thành công");
-                    xoaDuLieuVaiTro();                    
+                    xoaDuLieuVaiTro();
                     DataFromSQLServer.getAndShowData(jTable_DSVaiTro, columnTitlesOfJTableVaiTro, queryForJTableVaiTro);
                 }
             }
@@ -1825,7 +1823,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     xoaLop(maLop);
                     JOptionPane.showMessageDialog(this, "Xóa lớp thành công");
-                    xoaDuLieuLop();                    
+                    xoaDuLieuLop();
                     DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);
                 }
             }
@@ -1981,7 +1979,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                     return;
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaLop(maLop, tenLop, maKhoa);
-                    JOptionPane.showMessageDialog(this, "Chỉnh sửa lớp thành công!");                    
+                    JOptionPane.showMessageDialog(this, "Chỉnh sửa lớp thành công!");
                     DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);
                 }
             }
@@ -2018,7 +2016,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                     return;
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaVaiTro(maVaiTro, tenVaiTro);
-                    JOptionPane.showMessageDialog(this, "Chỉnh sửa vai trò thành công!");                    
+                    JOptionPane.showMessageDialog(this, "Chỉnh sửa vai trò thành công!");
                     DataFromSQLServer.getAndShowData(jTable_DSVaiTro, columnTitlesOfJTableVaiTro, queryForJTableVaiTro);
                 }
             }

@@ -22,7 +22,6 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
-import model.DocGia;
 import table.DataFromSQLServer;
 
 /**
@@ -32,10 +31,11 @@ import table.DataFromSQLServer;
 public class QuanLyDocGia extends javax.swing.JFrame {
 
     private DefaultTableModel model;
-    private ArrayList<String> columnTitlesOfJTableDocGia = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI", 
-                                                                                          "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
+    private ArrayList<String> columnTitlesOfJTableDocGia = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI",
+            "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
 
     private String queryForJTableDocGia = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
+
     /**
      * Creates new form ManageBookForm
      */
@@ -889,8 +889,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                     DataFromSQLServer.getAndShowData(jTable_DSDocGia, columnTitlesOfJTableDocGia, queryForJTableDocGia);
                 }
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(jDialogThemDocGia, "Ngày hết hạn phải lớn hơn ngày đăng ký. Vui lòng chọn lại ngày và thử lại!");
         }
     }//GEN-LAST:event_jButton_Them1ActionPerformed

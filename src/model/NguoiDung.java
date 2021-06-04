@@ -17,8 +17,9 @@ import view.DangNhap;
  * @author Apple Bee
  */
 public class NguoiDung {
+
     private String ma, matKhau, ten, gioiTinh, ngaySinh, diaChi, sdt, email, maVaiTro;
-    
+
     public NguoiDung() {
     }
 
@@ -33,7 +34,7 @@ public class NguoiDung {
         this.email = email;
         this.maVaiTro = maVaiTro;
     }
-    
+
     public String getMa() {
         return ma;
     }
@@ -105,7 +106,7 @@ public class NguoiDung {
     public void setMaVaiTro(String maVaiTro) {
         this.maVaiTro = maVaiTro;
     }
-    
+
     public static void chinhSuaTTNguoiDung(String ma, String ten, String gioiTinh, String ngaySinh, String diaChi, String sdt, String email) {
         String sql = "update NGUOIDUNG set TENNGUOIDUNG = ?, GIOITINH = ?, NGAYSINH = ?, "
                 + "DIACHI = ?, SDT = ?, EMAIL = ? "

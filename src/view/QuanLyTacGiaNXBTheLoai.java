@@ -10,17 +10,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
-import model.NXB;
-import model.TacGia;
-import model.TheLoai;
+import table.DataFromSQLServer;
 
 /**
  *
@@ -28,15 +26,19 @@ import model.TheLoai;
  */
 public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
 
+    private ArrayList<String> columnTitlesOfJTable_DSTacGia = new ArrayList<>(Arrays.asList("MATACGIA", "TENTACGIA", "GHICHU"));
+    private ArrayList<String> columnTitlesOfJTable_DSNXB = new ArrayList<>(Arrays.asList("MANXB", "TENNXB", "DIACHI"));
+    private ArrayList<String> columnTitlesOfJTable_DSTheLoai = new ArrayList<>(Arrays.asList("MATHELOAI", "TENTHELOAI", "GHICHU"));
+
     /**
      * Creates new form QuanLyTacGiaNXBTheLoai
      */
     public QuanLyTacGiaNXBTheLoai() {
         initComponents();
         setLocationRelativeTo(null);
-        showDSTacGia(jTable_DSTacGia, "SELECT * FROM TACGIA");
-        showDSNXB(jTable_DSNXB, "SELECT * FROM NHAXUATBAN");
-        showDSTheLoai(jTable_DSTheLoai, "SELECT * FROM THELOAI");
+        DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
+        DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+        DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
     }
 
     /**
@@ -1437,38 +1439,6 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private ArrayList<TacGia> getDSTacGia(String sql) {
-        ArrayList<TacGia> dsTacGia = new ArrayList<>();
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            TacGia t;
-            while (rs.next()) {
-                t = new TacGia(rs.getString(1), rs.getString(2), rs.getString(3));
-                dsTacGia.add(t);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(QuanLyTacGiaNXBTheLoai.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dsTacGia;
-    }
-
-    private void showDSTacGia(JTable jTable, String sql) {
-        ArrayList<TacGia> ds = getDSTacGia(sql);
-        DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
-        dtm.setRowCount(0); //Xóa tất cả các hàng
-        for (TacGia tacGia : ds) {
-            dtm.addRow(new Object[]{
-                tacGia.getMaTacGia(),
-                tacGia.getTenTacGia(),
-                tacGia.getGhiChu()});
-        }
-    }
-
     private int kiemTraTacGia(String maTacGia) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
@@ -1559,38 +1529,6 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         jTextField_GhiChuTacGia.setText("");
     }
 
-    private ArrayList<NXB> getDSNXB(String sql) {
-        ArrayList<NXB> dsNXB = new ArrayList<>();
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            NXB n;
-            while (rs.next()) {
-                n = new NXB(rs.getString(1), rs.getString(2), rs.getString(3));
-                dsNXB.add(n);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(QuanLyTacGiaNXBTheLoai.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dsNXB;
-    }
-
-    private void showDSNXB(JTable jTable, String sql) {
-        ArrayList<NXB> ds = getDSNXB(sql);
-        DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
-        dtm.setRowCount(0); //Xóa tất cả các hàng
-        for (NXB nxb : ds) {
-            dtm.addRow(new Object[]{
-                nxb.getMaNXB(),
-                nxb.getTenNXB(),
-                nxb.getDiaChi()});
-        }
-    }
-
     private int kiemTraNXB(String maNXB) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
@@ -1679,38 +1617,6 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         jTextField_MaNXB.setText("");
         jTextField_TenNXB.setText("");
         jTextField_DiaChiNXB.setText("");
-    }
-
-    private ArrayList<TheLoai> getDSTheLoai(String sql) {
-        ArrayList<TheLoai> dsTheLoai = new ArrayList<>();
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            TheLoai t;
-            while (rs.next()) {
-                t = new TheLoai(rs.getString(1), rs.getString(2), rs.getString(3));
-                dsTheLoai.add(t);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(QuanLyTacGiaNXBTheLoai.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dsTheLoai;
-    }
-
-    private void showDSTheLoai(JTable jTable, String sql) {
-        ArrayList<TheLoai> ds = getDSTheLoai(sql);
-        DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
-        dtm.setRowCount(0); //Xóa tất cả các hàng
-        for (TheLoai theLoai : ds) {
-            dtm.addRow(new Object[]{
-                theLoai.getMaTheLoai(),
-                theLoai.getTenTheLoai(),
-                theLoai.getGhiChu()});
-        }
     }
 
     private int kiemTraTheLoai(String maTheLoai) {
@@ -1810,7 +1716,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSTacGia.setRowSorter(trs);
         if (keyword.equals("")) {
-            showDSTacGia(jTable_DSTacGia, "SELECT * FROM TACGIA");
+            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
         } else {
             if (jRadioButton_MaTacGia.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1827,7 +1733,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSTacGia.setRowSorter(trs);
         if (keyword.equals("")) {
-            showDSTacGia(jTable_DSTacGia, "SELECT * FROM TACGIA");
+            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
         } else {
             if (jRadioButton_MaTacGia.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1862,7 +1768,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSNXB.setRowSorter(trs);
         if (keyword.equals("")) {
-            showDSNXB(jTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
         } else {
             if (jRadioButton_MaNXB.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1879,7 +1785,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSNXB.setRowSorter(trs);
         if (keyword.equals("")) {
-            showDSNXB(jTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
         } else {
             if (jRadioButton_MaNXB.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1914,7 +1820,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSTheLoai.setRowSorter(trs);
         if (keyword.equals("")) {
-            showDSTheLoai(jTable_DSTheLoai, "SELECT * FROM THELOAI");
+            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
         } else {
             if (jRadioButton_MaTheLoai.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1931,7 +1837,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
         jTable_DSTheLoai.setRowSorter(trs);
         if (keyword.equals("")) {
-            showDSTheLoai(jTable_DSTheLoai, "SELECT * FROM THELOAI");
+            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
         } else {
             if (jRadioButton_MaTheLoai.isSelected()) {
                 trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
@@ -1975,7 +1881,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 themMoiTacGia(maTacGia, tenTacGia, ghiChu);
                 JOptionPane.showMessageDialog(jDialog_ThemTacGia, "Thêm tác giả thành công!");
                 jDialog_ThemTacGia.dispose();
-                showDSTacGia(jTable_DSTacGia, "SELECT * FROM TACGIA");
+                DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
             }
         }
     }//GEN-LAST:event_jButton_ThemTacGia1ActionPerformed
@@ -2001,7 +1907,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 themMoiNXB(maNXB, tenNXB, diaChiNXB);
                 JOptionPane.showMessageDialog(jDialog_ThemNXB, "Thêm nhà xuất bản thành công!");
                 jDialog_ThemNXB.dispose();
-                showDSNXB(jTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+                DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
             }
         }
     }//GEN-LAST:event_jButton_ThemNXB1ActionPerformed
@@ -2027,7 +1933,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 themMoiTheLoai(maTheLoai, tenTheLoai, ghiChu);
                 JOptionPane.showMessageDialog(jDialog_ThemTheLoai, "Thêm thể loại thành công!");
                 jDialog_ThemTheLoai.dispose();
-                showDSTacGia(jTable_DSTheLoai, "SELECT * FROM THELOAI");
+                DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
             }
         }
     }//GEN-LAST:event_jButton_ThemTheLoai1ActionPerformed
@@ -2052,7 +1958,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaTacGia(maTacGia, tenTacGia, ghiChu);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa tác giả thành công!");
-                    showDSTacGia(jTable_DSTacGia, "SELECT * FROM TACGIA");
+                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
                 } else {
                     return;
                 }
@@ -2074,7 +1980,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                     xoaTacGia(maTacGia);
                     JOptionPane.showMessageDialog(this, "Xóa tác giả thành công!");
                     xoaDuLieuTacGia();
-                    showDSTacGia(jTable_DSTacGia, "SELECT * FROM TACGIA");
+                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
                 } else {
                     return;
                 }
@@ -2097,7 +2003,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaNXB(maNXB, tenNXB, diaChi);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa nhà xuất bản thành công!");
-                    showDSNXB(jTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
                 } else {
                     return;
                 }
@@ -2119,7 +2025,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                     xoaNXB(maNXB);
                     JOptionPane.showMessageDialog(this, "Xóa nhà xuất bản thành công!");
                     xoaDuLieuNXB();
-                    showDSNXB(jTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
                 } else {
                     return;
                 }
@@ -2142,7 +2048,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaTheLoai(maTheLoai, tenTheLoai, ghiChu);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa thể loại thành công!");
-                    showDSTheLoai(jTable_DSTheLoai, "SELECT * FROM THELOAI");
+                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
                 } else {
                     return;
                 }
@@ -2164,7 +2070,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                     xoaTheLoai(maTheLoai);
                     JOptionPane.showMessageDialog(this, "Xóa thể loại thành công!");
                     xoaDuLieuTheLoai();
-                    showDSTheLoai(jTable_DSTheLoai, "SELECT * FROM THELOAI");
+                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
                 } else {
                     return;
                 }
