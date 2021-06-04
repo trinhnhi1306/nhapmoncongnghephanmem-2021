@@ -37,4 +37,8 @@ public class VaiTro {
         this.tenVaiTro = tenVaiTro;
     }
 
+    @Override
+    public String toString() {
+        return tenVaiTro;
+    }
 }

@@ -801,7 +801,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
     public void themMoiDocGia(String maDG, String matKhauDG, String tenDG, String gioiTinhDG, String ngaySinhDG,
-            String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String lop) {
+            String ngayDangKy, String ngayHetHan, String diaChi, String sdt, String email, String maLop) {
 
         String sql = "insert into NGUOIDUNG values (?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con = KetNoiSQL.layKetNoi();
@@ -818,7 +818,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             ps.setString(9, sdt);
             ps.setString(10, email);
             ps.setString(11, "VT01");
-            ps.setString(12, lop);
+            ps.setString(12, maLop);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
@@ -843,6 +843,9 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         jTextField_Email.setText("");
         jTextField_SDTDG.setText("");
         jTextField_DiaChiDG.setText("");
+        jComboBox_MaLop.setSelectedIndex(0);
+        jDateChooser_NgayDangKy.setDate(null);
+        jDateChooser_NgayHetHan.setDate(null);
     }
 
 
@@ -866,7 +869,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             String diaChi = jTextField_DiaChiDG1.getText();
             String sdt = jTextField_sdtDG1.getText();
             String email = jTextField_EmailDG1.getText();
-            String lop = (String) jComboBox_MaLop1.getSelectedItem();
+            String maLop = (String) jComboBox_MaLop1.getSelectedItem();
 
             if (maDG.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả không được để trống!");
@@ -880,7 +883,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 } else if (!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
                     JOptionPane.showMessageDialog(jDialogThemDocGia, "Email không hợp lệ!");
                 } else {
-                    themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
+                    themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, maLop);
                     JOptionPane.showMessageDialog(jDialogThemDocGia, "Thêm độc giả thành công!");
                     jDialogThemDocGia.dispose();
                     DataFromSQLServer.getAndShowData(jTable_DSDocGia, columnTitlesOfJTableDocGia, queryForJTableDocGia);
@@ -967,8 +970,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             }
         }
         jTextField_DiaChiDG.setText((String) model.getValueAt(row, 4));
-        jTextField_Email.setText((String) model.getValueAt(row, 5));
-        jTextField_SDTDG.setText((String) model.getValueAt(row, 6));
+        jTextField_Email.setText((String) model.getValueAt(row, 6));
+        jTextField_SDTDG.setText((String) model.getValueAt(row, 5));
         String ngayDangKy = (String) model.getValueAt(row, 7);
         if (ngayDangKy == null) {
             jDateChooser_NgayDangKy.setDate(null);
@@ -1080,7 +1083,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_TroVeActionPerformed
 
     public void chinhSuaDocGia(String maDG, String tenDG, String gioiTinhDG, String ngaySinhDG, String ngayDangKy,
-            String ngayHetHan, String diaChi, String sdt, String email, String lop) {
+            String ngayHetHan, String diaChi, String sdt, String email, String maLop) {
 
         String sql = "update NGUOIDUNG set TENNGUOIDUNG = ?, GIOITINH = ?, NGAYSINH = ?, "
                 + "NGAYDANGKY = ?, NGAYHETHAN = ?, DIACHI = ?, SDT = ?, EMAIL = ?, MALOP = ? "
@@ -1096,7 +1099,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             ps.setString(6, diaChi);
             ps.setString(7, sdt);
             ps.setString(8, email);
-            ps.setString(9, lop);
+            ps.setString(9, maLop);
             ps.setString(10, maDG);
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -1131,7 +1134,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             String diaChi = jTextField_DiaChiDG.getText();
             String sdt = jTextField_SDTDG.getText();
             String email = jTextField_Email.getText();
-            String lop = (String) jComboBox_MaLop.getSelectedItem();
+            String maLop = (String) jComboBox_MaLop.getSelectedItem();
 
             if (tenDG.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Tên độc giả không được để trống!");
@@ -1145,7 +1148,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                     if (luaChon == JOptionPane.CANCEL_OPTION) {
                         return;
                     } else if (luaChon == JOptionPane.OK_OPTION) {
-                        chinhSuaDocGia(maDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
+                        chinhSuaDocGia(maDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, maLop);
                         JOptionPane.showMessageDialog(this, "Chỉnh sửa độc giả thành công!");
                         DataFromSQLServer.getAndShowData(jTable_DSDocGia, columnTitlesOfJTableDocGia, queryForJTableDocGia);
                     }
