@@ -868,7 +868,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jLabel61.setText("Số lượng sách có");
         jLabel61.setToolTipText("");
         jPanel29.add(jLabel61);
-        jLabel61.setBounds(60, 10, 152, 30);
+        jLabel61.setBounds(50, 10, 170, 30);
 
         jLabel_SLSachCo.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel_SLSachCo.setText("0");
