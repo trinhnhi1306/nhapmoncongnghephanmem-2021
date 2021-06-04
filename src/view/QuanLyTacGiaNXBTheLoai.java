@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import table.DataFromSQLServer;
@@ -1712,34 +1713,24 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
     private void jTextField_KeywordTacGiaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordTacGiaCaretUpdate
         // TODO add your handling code here:
         String keyword = jTextField_KeywordTacGia.getText();
-        DefaultTableModel dtm = (DefaultTableModel) jTable_DSTacGia.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSTacGia.getModel());
         jTable_DSTacGia.setRowSorter(trs);
-        if (keyword.equals("")) {
-            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
-        } else {
-            if (jRadioButton_MaTacGia.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
-            } else if (jRadioButton_TenTacGia.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-            }
+        if (jRadioButton_MaTacGia.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+        } else if (jRadioButton_TenTacGia.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
         }
     }//GEN-LAST:event_jTextField_KeywordTacGiaCaretUpdate
 
     private void jButton_TimKiemTacGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemTacGiaActionPerformed
         // TODO add your handling code here:
         String keyword = jTextField_KeywordTacGia.getText();
-        DefaultTableModel dtm = (DefaultTableModel) jTable_DSTacGia.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSTacGia.getModel());
         jTable_DSTacGia.setRowSorter(trs);
-        if (keyword.equals("")) {
-            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
-        } else {
-            if (jRadioButton_MaTacGia.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
-            } else if (jRadioButton_TenTacGia.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-            }
+        if (jRadioButton_MaTacGia.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+        } else if (jRadioButton_TenTacGia.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
         }
     }//GEN-LAST:event_jButton_TimKiemTacGiaActionPerformed
 
@@ -1764,34 +1755,24 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
     private void jTextField_KeywordNXBCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordNXBCaretUpdate
         // TODO add your handling code here:
         String keyword = jTextField_KeywordNXB.getText();
-        DefaultTableModel dtm = (DefaultTableModel) jTable_DSNXB.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSNXB.getModel());
         jTable_DSNXB.setRowSorter(trs);
-        if (keyword.equals("")) {
-            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
-        } else {
-            if (jRadioButton_MaNXB.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
-            } else if (jRadioButton_TenNXB.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-            }
+        if (jRadioButton_MaNXB.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+        } else if (jRadioButton_TenNXB.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
         }
     }//GEN-LAST:event_jTextField_KeywordNXBCaretUpdate
 
     private void jButton_TimKiemNXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemNXBActionPerformed
         // TODO add your handling code here:
         String keyword = jTextField_KeywordNXB.getText();
-        DefaultTableModel dtm = (DefaultTableModel) jTable_DSNXB.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSNXB.getModel());
         jTable_DSNXB.setRowSorter(trs);
-        if (keyword.equals("")) {
-            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
-        } else {
-            if (jRadioButton_MaNXB.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
-            } else if (jRadioButton_TenNXB.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-            }
+        if (jRadioButton_MaNXB.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+        } else if (jRadioButton_TenNXB.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
         }
     }//GEN-LAST:event_jButton_TimKiemNXBActionPerformed
 
@@ -1816,34 +1797,24 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
     private void jTextField_KeywordTheLoaiCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordTheLoaiCaretUpdate
         // TODO add your handling code here:
         String keyword = jTextField_KeywordTheLoai.getText();
-        DefaultTableModel dtm = (DefaultTableModel) jTable_DSTheLoai.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSTheLoai.getModel());
         jTable_DSTheLoai.setRowSorter(trs);
-        if (keyword.equals("")) {
-            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
-        } else {
-            if (jRadioButton_MaTheLoai.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
-            } else if (jRadioButton_TenTheLoai.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-            }
+        if (jRadioButton_MaTheLoai.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+        } else if (jRadioButton_TenTheLoai.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
         }
     }//GEN-LAST:event_jTextField_KeywordTheLoaiCaretUpdate
 
     private void jButton_TimKiemTheLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemTheLoaiActionPerformed
         // TODO add your handling code here:
         String keyword = jTextField_KeywordTheLoai.getText();
-        DefaultTableModel dtm = (DefaultTableModel) jTable_DSTheLoai.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSTheLoai.getModel());
         jTable_DSTheLoai.setRowSorter(trs);
-        if (keyword.equals("")) {
-            DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
-        } else {
-            if (jRadioButton_MaTheLoai.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
-            } else if (jRadioButton_TenTheLoai.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-            }
+        if (jRadioButton_MaTheLoai.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+        } else if (jRadioButton_TenTheLoai.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
         }
     }//GEN-LAST:event_jButton_TimKiemTheLoaiActionPerformed
 

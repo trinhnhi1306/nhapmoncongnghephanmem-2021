@@ -14,14 +14,22 @@ import java.sql.*;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import model.NguoiDung;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import table.DataFromSQLServer;
 
 /**
  *
  * @author Admin
  */
 public class TrangChuThuThu extends javax.swing.JFrame {
+
+    private ArrayList<String> columnTitlesOfJTable_DSDocGiaNopPhat = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "PHATQUAHAN", "PHATHONGMAT", "SOLANVIPHAM"));
 
     private String maNguoiDung;
 
@@ -33,6 +41,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         demSoLuongDG();
+        DataFromSQLServer.getAndShowData(jTable_DSDocGiaNopPhat, columnTitlesOfJTable_DSDocGiaNopPhat, "SELECT * FROM XULYVIPHAM");
     }
 
     /**
@@ -91,7 +100,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jButton_TimKiem = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_DSSach = new javax.swing.JTable();
+        jTable_DSDocGiaNopPhat = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jButton_TroVe3 = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
@@ -124,7 +133,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
         jLabel_SLSachDuocMuon = new javax.swing.JLabel();
-        jPanel33 = new javax.swing.JPanel();
+        jPanel_TienPhat = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
         jLabel_SoTienNopPhat = new javax.swing.JLabel();
@@ -504,10 +513,20 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Tìm kiếm theo mã người dùng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         jTextField_Keyword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextField_Keyword.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField_KeywordCaretUpdate(evt);
+            }
+        });
 
         jButton_TimKiem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton_TimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search (1).png"))); // NOI18N
         jButton_TimKiem.setText("Tìm kiếm");
+        jButton_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TimKiemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -533,7 +552,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 204));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Danh sách", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jTable_DSSach.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_DSDocGiaNopPhat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -549,8 +568,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable_DSSach.setFillsViewportHeight(true);
-        jScrollPane1.setViewportView(jTable_DSSach);
+        jTable_DSDocGiaNopPhat.setFillsViewportHeight(true);
+        jScrollPane1.setViewportView(jTable_DSDocGiaNopPhat);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -575,10 +594,20 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jButton_TroVe3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_TroVe3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/home.png"))); // NOI18N
         jButton_TroVe3.setText("Trở về");
+        jButton_TroVe3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TroVe3ActionPerformed(evt);
+            }
+        });
 
         jButton_Thoat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_Thoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/remove-button.png"))); // NOI18N
         jButton_Thoat.setText("Thoát");
+        jButton_Thoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ThoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -828,21 +857,26 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel30.add(jLabel_SLSachDuocMuon);
         jLabel_SLSachDuocMuon.setBounds(110, 70, 100, 50);
 
-        jPanel33.setBackground(new java.awt.Color(255, 255, 0));
-        jPanel33.setLayout(null);
+        jPanel_TienPhat.setBackground(new java.awt.Color(255, 255, 0));
+        jPanel_TienPhat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_TienPhatMouseClicked(evt);
+            }
+        });
+        jPanel_TienPhat.setLayout(null);
 
         jLabel66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tienphat.png"))); // NOI18N
-        jPanel33.add(jLabel66);
+        jPanel_TienPhat.add(jLabel66);
         jLabel66.setBounds(10, 60, 70, 70);
 
         jLabel67.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel67.setText("Số tiền đã nộp phạt");
-        jPanel33.add(jLabel67);
+        jPanel_TienPhat.add(jLabel67);
         jLabel67.setBounds(20, 10, 190, 30);
 
         jLabel_SoTienNopPhat.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel_SoTienNopPhat.setText("0");
-        jPanel33.add(jLabel_SoTienNopPhat);
+        jPanel_TienPhat.add(jLabel_SoTienNopPhat);
         jLabel_SoTienNopPhat.setBounds(110, 70, 100, 50);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
@@ -857,7 +891,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_TienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
@@ -868,7 +902,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                     .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(jPanel_SLSachQuaHan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                    .addComponent(jPanel_TienPhat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -1106,6 +1140,39 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_XacNhanActionPerformed
 
+    private void jButton_TroVe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe3ActionPerformed
+        // TODO add your handling code here:
+        jDialog_TienPhat.dispose();
+    }//GEN-LAST:event_jButton_TroVe3ActionPerformed
+
+    private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton_ThoatActionPerformed
+
+    private void jTextField_KeywordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordCaretUpdate
+        // TODO add your handling code here:
+        String keyword = jTextField_Keyword.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSDocGiaNopPhat.getModel());
+        jTable_DSDocGiaNopPhat.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+    }//GEN-LAST:event_jTextField_KeywordCaretUpdate
+
+    private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
+        // TODO add your handling code here:
+        String keyword = jTextField_Keyword.getText();
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSDocGiaNopPhat.getModel());
+        jTable_DSDocGiaNopPhat.setRowSorter(trs);
+        trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+    }//GEN-LAST:event_jButton_TimKiemActionPerformed
+
+    private void jPanel_TienPhatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_TienPhatMouseClicked
+        // TODO add your handling code here:
+        jDialog_TienPhat.pack();
+        jDialog_TienPhat.setLocationRelativeTo(this);
+        jDialog_TienPhat.setVisible(true);
+    }//GEN-LAST:event_jPanel_TienPhatMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1200,19 +1267,19 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPanel jPanel_SLSachQuaHan;
+    private javax.swing.JPanel jPanel_TienPhat;
     private javax.swing.JPasswordField jPasswordField_cnfpass;
     private javax.swing.JPasswordField jPasswordField_newpass;
     private javax.swing.JPasswordField jPasswordField_oldpass;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable_DSSach;
+    private javax.swing.JTable jTable_DSDocGiaNopPhat;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField_DiaChi;

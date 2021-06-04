@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import model.Sach;
@@ -1007,46 +1008,36 @@ public class QuanLySach extends javax.swing.JFrame {
     private void jTextField_KeywordCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordCaretUpdate
         //Được gọi khi con trỏ văn bản di chuyển
         String keyword = jTextField_Keyword.getText();
-        DefaultTableModel dtm = (DefaultTableModel) jTable_DSSach.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSSach.getModel());
         jTable_DSSach.setRowSorter(trs);
-        if (keyword.equals("")) {
-            DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
-        } else {
-            if (jRadioButton_MaSach.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
-            } else if (jRadioButton_TenSach.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-            } else if (jRadioButton_MaTacGia.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 2));
-            } else if (jRadioButton_MaNXB.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 3));
-            } else if (jRadioButton_MaTheLoai.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 4));
-            }
+        if (jRadioButton_MaSach.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+        } else if (jRadioButton_TenSach.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButton_MaTacGia.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 2));
+        } else if (jRadioButton_MaNXB.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 3));
+        } else if (jRadioButton_MaTheLoai.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 4));
         }
     }//GEN-LAST:event_jTextField_KeywordCaretUpdate
 
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
         // TODO add your handling code here:
         String keyword = jTextField_Keyword.getText();
-        DefaultTableModel dtm = (DefaultTableModel) jTable_DSSach.getModel();
-        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(dtm);
+        TableRowSorter<TableModel> trs = new TableRowSorter<>(jTable_DSSach.getModel());
         jTable_DSSach.setRowSorter(trs);
-        if (keyword.equals("")) {
-            DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
-        } else {
-            if (jRadioButton_MaSach.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
-            } else if (jRadioButton_TenSach.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-            } else if (jRadioButton_MaTacGia.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 2));
-            } else if (jRadioButton_MaNXB.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 3));
-            } else if (jRadioButton_MaTheLoai.isSelected()) {
-                trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 4));
-            }
+        if (jRadioButton_MaSach.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
+        } else if (jRadioButton_TenSach.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
+        } else if (jRadioButton_MaTacGia.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 2));
+        } else if (jRadioButton_MaNXB.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 3));
+        } else if (jRadioButton_MaTheLoai.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 4));
         }
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
 
