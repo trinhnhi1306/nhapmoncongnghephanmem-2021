@@ -805,7 +805,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel61.setText("Số sách mượn quá hạn");
         jPanel_SLSachQuaHan.add(jLabel61);
-        jLabel61.setBounds(10, 10, 210, 30);
+        jLabel61.setBounds(0, 10, 220, 30);
 
         jLabel_SLSachQuaHan.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel_SLSachQuaHan.setText("0");
