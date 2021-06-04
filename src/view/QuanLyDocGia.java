@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
@@ -22,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import model.DocGia;
+import table.DataFromSQLServer;
 
 /**
  *
@@ -30,7 +32,10 @@ import model.DocGia;
 public class QuanLyDocGia extends javax.swing.JFrame {
 
     private DefaultTableModel model;
+    private ArrayList<String> columnTitlesOfJTableDocGia = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI", 
+                                                                                          "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
 
+    private String queryForJTableDocGia = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
     /**
      * Creates new form ManageBookForm
      */
@@ -38,7 +43,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         model = (DefaultTableModel) jTable_DSDocGia.getModel();
-        showDocGia();
+        DataFromSQLServer.getAndShowData(jTable_DSDocGia, columnTitlesOfJTableDocGia, queryForJTableDocGia);
         showLop();
     }
 
@@ -765,47 +770,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public ArrayList<DocGia> dsDocGia() {
-        ArrayList<DocGia> dsDocGia = new ArrayList<>();
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement("select * from NGUOIDUNG where MAVAITRO = 'VT01'");
-            ResultSet rs = ps.executeQuery();
-            DocGia dg;
-            while (rs.next()) {
-                dg = new DocGia(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10),
-                        rs.getString(12));
-                dsDocGia.add(dg);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dsDocGia;
-    }
-
-    public void showDocGia() {
-        ArrayList<DocGia> dsDocGia = dsDocGia();
-        model.setNumRows(0);
-        dsDocGia.forEach(dg -> {
-            model.addRow(new Object[]{
-                dg.getMa(),
-                dg.getTen(),
-                dg.getGioiTinh(),
-                dg.getNgaySinh(),
-                dg.getDiaChi(),
-                dg.getSdt(),
-                dg.getEmail(),
-                dg.getNgayDangKy(),
-                dg.getNgayHetHan(),
-                dg.getMaLop()
-            });
-        });
-    }
-
     public void showLop() {
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -884,42 +848,47 @@ public class QuanLyDocGia extends javax.swing.JFrame {
 
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String maDG = jTextField_MaDG1.getText();
-        String matKhauDG = maDG;
-        String tenDG = jTextField_TenDG1.getText();
-        String gioiTinhDG = (String) jComboBox_GioiTinh1.getSelectedItem();
-        String ngaySinhDG;
-        Date date = jDateChooser_NgaySinh1.getDate();
-        if (date == null) {
-            ngaySinhDG = null;
-        } else {
-            ngaySinhDG = sdf.format(jDateChooser_NgaySinh1.getDate());
-        }
-        String ngayDangKy = sdf.format(jDateChooser_NgayDangKy1.getDate());
-        String ngayHetHan = sdf.format(jDateChooser_NgayHetHan1.getDate());
-        String diaChi = jTextField_DiaChiDG1.getText();
-        String sdt = jTextField_sdtDG1.getText();
-        String email = jTextField_EmailDG1.getText();
-        String lop = (String) jComboBox_MaLop1.getSelectedItem();
-
-        if (maDG.equalsIgnoreCase("")) {
-            JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả không được để trống!");
-        } else if (tenDG.equalsIgnoreCase("")) {
-            JOptionPane.showMessageDialog(jDialogThemDocGia, "Tên độc giả không được để trống!");
-        } else {
-            if (kiemTraDocGia(maDG) == 1) {
-                JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả đã tồn tại!");
-            } else if (!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
-                JOptionPane.showMessageDialog(jDialogThemDocGia, "Số điện thoại không hợp lệ!");
-            } else if (!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
-                JOptionPane.showMessageDialog(jDialogThemDocGia, "Email không hợp lệ!");
+        if (jDateChooser_NgayHetHan1.getDate().after(jDateChooser_NgayDangKy1.getDate())) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String maDG = jTextField_MaDG1.getText();
+            String matKhauDG = maDG;
+            String tenDG = jTextField_TenDG1.getText();
+            String gioiTinhDG = (String) jComboBox_GioiTinh1.getSelectedItem();
+            String ngaySinhDG;
+            Date date = jDateChooser_NgaySinh1.getDate();
+            if (date == null) {
+                ngaySinhDG = null;
             } else {
-                themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
-                JOptionPane.showMessageDialog(jDialogThemDocGia, "Thêm độc giả thành công!");
-                jDialogThemDocGia.dispose();
-                showDocGia();
+                ngaySinhDG = sdf.format(jDateChooser_NgaySinh1.getDate());
             }
+            String ngayDangKy = sdf.format(jDateChooser_NgayDangKy1.getDate());
+            String ngayHetHan = sdf.format(jDateChooser_NgayHetHan1.getDate());
+            String diaChi = jTextField_DiaChiDG1.getText();
+            String sdt = jTextField_sdtDG1.getText();
+            String email = jTextField_EmailDG1.getText();
+            String lop = (String) jComboBox_MaLop1.getSelectedItem();
+
+            if (maDG.equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả không được để trống!");
+            } else if (tenDG.equalsIgnoreCase("")) {
+                JOptionPane.showMessageDialog(jDialogThemDocGia, "Tên độc giả không được để trống!");
+            } else {
+                if (kiemTraDocGia(maDG) == 1) {
+                    JOptionPane.showMessageDialog(jDialogThemDocGia, "Mã độc giả đã tồn tại!");
+                } else if (!sdt.equalsIgnoreCase("") && !sdt.matches("0[0-9]{9}")) {
+                    JOptionPane.showMessageDialog(jDialogThemDocGia, "Số điện thoại không hợp lệ!");
+                } else if (!email.equalsIgnoreCase("") && !email.matches("^[a-zA-Z][\\w]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
+                    JOptionPane.showMessageDialog(jDialogThemDocGia, "Email không hợp lệ!");
+                } else {
+                    themMoiDocGia(maDG, matKhauDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
+                    JOptionPane.showMessageDialog(jDialogThemDocGia, "Thêm độc giả thành công!");
+                    jDialogThemDocGia.dispose();
+                    DataFromSQLServer.getAndShowData(jTable_DSDocGia, columnTitlesOfJTableDocGia, queryForJTableDocGia);
+                }
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(jDialogThemDocGia, "Ngày hết hạn phải lớn hơn ngày đăng ký. Vui lòng chọn lại ngày và thử lại!");
         }
     }//GEN-LAST:event_jButton_Them1ActionPerformed
 
@@ -1098,7 +1067,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                     xoaDocGia(maDG);
                     JOptionPane.showMessageDialog(this, "Xóa độc giả thành công");
                     xoaDuLieuForm();
-                    showDocGia();
+                    DataFromSQLServer.getAndShowData(jTable_DSDocGia, columnTitlesOfJTableDocGia, queryForJTableDocGia);
                 }
             }
         }
@@ -1178,7 +1147,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                     } else if (luaChon == JOptionPane.OK_OPTION) {
                         chinhSuaDocGia(maDG, chuanHoaDanhTuRieng(tenDG), gioiTinhDG, ngaySinhDG, ngayDangKy, ngayHetHan, diaChi, sdt, email, lop);
                         JOptionPane.showMessageDialog(this, "Chỉnh sửa độc giả thành công!");
-                        showDocGia();
+                        DataFromSQLServer.getAndShowData(jTable_DSDocGia, columnTitlesOfJTableDocGia, queryForJTableDocGia);
                     }
                 }
             }

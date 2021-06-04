@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,13 +21,21 @@ import ketnoi.KetNoiSQL;
 import model.Lop;
 import model.Khoa;
 import model.VaiTro;
+import table.DataFromSQLServer;
 
 /**
  *
  * @author Admin
  */
 public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
-
+    private ArrayList<String> columnTitlesOfJTableKhoa= new ArrayList<>(Arrays.asList("MAKHOA", "TENKHOA"));
+    private ArrayList<String> columnTitlesOfJTableLop = new ArrayList<>(Arrays.asList("MALOP", "TENLOP", "MAKHOA"));
+    private ArrayList<String> columnTitlesOfJTableVaiTro = new ArrayList<>(Arrays.asList("MAVAITRO", "TENVAITRO"));
+    
+    private String queryForJTableKhoa = "SELECT * FROM KHOA";
+    private String queryForJTableLop = "SELECT * FROM LOP";
+    private String queryForJTableVaiTro = "SELECT * FROM VAITRO";
+    
     private DefaultTableModel modelKhoa;
     private DefaultTableModel modelLop;
     private DefaultTableModel modelVaiTro;
@@ -40,10 +49,10 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         modelKhoa = (DefaultTableModel) jTable_DSKhoa.getModel();
         modelLop = (DefaultTableModel) jTable_DSLop.getModel();
         modelVaiTro = (DefaultTableModel) jTable_DSVaiTro.getModel();
-        showKhoa();
-        showLop();
         showMaKhoa();
-        showVaiTro();
+        DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);
+        DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);
+        DataFromSQLServer.getAndShowData(jTable_DSVaiTro, columnTitlesOfJTableVaiTro, queryForJTableVaiTro);
     }
 
     /**
@@ -1379,69 +1388,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public ArrayList<Khoa> dsKhoa() {
-        ArrayList<Khoa> dsKhoa = new ArrayList<>();
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement("select * from KHOA");
-            ResultSet rs = ps.executeQuery();
-            Khoa k;
-            while (rs.next()) {
-                k = new Khoa(rs.getString(1), rs.getString(2));
-                dsKhoa.add(k);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dsKhoa;
-    }
-
-    public void showKhoa() {
-        ArrayList<Khoa> dsKhoa = dsKhoa();
-        modelKhoa.setNumRows(0);
-        dsKhoa.forEach(k -> {
-            modelKhoa.addRow(new Object[]{
-                k.getMaKhoa(),
-                k.getTenKhoa()
-            });
-        });
-    }
-
-    public ArrayList<Lop> dsLop() {
-        ArrayList<Lop> dsLop = new ArrayList<>();
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement("select * from LOP");
-            ResultSet rs = ps.executeQuery();
-            Lop l;
-            while (rs.next()) {
-                l = new Lop(rs.getString(1), rs.getString(2), rs.getString(3));
-                dsLop.add(l);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dsLop;
-    }
-
-    public void showLop() {
-        ArrayList<Lop> dsLop = dsLop();
-        modelLop.setNumRows(0);
-        dsLop.forEach(l -> {
-            modelLop.addRow(new Object[]{
-                l.getMaLop(),
-                l.getTenLop(),
-                l.getMaKhoa()
-            });
-        });
-    }
-
     public void showMaKhoa() {
         jComboBox_MaKhoaCuaLop.removeAllItems();
         jComboBox_MaKhoaCuaLop1.removeAllItems();
@@ -1459,37 +1405,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public ArrayList<VaiTro> dsVaiTro() {
-        ArrayList<VaiTro> dsVaiTro = new ArrayList<>();
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement("select * from VAITRO");
-            ResultSet rs = ps.executeQuery();
-            VaiTro vt;
-            while (rs.next()) {
-                vt = new VaiTro(rs.getString(1), rs.getString(2));
-                dsVaiTro.add(vt);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dsVaiTro;
-    }
-
-    public void showVaiTro() {
-        ArrayList<VaiTro> dsVaiTro = dsVaiTro();
-        modelVaiTro.setNumRows(0);
-        dsVaiTro.forEach(vt -> {
-            modelVaiTro.addRow(new Object[]{
-                vt.getMaVaiTro(),
-                vt.getTenVaiTro()
-            });
-        });
     }
 
     public void themMoiLop(String maLop, String tenLop, String maKhoa) {
@@ -1524,7 +1439,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 themMoiLop(maLop, tenLop, maKhoa);
                 JOptionPane.showMessageDialog(jDialog_ThemLop, "Thêm lớp thành công!");
                 jDialog_ThemLop.dispose();
-                showLop();
+                DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);
             }
         }
     }//GEN-LAST:event_jButton_ThemLop1ActionPerformed
@@ -1569,7 +1484,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 themMoiKhoa(maKhoa, tenKhoa);
                 JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Thêm khoa thành công!");
                 jDialog_ThemKhoa.dispose();
-                showKhoa();
+                DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);        
                 showMaKhoa();
             }
         }
@@ -1715,8 +1630,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             } else {
                 themMoiVaiTro(maVaiTro, tenVaiTro);
                 JOptionPane.showMessageDialog(jDialog_ThemVaiTro, "Thêm vai trò thành công!");
-                jDialog_ThemVaiTro.dispose();
-                showVaiTro();
+                jDialog_ThemVaiTro.dispose();                
+                DataFromSQLServer.getAndShowData(jTable_DSVaiTro, columnTitlesOfJTableVaiTro, queryForJTableVaiTro);
             }
         }
     }//GEN-LAST:event_jButton_ThemVaiTro1ActionPerformed
@@ -1830,8 +1745,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     xoaVaiTro(maVT);
                     JOptionPane.showMessageDialog(this, "Xóa vai trò thành công");
-                    xoaDuLieuVaiTro();
-                    showVaiTro();
+                    xoaDuLieuVaiTro();                    
+                    DataFromSQLServer.getAndShowData(jTable_DSVaiTro, columnTitlesOfJTableVaiTro, queryForJTableVaiTro);
                 }
             }
         }
@@ -1910,8 +1825,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     xoaLop(maLop);
                     JOptionPane.showMessageDialog(this, "Xóa lớp thành công");
-                    xoaDuLieuLop();
-                    showLop();
+                    xoaDuLieuLop();                    
+                    DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);
                 }
             }
         }
@@ -1992,7 +1907,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                     xoaKhoa(maKhoa);
                     JOptionPane.showMessageDialog(this, "Xóa khoa thành công");
                     xoaDuLieuKhoa();
-                    showKhoa();
+                    DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);
                 }
             }
         }
@@ -2028,7 +1943,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaKhoa(maKhoa, tenKhoa);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa khoa thành công!");
-                    showKhoa();
+                    DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);
                 }
             }
         }
@@ -2066,8 +1981,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                     return;
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaLop(maLop, tenLop, maKhoa);
-                    JOptionPane.showMessageDialog(this, "Chỉnh sửa lớp thành công!");
-                    showLop();
+                    JOptionPane.showMessageDialog(this, "Chỉnh sửa lớp thành công!");                    
+                    DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);
                 }
             }
         }
@@ -2103,8 +2018,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                     return;
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaVaiTro(maVaiTro, tenVaiTro);
-                    JOptionPane.showMessageDialog(this, "Chỉnh sửa vai trò thành công!");
-                    showVaiTro();
+                    JOptionPane.showMessageDialog(this, "Chỉnh sửa vai trò thành công!");                    
+                    DataFromSQLServer.getAndShowData(jTable_DSVaiTro, columnTitlesOfJTableVaiTro, queryForJTableVaiTro);
                 }
             }
         }
