@@ -21,26 +21,26 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import table.DataFromSQLServer;
+import table.MuonTra;
+import table.XuLyViPham;
 
 /**
  *
  * @author COMPUTER
  */
 public class QuanLyMuonTra extends javax.swing.JFrame {
-
     private final int TIEN_PHAT = 2000;
     private ArrayList<String> columnTitlesOfJTableSachDangMuon = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI",
-            "MATACGIA", "MANXB", "MATHELOAI", "NGAYMUON", "HANTRA"));
+                                                                                               "MATACGIA", "MANXB", "MATHELOAI", "NGAYMUON", "HANTRA"));
     private ArrayList<String> columnTitlesOfJTableDocGia1 = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI",
-            "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
+                                                                                          "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
     private ArrayList<String> columnTitlesOfJTableDocGia2 = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI",
-            "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
+                                                                                          "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
     private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI",
-            "MATACGIA", "MANXB", "MATHELOAI", "SOLUONGCO", "SOLUONGCON"));
+                                                                                       "MATACGIA", "MANXB", "MATHELOAI", "SOLUONGCO", "SOLUONGCON"));
     private String queryForJTableSach = "SELECT * FROM SACH";
     private String queryForJTableDocGia1 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
     private String queryForJTableDocGia2 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
-
     /**
      * Creates new form BorrowReturnBookWindow
      */
@@ -130,7 +130,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jTableSachDangMuon = new javax.swing.JTable();
         jPanel21 = new javax.swing.JPanel();
         jButtonTraSach = new javax.swing.JButton();
-        jButton_BaoHongMat = new javax.swing.JButton();
+        jButtonBaoHongMat = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
         jButton_TroVe2 = new javax.swing.JButton();
         jButton_Thoat1 = new javax.swing.JButton();
@@ -806,13 +806,13 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             }
         });
 
-        jButton_BaoHongMat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton_BaoHongMat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/baohong.png"))); // NOI18N
-        jButton_BaoHongMat.setText("Báo hỏng mất");
-        jButton_BaoHongMat.setPreferredSize(new java.awt.Dimension(131, 41));
-        jButton_BaoHongMat.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBaoHongMat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonBaoHongMat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/baohong.png"))); // NOI18N
+        jButtonBaoHongMat.setText("Báo hỏng mất");
+        jButtonBaoHongMat.setPreferredSize(new java.awt.Dimension(131, 41));
+        jButtonBaoHongMat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_BaoHongMatActionPerformed(evt);
+                jButtonBaoHongMatActionPerformed(evt);
             }
         });
 
@@ -824,14 +824,14 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 .addContainerGap(59, Short.MAX_VALUE)
                 .addComponent(jButtonTraSach, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
-                .addComponent(jButton_BaoHongMat, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonBaoHongMat, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_BaoHongMat, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBaoHongMat, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonTraSach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -1085,23 +1085,18 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // Update MUONTRA, SACH, XULYVIPHAM tables in QLTHUVIEN database
         try (
                 Connection con = KetNoiSQL.layKetNoi();
-                PreparedStatement updateMuonTra = con.prepareStatement("DELETE FROM MUONTRA WHERE MANGUOIDUNG = ? AND MASACH = ?");
                 PreparedStatement updateSach = con.prepareStatement("UPDATE SACH SET SOLUONGCON = ? WHERE MASACH = ?");
-                PreparedStatement updateXuLyViPham1 = con.prepareStatement("UPDATE XULYVIPHAM SET PHATQUAHAN = ?, SOLANVIPHAM = ? WHERE MANGUOIDUNG = ?");
-                PreparedStatement updateXuLyViPham2 = con.prepareStatement("INSERT INTO XULYVIPHAM VALUES (?, ?, ?, ?)");
+                PreparedStatement updateXuLyViPham = con.prepareStatement("UPDATE XULYVIPHAM SET PHATQUAHAN = ?, SOLANVIPHAM = ? WHERE MANGUOIDUNG = ?");
                 PreparedStatement getXuLyViPham = con.prepareStatement("SELECT * FROM XULYVIPHAM WHERE MANGUOIDUNG = '" + maDocGia + "'");
                 PreparedStatement getSach = con.prepareStatement("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
                 ResultSet sach = getSach.executeQuery();
                 ResultSet xuLyViPham = getXuLyViPham.executeQuery()) {
-
+            sach.next();
+            int soLuongCon = sach.getInt("SOLUONGCON");
+            
             // Check if the book is returned late or not
             if (diffDays <= 0) {
-                updateMuonTra.setString(1, maDocGia);
-                updateMuonTra.setString(2, maSach);
-                updateMuonTra.executeUpdate();
-
-                sach.next();
-                int soLuongCon = sach.getInt("SOLUONGCON");
+                MuonTra.delete(maDocGia, maSach);
 
                 updateSach.setInt(1, soLuongCon + 1);
                 updateSach.setString(2, maSach);
@@ -1110,20 +1105,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Trả sách thành công!");
             } else {
                 int tienPhatQuaHan = TIEN_PHAT * (int) diffDays;
-
-                Object options[] = {"Trả sách", "Hủy"};
-                int option = JOptionPane.showOptionDialog(this, "Độc Giả này trả sách quá hạn " + diffDays + " ngày so với hạn trả " + hanTra
-                        + " nên phải nộp phạt số tiền " + diffDays + " * 2000 VNĐ/ngày = " + tienPhatQuaHan
-                        + " VNĐ.", "Trả sách", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-
+                
+                Object options[] = {"Đã thu tiền", "Hủy"};
+                int option = JOptionPane.showOptionDialog(this, "Độc giả trả sách quá hạn " + diffDays + " ngày so với hạn trả " + hanTra + 
+                                                                " nên phải nộp phạt số tiền " + diffDays + " * 2000 VNĐ/ngày = " + tienPhatQuaHan + 
+                                                                " VNĐ.", "Trả sách", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                
                 // Yes if reader already pays for the fine and vice versa
-                if (option == JOptionPane.YES_OPTION) {
-                    updateMuonTra.setString(1, maDocGia);
-                    updateMuonTra.setString(2, maSach);
-                    updateMuonTra.executeUpdate();
-
-                    sach.next();
-                    int soLuongCon = sach.getInt("SOLUONGCON");
+                if (option == JOptionPane.OK_OPTION) {
+                    MuonTra.delete(maDocGia, maSach);
 
                     updateSach.setInt(1, soLuongCon + 1);
                     updateSach.setString(2, maSach);
@@ -1134,16 +1124,12 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                         int phatQuaHan = xuLyViPham.getInt("PHATQUAHAN");
                         int soLanViPham = xuLyViPham.getInt("SOLANVIPHAM");
 
-                        updateXuLyViPham1.setInt(1, phatQuaHan + tienPhatQuaHan);
-                        updateXuLyViPham1.setInt(2, soLanViPham + 1);
-                        updateXuLyViPham1.setString(3, maDocGia);
-                        updateXuLyViPham1.executeUpdate();
+                        updateXuLyViPham.setInt(1, phatQuaHan + tienPhatQuaHan);
+                        updateXuLyViPham.setInt(2, soLanViPham + 1);
+                        updateXuLyViPham.setString(3, maDocGia);
+                        updateXuLyViPham.executeUpdate();
                     } else {
-                        updateXuLyViPham2.setString(1, maDocGia);
-                        updateXuLyViPham2.setInt(2, tienPhatQuaHan);
-                        updateXuLyViPham2.setInt(3, 0);
-                        updateXuLyViPham2.setInt(4, 1);
-                        updateXuLyViPham2.executeUpdate();
+                        XuLyViPham.insert(maDocGia, tienPhatQuaHan, 0, 1);
                     }
 
                     JOptionPane.showMessageDialog(this, "Trả sách thành công!");
@@ -1254,9 +1240,114 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonTimKiemDG2ActionPerformed
 
-    private void jButton_BaoHongMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BaoHongMatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_BaoHongMatActionPerformed
+    private void jButtonBaoHongMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBaoHongMatActionPerformed
+        // Check if a row is selected in jTableDocGia2 and jTableSachDangMuon
+        int selectedRowOfJTableDocGia2 = jTableDocGia2.convertRowIndexToModel(jTableDocGia2.getSelectedRow());
+        int selectedRowOfJTableSachDangMuon = jTableSachDangMuon.convertRowIndexToModel(jTableSachDangMuon.getSelectedRow());
+        if (selectedRowOfJTableDocGia2 == -1 || selectedRowOfJTableSachDangMuon == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả và sách đang mượn để báo hỏng mất!");
+            return;
+        }
+        
+        // Get maDocGia and maSach from jTableDocGia2 and jTableSachDangMuon
+        String maDocGia = (String) jTableDocGia2.getModel().getValueAt(selectedRowOfJTableDocGia2, 0);
+        String maSach = (String) jTableSachDangMuon.getModel().getValueAt(selectedRowOfJTableSachDangMuon, 0);
+        
+        // Calculate days between today and hanTra
+        LocalDate today = LocalDate.now();
+        LocalDate hanTra = LocalDate.parse((String) jTableSachDangMuon.getModel().getValueAt(selectedRowOfJTableSachDangMuon, 9));
+        Duration diff = Duration.between(hanTra.atStartOfDay(), today.atStartOfDay());
+        long diffDays = diff.toDays();
+        
+        // Update MUONTRA, SACH, XULYVIPHAM tables in QLTHUVIEN database
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement updateSach = con.prepareStatement("UPDATE SACH SET SOLUONGCO = ? WHERE MASACH = ?");
+                PreparedStatement updateXuLyViPham = con.prepareStatement("UPDATE XULYVIPHAM SET PHATQUAHAN = ?, PHATHONGMAT = ?, SOLANVIPHAM = ? WHERE MANGUOIDUNG = ?");
+                PreparedStatement getXuLyViPham = con.prepareStatement("SELECT * FROM XULYVIPHAM WHERE MANGUOIDUNG = '" + maDocGia + "'");
+                PreparedStatement getSach = con.prepareStatement("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
+                ResultSet sach = getSach.executeQuery();
+                ResultSet xuLyViPham = getXuLyViPham.executeQuery()) {
+            sach.next();
+            int soLuongCo = sach.getInt("SOLUONGCO");
+            int giaTien = sach.getInt("GIA");
+            int tienPhatHongMat = giaTien / 2;
+            int tienPhatQuaHan = TIEN_PHAT * (int) diffDays;
+            
+            Object options[] = {"Đã thu tiền", "Hủy"};
+            
+            // Check if the book is returned late or not
+            if (diffDays <= 0) {
+                int option = JOptionPane.showOptionDialog(this, "Số tiền độc giả phải đền do làm hỏng mất sách (50% giá sách) là " + tienPhatHongMat + 
+                                                                " VNĐ.", "Báo hỏng mất sách", JOptionPane.OK_CANCEL_OPTION, 
+                                                                JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                // OK if reader already pays for the fine and vice versa
+                if (option == JOptionPane.OK_OPTION) {
+                    MuonTra.delete(maDocGia, maSach);
+
+                    updateSach.setInt(1, soLuongCo - 1);
+                    updateSach.setString(2, maSach);
+                    updateSach.executeUpdate();
+
+                    // Check if a record for this reader already exists
+                    if (xuLyViPham.next()) {
+                        int phatQuaHan = xuLyViPham.getInt("PHATQUAHAN");
+                        int phatHongMat = xuLyViPham.getInt("PHATHONGMAT");
+                        int soLanViPham = xuLyViPham.getInt("SOLANVIPHAM");
+
+                        updateXuLyViPham.setInt(1, phatQuaHan);
+                        updateXuLyViPham.setInt(2, phatHongMat + tienPhatHongMat);
+                        updateXuLyViPham.setInt(3, soLanViPham + 1);
+                        updateXuLyViPham.setString(4, maDocGia);
+                        updateXuLyViPham.executeUpdate();
+                    } else {
+                        XuLyViPham.insert(maDocGia, 0, tienPhatHongMat, 1);
+                    }
+                    
+                    JOptionPane.showMessageDialog(this, "Báo hỏng mất sách thành công.");
+                } 
+            } else {
+                int option = JOptionPane.showOptionDialog(this, "Tiền đền hỏng mất sách (50% giá sách): " + tienPhatHongMat + " VNĐ.\n" +
+                                                                "Quá hạn trả sách " + diffDays + " ngày so với hạn trả " + hanTra + 
+                                                                ", nộp phạt " + diffDays + " * 2000 VNĐ/ngày = " + tienPhatQuaHan + " VNĐ.\n" +
+                                                                "Tổng số tiền độc giả phải nộp phạt: " + (tienPhatQuaHan + tienPhatHongMat) + " VNĐ.", 
+                                                                "Báo hỏng mất sách", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                // OK if reader already pays for the fine and vice versa
+                if (option == JOptionPane.OK_OPTION) {
+                    MuonTra.delete(maDocGia, maSach);
+
+                    updateSach.setInt(1, soLuongCo - 1);
+                    updateSach.setString(2, maSach);
+                    updateSach.executeUpdate();
+                    
+                    // Check if a record for this reader already exists
+                    if (xuLyViPham.next()) {
+                        int phatQuaHan = xuLyViPham.getInt("PHATQUAHAN");
+                        int phatHongMat = xuLyViPham.getInt("PHATHONGMAT");
+                        int soLanViPham = xuLyViPham.getInt("SOLANVIPHAM");
+
+                        updateXuLyViPham.setInt(1, phatQuaHan + tienPhatQuaHan);
+                        updateXuLyViPham.setInt(2, phatHongMat + tienPhatHongMat);
+                        updateXuLyViPham.setInt(3, soLanViPham + 2);
+                        updateXuLyViPham.setString(4, maDocGia);
+                        updateXuLyViPham.executeUpdate();
+                    } else {
+                        XuLyViPham.insert(maDocGia, tienPhatQuaHan, tienPhatHongMat, 2);
+                    }
+                    
+                    JOptionPane.showMessageDialog(this, "Báo hỏng mất sách thành công.");
+                } 
+            }
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(QuanLyMuonTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
+        // Refresh jTableSachDangMuon, jTableSach
+        String sql = "SELECT S.MASACH, TENSACH, NGAYNHAP, GIA, VITRI, MATACGIA, MANXB, MATHELOAI, NGAYMUON, HANTRA "
+                   + "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maDocGia + "'";
+        DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, sql);
+        DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
+    }//GEN-LAST:event_jButtonBaoHongMatActionPerformed
 
     private void jTextFieldKeywordSach1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeywordSach1CaretUpdate
         // TODO add your handling code here:
@@ -1303,9 +1394,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = jTableDocGia2.convertRowIndexToModel(jTableDocGia2.getSelectedRow());
         String maDocGia = (String) jTableDocGia2.getModel().getValueAt(selectedRow, 0);
-        String sql = "SELECT S.MASACH, TENSACH, NGAYNHAP, GIA, VITRI, MATACGIA, MANXB, MATHELOAI, NGAYMUON, HANTRA "
-                + "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maDocGia + "'";
-        DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, sql);
+        String query = "SELECT S.MASACH, TENSACH, NGAYNHAP, GIA, VITRI, MATACGIA, MANXB, MATHELOAI, NGAYMUON, HANTRA "
+                     + "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maDocGia + "'";
+        DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, query);
     }//GEN-LAST:event_jTableDocGia2MouseReleased
 
     private void jTextFieldKeywordSach2CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeywordSach2CaretUpdate
@@ -1362,24 +1453,20 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             // Update MUONTRA, SACH in QLTHUVIEN database
             try (
                     Connection con = KetNoiSQL.layKetNoi();
-                    PreparedStatement updateMuonTra = con.prepareStatement("INSERT INTO MUONTRA VALUES(?, ?, ?, ?)");
                     PreparedStatement updateSach = con.prepareStatement("UPDATE SACH SET SOLUONGCON = ? WHERE MASACH = ?")) {
-                updateMuonTra.setString(1, maDocGia);
-                updateMuonTra.setString(2, maSach);
-                updateMuonTra.setString(3, ngayMuon);
-                updateMuonTra.setString(4, hanTra);
-                updateMuonTra.executeUpdate();
-
+                MuonTra.insert(maDocGia, maSach, ngayMuon, hanTra);
+                
                 updateSach.setInt(1, soLuongCon - 1);
                 updateSach.setString(2, maSach);
                 updateSach.executeUpdate();
             } catch (SQLException ex) {
                 java.util.logging.Logger.getLogger(QuanLyMuonTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
-
-            // Refresh jTableSach
+            
             JOptionPane.showMessageDialog(jDialogMuonSach, "Mượn sách thành công");
             jDialogMuonSach.dispose();
+            
+            // Refresh jTableSach
             DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
         } else {
             JOptionPane.showMessageDialog(jDialogMuonSach, "Hạn trả phải lớn hơn ngày mượn. Vui lòng chọn lại ngày và thử lại!");
@@ -1429,6 +1516,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupDocGia2;
     private javax.swing.ButtonGroup buttonGroupSach1;
     private javax.swing.ButtonGroup buttonGroupSach2;
+    private javax.swing.JButton jButtonBaoHongMat;
     private javax.swing.JButton jButtonMuon;
     private javax.swing.JButton jButtonMuonSach;
     private javax.swing.JButton jButtonTimKiemDG1;
@@ -1437,7 +1525,6 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTimKiemSach2;
     private javax.swing.JButton jButtonTraSach;
     private javax.swing.JButton jButtonTroVe;
-    private javax.swing.JButton jButton_BaoHongMat;
     private javax.swing.JButton jButton_Thoat;
     private javax.swing.JButton jButton_Thoat1;
     private javax.swing.JButton jButton_TroVe1;
