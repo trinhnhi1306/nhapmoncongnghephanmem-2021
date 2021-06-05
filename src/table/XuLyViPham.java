@@ -7,6 +7,7 @@ package table;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import ketnoi.KetNoiSQL;
 
@@ -23,6 +24,32 @@ public class XuLyViPham {
             rs.setInt(2, phatQuaHan);
             rs.setInt(3, phatHongMat);
             rs.setInt(4, soLanViPham);
+            rs.executeUpdate();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static Object getColumnValue(String columnName, String maDocGia) {
+        Object columnValue = null;
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement("SELECT * FROM XULYVIPHAM WHERE MANGUOIDUNG = '" + maDocGia + "'");
+                ResultSet rs = ps.executeQuery()) {
+            rs.next();
+            columnValue = rs.getObject(columnName);
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        return columnValue;
+    }
+    
+    public static void updateColumn(String columnName, Object columnValue, String maDocGia) {
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement rs = con.prepareStatement("UPDATE XULYVIPHAM SET " + columnName + " = ? WHERE MANGUOIDUNG = ?")) {
+            rs.setObject(1, columnValue);
+            rs.setString(2, maDocGia);
             rs.executeUpdate();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

@@ -22,6 +22,7 @@ import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import table.DataFromSQLServer;
 import table.MuonTra;
+import table.Sach;
 import table.XuLyViPham;
 
 /**
@@ -1085,22 +1086,14 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // Update MUONTRA, SACH, XULYVIPHAM tables in QLTHUVIEN database
         try (
                 Connection con = KetNoiSQL.layKetNoi();
-                PreparedStatement updateSach = con.prepareStatement("UPDATE SACH SET SOLUONGCON = ? WHERE MASACH = ?");
-                PreparedStatement updateXuLyViPham = con.prepareStatement("UPDATE XULYVIPHAM SET PHATQUAHAN = ?, SOLANVIPHAM = ? WHERE MANGUOIDUNG = ?");
                 PreparedStatement getXuLyViPham = con.prepareStatement("SELECT * FROM XULYVIPHAM WHERE MANGUOIDUNG = '" + maDocGia + "'");
-                PreparedStatement getSach = con.prepareStatement("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
-                ResultSet sach = getSach.executeQuery();
                 ResultSet xuLyViPham = getXuLyViPham.executeQuery()) {
-            sach.next();
-            int soLuongCon = sach.getInt("SOLUONGCON");
+            int soLuongCon = (int) Sach.getColumnValue("SOLUONGCON", maSach);
             
             // Check if the book is returned late or not
             if (diffDays <= 0) {
                 MuonTra.delete(maDocGia, maSach);
-
-                updateSach.setInt(1, soLuongCon + 1);
-                updateSach.setString(2, maSach);
-                updateSach.executeUpdate();
+                Sach.updateColumn("SOLUONGCON", soLuongCon + 1, maSach);
 
                 JOptionPane.showMessageDialog(this, "Trả sách thành công!");
             } else {
@@ -1114,20 +1107,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 // Yes if reader already pays for the fine and vice versa
                 if (option == JOptionPane.OK_OPTION) {
                     MuonTra.delete(maDocGia, maSach);
-
-                    updateSach.setInt(1, soLuongCon + 1);
-                    updateSach.setString(2, maSach);
-                    updateSach.executeUpdate();
+                    Sach.updateColumn("SOLUONGCON", soLuongCon + 1, maSach);
 
                     // Check if a record for this reader already exists
                     if (xuLyViPham.next()) {
                         int phatQuaHan = xuLyViPham.getInt("PHATQUAHAN");
                         int soLanViPham = xuLyViPham.getInt("SOLANVIPHAM");
 
-                        updateXuLyViPham.setInt(1, phatQuaHan + tienPhatQuaHan);
-                        updateXuLyViPham.setInt(2, soLanViPham + 1);
-                        updateXuLyViPham.setString(3, maDocGia);
-                        updateXuLyViPham.executeUpdate();
+                        XuLyViPham.updateColumn("PHATQUAHAN", phatQuaHan + tienPhatQuaHan, maDocGia);
+                        XuLyViPham.updateColumn("SOLANVIPHAM", soLanViPham + 1, maDocGia);
                     } else {
                         XuLyViPham.insert(maDocGia, tienPhatQuaHan, 0, 1);
                     }
@@ -1262,15 +1250,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // Update MUONTRA, SACH, XULYVIPHAM tables in QLTHUVIEN database
         try (
                 Connection con = KetNoiSQL.layKetNoi();
-                PreparedStatement updateSach = con.prepareStatement("UPDATE SACH SET SOLUONGCO = ? WHERE MASACH = ?");
-                PreparedStatement updateXuLyViPham = con.prepareStatement("UPDATE XULYVIPHAM SET PHATQUAHAN = ?, PHATHONGMAT = ?, SOLANVIPHAM = ? WHERE MANGUOIDUNG = ?");
                 PreparedStatement getXuLyViPham = con.prepareStatement("SELECT * FROM XULYVIPHAM WHERE MANGUOIDUNG = '" + maDocGia + "'");
-                PreparedStatement getSach = con.prepareStatement("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
-                ResultSet sach = getSach.executeQuery();
                 ResultSet xuLyViPham = getXuLyViPham.executeQuery()) {
-            sach.next();
-            int soLuongCo = sach.getInt("SOLUONGCO");
-            int giaTien = sach.getInt("GIA");
+            int soLuongCo = (int) Sach.getColumnValue("SOLUONGCO", maSach);
+            int giaTien = (int) Sach.getColumnValue("GIA", maSach);
             int tienPhatHongMat = giaTien / 2;
             int tienPhatQuaHan = TIEN_PHAT * (int) diffDays;
             
@@ -1284,22 +1267,15 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 // OK if reader already pays for the fine and vice versa
                 if (option == JOptionPane.OK_OPTION) {
                     MuonTra.delete(maDocGia, maSach);
-
-                    updateSach.setInt(1, soLuongCo - 1);
-                    updateSach.setString(2, maSach);
-                    updateSach.executeUpdate();
+                    Sach.updateColumn("SOLUONGCO", soLuongCo - 1, maSach);
 
                     // Check if a record for this reader already exists
                     if (xuLyViPham.next()) {
-                        int phatQuaHan = xuLyViPham.getInt("PHATQUAHAN");
                         int phatHongMat = xuLyViPham.getInt("PHATHONGMAT");
                         int soLanViPham = xuLyViPham.getInt("SOLANVIPHAM");
 
-                        updateXuLyViPham.setInt(1, phatQuaHan);
-                        updateXuLyViPham.setInt(2, phatHongMat + tienPhatHongMat);
-                        updateXuLyViPham.setInt(3, soLanViPham + 1);
-                        updateXuLyViPham.setString(4, maDocGia);
-                        updateXuLyViPham.executeUpdate();
+                        XuLyViPham.updateColumn("PHATHONGMAT", phatHongMat + tienPhatHongMat, maDocGia);
+                        XuLyViPham.updateColumn("SOLANVIPHAM", soLanViPham + 1, maDocGia);
                     } else {
                         XuLyViPham.insert(maDocGia, 0, tienPhatHongMat, 1);
                     }
@@ -1315,10 +1291,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 // OK if reader already pays for the fine and vice versa
                 if (option == JOptionPane.OK_OPTION) {
                     MuonTra.delete(maDocGia, maSach);
-
-                    updateSach.setInt(1, soLuongCo - 1);
-                    updateSach.setString(2, maSach);
-                    updateSach.executeUpdate();
+                    Sach.updateColumn("SOLUONGCO", soLuongCo - 1, maSach);
                     
                     // Check if a record for this reader already exists
                     if (xuLyViPham.next()) {
@@ -1326,11 +1299,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                         int phatHongMat = xuLyViPham.getInt("PHATHONGMAT");
                         int soLanViPham = xuLyViPham.getInt("SOLANVIPHAM");
 
-                        updateXuLyViPham.setInt(1, phatQuaHan + tienPhatQuaHan);
-                        updateXuLyViPham.setInt(2, phatHongMat + tienPhatHongMat);
-                        updateXuLyViPham.setInt(3, soLanViPham + 2);
-                        updateXuLyViPham.setString(4, maDocGia);
-                        updateXuLyViPham.executeUpdate();
+                        XuLyViPham.updateColumn("PHATQUAHAN", phatQuaHan + tienPhatQuaHan, maDocGia);
+                        XuLyViPham.updateColumn("PHATHONGMAT", phatHongMat + tienPhatHongMat, maDocGia);
+                        XuLyViPham.updateColumn("SOLANVIPHAM", soLanViPham + 2, maDocGia);
                     } else {
                         XuLyViPham.insert(maDocGia, tienPhatQuaHan, tienPhatHongMat, 2);
                     }
@@ -1451,17 +1422,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             int soLuongCon = Integer.parseInt((String) jTableSach.getModel().getValueAt(selectedRowOfJTableSach, 9));
 
             // Update MUONTRA, SACH in QLTHUVIEN database
-            try (
-                    Connection con = KetNoiSQL.layKetNoi();
-                    PreparedStatement updateSach = con.prepareStatement("UPDATE SACH SET SOLUONGCON = ? WHERE MASACH = ?")) {
-                MuonTra.insert(maDocGia, maSach, ngayMuon, hanTra);
-                
-                updateSach.setInt(1, soLuongCon - 1);
-                updateSach.setString(2, maSach);
-                updateSach.executeUpdate();
-            } catch (SQLException ex) {
-                java.util.logging.Logger.getLogger(QuanLyMuonTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            }
+            MuonTra.insert(maDocGia, maSach, ngayMuon, hanTra);
+            Sach.updateColumn("SOLUONGCON", soLuongCon - 1, maSach);
             
             JOptionPane.showMessageDialog(jDialogMuonSach, "Mượn sách thành công");
             jDialogMuonSach.dispose();
