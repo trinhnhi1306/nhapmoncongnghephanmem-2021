@@ -38,15 +38,29 @@ public class DataFromSQLServer {
             java.util.logging.Logger.getLogger(DataFromSQLServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
-    public static boolean recordExists(String query) {
+    
+    public static boolean recordExists(String selectQuery) {
         try (
                 Connection con = KetNoiSQL.layKetNoi();
-                PreparedStatement ps = con.prepareStatement(query);
+                PreparedStatement ps = con.prepareStatement(selectQuery);
                 ResultSet rs = ps.executeQuery()) {
             return rs.next();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(DataFromSQLServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    public static int aggregate(String aggregateQuery) {
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement(aggregateQuery);
+                ResultSet rs = ps.executeQuery()) {
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(DataFromSQLServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }

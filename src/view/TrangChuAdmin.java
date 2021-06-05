@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
+import table.DataFromSQLServer;
 
 /**
  *
@@ -20,6 +21,9 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     public TrangChuAdmin() {
         initComponents();
         setLocationRelativeTo(null);
+        jLabelSoLuongNguoiDung.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT COUNT(*) FROM NGUOIDUNG")));
+        jLabelSoLuongSach.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT SUM(SOLUONGCO) FROM SACH")));
+        jLabelSoSachDangDuocMuon.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT COUNT(*) FROM MUONTRA")));
     }
 
     /**
@@ -92,15 +96,15 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
-        jLabel59 = new javax.swing.JLabel();
-        jPanel29 = new javax.swing.JPanel();
+        jLabelSoLuongNguoiDung = new javax.swing.JLabel();
+        jPanelSoLuongSach = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jLabel62 = new javax.swing.JLabel();
+        jLabelSoLuongSach = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
-        jLabel65 = new javax.swing.JLabel();
+        jLabelSoSachDangDuocMuon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
@@ -266,13 +270,21 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton_Luu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton_TroVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel13))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDateChooser7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -287,15 +299,12 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                                         .addGap(10, 10, 10))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(26, 26, 26))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))))
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
@@ -304,15 +313,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                                     .addComponent(jTextField15)
                                     .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton_Luu, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton_TroVe1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel13)))
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
@@ -596,31 +597,34 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel57.setBounds(10, 60, 70, 70);
 
         jLabel58.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel58.setText("Số người dùng");
+        jLabel58.setText("Số lượng người dùng");
         jPanel6.add(jLabel58);
-        jLabel58.setBounds(60, 10, 140, 30);
+        jLabel58.setBounds(30, 10, 200, 30);
 
-        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel59.setText("0");
-        jPanel6.add(jLabel59);
-        jLabel59.setBounds(150, 70, 100, 50);
+        jLabelSoLuongNguoiDung.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabelSoLuongNguoiDung.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSoLuongNguoiDung.setText("0");
+        jPanel6.add(jLabelSoLuongNguoiDung);
+        jLabelSoLuongNguoiDung.setBounds(90, 70, 160, 50);
 
-        jPanel29.setBackground(new java.awt.Color(102, 255, 51));
-        jPanel29.setLayout(null);
+        jPanelSoLuongSach.setBackground(new java.awt.Color(102, 255, 51));
+        jPanelSoLuongSach.setLayout(null);
 
         jLabel60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/books.png"))); // NOI18N
-        jPanel29.add(jLabel60);
+        jPanelSoLuongSach.add(jLabel60);
         jLabel60.setBounds(10, 60, 70, 70);
 
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel61.setText("Số lượng sách có");
-        jPanel29.add(jLabel61);
-        jLabel61.setBounds(50, 10, 160, 30);
+        jLabel61.setText("Số lượng sách");
+        jLabel61.setToolTipText("");
+        jPanelSoLuongSach.add(jLabel61);
+        jLabel61.setBounds(70, 10, 130, 30);
 
-        jLabel62.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel62.setText("0");
-        jPanel29.add(jLabel62);
-        jLabel62.setBounds(150, 70, 100, 50);
+        jLabelSoLuongSach.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabelSoLuongSach.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSoLuongSach.setText("0");
+        jPanelSoLuongSach.add(jLabelSoLuongSach);
+        jLabelSoLuongSach.setBounds(90, 70, 160, 50);
 
         jPanel30.setBackground(new java.awt.Color(0, 255, 204));
         jPanel30.setLayout(null);
@@ -630,14 +634,15 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel63.setBounds(10, 60, 70, 70);
 
         jLabel64.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel64.setText("Số sách được mượn");
+        jLabel64.setText("Số sách đang được mượn");
         jPanel30.add(jLabel64);
-        jLabel64.setBounds(40, 10, 190, 30);
+        jLabel64.setBounds(10, 10, 240, 30);
 
-        jLabel65.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel65.setText("0");
-        jPanel30.add(jLabel65);
-        jLabel65.setBounds(150, 70, 100, 50);
+        jLabelSoSachDangDuocMuon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabelSoSachDangDuocMuon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSoSachDangDuocMuon.setText("0");
+        jPanel30.add(jLabelSoSachDangDuocMuon);
+        jLabelSoSachDangDuocMuon.setBounds(80, 70, 170, 50);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -647,7 +652,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelSoLuongSach, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -658,7 +663,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelSoLuongSach, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -854,24 +859,24 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelSoLuongNguoiDung;
+    private javax.swing.JLabel jLabelSoLuongSach;
+    private javax.swing.JLabel jLabelSoSachDangDuocMuon;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel28;
-    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelSoLuongSach;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane2;
