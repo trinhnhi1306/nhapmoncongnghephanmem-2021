@@ -954,6 +954,29 @@ public class QuanLySach extends javax.swing.JFrame {
         jDialog_ThemSach.setVisible(true);
     }
 
+    private String xoaKhoangTrangThua(String str) {
+        str = str.trim();
+        String temp[] = str.split("\\s+");
+        str = "";
+        for (int i = 0; i < temp.length; i++) {
+            str += temp[i];
+            if (i < temp.length - 1) {
+                str += " ";
+            }
+        }
+        return str;
+    }
+
+    private String xoaKhoangTrang(String str) {
+        str = str.trim();
+        String temp[] = str.split("\\s+");
+        str = "";
+        for (int i = 0; i < temp.length; i++) {
+            str += temp[i];
+        }
+        return str;
+    }
+
     private void jButton_Them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Them1ActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -992,7 +1015,7 @@ public class QuanLySach extends javax.swing.JFrame {
             if (kiemTraSach(maSach) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemSach, "Mã sách đã tồn tại!");
             } else {
-                themMoiSach(maSach, tenSach, maTacGia, maNXB, maTheLoai, gia, ngayNhap, viTri, soLuong);
+                themMoiSach(xoaKhoangTrangThua(maSach), xoaKhoangTrangThua(tenSach), maTacGia, maNXB, maTheLoai, xoaKhoangTrang(gia), ngayNhap, xoaKhoangTrangThua(viTri), xoaKhoangTrang(soLuong));
                 JOptionPane.showMessageDialog(jDialog_ThemSach, "Thêm sách thành công!");
                 jDialog_ThemSach.dispose();
                 DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
@@ -1119,7 +1142,7 @@ public class QuanLySach extends javax.swing.JFrame {
             } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
                 if (luaChon == JOptionPane.OK_OPTION) {
-                    chinhSuaSach(maSach, tenSach, maTacGia, maNXB, maTheLoai, gia, ngayNhap, viTri, soLuongThem);
+                    chinhSuaSach(maSach, xoaKhoangTrangThua(tenSach), maTacGia, maNXB, maTheLoai, xoaKhoangTrang(gia), ngayNhap, xoaKhoangTrangThua(viTri), xoaKhoangTrang(soLuongThem));
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa sách thành công!");
                     DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
                 } else {

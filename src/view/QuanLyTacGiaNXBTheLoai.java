@@ -1710,6 +1710,33 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         jTextField_GhiChuTheLoai.setText("");
     }
 
+    private String chuanHoaDanhTuRieng(String str) {
+        str = str.trim();
+        String temp[] = str.split("\\s+");
+        str = ""; // ? ^-^
+        for (int i = 0; i < temp.length; i++) {
+            str += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1).toLowerCase();
+            if (i < temp.length - 1) // ? ^-^
+            {
+                str += " ";
+            }
+        }
+        return str;
+    }
+
+    private String xoaKhoangTrangThua(String str) {
+        str = str.trim();
+        String temp[] = str.split("\\s+");
+        str = "";
+        for (int i = 0; i < temp.length; i++) {
+            str += temp[i];
+            if (i < temp.length - 1) {
+                str += " ";
+            }
+        }
+        return str;
+    }
+
     private void jTextField_KeywordTacGiaCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_KeywordTacGiaCaretUpdate
         // TODO add your handling code here:
         String keyword = jTextField_KeywordTacGia.getText();
@@ -1849,7 +1876,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
             if (kiemTraTacGia(maTacGia) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemTacGia, "Mã tác giả đã tồn tại!");
             } else {
-                themMoiTacGia(maTacGia, tenTacGia, ghiChu);
+                themMoiTacGia(xoaKhoangTrangThua(maTacGia), chuanHoaDanhTuRieng(tenTacGia), xoaKhoangTrangThua(ghiChu));
                 JOptionPane.showMessageDialog(jDialog_ThemTacGia, "Thêm tác giả thành công!");
                 jDialog_ThemTacGia.dispose();
                 DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
@@ -1875,7 +1902,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
             if (kiemTraNXB(maNXB) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemNXB, "Mã nhà xuất bản đã tồn tại!");
             } else {
-                themMoiNXB(maNXB, tenNXB, diaChiNXB);
+                themMoiNXB(xoaKhoangTrangThua(maNXB), xoaKhoangTrangThua(tenNXB), xoaKhoangTrangThua(diaChiNXB));
                 JOptionPane.showMessageDialog(jDialog_ThemNXB, "Thêm nhà xuất bản thành công!");
                 jDialog_ThemNXB.dispose();
                 DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
@@ -1901,7 +1928,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
             if (kiemTraTheLoai(maTheLoai) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemTheLoai, "Mã thể loại đã tồn tại!");
             } else {
-                themMoiTheLoai(maTheLoai, tenTheLoai, ghiChu);
+                themMoiTheLoai(xoaKhoangTrangThua(maTheLoai), xoaKhoangTrangThua(tenTheLoai), xoaKhoangTrangThua(ghiChu));
                 JOptionPane.showMessageDialog(jDialog_ThemTheLoai, "Thêm thể loại thành công!");
                 jDialog_ThemTheLoai.dispose();
                 DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
@@ -1927,7 +1954,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
             } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
                 if (luaChon == JOptionPane.OK_OPTION) {
-                    chinhSuaTacGia(maTacGia, tenTacGia, ghiChu);
+                    chinhSuaTacGia(maTacGia, chuanHoaDanhTuRieng(tenTacGia), xoaKhoangTrangThua(ghiChu));
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa tác giả thành công!");
                     DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
                 } else {
@@ -1972,7 +1999,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
             } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
                 if (luaChon == JOptionPane.OK_OPTION) {
-                    chinhSuaNXB(maNXB, tenNXB, diaChi);
+                    chinhSuaNXB(maNXB, xoaKhoangTrangThua(tenNXB), xoaKhoangTrangThua(diaChi));
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa nhà xuất bản thành công!");
                     DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
                 } else {
@@ -2017,7 +2044,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
             } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
                 if (luaChon == JOptionPane.OK_OPTION) {
-                    chinhSuaTheLoai(maTheLoai, tenTheLoai, ghiChu);
+                    chinhSuaTheLoai(maTheLoai, xoaKhoangTrangThua(tenTheLoai), xoaKhoangTrangThua(ghiChu));
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa thể loại thành công!");
                     DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
                 } else {
