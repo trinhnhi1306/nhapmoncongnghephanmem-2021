@@ -32,14 +32,15 @@ import table.XuLyViPham;
 public class QuanLyMuonTra extends javax.swing.JFrame {
     private final int TIEN_PHAT = 2000;
     private ArrayList<String> columnTitlesOfJTableSachDangMuon = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI",
-                                                                                               "MATACGIA", "MANXB", "MATHELOAI", "NGAYMUON", "HANTRA"));
+                                                                                               "TENTACGIA", "TENNXB", "TENTHELOAI", "NGAYMUON", "HANTRA"));
     private ArrayList<String> columnTitlesOfJTableDocGia1 = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI",
                                                                                           "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
     private ArrayList<String> columnTitlesOfJTableDocGia2 = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI",
                                                                                           "SDT", "EMAIL", "NGAYDANGKY", "NGAYHETHAN", "MALOP"));
     private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI",
-                                                                                       "MATACGIA", "MANXB", "MATHELOAI", "SOLUONGCO", "SOLUONGCON"));
-    private String queryForJTableSach = "SELECT * FROM SACH";
+                                                                                       "TENTACGIA", "TENNXB", "TENTHELOAI", "SOLUONGCO", "SOLUONGCON"));
+    private String queryForJTableSach = "SELECT S.*, TG.TENTACGIA, NXB.TENNXB, TL.TENTHELOAI FROM SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL "
+                                      + "WHERE S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI AND S.MANXB = NXB.MANXB";
     private String queryForJTableDocGia1 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
     private String queryForJTableDocGia2 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
     /**
@@ -109,9 +110,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jRadioButtonMaSach1 = new javax.swing.JRadioButton();
         jRadioButtonTenSach1 = new javax.swing.JRadioButton();
-        jRadioButtonMaTacGia1 = new javax.swing.JRadioButton();
-        jRadioButtonMaNXB1 = new javax.swing.JRadioButton();
-        jRadioButtonMaTheLoai1 = new javax.swing.JRadioButton();
+        jRadioButtonTacGia1 = new javax.swing.JRadioButton();
+        jRadioButtonNXB1 = new javax.swing.JRadioButton();
+        jRadioButtonTheLoai1 = new javax.swing.JRadioButton();
         jPanel16 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
@@ -141,9 +142,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         jRadioButtonMaSach2 = new javax.swing.JRadioButton();
         jRadioButtonTenSach2 = new javax.swing.JRadioButton();
-        jRadioButtonMaTacGia2 = new javax.swing.JRadioButton();
-        jRadioButtonMaNXB2 = new javax.swing.JRadioButton();
-        jRadioButtonMaTheLoai2 = new javax.swing.JRadioButton();
+        jRadioButtonTacGia2 = new javax.swing.JRadioButton();
+        jRadioButtonNXB2 = new javax.swing.JRadioButton();
+        jRadioButtonTheLoai2 = new javax.swing.JRadioButton();
 
         jDialogMuonSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogMuonSach.setModal(true);
@@ -404,7 +405,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Mã tác giả", "Mã NXB", "Mã thể loại", "Số lượng có", "Số lượng còn"
+                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Tác giả", "NXB", "Thể loại", "Số lượng có", "Số lượng còn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -548,7 +549,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 204));
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 25, 10));
+        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 10));
 
         buttonGroupSach1.add(jRadioButtonMaSach1);
         jRadioButtonMaSach1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -561,20 +562,20 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jRadioButtonTenSach1.setText("Tên sách");
         jPanel11.add(jRadioButtonTenSach1);
 
-        buttonGroupSach1.add(jRadioButtonMaTacGia1);
-        jRadioButtonMaTacGia1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaTacGia1.setText("Mã tác giả");
-        jPanel11.add(jRadioButtonMaTacGia1);
+        buttonGroupSach1.add(jRadioButtonTacGia1);
+        jRadioButtonTacGia1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTacGia1.setText("Tác giả");
+        jPanel11.add(jRadioButtonTacGia1);
 
-        buttonGroupSach1.add(jRadioButtonMaNXB1);
-        jRadioButtonMaNXB1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaNXB1.setText("Mã NXB");
-        jPanel11.add(jRadioButtonMaNXB1);
+        buttonGroupSach1.add(jRadioButtonNXB1);
+        jRadioButtonNXB1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonNXB1.setText("NXB");
+        jPanel11.add(jRadioButtonNXB1);
 
-        buttonGroupSach1.add(jRadioButtonMaTheLoai1);
-        jRadioButtonMaTheLoai1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaTheLoai1.setText("Mã thể loại");
-        jPanel11.add(jRadioButtonMaTheLoai1);
+        buttonGroupSach1.add(jRadioButtonTheLoai1);
+        jRadioButtonTheLoai1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTheLoai1.setText("Thể loại");
+        jPanel11.add(jRadioButtonTheLoai1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -763,7 +764,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Mã tác giả", "Mã NXB", "Mã thể loại", "Ngày mượn", "Hạn trả"
+                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Tác giả", "NXB", "Thể loại", "Ngày mượn", "Hạn trả"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -920,7 +921,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 204));
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-        jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 25, 10));
+        jPanel13.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 10));
 
         buttonGroupSach2.add(jRadioButtonMaSach2);
         jRadioButtonMaSach2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -933,20 +934,20 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jRadioButtonTenSach2.setText("Tên sách");
         jPanel13.add(jRadioButtonTenSach2);
 
-        buttonGroupSach2.add(jRadioButtonMaTacGia2);
-        jRadioButtonMaTacGia2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaTacGia2.setText("Mã tác giả");
-        jPanel13.add(jRadioButtonMaTacGia2);
+        buttonGroupSach2.add(jRadioButtonTacGia2);
+        jRadioButtonTacGia2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTacGia2.setText("Tác giả");
+        jPanel13.add(jRadioButtonTacGia2);
 
-        buttonGroupSach2.add(jRadioButtonMaNXB2);
-        jRadioButtonMaNXB2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaNXB2.setText("Mã NXB");
-        jPanel13.add(jRadioButtonMaNXB2);
+        buttonGroupSach2.add(jRadioButtonNXB2);
+        jRadioButtonNXB2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonNXB2.setText("NXB");
+        jPanel13.add(jRadioButtonNXB2);
 
-        buttonGroupSach2.add(jRadioButtonMaTheLoai2);
-        jRadioButtonMaTheLoai2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaTheLoai2.setText("Mã thể loại");
-        jPanel13.add(jRadioButtonMaTheLoai2);
+        buttonGroupSach2.add(jRadioButtonTheLoai2);
+        jRadioButtonTheLoai2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonTheLoai2.setText("Thể loại");
+        jPanel13.add(jRadioButtonTheLoai2);
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1128,9 +1129,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         }
 
         // Refresh jTableSachDangMuon, jTableSach
-        String sql = "SELECT S.MASACH, TENSACH, NGAYNHAP, GIA, VITRI, MATACGIA, MANXB, MATHELOAI, NGAYMUON, HANTRA "
-                + "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maDocGia + "'";
-        DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, sql);
+        String query = "SELECT S.*, TG.TENTACGIA, NXB.TENNXB, TL.TENTHELOAI, MT.NGAYMUON, MT.HANTRA FROM SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL, MUONTRA MT "
+                     + "WHERE S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI AND S.MANXB = NXB.MANXB AND S.MASACH = MT.MASACH AND MT.MANGUOIDUNG = '" + maDocGia + "'";
+        DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, query);
         DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
     }//GEN-LAST:event_jButtonTraSachActionPerformed
 
@@ -1314,9 +1315,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         }
         
         // Refresh jTableSachDangMuon, jTableSach
-        String sql = "SELECT S.MASACH, TENSACH, NGAYNHAP, GIA, VITRI, MATACGIA, MANXB, MATHELOAI, NGAYMUON, HANTRA "
-                   + "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maDocGia + "'";
-        DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, sql);
+        String query = "SELECT S.*, TG.TENTACGIA, NXB.TENNXB, TL.TENTHELOAI, MT.NGAYMUON, MT.HANTRA FROM SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL, MUONTRA MT "
+                     + "WHERE S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI AND S.MANXB = NXB.MANXB AND S.MASACH = MT.MASACH AND MT.MANGUOIDUNG = '" + maDocGia + "'";
+        DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, query);
         DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
     }//GEN-LAST:event_jButtonBaoHongMatActionPerformed
 
@@ -1329,11 +1330,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
         } else if (jRadioButtonTenSach1.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-        } else if (jRadioButtonMaTacGia1.isSelected()) {
+        } else if (jRadioButtonTacGia1.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
-        } else if (jRadioButtonMaNXB1.isSelected()) {
+        } else if (jRadioButtonNXB1.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
-        } else if (jRadioButtonMaTheLoai1.isSelected()) {
+        } else if (jRadioButtonTheLoai1.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
         }
     }//GEN-LAST:event_jTextFieldKeywordSach1CaretUpdate
@@ -1347,11 +1348,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
         } else if (jRadioButtonTenSach1.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-        } else if (jRadioButtonMaTacGia1.isSelected()) {
+        } else if (jRadioButtonTacGia1.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
-        } else if (jRadioButtonMaNXB1.isSelected()) {
+        } else if (jRadioButtonNXB1.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
-        } else if (jRadioButtonMaTheLoai1.isSelected()) {
+        } else if (jRadioButtonTheLoai1.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
         }
     }//GEN-LAST:event_jButtonTimKiemSach1ActionPerformed
@@ -1365,8 +1366,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRow = jTableDocGia2.convertRowIndexToModel(jTableDocGia2.getSelectedRow());
         String maDocGia = (String) jTableDocGia2.getModel().getValueAt(selectedRow, 0);
-        String query = "SELECT S.MASACH, TENSACH, NGAYNHAP, GIA, VITRI, MATACGIA, MANXB, MATHELOAI, NGAYMUON, HANTRA "
-                     + "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maDocGia + "'";
+        String query = "SELECT S.*, TG.TENTACGIA, NXB.TENNXB, TL.TENTHELOAI, MT.NGAYMUON, MT.HANTRA FROM SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL, MUONTRA MT "
+                     + "WHERE S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI AND S.MANXB = NXB.MANXB AND S.MASACH = MT.MASACH AND MT.MANGUOIDUNG = '" + maDocGia + "'";
         DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, query);
     }//GEN-LAST:event_jTableDocGia2MouseReleased
 
@@ -1379,11 +1380,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
         } else if (jRadioButtonTenSach2.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-        } else if (jRadioButtonMaTacGia2.isSelected()) {
+        } else if (jRadioButtonTacGia2.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
-        } else if (jRadioButtonMaNXB2.isSelected()) {
+        } else if (jRadioButtonNXB2.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
-        } else if (jRadioButtonMaTheLoai2.isSelected()) {
+        } else if (jRadioButtonTheLoai2.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
         }
     }//GEN-LAST:event_jTextFieldKeywordSach2CaretUpdate
@@ -1397,11 +1398,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0));
         } else if (jRadioButtonTenSach2.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-        } else if (jRadioButtonMaTacGia2.isSelected()) {
+        } else if (jRadioButtonTacGia2.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 5));
-        } else if (jRadioButtonMaNXB2.isSelected()) {
+        } else if (jRadioButtonNXB2.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 6));
-        } else if (jRadioButtonMaTheLoai2.isSelected()) {
+        } else if (jRadioButtonTheLoai2.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 7));
         }
     }//GEN-LAST:event_jButtonTimKiemSach2ActionPerformed
@@ -1527,20 +1528,20 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonMaDG2;
     private javax.swing.JRadioButton jRadioButtonMaLop1;
     private javax.swing.JRadioButton jRadioButtonMaLop2;
-    private javax.swing.JRadioButton jRadioButtonMaNXB1;
-    private javax.swing.JRadioButton jRadioButtonMaNXB2;
     private javax.swing.JRadioButton jRadioButtonMaSach1;
     private javax.swing.JRadioButton jRadioButtonMaSach2;
-    private javax.swing.JRadioButton jRadioButtonMaTacGia1;
-    private javax.swing.JRadioButton jRadioButtonMaTacGia2;
-    private javax.swing.JRadioButton jRadioButtonMaTheLoai1;
-    private javax.swing.JRadioButton jRadioButtonMaTheLoai2;
+    private javax.swing.JRadioButton jRadioButtonNXB1;
+    private javax.swing.JRadioButton jRadioButtonNXB2;
     private javax.swing.JRadioButton jRadioButtonSDT1;
     private javax.swing.JRadioButton jRadioButtonSDT2;
+    private javax.swing.JRadioButton jRadioButtonTacGia1;
+    private javax.swing.JRadioButton jRadioButtonTacGia2;
     private javax.swing.JRadioButton jRadioButtonTenDG1;
     private javax.swing.JRadioButton jRadioButtonTenDG2;
     private javax.swing.JRadioButton jRadioButtonTenSach1;
     private javax.swing.JRadioButton jRadioButtonTenSach2;
+    private javax.swing.JRadioButton jRadioButtonTheLoai1;
+    private javax.swing.JRadioButton jRadioButtonTheLoai2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

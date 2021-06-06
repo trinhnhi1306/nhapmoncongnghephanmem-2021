@@ -186,6 +186,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jLabelTenDocGia = new javax.swing.JLabel();
 
         jDialog_DoiMatKhau.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_DoiMatKhau.setModal(true);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -1334,6 +1335,10 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
     private void jButton_DoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DoiMatKhauActionPerformed
         // TODO add your handling code here:
+        jPasswordField_oldpass.setText("");
+        jPasswordField_newpass.setText("");
+        jPasswordField_cnfpass.setText("");
+        
         jDialog_DoiMatKhau.pack();
         jDialog_DoiMatKhau.setLocationRelativeTo(this);
         jDialog_DoiMatKhau.setVisible(true);
