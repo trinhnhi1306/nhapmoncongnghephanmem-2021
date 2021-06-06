@@ -22,11 +22,15 @@ import table.DataFromSQLServer;
  */
 public class TrangChuAdmin extends javax.swing.JFrame {
 
+    private String maNguoiDung;
+
     /**
      * Creates new form AdminHoneForm
      */
     public TrangChuAdmin() {
         initComponents();
+        maNguoiDung = DangNhap.getMaNguoiDung();
+        jLabel_Name.setText((String) table.NguoiDung.getColumnValue("TENNGUOIDUNG", maNguoiDung));
         setLocationRelativeTo(null);
         jLabelSoLuongNguoiDung.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT COUNT(*) FROM NGUOIDUNG")));
         jLabelSoLuongSach.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT SUM(SOLUONGCO) FROM SACH")));
@@ -111,6 +115,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel64 = new javax.swing.JLabel();
         jLabelSoSachDangDuocMuon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel_Name = new javax.swing.JLabel();
 
         jDialog_DoiMatKhau.setModal(true);
 
@@ -681,6 +687,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel1.setText("Thư viện sách");
         jLabel1.setIconTextGap(10);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel2.setText("Xin chào");
+
+        jLabel_Name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_Name.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_Name.setText("What is your name?");
+
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
         jPanel32Layout.setHorizontalGroup(
@@ -690,24 +703,33 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(578, 578, 578)
+                        .addGap(431, 431, 431)
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel_Name)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11))
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel32Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel_Name))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -755,7 +777,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jTextFieldDiaChi.setText(nguoiDung.getDiaChi());
         jTextFieldSDT.setText(nguoiDung.getSdt());
         jTextFieldEmail.setText(nguoiDung.getEmail());
-        
+
         jDialog_SuaThongTinCaNhan.pack();
         jDialog_SuaThongTinCaNhan.setLocationRelativeTo(this);
         jDialog_SuaThongTinCaNhan.setVisible(true);
@@ -772,7 +794,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPasswordFieldOldPassword.setText("");
         jPasswordFieldNewPassword.setText("");
         jPasswordFieldConfirmPassword.setText("");
-        
+
         jDialog_DoiMatKhau.pack();
         jDialog_DoiMatKhau.setLocationRelativeTo(this);
         jDialog_DoiMatKhau.setVisible(true);
@@ -927,6 +949,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel4;
@@ -942,6 +965,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSoLuongNguoiDung;
     private javax.swing.JLabel jLabelSoLuongSach;
     private javax.swing.JLabel jLabelSoSachDangDuocMuon;
+    private javax.swing.JLabel jLabel_Name;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel30;
