@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -37,7 +40,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "TENTACGIA", "TENNXB",
                                                                                        "TENTHELOAI", "GIA", "VITRI", "SOLUONGCON"));
     private ArrayList<String> columnTitlesOfJTableSachDangMuon = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI",
-                                                                                               "MATACGIA", "MANXB", "MATHELOAI", "NGAYMUON", "HANTRA"));
+                                                                                               "TENTACGIA", "TENNXB", "TENTHELOAI", "NGAYMUON", "HANTRA"));
     private String queryForJTableSach = "SELECT * "
                                         + "FROM SACH S, NHAXUATBAN NXB, TACGIA TG, THELOAI TL "
                                         + "WHERE S.MANXB = NXB.MANXB AND S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI";
@@ -56,9 +59,11 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         demSoLuongDG();
         
         DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTableSach, queryForJTableSach);
-        String query = "SELECT S.MASACH, TENSACH, NGAYNHAP, GIA, VITRI, MATACGIA, MANXB, MATHELOAI, NGAYMUON, HANTRA " +
-                       "FROM SACH S JOIN MUONTRA M ON S.MASACH = M.MASACH WHERE MANGUOIDUNG = '" + maNguoiDung + "'";
+        String query = "SELECT * " +
+                       "FROM MUONTRA M, SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL " +
+                       "WHERE M.MASACH = S.MASACH AND S.MANXB = NXB.MANXB AND S.MATHELOAI = TL.MATHELOAI AND S.MATACGIA = TG.MATACGIA AND MANGUOIDUNG = '" + maNguoiDung + "'";
         DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, query);
+        thongBao();
     }
 
     /**
@@ -105,7 +110,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextArea_ThongBao = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton_TroVe2 = new javax.swing.JButton();
@@ -458,11 +463,11 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Nội dung");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextArea_ThongBao.setEditable(false);
+        jTextArea_ThongBao.setColumns(20);
+        jTextArea_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea_ThongBao.setRows(5);
+        jScrollPane2.setViewportView(jTextArea_ThongBao);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Từ");
@@ -498,12 +503,11 @@ public class TrangChuDocGia extends javax.swing.JFrame {
                             .addComponent(jTextField3)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -750,7 +754,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Mã tác giả", "Mã NXB", "Mã thể loại", "Ngày mượn", "Hạn trả"
+                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Tên tác giả", "Tên NXB", "Tên thể loại", "Ngày mượn", "Hạn trả"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -1335,6 +1339,25 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jDialog_DoiMatKhau.setVisible(true);
     }//GEN-LAST:event_jButton_DoiMatKhauActionPerformed
 
+    public void thongBao () {
+        String str = "";
+        LocalDate today = LocalDate.now();
+        for (int i = 0; i < jTableSachDangMuon.getRowCount(); i++) {
+            LocalDate hanTra = LocalDate.parse((String) jTableSachDangMuon.getModel().getValueAt(i, 9));
+            Duration diff = Duration.between(today.atStartOfDay(), hanTra.atStartOfDay());
+            long diffDays = diff.toDays();
+            if (diffDays >= 0) {
+                str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " còn " + diffDays + " ngày nữa hết hạn\n";
+            }
+            else {
+                str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " đã hết hạn\n";
+            }
+            jButton_ThongBao.setForeground(Color.red);
+            jButton_ThongBao.setText("Thông báo!!");
+        }
+        jTextArea_ThongBao.setText(str);
+    }
+    
     private void jButton_ThongBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongBaoActionPerformed
         // TODO add your handling code here:
         jDialog_ThongBao.pack();
@@ -1366,6 +1389,8 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private void jButton_TroVe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe2ActionPerformed
         // TODO add your handling code here:
         jDialog_ThongBao.dispose();
+        jButton_ThongBao.setForeground(Color.black);
+        jButton_ThongBao.setText("Thông báo");
     }//GEN-LAST:event_jButton_TroVe2ActionPerformed
 
     private void jButton_TroGiupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroGiupActionPerformed
@@ -1564,7 +1589,6 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Thoat;
     private javax.swing.JButton jButton_Thoat1;
     private javax.swing.JButton jButton_Thoat2;
-    private javax.swing.JButton jButton_Thoat3;
     private javax.swing.JButton jButton_ThongBao;
     private javax.swing.JButton jButton_ThongTinCaNhan;
     private javax.swing.JButton jButton_TimKiem;
@@ -1575,7 +1599,6 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe2;
     private javax.swing.JButton jButton_TroVe3;
     private javax.swing.JButton jButton_TroVe4;
-    private javax.swing.JButton jButton_TroVe5;
     private javax.swing.JButton jButton_XacNhan;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox_GioiTinh;
@@ -1620,7 +1643,6 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel28;
@@ -1653,7 +1675,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableSachDangMuon;
     private javax.swing.JTable jTable_DSSach;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea_ThongBao;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextFieldKeywordSachDangMuon;
     private javax.swing.JTextField jTextField_DiaChi;
