@@ -22,7 +22,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
-import model.Sach;
 import table.DataFromSQLServer;
 
 /**
@@ -373,7 +372,7 @@ public class QuanLySach extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Mã tác giả", "Mã NXB", "Mã thể loại", "Ngày nhập", "Giá", "Vị trí", "Số lượng có", "Số lượng còn"
+                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Mã tác giả", "Mã NXB", "Mã thể loại", "Số lượng có", "Số lượng còn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -756,25 +755,6 @@ public class QuanLySach extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private ArrayList<Sach> getDSSach(String sql) {
-        ArrayList<Sach> ds = new ArrayList<>();
-        try (
-                Connection con = KetNoiSQL.layKetNoi();
-                PreparedStatement ps = con.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Sach sach = new Sach(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
-                ds.add(sach);
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(QuanLySach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        return ds;
-    }
-
     private void getMaTacGia() {
         jComboBox_MaTacGia.removeAllItems();
         jComboBox_MaTacGia1.removeAllItems();
@@ -875,9 +855,9 @@ public class QuanLySach extends javax.swing.JFrame {
     }
 
     private void chinhSuaSach(String maSach, String tenSach, String maTacGia, String maNXB, String maTheLoai, String gia, String ngayNhap, String viTri, String soLuongThem) {
-        ArrayList<Sach> sach = getDSSach("SELECT * FROM SACH WHERE MASACH = '" + maSach + "'");
-        int soLuongCo = Integer.parseInt(sach.get(0).getSoLuongCo());
-        int soLuongCon = Integer.parseInt(sach.get(0).getSoLuongCon());
+        int selectedRowOfJTable_DSSach = jTable_DSSach.convertRowIndexToModel(jTable_DSSach.getSelectedRow());
+        String soLuongCo = (String) jTable_DSSach.getModel().getValueAt(selectedRowOfJTable_DSSach, 8);
+        String soLuongCon = (String) jTable_DSSach.getModel().getValueAt(selectedRowOfJTable_DSSach, 9);
         String sql = "UPDATE SACH SET TENSACH = ?, MATACGIA = ?, MANXB = ?, MATHELOAI = ?, GIA = ?, NGAYNHAP = ?, VITRI = ?, SOLUONGCO = ?, SOLUONGCON = ? WHERE MASACH = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -889,8 +869,8 @@ public class QuanLySach extends javax.swing.JFrame {
             ps.setString(5, gia);
             ps.setString(6, ngayNhap);
             ps.setString(7, viTri);
-            ps.setInt(8, soLuongCo + Integer.parseInt(soLuongThem));
-            ps.setInt(9, soLuongCon + Integer.parseInt(soLuongThem));
+            ps.setInt(8, Integer.parseInt(soLuongCo) + Integer.parseInt(soLuongThem));
+            ps.setInt(9, Integer.parseInt(soLuongCon) + Integer.parseInt(soLuongThem));
             ps.setString(10, maSach);
             ps.executeUpdate();
             ps.close();
@@ -1084,10 +1064,7 @@ public class QuanLySach extends javax.swing.JFrame {
         }
         jTextField_MaSach.setText((String) dtm.getValueAt(row, 0));
         jTextField_TenSach.setText((String) dtm.getValueAt(row, 1));
-        jComboBox_MaTacGia.setSelectedItem(dtm.getValueAt(row, 2));
-        jComboBox_MaNXB.setSelectedItem(dtm.getValueAt(row, 3));
-        jComboBox_MaTheLoai.setSelectedItem(dtm.getValueAt(row, 4));
-        String ngayNhap = (String) dtm.getValueAt(row, 5);
+        String ngayNhap = (String) dtm.getValueAt(row, 2);
         if (ngayNhap == null) {
             jDateChooser_NgayNhap.setDate(null);
         } else {
@@ -1098,8 +1075,11 @@ public class QuanLySach extends javax.swing.JFrame {
                 System.out.println(ex.getMessage());
             }
         }
-        jTextField_Gia.setText((String) dtm.getValueAt(row, 6));
-        jTextField_ViTri.setText((String) dtm.getValueAt(row, 7));
+        jTextField_Gia.setText((String) dtm.getValueAt(row, 3));
+        jTextField_ViTri.setText((String) dtm.getValueAt(row, 4));
+        jComboBox_MaTacGia.setSelectedItem(dtm.getValueAt(row, 5));
+        jComboBox_MaNXB.setSelectedItem(dtm.getValueAt(row, 6));
+        jComboBox_MaTheLoai.setSelectedItem(dtm.getValueAt(row, 7));
         jTextField_SoLuongCo.setText((String) dtm.getValueAt(row, 8));
         jTextField_SoLuongCon.setText((String) dtm.getValueAt(row, 9));
     }//GEN-LAST:event_jTable_DSSachMouseClicked

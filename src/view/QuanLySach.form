@@ -597,12 +597,12 @@
                       <Table columnCount="10" rowCount="0">
                         <Column editable="false" title="M&#xe3; s&#xe1;ch" type="java.lang.Object"/>
                         <Column editable="false" title="T&#xea;n s&#xe1;ch" type="java.lang.Object"/>
-                        <Column editable="false" title="M&#xe3; t&#xe1;c gi&#x1ea3;" type="java.lang.Object"/>
-                        <Column editable="false" title="M&#xe3; NXB" type="java.lang.Object"/>
-                        <Column editable="false" title="M&#xe3; th&#x1ec3; lo&#x1ea1;i" type="java.lang.Object"/>
                         <Column editable="false" title="Ng&#xe0;y nh&#x1ead;p" type="java.lang.Object"/>
                         <Column editable="false" title="Gi&#xe1;" type="java.lang.Object"/>
                         <Column editable="false" title="V&#x1ecb; tr&#xed;" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; t&#xe1;c gi&#x1ea3;" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; NXB" type="java.lang.Object"/>
+                        <Column editable="false" title="M&#xe3; th&#x1ec3; lo&#x1ea1;i" type="java.lang.Object"/>
                         <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng c&#xf3;" type="java.lang.Object"/>
                         <Column editable="false" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng c&#xf2;n" type="java.lang.Object"/>
                       </Table>
