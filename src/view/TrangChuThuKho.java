@@ -19,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import ketnoi.KetNoiSQL;
 import model.NguoiDung;
+import table.DataFromSQLServer;
 
 /**
  *
@@ -35,8 +36,10 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         maNguoiDung = DangNhap.getMaNguoiDung();
         initComponents();
         setLocationRelativeTo(null);
-        demSoLuongDG();
-        demSoLuongSC();
+        jLabel_Name.setText((String) table.NguoiDung.getColumnValue("TENNGUOIDUNG", maNguoiDung));
+        jLabel_SLDocGia.setText(String.valueOf(DataFromSQLServer.aggregate("select count(MANGUOIDUNG) from NGUOIDUNG where MAVAITRO = 'VT01'")));
+        jLabel_SLSachCo.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT SUM(SOLUONGCO) FROM SACH")));
+        jLabel_SLSachMuon.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT COUNT(*) FROM MUONTRA")));
     }
 
     /**
@@ -111,12 +114,14 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel29 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
-        jLabel_SLSachCon = new javax.swing.JLabel();
+        jLabel_SLSachCo = new javax.swing.JLabel();
         jPanel30 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
         jLabel64 = new javax.swing.JLabel();
         jLabel_SLSachMuon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel_Name = new javax.swing.JLabel();
 
         jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -637,11 +642,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel29.add(jLabel61);
         jLabel61.setBounds(50, 10, 160, 30);
 
-        jLabel_SLSachCon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel_SLSachCon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_SLSachCon.setText("0");
-        jPanel29.add(jLabel_SLSachCon);
-        jLabel_SLSachCon.setBounds(90, 70, 160, 50);
+        jLabel_SLSachCo.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachCo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_SLSachCo.setText("0");
+        jPanel29.add(jLabel_SLSachCo);
+        jLabel_SLSachCo.setBounds(90, 70, 160, 50);
 
         jPanel30.setBackground(new java.awt.Color(0, 255, 204));
         jPanel30.setLayout(null);
@@ -651,9 +656,9 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel63.setBounds(10, 60, 70, 70);
 
         jLabel64.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel64.setText("Số sách được mượn");
+        jLabel64.setText("Số sách đang được mượn");
         jPanel30.add(jLabel64);
-        jLabel64.setBounds(40, 10, 190, 30);
+        jLabel64.setBounds(20, 10, 230, 30);
 
         jLabel_SLSachMuon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel_SLSachMuon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -691,6 +696,13 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel1.setText("Thư viện sách");
         jLabel1.setIconTextGap(10);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setText("Xin chào");
+
+        jLabel_Name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel_Name.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_Name.setText("What is your name?");
+
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
         jPanel32Layout.setHorizontalGroup(
@@ -700,7 +712,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(578, 578, 578)
+                        .addGap(431, 431, 431)
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel_Name)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11))
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
@@ -714,10 +730,15 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel32Layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel_Name))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -741,36 +762,6 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void demSoLuongDG() {
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement("select count(MANGUOIDUNG) from NGUOIDUNG where MAVAITRO = 'VT01'");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                jLabel_SLDocGia.setText(rs.getString(1));
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(TrangChuThuKho.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    public void demSoLuongSC () {
-        Connection con = KetNoiSQL.layKetNoi();
-        try {
-            PreparedStatement ps = con.prepareStatement("select SUM(SOLUONGCON) from SACH ");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                jLabel_SLSachCon.setText(rs.getString(1));
-            }
-            rs.close();
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(TrangChuThuKho.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-    }
     
     public void showThongTinNguoiDung () {
         NguoiDung n = NguoiDung.layThongTinNguoiDung();
@@ -1000,6 +991,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel57;
@@ -1010,8 +1002,9 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_Name;
     private javax.swing.JLabel jLabel_SLDocGia;
-    private javax.swing.JLabel jLabel_SLSachCon;
+    private javax.swing.JLabel jLabel_SLSachCo;
     private javax.swing.JLabel jLabel_SLSachMuon;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel28;
