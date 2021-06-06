@@ -20,12 +20,12 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class DataFromSQLServer {
-    public static void getAndShowData(JTable jTable, ArrayList<String> ColumnTitles, String query) {
+    public static void getAndShowData(JTable jTable, ArrayList<String> ColumnTitles, String selectQuery) {
         DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
         dtm.setRowCount(0);
         try (
                 Connection con = KetNoiSQL.layKetNoi();
-                PreparedStatement ps = con.prepareStatement(query);
+                PreparedStatement ps = con.prepareStatement(selectQuery);
                 ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Vector rowData = new Vector();

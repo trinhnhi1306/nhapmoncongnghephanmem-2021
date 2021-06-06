@@ -29,4 +29,16 @@ public class NguoiDung {
         }
         return columnValue;
     }
+    
+    public static void updateColumn(String columnName, Object columnValue, String maNguoiDung) {
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement rs = con.prepareStatement("UPDATE NGUOIDUNG SET " + columnName + " = ? WHERE MANGUOIDUNG = ?")) {
+            rs.setObject(1, columnValue);
+            rs.setString(2, maNguoiDung);
+            rs.executeUpdate();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(NguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
 }
