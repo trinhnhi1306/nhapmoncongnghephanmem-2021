@@ -734,14 +734,14 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
@@ -1504,10 +1504,23 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
 
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
         // TODO add your handling code here:
+        String tuKhoa = jTextField_KeywordKhoa.getText();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelKhoa);
+        jTable_DSKhoa.setRowSorter(trs);
+
+        if (jRadioButton_MaKhoa.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenKhoa.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
 
     private void jButton_ThemKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemKhoaActionPerformed
         // TODO add your handling code here:
+        jTextField_MaKhoa1.setText("");
+        jTextField_TenKhoa1.setText("");
+        
         jDialog_ThemKhoa.pack();
         jDialog_ThemKhoa.setLocationRelativeTo(this);
         jDialog_ThemKhoa.setVisible(true);
@@ -1543,10 +1556,26 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
 
     private void jButton_TimKiem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiem1ActionPerformed
         // TODO add your handling code here:
+        String tuKhoa = jTextField_KeywordLop.getText();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelLop);
+        jTable_DSLop.setRowSorter(trs);
+
+        if (jRadioButton_MaLop.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenLop.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
+        if (jRadioButton_MaKhoaCuaLop.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 2));
+        }
     }//GEN-LAST:event_jButton_TimKiem1ActionPerformed
 
     private void jButton_ThemLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemLopActionPerformed
         // TODO add your handling code here:
+        jTextField_MaLop1.setText("");
+        jTextField_TenLop1.setText("");
+        
         jDialog_ThemLop.pack();
         jDialog_ThemLop.setLocationRelativeTo(this);
         jDialog_ThemLop.setVisible(true);
@@ -1579,10 +1608,23 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
 
     private void jButton_TimKiem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiem2ActionPerformed
         // TODO add your handling code here:
+        String tuKhoa = jTextField_KeywordVaiTro.getText();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(modelVaiTro);
+        jTable_DSVaiTro.setRowSorter(trs);
+
+        if (jRadioButton_MaVaiTro.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenVaiTro.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
     }//GEN-LAST:event_jButton_TimKiem2ActionPerformed
 
     private void jButton_ThemVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemVaiTroActionPerformed
         // TODO add your handling code here:
+        jTextField_MaVaiTro1.setText("");
+        jTextField_TenVaiTro1.setText("");
+        
         jDialog_ThemVaiTro.pack();
         jDialog_ThemVaiTro.setLocationRelativeTo(this);
         jDialog_ThemVaiTro.setVisible(true);

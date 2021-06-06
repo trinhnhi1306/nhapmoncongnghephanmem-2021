@@ -480,7 +480,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/settings.png"))); // NOI18N
 
         jPanel28.setBackground(new java.awt.Color(255, 255, 204));
-        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Admin", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Thủ kho", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         jButton_QuanLySach.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton_QuanLySach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/book1.png"))); // NOI18N
@@ -614,14 +614,16 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel57.setBounds(10, 60, 70, 70);
 
         jLabel58.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel58.setText("Số độc giả");
+        jLabel58.setText("Số lượng độc giả");
+        jLabel58.setToolTipText("");
         jPanel6.add(jLabel58);
-        jLabel58.setBounds(80, 10, 100, 30);
+        jLabel58.setBounds(50, 10, 160, 30);
 
         jLabel_SLDocGia.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLDocGia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_SLDocGia.setText("0");
         jPanel6.add(jLabel_SLDocGia);
-        jLabel_SLDocGia.setBounds(150, 70, 100, 50);
+        jLabel_SLDocGia.setBounds(90, 70, 160, 50);
 
         jPanel29.setBackground(new java.awt.Color(102, 255, 51));
         jPanel29.setLayout(null);
@@ -636,9 +638,10 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel61.setBounds(50, 10, 160, 30);
 
         jLabel_SLSachCon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachCon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_SLSachCon.setText("0");
         jPanel29.add(jLabel_SLSachCon);
-        jLabel_SLSachCon.setBounds(150, 70, 100, 50);
+        jLabel_SLSachCon.setBounds(90, 70, 160, 50);
 
         jPanel30.setBackground(new java.awt.Color(0, 255, 204));
         jPanel30.setLayout(null);
@@ -653,9 +656,10 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel64.setBounds(40, 10, 190, 30);
 
         jLabel_SLSachMuon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel_SLSachMuon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_SLSachMuon.setText("0");
         jPanel30.add(jLabel_SLSachMuon);
-        jLabel_SLSachMuon.setBounds(150, 70, 100, 50);
+        jLabel_SLSachMuon.setBounds(80, 70, 170, 50);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);

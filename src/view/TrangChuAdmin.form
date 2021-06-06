@@ -763,7 +763,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton_QLNguoiDung" pref="280" max="32767" attributes="0"/>
+                          <Component id="jButton_QLNhanVien" pref="280" max="32767" attributes="0"/>
                           <Component id="jButton_DoiMatKhau" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -786,7 +786,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jButton_QLNguoiDung" pref="115" max="32767" attributes="0"/>
+                          <Component id="jButton_QLNhanVien" pref="115" max="32767" attributes="0"/>
                           <Component id="jButton_ThongTinCaNhan" max="32767" attributes="0"/>
                           <Component id="jButton_LopKhoaVaiTro" max="32767" attributes="0"/>
                       </Group>
@@ -806,7 +806,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton_QLNguoiDung">
+            <Component class="javax.swing.JButton" name="jButton_QLNhanVien">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="16" style="1"/>
@@ -814,12 +814,12 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon/customer.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; ng&#x1b0;&#x1edd;i d&#xf9;ng"/>
+                <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; nh&#xe2;n vi&#xea;n"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_QLNguoiDungActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_QLNhanVienActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton_ThongTinCaNhan">

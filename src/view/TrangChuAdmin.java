@@ -84,7 +84,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel32 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
-        jButton_QLNguoiDung = new javax.swing.JButton();
+        jButton_QLNhanVien = new javax.swing.JButton();
         jButton_ThongTinCaNhan = new javax.swing.JButton();
         jButton_LopKhoaVaiTro = new javax.swing.JButton();
         jButton_DoiMatKhau = new javax.swing.JButton();
@@ -480,14 +480,14 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel28.setBackground(new java.awt.Color(255, 255, 204));
         jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Admin", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
-        jButton_QLNguoiDung.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton_QLNguoiDung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer.png"))); // NOI18N
-        jButton_QLNguoiDung.setText("Quản lý người dùng");
-        jButton_QLNguoiDung.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_QLNguoiDung.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton_QLNguoiDung.addActionListener(new java.awt.event.ActionListener() {
+        jButton_QLNhanVien.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton_QLNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/customer.png"))); // NOI18N
+        jButton_QLNhanVien.setText("Quản lý nhân viên");
+        jButton_QLNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_QLNhanVien.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_QLNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_QLNguoiDungActionPerformed(evt);
+                jButton_QLNhanVienActionPerformed(evt);
             }
         });
 
@@ -561,7 +561,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_QLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(jButton_QLNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                     .addComponent(jButton_DoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -579,7 +579,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton_QLNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(jButton_QLNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                     .addComponent(jButton_ThongTinCaNhan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton_LopKhoaVaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
@@ -731,11 +731,11 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_QLNguoiDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QLNguoiDungActionPerformed
+    private void jButton_QLNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QLNhanVienActionPerformed
         // TODO add your handling code here:
         dispose();
         new QuanLyNguoiDung().setVisible(true);
-    }//GEN-LAST:event_jButton_QLNguoiDungActionPerformed
+    }//GEN-LAST:event_jButton_QLNhanVienActionPerformed
 
     private void jButton_ThongTinCaNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinCaNhanActionPerformed
         NguoiDung nguoiDung = NguoiDung.layThongTinNguoiDung();
@@ -903,7 +903,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton_DoiMatKhau;
     private javax.swing.JButton jButton_LopKhoaVaiTro;
     private javax.swing.JButton jButton_Luu;
-    private javax.swing.JButton jButton_QLNguoiDung;
+    private javax.swing.JButton jButton_QLNhanVien;
     private javax.swing.JButton jButton_Thoat;
     private javax.swing.JButton jButton_ThongBao;
     private javax.swing.JButton jButton_ThongTinCaNhan;
