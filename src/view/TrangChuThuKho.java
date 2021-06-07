@@ -121,6 +121,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel_Name = new javax.swing.JLabel();
 
         jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThongBao.setModal(true);
 
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -208,6 +209,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         );
 
         jDialog_SuaThongTinCaNhan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_SuaThongTinCaNhan.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -371,6 +373,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         );
 
         jDialog_DoiMatKhau.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_DoiMatKhau.setModal(true);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -635,9 +638,9 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel60.setBounds(10, 60, 70, 70);
 
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel61.setText("Số lượng sách có");
+        jLabel61.setText("Số lượng sách");
         jPanel29.add(jLabel61);
-        jLabel61.setBounds(50, 10, 160, 30);
+        jLabel61.setBounds(70, 10, 140, 30);
 
         jLabel_SLSachCo.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel_SLSachCo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -655,7 +658,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel64.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel64.setText("Số sách đang được mượn");
         jPanel30.add(jLabel64);
-        jLabel64.setBounds(20, 10, 230, 30);
+        jLabel64.setBounds(20, 10, 240, 30);
 
         jLabel_SLSachMuon.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel_SLSachMuon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -705,22 +708,20 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel32Layout.setHorizontalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(13, 13, 13)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel32Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(431, 431, 431)
+                        .addGap(428, 428, 428)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel_Name)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11))
-                    .addGroup(jPanel32Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -809,6 +810,10 @@ public class TrangChuThuKho extends javax.swing.JFrame {
 
     private void jButton_DoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DoiMatKhauActionPerformed
         // TODO add your handling code here:
+        jPasswordField_oldpass.setText("");
+        jPasswordField_newpass.setText("");
+        jPasswordField_cnfpass.setText("");
+        
         jDialog_DoiMatKhau.pack();
         jDialog_DoiMatKhau.setLocationRelativeTo(this);
         jDialog_DoiMatKhau.setVisible(true);

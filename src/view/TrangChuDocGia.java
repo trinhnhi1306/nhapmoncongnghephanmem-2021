@@ -292,6 +292,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         );
 
         jDialog_SuaThongTinCaNhan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_SuaThongTinCaNhan.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -454,6 +455,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         );
 
         jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThongBao.setModal(true);
 
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -540,6 +542,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         );
 
         jDialog_TimSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_TimSach.setModal(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -597,11 +600,11 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Tên tác giả", "Tên NXB", "Tên thể loại", "Giá", "Vị trí", "Số lượng còn"
+                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Tác giả", "NXB", "Thể loại", "Số lượng có", "Số lượng còn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -646,7 +649,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jPanel5.add(jRadioButton_TenTacGia);
 
         jRadioButton_NXB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_NXB.setText("Nhà Xuất Bản");
+        jRadioButton_NXB.setText("NXB");
         jPanel5.add(jRadioButton_NXB);
 
         jRadioButton_TheLoai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
