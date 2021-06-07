@@ -46,4 +46,8 @@ public class TheLoai {
         this.ghiChu = ghiChu;
     }
 
+    @Override
+    public String toString() {
+        return maTheLoai + " - " + tenTheLoai;
+    }
 }

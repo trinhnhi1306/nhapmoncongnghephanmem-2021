@@ -22,6 +22,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
+import model.NXB;
+import model.TacGia;
+import model.TheLoai;
 import table.DataFromSQLServer;
 
 /**
@@ -30,7 +33,7 @@ import table.DataFromSQLServer;
  */
 public class QuanLySach extends javax.swing.JFrame {
 
-    private ArrayList<String> columnTitlesOfJTable_DSSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI", "MATACGIA", "MANXB", "MATHELOAI", "SOLUONGCO", "SOLUONGCON"));
+    private ArrayList<String> columnTitlesOfJTable_DSSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI", "TENTACGIA", "TENNXB", "TENTHELOAI", "SOLUONGCO", "SOLUONGCON"));
 
     /**
      * Creates new form ManageBookForm
@@ -38,10 +41,10 @@ public class QuanLySach extends javax.swing.JFrame {
     public QuanLySach() {
         initComponents();
         setLocationRelativeTo(null);
-        getMaTacGia();
-        getMaNXB();
-        getMaTheLoai();
-        DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT * FROM SACH");
+        getTacGia();
+        getNXB();
+        getTheLoai();
+        DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT S.*, TG.TENTACGIA, NXB.TENNXB, TL.TENTHELOAI FROM SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL WHERE S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI AND S.MANXB = NXB.MANXB");
     }
 
     /**
@@ -74,9 +77,9 @@ public class QuanLySach extends javax.swing.JFrame {
         jDateChooser_NgayNhap1 = new com.toedter.calendar.JDateChooser();
         jButton_Them1 = new javax.swing.JButton();
         jButton_TroVe1 = new javax.swing.JButton();
-        jComboBox_MaTacGia1 = new javax.swing.JComboBox<>();
-        jComboBox_MaNXB1 = new javax.swing.JComboBox<>();
-        jComboBox_MaTheLoai1 = new javax.swing.JComboBox<>();
+        jComboBox_TacGia1 = new javax.swing.JComboBox<>();
+        jComboBox_NXB1 = new javax.swing.JComboBox<>();
+        jComboBox_TheLoai1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -88,9 +91,9 @@ public class QuanLySach extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jRadioButton_MaSach = new javax.swing.JRadioButton();
         jRadioButton_TenSach = new javax.swing.JRadioButton();
-        jRadioButton_MaTacGia = new javax.swing.JRadioButton();
-        jRadioButton_MaNXB = new javax.swing.JRadioButton();
-        jRadioButton_MaTheLoai = new javax.swing.JRadioButton();
+        jRadioButton_TenTacGia = new javax.swing.JRadioButton();
+        jRadioButton_TenNXB = new javax.swing.JRadioButton();
+        jRadioButton_TenTheLoai = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jTextField_MaSach = new javax.swing.JTextField();
@@ -109,9 +112,9 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField_SoLuongCon = new javax.swing.JTextField();
-        jComboBox_MaTacGia = new javax.swing.JComboBox<>();
-        jComboBox_MaNXB = new javax.swing.JComboBox<>();
-        jComboBox_MaTheLoai = new javax.swing.JComboBox<>();
+        jComboBox_TacGia = new javax.swing.JComboBox<>();
+        jComboBox_NXB = new javax.swing.JComboBox<>();
+        jComboBox_TheLoai = new javax.swing.JComboBox<>();
         jTextField_ViTri = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField_SoLuongThem = new javax.swing.JTextField();
@@ -144,13 +147,13 @@ public class QuanLySach extends javax.swing.JFrame {
         jTextField_TenSach1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Mã tác giả");
+        jLabel14.setText("Tác giả");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Mã NXB");
+        jLabel15.setText("NXB");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Mã thể loại");
+        jLabel16.setText("Thể loại");
 
         jTextField_Gia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -192,11 +195,11 @@ public class QuanLySach extends javax.swing.JFrame {
             }
         });
 
-        jComboBox_MaTacGia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox_TacGia1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jComboBox_MaNXB1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox_NXB1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jComboBox_MaTheLoai1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox_TheLoai1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -227,15 +230,15 @@ public class QuanLySach extends javax.swing.JFrame {
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox_MaTheLoai1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jComboBox_TheLoai1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox_MaNXB1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jComboBox_NXB1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox_MaTacGia1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jComboBox_TacGia1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -270,15 +273,15 @@ public class QuanLySach extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_MaTacGia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_TacGia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_MaNXB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_NXB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox_MaTheLoai1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox_TheLoai1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -372,7 +375,7 @@ public class QuanLySach extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Mã tác giả", "Mã NXB", "Mã thể loại", "Số lượng có", "Số lượng còn"
+                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Tên tác giả", "Tên NXB", "Tên thể loại", "Số lượng có", "Số lượng còn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -423,20 +426,20 @@ public class QuanLySach extends javax.swing.JFrame {
         jRadioButton_TenSach.setText("Tên sách");
         jPanel4.add(jRadioButton_TenSach);
 
-        buttonGroupTheo.add(jRadioButton_MaTacGia);
-        jRadioButton_MaTacGia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_MaTacGia.setText("Mã tác giả");
-        jPanel4.add(jRadioButton_MaTacGia);
+        buttonGroupTheo.add(jRadioButton_TenTacGia);
+        jRadioButton_TenTacGia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_TenTacGia.setText("Tên tác giả");
+        jPanel4.add(jRadioButton_TenTacGia);
 
-        buttonGroupTheo.add(jRadioButton_MaNXB);
-        jRadioButton_MaNXB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_MaNXB.setText("Mã NXB");
-        jPanel4.add(jRadioButton_MaNXB);
+        buttonGroupTheo.add(jRadioButton_TenNXB);
+        jRadioButton_TenNXB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_TenNXB.setText("Tên NXB");
+        jPanel4.add(jRadioButton_TenNXB);
 
-        buttonGroupTheo.add(jRadioButton_MaTheLoai);
-        jRadioButton_MaTheLoai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_MaTheLoai.setText("Mã thể loại");
-        jPanel4.add(jRadioButton_MaTheLoai);
+        buttonGroupTheo.add(jRadioButton_TenTheLoai);
+        jRadioButton_TenTheLoai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_TenTheLoai.setText("Tên thể loại");
+        jPanel4.add(jRadioButton_TenTheLoai);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 204));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -448,7 +451,7 @@ public class QuanLySach extends javax.swing.JFrame {
         jTextField_MaSach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel22.setText("Mã NXB");
+        jLabel22.setText("NXB");
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel23.setText("Ngày nhập");
@@ -464,10 +467,10 @@ public class QuanLySach extends javax.swing.JFrame {
         jLabel25.setText("Tên sách");
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel26.setText("Mã tác giả");
+        jLabel26.setText("Tác giả");
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel27.setText("Mã thể loại");
+        jLabel27.setText("Thể loại");
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel28.setText("Giá");
@@ -489,11 +492,11 @@ public class QuanLySach extends javax.swing.JFrame {
         jTextField_SoLuongCon.setEditable(false);
         jTextField_SoLuongCon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jComboBox_MaTacGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox_TacGia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jComboBox_MaNXB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox_NXB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jComboBox_MaTheLoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jComboBox_TheLoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jTextField_ViTri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -512,7 +515,7 @@ public class QuanLySach extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox_MaTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox_TacGia, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -533,8 +536,8 @@ public class QuanLySach extends javax.swing.JFrame {
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox_MaNXB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox_MaTheLoai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBox_NXB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox_TheLoai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -574,7 +577,7 @@ public class QuanLySach extends javax.swing.JFrame {
                         .addComponent(jTextField_MaSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel22)
                         .addComponent(jLabel23)
-                        .addComponent(jComboBox_MaNXB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBox_NXB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jDateChooser_NgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -582,7 +585,7 @@ public class QuanLySach extends javax.swing.JFrame {
                     .addComponent(jLabel25)
                     .addComponent(jTextField_TenSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
-                    .addComponent(jComboBox_MaTheLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_TheLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_ViTri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -593,7 +596,7 @@ public class QuanLySach extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addComponent(jTextField_SoLuongCo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)
-                        .addComponent(jComboBox_MaTacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox_TacGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField_SoLuongCon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4)
                         .addComponent(jTextField_SoLuongThem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -755,16 +758,18 @@ public class QuanLySach extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void getMaTacGia() {
-        jComboBox_MaTacGia.removeAllItems();
-        jComboBox_MaTacGia1.removeAllItems();
+    private void getTacGia() {
+        jComboBox_TacGia.removeAllItems();
+        jComboBox_TacGia1.removeAllItems();
         Connection con = KetNoiSQL.layKetNoi();
+        TacGia tacGia = null;
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM TACGIA");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                jComboBox_MaTacGia.addItem(rs.getString(1));
-                jComboBox_MaTacGia1.addItem(rs.getString(1));
+                tacGia = new TacGia(rs.getString(1), rs.getString(2), rs.getString(3));
+                jComboBox_TacGia.addItem(tacGia);
+                jComboBox_TacGia1.addItem(tacGia);
             }
             rs.close();
             ps.close();
@@ -774,16 +779,18 @@ public class QuanLySach extends javax.swing.JFrame {
         }
     }
 
-    private void getMaNXB() {
-        jComboBox_MaNXB.removeAllItems();
-        jComboBox_MaNXB1.removeAllItems();
+    private void getNXB() {
+        jComboBox_NXB.removeAllItems();
+        jComboBox_NXB1.removeAllItems();
         Connection con = KetNoiSQL.layKetNoi();
+        NXB nxb = null;
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM NHAXUATBAN");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                jComboBox_MaNXB.addItem(rs.getString(1));
-                jComboBox_MaNXB1.addItem(rs.getString(1));
+                nxb = new NXB(rs.getString(1), rs.getString(2), rs.getString(3));
+                jComboBox_NXB.addItem(nxb);
+                jComboBox_NXB1.addItem(nxb);
             }
             rs.close();
             ps.close();
@@ -793,16 +800,18 @@ public class QuanLySach extends javax.swing.JFrame {
         }
     }
 
-    private void getMaTheLoai() {
-        jComboBox_MaTheLoai.removeAllItems();
-        jComboBox_MaTheLoai1.removeAllItems();
+    private void getTheLoai() {
+        jComboBox_TheLoai.removeAllItems();
+        jComboBox_TheLoai1.removeAllItems();
         Connection con = KetNoiSQL.layKetNoi();
+        TheLoai theLoai = null;
         try {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM THELOAI");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                jComboBox_MaTheLoai.addItem(rs.getString(1));
-                jComboBox_MaTheLoai1.addItem(rs.getString(1));
+                theLoai = new TheLoai(rs.getString(1), rs.getString(2), rs.getString(3));
+                jComboBox_TheLoai.addItem(theLoai);
+                jComboBox_TheLoai1.addItem(theLoai);
             }
             rs.close();
             ps.close();
@@ -916,9 +925,9 @@ public class QuanLySach extends javax.swing.JFrame {
     private void xoaDuLieuSach() {
         jTextField_MaSach.setText("");
         jTextField_TenSach.setText("");
-        jComboBox_MaTacGia.setSelectedIndex(0);
-        jComboBox_MaNXB.setSelectedIndex(0);
-        jComboBox_MaTheLoai.setSelectedIndex(0);
+        jComboBox_TacGia.setSelectedIndex(0);
+        jComboBox_NXB.setSelectedIndex(0);
+        jComboBox_TheLoai.setSelectedIndex(0);
         jTextField_Gia.setText("");
         jDateChooser_NgayNhap.setDate(null);
         jTextField_ViTri.setText("");
@@ -962,9 +971,9 @@ public class QuanLySach extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String maSach = jTextField_MaSach1.getText();
         String tenSach = jTextField_TenSach1.getText();
-        String maTacGia = (String) jComboBox_MaTacGia1.getSelectedItem();
-        String maNXB = (String) jComboBox_MaNXB1.getSelectedItem();
-        String maTheLoai = (String) jComboBox_MaTheLoai1.getSelectedItem();
+        String maTacGia = (String) jComboBox_TacGia1.getSelectedItem();
+        String maNXB = (String) jComboBox_NXB1.getSelectedItem();
+        String maTheLoai = (String) jComboBox_TheLoai1.getSelectedItem();
         String gia = jTextField_Gia1.getText();
         String ngayNhap;
         Date date = jDateChooser_NgayNhap1.getDate();
@@ -1017,11 +1026,11 @@ public class QuanLySach extends javax.swing.JFrame {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
         } else if (jRadioButton_TenSach.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-        } else if (jRadioButton_MaTacGia.isSelected()) {
+        } else if (jRadioButton_TenTacGia.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 2));
-        } else if (jRadioButton_MaNXB.isSelected()) {
+        } else if (jRadioButton_TenNXB.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 3));
-        } else if (jRadioButton_MaTheLoai.isSelected()) {
+        } else if (jRadioButton_TenTheLoai.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 4));
         }
     }//GEN-LAST:event_jTextField_KeywordCaretUpdate
@@ -1035,11 +1044,11 @@ public class QuanLySach extends javax.swing.JFrame {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 0)); //Lọc, không phân biệt hoa thường
         } else if (jRadioButton_TenSach.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 1));
-        } else if (jRadioButton_MaTacGia.isSelected()) {
+        } else if (jRadioButton_TenTacGia.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 2));
-        } else if (jRadioButton_MaNXB.isSelected()) {
+        } else if (jRadioButton_TenNXB.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 3));
-        } else if (jRadioButton_MaTheLoai.isSelected()) {
+        } else if (jRadioButton_TenTheLoai.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + keyword, 4));
         }
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
@@ -1077,9 +1086,9 @@ public class QuanLySach extends javax.swing.JFrame {
         }
         jTextField_Gia.setText((String) dtm.getValueAt(row, 3));
         jTextField_ViTri.setText((String) dtm.getValueAt(row, 4));
-        jComboBox_MaTacGia.setSelectedItem(dtm.getValueAt(row, 5));
-        jComboBox_MaNXB.setSelectedItem(dtm.getValueAt(row, 6));
-        jComboBox_MaTheLoai.setSelectedItem(dtm.getValueAt(row, 7));
+        jComboBox_TacGia.setSelectedItem(dtm.getValueAt(row, 5));
+        jComboBox_NXB.setSelectedItem(dtm.getValueAt(row, 6));
+        jComboBox_TheLoai.setSelectedItem(dtm.getValueAt(row, 7));
         jTextField_SoLuongCo.setText((String) dtm.getValueAt(row, 8));
         jTextField_SoLuongCon.setText((String) dtm.getValueAt(row, 9));
     }//GEN-LAST:event_jTable_DSSachMouseClicked
@@ -1092,9 +1101,9 @@ public class QuanLySach extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn sách bạn muốn chỉnh sửa!");
         } else {
             String tenSach = jTextField_TenSach.getText();
-            String maTacGia = (String) jComboBox_MaTacGia.getSelectedItem();
-            String maNXB = (String) jComboBox_MaNXB.getSelectedItem();
-            String maTheLoai = (String) jComboBox_MaTheLoai.getSelectedItem();
+            String maTacGia = (String) jComboBox_TacGia.getSelectedItem();
+            String maNXB = (String) jComboBox_NXB.getSelectedItem();
+            String maTheLoai = (String) jComboBox_TheLoai.getSelectedItem();
             String gia = jTextField_Gia.getText();
             String ngayNhap;
             Date date = jDateChooser_NgayNhap.getDate();
@@ -1206,12 +1215,12 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe;
     private javax.swing.JButton jButton_TroVe1;
     private javax.swing.JButton jButton_Xoa;
-    private javax.swing.JComboBox<String> jComboBox_MaNXB;
-    private javax.swing.JComboBox<String> jComboBox_MaNXB1;
-    private javax.swing.JComboBox<String> jComboBox_MaTacGia;
-    private javax.swing.JComboBox<String> jComboBox_MaTacGia1;
-    private javax.swing.JComboBox<String> jComboBox_MaTheLoai;
-    private javax.swing.JComboBox<String> jComboBox_MaTheLoai1;
+    private javax.swing.JComboBox<NXB> jComboBox_NXB;
+    private javax.swing.JComboBox<NXB> jComboBox_NXB1;
+    private javax.swing.JComboBox<TacGia> jComboBox_TacGia;
+    private javax.swing.JComboBox<TacGia> jComboBox_TacGia1;
+    private javax.swing.JComboBox<TheLoai> jComboBox_TheLoai;
+    private javax.swing.JComboBox<TheLoai> jComboBox_TheLoai1;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayNhap;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayNhap1;
     private javax.swing.JDialog jDialog_ThemSach;
@@ -1246,11 +1255,11 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JRadioButton jRadioButton_MaNXB;
     private javax.swing.JRadioButton jRadioButton_MaSach;
-    private javax.swing.JRadioButton jRadioButton_MaTacGia;
-    private javax.swing.JRadioButton jRadioButton_MaTheLoai;
+    private javax.swing.JRadioButton jRadioButton_TenNXB;
     private javax.swing.JRadioButton jRadioButton_TenSach;
+    private javax.swing.JRadioButton jRadioButton_TenTacGia;
+    private javax.swing.JRadioButton jRadioButton_TenTheLoai;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable_DSSach;
     private javax.swing.JTextField jTextField_Gia;

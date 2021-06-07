@@ -46,4 +46,8 @@ public class NXB {
         this.diaChi = diaChi;
     }
 
+    @Override
+    public String toString() {
+        return maNXB + " - " + tenNXB;
+    }
 }

@@ -15,6 +15,11 @@ public class TacGia {
 
     public TacGia() {
     }
+    
+    public TacGia(String maTacGia, String tenTacGia) {
+        this.maTacGia = maTacGia;
+        this.tenTacGia = tenTacGia;
+    }
 
     public TacGia(String maTacGia, String tenTacGia, String ghiChu) {
         this.maTacGia = maTacGia;
@@ -46,4 +51,8 @@ public class TacGia {
         return ghiChu;
     }
 
+    @Override
+    public String toString() {
+        return maTacGia + " - " + tenTacGia;
+    }
 }

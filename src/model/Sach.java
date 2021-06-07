@@ -10,6 +10,7 @@ package model;
  * @author COMPUTER
  */
 public class Sach {
+
     private String maSach, tenSach, ngayNhap, gia, viTri, maTacGia, maNXB, maTheLoai, soLuongCo, soLuongCon;
 
     public Sach(String maSach, String tenSach, String ngayNhap, String gia, String vitri, String maTacGia, String maNXB, String maTheLoai, String soLuongCo, String soLuongCon) {
