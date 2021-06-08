@@ -38,8 +38,8 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTacGia, "SELECT * FROM TACGIA");
-        DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
-        DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
+        DataFromSQLServer.getAndShowData(jTable_DSNXB, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+        DataFromSQLServer.getAndShowData(jTable_DSTheLoai, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
     }
 
     /**
@@ -1642,7 +1642,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
     private int kiemTraTheLoaiCuaSach(String maTheLoai) {
         Connection con = KetNoiSQL.layKetNoi();
         int tonTai = 0;
-        String sql = "SELECT * FROM THELOAI WHERE MATHELOAI = '" + maTheLoai + "'";
+        String sql = "SELECT * FROM SACH WHERE MATHELOAI = '" + maTheLoai + "'";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -1905,7 +1905,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 themMoiNXB(xoaKhoangTrangThua(maNXB), xoaKhoangTrangThua(tenNXB), xoaKhoangTrangThua(diaChiNXB));
                 JOptionPane.showMessageDialog(jDialog_ThemNXB, "Thêm nhà xuất bản thành công!");
                 jDialog_ThemNXB.dispose();
-                DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+                DataFromSQLServer.getAndShowData(jTable_DSNXB, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
             }
         }
     }//GEN-LAST:event_jButton_ThemNXB1ActionPerformed
@@ -1931,7 +1931,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 themMoiTheLoai(xoaKhoangTrangThua(maTheLoai), xoaKhoangTrangThua(tenTheLoai), xoaKhoangTrangThua(ghiChu));
                 JOptionPane.showMessageDialog(jDialog_ThemTheLoai, "Thêm thể loại thành công!");
                 jDialog_ThemTheLoai.dispose();
-                DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
+                DataFromSQLServer.getAndShowData(jTable_DSTheLoai, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
             }
         }
     }//GEN-LAST:event_jButton_ThemTheLoai1ActionPerformed
@@ -2001,7 +2001,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaNXB(maNXB, xoaKhoangTrangThua(tenNXB), xoaKhoangTrangThua(diaChi));
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa nhà xuất bản thành công!");
-                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+                    DataFromSQLServer.getAndShowData(jTable_DSNXB, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
                 } else {
                     return;
                 }
@@ -2023,7 +2023,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                     xoaNXB(maNXB);
                     JOptionPane.showMessageDialog(this, "Xóa nhà xuất bản thành công!");
                     xoaDuLieuNXB();
-                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
+                    DataFromSQLServer.getAndShowData(jTable_DSNXB, columnTitlesOfJTable_DSNXB, "SELECT * FROM NHAXUATBAN");
                 } else {
                     return;
                 }
@@ -2046,7 +2046,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                 if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaTheLoai(maTheLoai, xoaKhoangTrangThua(tenTheLoai), xoaKhoangTrangThua(ghiChu));
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa thể loại thành công!");
-                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
+                    DataFromSQLServer.getAndShowData(jTable_DSTheLoai, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
                 } else {
                     return;
                 }
@@ -2068,7 +2068,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
                     xoaTheLoai(maTheLoai);
                     JOptionPane.showMessageDialog(this, "Xóa thể loại thành công!");
                     xoaDuLieuTheLoai();
-                    DataFromSQLServer.getAndShowData(jTable_DSTacGia, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
+                    DataFromSQLServer.getAndShowData(jTable_DSTheLoai, columnTitlesOfJTable_DSTheLoai, "SELECT * FROM THELOAI");
                 } else {
                     return;
                 }
