@@ -50,7 +50,7 @@ public class TacGia {
     public String getGhiChu() {
         return ghiChu;
     }
-
+    
     @Override
     public String toString() {
         return maTacGia + " - " + tenTacGia;

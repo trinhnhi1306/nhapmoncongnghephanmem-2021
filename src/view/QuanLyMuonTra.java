@@ -31,6 +31,7 @@ import table.XuLyViPham;
  */
 public class QuanLyMuonTra extends javax.swing.JFrame {
     private final int TIEN_PHAT = 2000;
+    private final int MAX_NUMBER_OF_BORROWABLE_BOOKS = 5;
     private ArrayList<String> columnTitlesOfJTableSachDangMuon = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI",
                                                                                                "TENTACGIA", "TENNXB", "TENTHELOAI", "NGAYMUON", "HANTRA"));
     private ArrayList<String> columnTitlesOfJTableDocGia1 = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI",
@@ -1030,6 +1031,26 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean expired(String maDocGia) {
+        LocalDate today = LocalDate.now();
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement("SELECT HANTRA FROM MUONTRA WHERE MANGUOIDUNG = '" + maDocGia + "'");
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                // Calculate days between today and hanTra
+                LocalDate hanTra = LocalDate.parse(rs.getString("HANTRA"));
+                Duration diff = Duration.between(hanTra.atStartOfDay(), today.atStartOfDay());
+                long diffDays = diff.toDays();
+                
+                if (diffDays > 0) return true;
+            }
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(QuanLyMuonTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private void jButtonMuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMuonSachActionPerformed
         // Check if a row is selected in jTableDocGia1 and jTableSach
         int selectedRowOfJTableDocGia1 = jTableDocGia1.convertRowIndexToModel(jTableDocGia1.getSelectedRow());
@@ -1044,12 +1065,19 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         String maSach = (String) jTableSach.getModel().getValueAt(selectedRowOfJTableSach, 0);
         int soLuongCon = Integer.parseInt((String) jTableSach.getModel().getValueAt(selectedRowOfJTableSach, 9));
         String query = "SELECT * FROM MUONTRA WHERE MANGUOIDUNG = '" + maDocGia + "' AND MASACH = '" + maSach + "'";
+        
+        // Count number of books borrowed by reader
+        int numberOfBooksBorrowed = DataFromSQLServer.aggregate("SELECT COUNT(*) FROM MUONTRA WHERE MANGUOIDUNG = '" + maDocGia + "'");
 
         // Check if a book is borrowable
         if (soLuongCon == 0) {
             JOptionPane.showMessageDialog(this, "Số lượng sách này đã hết, không thể mượn. Vui lòng chọn sách khác!");
-        } else if (DataFromSQLServer.recordExists(query)) {
+        } else if (DataFromSQLServer.exist(query)) {
             JOptionPane.showMessageDialog(this, "Không thể mượn sách mà độc giả đang mượn. Vui lòng chọn sách khác!");
+        } else if (numberOfBooksBorrowed >= MAX_NUMBER_OF_BORROWABLE_BOOKS) {
+            JOptionPane.showMessageDialog(this, "Độc giả đã mượn số sách tối đa được phép là 5. Không thể mượn thêm!");
+        } else if (expired(maDocGia)) {
+            JOptionPane.showMessageDialog(this, "Vui lòng trả sách mượn quá hạn trước để có thể mượn sách mới!");
         } else {
             jTextFieldMaDocGia.setText(maDocGia);
             jTextFieldMaSach.setText(maSach);
@@ -1105,7 +1133,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                                                 " nên phải nộp phạt số tiền " + diffDays + " * 2000 VNĐ/ngày = " + tienPhatQuaHan + 
                                                                 " VNĐ.", "Trả sách", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 
-                // Yes if reader already pays for the fine and vice versa
+                // OK if reader already pays for the fine and vice versa
                 if (option == JOptionPane.OK_OPTION) {
                     MuonTra.delete(maDocGia, maSach);
                     Sach.updateColumn("SOLUONGCON", soLuongCon + 1, maSach);

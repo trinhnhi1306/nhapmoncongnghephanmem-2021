@@ -55,4 +55,14 @@ public class XuLyViPham {
             java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
+    
+    public static void deleteAll() {
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement rs = con.prepareStatement("DELETE FROM XULYVIPHAM")) {
+            rs.executeUpdate();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
 }

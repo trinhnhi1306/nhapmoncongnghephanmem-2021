@@ -39,7 +39,7 @@ public class DataFromSQLServer {
         }
     }
     
-    public static boolean recordExists(String selectQuery) {
+    public static boolean exist(String selectQuery) {
         try (
                 Connection con = KetNoiSQL.layKetNoi();
                 PreparedStatement ps = con.prepareStatement(selectQuery);
