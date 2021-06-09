@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTextArea;
 import ketnoi.KetNoiSQL;
 import view.DangNhap;
 
@@ -145,5 +146,23 @@ public class NguoiDung {
             System.out.println(ex.getMessage());
         }
         return n;
+    }
+    
+    public static void aggregate(String aggregateQuery, JTextArea ten, JTextArea soLuong) {
+        String t = "";
+        String sl = "";
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement(aggregateQuery);
+                ResultSet rs = ps.executeQuery()) {
+            while(rs.next()){
+                t += rs.getString(1) + "\n";
+                sl += rs.getString(2) + "\n";
+            }
+            ten.setText(t);
+            soLuong.setText(sl);
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(table.Sach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 }

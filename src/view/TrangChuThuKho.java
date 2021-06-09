@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Graphics;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 import ketnoi.KetNoiSQL;
 import model.NguoiDung;
 import table.DataFromSQLServer;
+import table.Sach;
 
 /**
  *
@@ -87,6 +89,16 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jButton_TroVe2 = new javax.swing.JButton();
         jPasswordField_cnfpass = new javax.swing.JPasswordField();
         jLabel10 = new javax.swing.JLabel();
+        jDialog_ThongKeSach = new javax.swing.JDialog();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jTextArea_Ten = new javax.swing.JTextArea();
+        jButton_TroVe3 = new javax.swing.JButton();
+        jComboBox_TenLoaiTK = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jTextArea_SoLuong = new javax.swing.JTextArea();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel_TenLoaiTK = new javax.swing.JLabel();
         jPanel32 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
@@ -478,6 +490,122 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jDialog_ThongKeSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThongKeSach.setModal(true);
+
+        jPanel10.setBackground(new java.awt.Color(204, 255, 255));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(0, 255, 0));
+        jLabel24.setText("THỐNG KÊ SÁCH");
+
+        jTextArea_Ten.setEditable(false);
+        jTextArea_Ten.setColumns(20);
+        jTextArea_Ten.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea_Ten.setRows(5);
+
+        jButton_TroVe3.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_TroVe3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_TroVe3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
+        jButton_TroVe3.setText("Trở về");
+        jButton_TroVe3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TroVe3ActionPerformed(evt);
+            }
+        });
+
+        jComboBox_TenLoaiTK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tác giả", "Thể loại", "Nhà xuất bản" }));
+        jComboBox_TenLoaiTK.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox_TenLoaiTKItemStateChanged(evt);
+            }
+        });
+
+        jLabel2.setText("Theo:");
+
+        jTextArea_SoLuong.setEditable(false);
+        jTextArea_SoLuong.setColumns(20);
+        jTextArea_SoLuong.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea_SoLuong.setRows(5);
+
+        jLabel6.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Số lượng đầu sách");
+        jLabel6.setOpaque(true);
+
+        jLabel_TenLoaiTK.setBackground(new java.awt.Color(0, 153, 153));
+        jLabel_TenLoaiTK.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_TenLoaiTK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_TenLoaiTK.setText("Tên tác giả");
+        jLabel_TenLoaiTK.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel24))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jButton_TroVe3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGap(0, 68, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox_TenLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(169, 169, 169))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel_TenLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jTextArea_Ten, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextArea_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(63, 63, 63))))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox_TenLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_TenLoaiTK, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextArea_Ten, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton_TroVe3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jDialog_ThongKeSachLayout = new javax.swing.GroupLayout(jDialog_ThongKeSach.getContentPane());
+        jDialog_ThongKeSach.getContentPane().setLayout(jDialog_ThongKeSachLayout);
+        jDialog_ThongKeSachLayout.setHorizontalGroup(
+            jDialog_ThongKeSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDialog_ThongKeSachLayout.setVerticalGroup(
+            jDialog_ThongKeSachLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel32.setBackground(new java.awt.Color(255, 255, 204));
@@ -631,6 +759,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel_SLDocGia.setBounds(90, 70, 160, 50);
 
         jPanel29.setBackground(new java.awt.Color(102, 255, 51));
+        jPanel29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel29MouseClicked(evt);
+            }
+        });
         jPanel29.setLayout(null);
 
         jLabel60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/books.png"))); // NOI18N
@@ -760,6 +893,24 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void thongKeSach () {
+        String sql = "";
+        if (jComboBox_TenLoaiTK.getSelectedItem().equals("Tác giả")) {
+            jLabel_TenLoaiTK.setText("Tên tác giả");
+            sql = "SELECT TG.TENTACGIA, SOLUONGĐAUSACH = count(MASACH) FROM SACH S, TACGIA TG WHERE S.MATACGIA = TG.MATACGIA GROUP BY TG.TENTACGIA";
+            Sach.aggregate(sql, jTextArea_Ten, jTextArea_SoLuong);
+        }
+        if (jComboBox_TenLoaiTK.getSelectedItem().equals("Thể loại")) {
+            jLabel_TenLoaiTK.setText("Tên thể loại");
+            sql = "SELECT TL.TENTHELOAI, SOLUONGĐAUSACH = count(MASACH) FROM SACH S, THELOAI TL WHERE S.MATHELOAI = TL.MATHELOAI GROUP BY TL.TENTHELOAI";
+            Sach.aggregate(sql, jTextArea_Ten, jTextArea_SoLuong);
+        }
+        if (jComboBox_TenLoaiTK.getSelectedItem().equals("Nhà xuất bản")) {
+            jLabel_TenLoaiTK.setText("Tên nhà xuất bản");
+            sql = "SELECT NXB.TENNXB, SOLUONGĐAUSACH = count(MASACH) FROM SACH S, NHAXUATBAN NXB WHERE S.MANXB = NXB.MANXB GROUP BY NXB.TENNXB";
+            Sach.aggregate(sql, jTextArea_Ten, jTextArea_SoLuong);
+        }
+    }
     
     public void showThongTinNguoiDung () {
         NguoiDung n = NguoiDung.layThongTinNguoiDung();
@@ -927,6 +1078,24 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_XacNhanActionPerformed
 
+    private void jButton_TroVe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe3ActionPerformed
+        // TODO add your handling code here:
+        jDialog_ThongKeSach.dispose();
+    }//GEN-LAST:event_jButton_TroVe3ActionPerformed
+
+    private void jPanel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel29MouseClicked
+        // TODO add your handling code here:
+        thongKeSach();
+        jDialog_ThongKeSach.pack();
+        jDialog_ThongKeSach.setLocationRelativeTo(this);
+        jDialog_ThongKeSach.setVisible(true);
+    }//GEN-LAST:event_jPanel29MouseClicked
+
+    private void jComboBox_TenLoaiTKItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_TenLoaiTKItemStateChanged
+        // TODO add your handling code here:
+        thongKeSach();
+    }//GEN-LAST:event_jComboBox_TenLoaiTKItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -974,12 +1143,15 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe;
     private javax.swing.JButton jButton_TroVe1;
     private javax.swing.JButton jButton_TroVe2;
+    private javax.swing.JButton jButton_TroVe3;
     private javax.swing.JButton jButton_XacNhan;
     private javax.swing.JComboBox<String> jComboBox_GioiTinh;
+    private javax.swing.JComboBox<String> jComboBox_TenLoaiTK;
     private com.toedter.calendar.JDateChooser jDateChooser_NgaySinh;
     private javax.swing.JDialog jDialog_DoiMatKhau;
     private javax.swing.JDialog jDialog_SuaThongTinCaNhan;
     private javax.swing.JDialog jDialog_ThongBao;
+    private javax.swing.JDialog jDialog_ThongKeSach;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -991,13 +1163,16 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel63;
@@ -1008,6 +1183,8 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_SLDocGia;
     private javax.swing.JLabel jLabel_SLSachCo;
     private javax.swing.JLabel jLabel_SLSachMuon;
+    private javax.swing.JLabel jLabel_TenLoaiTK;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
@@ -1022,6 +1199,8 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField_oldpass;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea_SoLuong;
+    private javax.swing.JTextArea jTextArea_Ten;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField_DiaChi;
     private javax.swing.JTextField jTextField_Email;
