@@ -401,7 +401,7 @@ public class QuanLySach extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 942, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,35 +513,32 @@ public class QuanLySach extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jComboBox_TacGia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(100, 100, 100)
-                        .addComponent(jTextField_Gia, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_MaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_MaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jComboBox_TacGia, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField_TenSach, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(24, 24, 24))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel26)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel28)
-                                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField_TenSach, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(24, 24, 24)))
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox_NXB, 0, 229, Short.MAX_VALUE)
-                            .addComponent(jComboBox_TheLoai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox_NXB, 0, 242, Short.MAX_VALUE)
+                    .addComponent(jComboBox_TheLoai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField_Gia))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -575,14 +572,14 @@ public class QuanLySach extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel21)
                         .addComponent(jTextField_MaSach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel22)
                         .addComponent(jLabel23)
                         .addComponent(jComboBox_NXB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser_NgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser_NgayNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
@@ -689,7 +686,7 @@ public class QuanLySach extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -708,24 +705,25 @@ public class QuanLySach extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(311, 311, 311)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(311, 311, 311)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(22, 22, 22)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -867,10 +865,7 @@ public class QuanLySach extends javax.swing.JFrame {
     }
 
     private void chinhSuaSach(String maSach, String tenSach, String maTacGia, String maNXB, String maTheLoai, String gia, String ngayNhap, String viTri, String soLuongThem) {
-        int selectedRowOfJTable_DSSach = jTable_DSSach.convertRowIndexToModel(jTable_DSSach.getSelectedRow());
-        String soLuongCo = (String) jTable_DSSach.getModel().getValueAt(selectedRowOfJTable_DSSach, 8);
-        String soLuongCon = (String) jTable_DSSach.getModel().getValueAt(selectedRowOfJTable_DSSach, 9);
-        String sql = "UPDATE SACH SET TENSACH = ?, NGAYNHAP = ?, GIA = ?, VITRI = ?, MATACGIA = ?, MANXB = ?, MATHELOAI = ?, SOLUONGCO = ?, SOLUONGCON = ? WHERE MASACH = ?";
+        String sql = "UPDATE SACH SET TENSACH = ?, NGAYNHAP = ?, GIA = ?, VITRI = ?, MATACGIA = ?, MANXB = ?, MATHELOAI = ?, SOLUONGCO = SOLUONGCO + ?, SOLUONGCON = SOLUONGCON + ? WHERE MASACH = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -881,8 +876,8 @@ public class QuanLySach extends javax.swing.JFrame {
             ps.setString(5, maTacGia);
             ps.setString(6, maNXB);
             ps.setString(7, maTheLoai);
-            ps.setInt(8, Integer.parseInt(soLuongCo) + Integer.parseInt(soLuongThem));
-            ps.setInt(9, Integer.parseInt(soLuongCon) + Integer.parseInt(soLuongThem));
+            ps.setInt(8, Integer.parseInt(soLuongThem));
+            ps.setInt(9, Integer.parseInt(soLuongThem));
             ps.setString(10, maSach);
             ps.executeUpdate();
             ps.close();
@@ -1126,20 +1121,21 @@ public class QuanLySach extends javax.swing.JFrame {
             }
             String viTri = jTextField_ViTri.getText();
             String soLuongThem = jTextField_SoLuongThem.getText();
-            if (tenSach.equals("")) {
-                JOptionPane.showMessageDialog(jDialog_ThemSach, "Tên sách không được để trống!");
-            } else if (gia.equals("")) {
-                JOptionPane.showMessageDialog(jDialog_ThemSach, "Giá không được để trống!");
-            } else if (!gia.matches("[0-9]+")) {
-                JOptionPane.showMessageDialog(jDialog_ThemSach, "Giá không hợp lệ!");
-            } else if (ngayNhap == null) {
-                JOptionPane.showMessageDialog(jDialog_ThemSach, "Ngày nhập không được để trống!");
-            } else if (viTri.equals("")) {
-                JOptionPane.showMessageDialog(jDialog_ThemSach, "Vị trí không được để trống!");
-            } else if (soLuongThem.equals("")) {
+            if (soLuongThem.equals("")) {
                 soLuongThem = "0";
+            }
+            if (tenSach.equals("")) {
+                JOptionPane.showMessageDialog(this, "Tên sách không được để trống!");
+            } else if (gia.equals("")) {
+                JOptionPane.showMessageDialog(this, "Giá không được để trống!");
+            } else if (!gia.matches("[0-9]+")) {
+                JOptionPane.showMessageDialog(this, "Giá không hợp lệ!");
+            } else if (ngayNhap == null) {
+                JOptionPane.showMessageDialog(this, "Ngày nhập không được để trống!");
+            } else if (viTri.equals("")) {
+                JOptionPane.showMessageDialog(this, "Vị trí không được để trống!");
             } else if (!soLuongThem.matches("[0-9]+")) {
-                JOptionPane.showMessageDialog(jDialog_ThemSach, "Số lượng thêm không hợp lệ!");
+                JOptionPane.showMessageDialog(this, "Số lượng thêm không hợp lệ!");
             } else {
                 int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
                 if (luaChon == JOptionPane.OK_OPTION) {
