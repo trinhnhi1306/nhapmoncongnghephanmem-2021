@@ -203,6 +203,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel_Name = new javax.swing.JLabel();
 
         jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThongBao.setTitle("Thông báo");
         jDialog_ThongBao.setModal(true);
 
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
@@ -291,6 +292,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         );
 
         jDialog_SuaThongTinCaNhan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_SuaThongTinCaNhan.setTitle("Sửa thông tin cá nhân");
         jDialog_SuaThongTinCaNhan.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
@@ -456,6 +458,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         );
 
         jDialog_DoiMatKhau.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_DoiMatKhau.setTitle("Đổi mật khẩu");
         jDialog_DoiMatKhau.setModal(true);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
@@ -567,6 +570,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jDialog_TienPhat.setTitle("Thông tin tiền phạt");
         jDialog_TienPhat.setModal(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
@@ -772,6 +776,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jDialog_SachMuon.setTitle("Sách đang được mượn");
         jDialog_SachMuon.setModal(true);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 204));
@@ -1035,6 +1040,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jDialog_SachMuonQuaHan.setTitle("Sách mượn quá hạn");
         jDialog_SachMuonQuaHan.setModal(true);
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 204));
@@ -1229,6 +1235,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         );
 
         jDialog_ThongKeDocGia.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThongKeDocGia.setTitle("Thống kê độc giả");
         jDialog_ThongKeDocGia.setModal(true);
 
         jPanel20.setBackground(new java.awt.Color(204, 255, 255));

@@ -5,7 +5,7 @@
     <Container class="javax.swing.JDialog" name="jDialog_ThemLop">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
-        <Property name="title" type="java.lang.String" value="Th&#xea;m s&#xe1;ch"/>
+        <Property name="title" type="java.lang.String" value="Th&#xea;m l&#x1edb;p"/>
         <Property name="modal" type="boolean" value="true"/>
       </Properties>
 
@@ -201,7 +201,7 @@
     <Container class="javax.swing.JDialog" name="jDialog_ThemKhoa">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
-        <Property name="title" type="java.lang.String" value="Th&#xea;m s&#xe1;ch"/>
+        <Property name="title" type="java.lang.String" value="Th&#xea;m khoa"/>
         <Property name="modal" type="boolean" value="true"/>
       </Properties>
 
@@ -368,7 +368,7 @@
     <Container class="javax.swing.JDialog" name="jDialog_ThemVaiTro">
       <Properties>
         <Property name="defaultCloseOperation" type="int" value="2"/>
-        <Property name="title" type="java.lang.String" value="Th&#xea;m s&#xe1;ch"/>
+        <Property name="title" type="java.lang.String" value="Th&#xea;m vai tr&#xf2;"/>
         <Property name="modal" type="boolean" value="true"/>
       </Properties>
 

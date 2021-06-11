@@ -168,7 +168,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         jButton_Thoat2 = new javax.swing.JButton();
 
         jDialog_ThemTacGia.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog_ThemTacGia.setTitle("Thêm sách");
+        jDialog_ThemTacGia.setTitle("Thêm tác giả");
         jDialog_ThemTacGia.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
@@ -283,7 +283,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         );
 
         jDialog_ThemNXB.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog_ThemNXB.setTitle("Thêm sách");
+        jDialog_ThemNXB.setTitle("Thêm nhà xuất bản");
         jDialog_ThemNXB.setModal(true);
 
         jPanel10.setBackground(new java.awt.Color(204, 255, 255));
@@ -396,7 +396,7 @@ public class QuanLyTacGiaNXBTheLoai extends javax.swing.JFrame {
         );
 
         jDialog_ThemTheLoai.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog_ThemTheLoai.setTitle("Thêm sách");
+        jDialog_ThemTheLoai.setTitle("Thêm thể loại");
         jDialog_ThemTheLoai.setModal(true);
 
         jPanel11.setBackground(new java.awt.Color(204, 255, 255));

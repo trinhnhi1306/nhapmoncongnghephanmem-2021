@@ -124,7 +124,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         jButton_Thoat = new javax.swing.JButton();
 
         jDialog_ThemNhanVien.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog_ThemNhanVien.setTitle("Thêm người dùng");
+        jDialog_ThemNhanVien.setTitle("Thêm nhân viên");
         jDialog_ThemNhanVien.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));

@@ -186,6 +186,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jLabelTenDocGia = new javax.swing.JLabel();
 
         jDialog_DoiMatKhau.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_DoiMatKhau.setTitle("Đổi mật khẩu");
         jDialog_DoiMatKhau.setModal(true);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
@@ -292,6 +293,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         );
 
         jDialog_SuaThongTinCaNhan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_SuaThongTinCaNhan.setTitle("Sửa thông tin cá nhân");
         jDialog_SuaThongTinCaNhan.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
@@ -455,6 +457,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         );
 
         jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_ThongBao.setTitle("Thông báo");
         jDialog_ThongBao.setModal(true);
 
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
@@ -542,6 +545,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         );
 
         jDialog_TimSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialog_TimSach.setTitle("Tìm sách");
         jDialog_TimSach.setModal(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
@@ -746,6 +750,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         );
 
         jDialogSachDangMuon.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogSachDangMuon.setTitle("Sách đang mượn");
         jDialogSachDangMuon.setModal(true);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 204));

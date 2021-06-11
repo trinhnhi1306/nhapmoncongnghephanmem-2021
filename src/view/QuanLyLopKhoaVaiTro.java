@@ -170,7 +170,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         jButton_Thoat2 = new javax.swing.JButton();
 
         jDialog_ThemLop.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog_ThemLop.setTitle("Thêm sách");
+        jDialog_ThemLop.setTitle("Thêm lớp");
         jDialog_ThemLop.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
@@ -280,7 +280,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         );
 
         jDialog_ThemKhoa.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog_ThemKhoa.setTitle("Thêm sách");
+        jDialog_ThemKhoa.setTitle("Thêm khoa");
         jDialog_ThemKhoa.setModal(true);
 
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
@@ -378,7 +378,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         );
 
         jDialog_ThemVaiTro.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog_ThemVaiTro.setTitle("Thêm sách");
+        jDialog_ThemVaiTro.setTitle("Thêm vai trò");
         jDialog_ThemVaiTro.setModal(true);
 
         jPanel10.setBackground(new java.awt.Color(204, 255, 255));

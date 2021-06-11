@@ -148,6 +148,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jRadioButtonTheLoai2 = new javax.swing.JRadioButton();
 
         jDialogMuonSach.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogMuonSach.setTitle("Mượn sách");
         jDialogMuonSach.setModal(true);
 
         jPanel8.setBackground(new java.awt.Color(204, 255, 255));
