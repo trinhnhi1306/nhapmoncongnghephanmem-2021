@@ -28,7 +28,7 @@ import table.DataFromSQLServer;
  *
  * @author Admin
  */
-public class QuanLyNguoiDung extends javax.swing.JFrame {
+public class QuanLyNhanVien extends javax.swing.JFrame {
 
     private DefaultTableModel model;
     private ArrayList<String> columnTitlesOfJTableNV = new ArrayList<>(Arrays.asList("MANGUOIDUNG", "TENNGUOIDUNG", "GIOITINH", "NGAYSINH", "DIACHI",
@@ -39,9 +39,9 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             + "WHERE ND.MAVAITRO = VT.MAVAITRO AND NOT ND.MAVAITRO = 'VT01' AND NOT ND.MAVAITRO = 'VT04'";
 
     /**
-     * Creates new form QuanLyNguoiDung
+     * Creates new form QuanLyNhanVien
      */
-    public QuanLyNguoiDung() {
+    public QuanLyNhanVien() {
         initComponents();
         setLocationRelativeTo(null);
         model = (DefaultTableModel) jTable_DSNhanVien.getModel();
@@ -736,7 +736,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -754,7 +754,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
         return tonTai;
     }
@@ -780,7 +780,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             ps.setString(12, maLop);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -962,7 +962,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             ps.setString(8, maNV);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -1025,7 +1025,7 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(QuanLyNguoiDung.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -1088,20 +1088,21 @@ public class QuanLyNguoiDung extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QuanLyNguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuanLyNhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QuanLyNguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuanLyNhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QuanLyNguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuanLyNhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(QuanLyNguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuanLyNhanVien.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new QuanLyNguoiDung().setVisible(true);
+                new QuanLyNhanVien().setVisible(true);
             }
         });
     }

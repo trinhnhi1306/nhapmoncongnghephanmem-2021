@@ -758,7 +758,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private void jButton_QLNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QLNhanVienActionPerformed
         // TODO add your handling code here:
         dispose();
-        new QuanLyNguoiDung().setVisible(true);
+        new QuanLyNhanVien().setVisible(true);
     }//GEN-LAST:event_jButton_QLNhanVienActionPerformed
 
     private void jButton_ThongTinCaNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinCaNhanActionPerformed
