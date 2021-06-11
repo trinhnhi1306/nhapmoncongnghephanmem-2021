@@ -959,6 +959,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Trang chủ độc giả");
         setResizable(false);
 
         jPanel32.setBackground(new java.awt.Color(255, 255, 204));

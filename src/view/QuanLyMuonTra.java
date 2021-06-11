@@ -275,6 +275,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Quản lý mượn trả sách");
         setResizable(false);
 
         jTabbedPane2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

@@ -607,6 +607,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Trang chủ thủ kho");
 
         jPanel32.setBackground(new java.awt.Color(255, 255, 204));
 

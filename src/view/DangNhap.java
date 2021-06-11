@@ -61,6 +61,7 @@ public class DangNhap extends javax.swing.JFrame {
         jButton_Thoat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chương trình quản lý thư viện");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N

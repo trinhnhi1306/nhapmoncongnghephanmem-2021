@@ -479,6 +479,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Trang chủ Admin");
         setResizable(false);
 
         jPanel32.setBackground(new java.awt.Color(255, 255, 204));

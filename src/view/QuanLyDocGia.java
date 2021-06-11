@@ -343,6 +343,7 @@ public class QuanLyDocGia extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Quản lý độc giả");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
