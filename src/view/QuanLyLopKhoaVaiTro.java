@@ -131,7 +131,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         jPanel30 = new javax.swing.JPanel();
         jRadioButton_MaLop = new javax.swing.JRadioButton();
         jRadioButton_TenLop = new javax.swing.JRadioButton();
-        jRadioButton_MaKhoaCuaLop = new javax.swing.JRadioButton();
+        jRadioButton_TenKhoaCuaLop = new javax.swing.JRadioButton();
         jPanel31 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         jTextField_MaLop = new javax.swing.JTextField();
@@ -877,10 +877,10 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         jRadioButton_TenLop.setText("Tên lớp");
         jPanel30.add(jRadioButton_TenLop);
 
-        buttonGroup2.add(jRadioButton_MaKhoaCuaLop);
-        jRadioButton_MaKhoaCuaLop.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton_MaKhoaCuaLop.setText("Mã khoa");
-        jPanel30.add(jRadioButton_MaKhoaCuaLop);
+        buttonGroup2.add(jRadioButton_TenKhoaCuaLop);
+        jRadioButton_TenKhoaCuaLop.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton_TenKhoaCuaLop.setText("Tên khoa");
+        jPanel30.add(jRadioButton_TenKhoaCuaLop);
 
         jPanel31.setBackground(new java.awt.Color(255, 255, 204));
         jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Thông tin", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -1553,7 +1553,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         if (jRadioButton_TenLop.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
         }
-        if (jRadioButton_MaKhoaCuaLop.isSelected()) {
+        if (jRadioButton_TenKhoaCuaLop.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 2));
         }
     }//GEN-LAST:event_jTextField_KeywordLopCaretUpdate
@@ -1570,7 +1570,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         if (jRadioButton_TenLop.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
         }
-        if (jRadioButton_MaKhoaCuaLop.isSelected()) {
+        if (jRadioButton_TenKhoaCuaLop.isSelected()) {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 2));
         }
     }//GEN-LAST:event_jButton_TimKiem1ActionPerformed
@@ -2191,10 +2191,10 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JRadioButton jRadioButton_MaKhoa;
-    private javax.swing.JRadioButton jRadioButton_MaKhoaCuaLop;
     private javax.swing.JRadioButton jRadioButton_MaLop;
     private javax.swing.JRadioButton jRadioButton_MaVaiTro;
     private javax.swing.JRadioButton jRadioButton_TenKhoa;
+    private javax.swing.JRadioButton jRadioButton_TenKhoaCuaLop;
     private javax.swing.JRadioButton jRadioButton_TenLop;
     private javax.swing.JRadioButton jRadioButton_TenVaiTro;
     private javax.swing.JScrollPane jScrollPane5;
