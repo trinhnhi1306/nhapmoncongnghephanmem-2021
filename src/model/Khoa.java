@@ -37,4 +37,9 @@ public class Khoa {
         this.tenKhoa = tenKhoa;
     }
 
+    @Override
+    public String toString() {
+        return tenKhoa;
+    }
+
 }

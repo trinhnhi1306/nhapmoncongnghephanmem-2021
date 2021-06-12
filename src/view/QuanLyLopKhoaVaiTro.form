@@ -40,7 +40,7 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel14" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jComboBox_MaKhoaCuaLop1" min="-2" pref="168" max="-2" attributes="0"/>
+                                      <Component id="jComboBox_TenKhoaCuaLop1" min="-2" pref="168" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
@@ -87,7 +87,7 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jComboBox_MaKhoaCuaLop1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="jComboBox_TenKhoaCuaLop1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -147,7 +147,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="M&#xe3; khoa"/>
+                <Property name="text" type="java.lang.String" value="T&#xea;n khoa"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton_ThemLop1">
@@ -184,14 +184,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_TroVeActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox_MaKhoaCuaLop1">
+            <Component class="javax.swing.JComboBox" name="jComboBox_TenKhoaCuaLop1">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Khoa&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -1324,7 +1324,7 @@
                               <Table columnCount="3" rowCount="0">
                                 <Column editable="false" title="M&#xe3; l&#x1edb;p" type="java.lang.Object"/>
                                 <Column editable="false" title="T&#xea;n l&#x1edb;p" type="java.lang.Object"/>
-                                <Column editable="false" title="M&#xe3; khoa" type="java.lang.Object"/>
+                                <Column editable="false" title="T&#xea;n khoa" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1446,7 +1446,7 @@
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jComboBox_MaKhoaCuaLop" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="jComboBox_TenKhoaCuaLop" min="-2" pref="168" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1456,7 +1456,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jComboBox_MaKhoaCuaLop" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jComboBox_TenKhoaCuaLop" alignment="1" max="32767" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jTextField_MaLop" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1507,17 +1507,17 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="M&#xe3; khoa"/>
+                        <Property name="text" type="java.lang.String" value="T&#xea;n khoa"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox_MaKhoaCuaLop">
+                    <Component class="javax.swing.JComboBox" name="jComboBox_TenKhoaCuaLop">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Khoa&gt;"/>
                       </AuxValues>
                     </Component>
                   </SubComponents>

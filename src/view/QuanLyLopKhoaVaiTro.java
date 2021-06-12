@@ -18,6 +18,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
+import model.Khoa;
 import table.DataFromSQLServer;
 
 /**
@@ -27,11 +28,11 @@ import table.DataFromSQLServer;
 public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
 
     private ArrayList<String> columnTitlesOfJTableKhoa = new ArrayList<>(Arrays.asList("MAKHOA", "TENKHOA"));
-    private ArrayList<String> columnTitlesOfJTableLop = new ArrayList<>(Arrays.asList("MALOP", "TENLOP", "MAKHOA"));
+    private ArrayList<String> columnTitlesOfJTableLop = new ArrayList<>(Arrays.asList("MALOP", "TENLOP", "TENKHOA"));
     private ArrayList<String> columnTitlesOfJTableVaiTro = new ArrayList<>(Arrays.asList("MAVAITRO", "TENVAITRO"));
 
     private String queryForJTableKhoa = "SELECT * FROM KHOA";
-    private String queryForJTableLop = "SELECT * FROM LOP";
+    private String queryForJTableLop = "SELECT * FROM LOP L, KHOA K WHERE L.MAKHOA = K.MAKHOA";
     private String queryForJTableVaiTro = "SELECT * FROM VAITRO";
 
     private DefaultTableModel modelKhoa;
@@ -47,7 +48,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         modelKhoa = (DefaultTableModel) jTable_DSKhoa.getModel();
         modelLop = (DefaultTableModel) jTable_DSLop.getModel();
         modelVaiTro = (DefaultTableModel) jTable_DSVaiTro.getModel();
-        showMaKhoa();
+        showTenKhoa();
         DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);
         DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);
         DataFromSQLServer.getAndShowData(jTable_DSVaiTro, columnTitlesOfJTableVaiTro, queryForJTableVaiTro);
@@ -72,7 +73,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jButton_ThemLop1 = new javax.swing.JButton();
         jButton_TroVe = new javax.swing.JButton();
-        jComboBox_MaKhoaCuaLop1 = new javax.swing.JComboBox<>();
+        jComboBox_TenKhoaCuaLop1 = new javax.swing.JComboBox<>();
         jDialog_ThemKhoa = new javax.swing.JDialog();
         jPanel9 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -137,7 +138,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jTextField_TenLop = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox_MaKhoaCuaLop = new javax.swing.JComboBox<>();
+        jComboBox_TenKhoaCuaLop = new javax.swing.JComboBox<>();
         jPanel32 = new javax.swing.JPanel();
         jButton_ThemLop = new javax.swing.JButton();
         jButton_SuaLop = new javax.swing.JButton();
@@ -190,7 +191,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         jTextField_TenLop1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Mã khoa");
+        jLabel14.setText("Tên khoa");
 
         jButton_ThemLop1.setBackground(new java.awt.Color(153, 255, 153));
         jButton_ThemLop1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -224,7 +225,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox_MaKhoaCuaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBox_TenKhoaCuaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(127, 127, 127))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,7 +260,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                     .addComponent(jTextField_TenLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox_MaKhoaCuaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox_TenKhoaCuaLop1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -826,7 +827,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã lớp", "Tên lớp", "Mã khoa"
+                "Mã lớp", "Tên lớp", "Tên khoa"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -896,7 +897,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         jTextField_TenLop.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Mã khoa");
+        jLabel6.setText("Tên khoa");
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -914,7 +915,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox_MaKhoaCuaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox_TenKhoaCuaLop, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
@@ -922,7 +923,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jComboBox_MaKhoaCuaLop)
+                    .addComponent(jComboBox_TenKhoaCuaLop)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel26)
                         .addComponent(jTextField_MaLop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1387,16 +1388,18 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void showMaKhoa() {
-        jComboBox_MaKhoaCuaLop.removeAllItems();
-        jComboBox_MaKhoaCuaLop1.removeAllItems();
+    public void showTenKhoa() {
+        jComboBox_TenKhoaCuaLop.removeAllItems();
+        jComboBox_TenKhoaCuaLop1.removeAllItems();
+        Khoa k = null;
         Connection con = KetNoiSQL.layKetNoi();
         try {
             PreparedStatement ps = con.prepareStatement("select * from KHOA");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                jComboBox_MaKhoaCuaLop.addItem(rs.getString(1));
-                jComboBox_MaKhoaCuaLop1.addItem(rs.getString(1));
+                k = new Khoa(rs.getString(1), rs.getString(2));
+                jComboBox_TenKhoaCuaLop.addItem(k);
+                jComboBox_TenKhoaCuaLop1.addItem(k);
             }
             rs.close();
             ps.close();
@@ -1425,7 +1428,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         // TODO add your handling code here:
         String maLop = jTextField_MaLop1.getText();
         String tenLop = jTextField_TenLop1.getText();
-        String maKhoa = (String) jComboBox_MaKhoaCuaLop1.getSelectedItem();
+        String maKhoa = (String) jComboBox_TenKhoaCuaLop1.getSelectedItem();
 
         if (maLop.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã Lớp không được để trống!");
@@ -1484,7 +1487,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jDialog_ThemKhoa, "Thêm khoa thành công!");
                 jDialog_ThemKhoa.dispose();
                 DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);
-                showMaKhoa();
+                showTenKhoa();
             }
         }
     }//GEN-LAST:event_jButton_ThemKhoa1ActionPerformed
@@ -1690,7 +1693,12 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         }
         jTextField_MaLop.setText((String) modelLop.getValueAt(row, 0));
         jTextField_TenLop.setText((String) modelLop.getValueAt(row, 1));
-        jComboBox_MaKhoaCuaLop.setSelectedItem(modelLop.getValueAt(row, 2));
+        String tenKhoa = (String) modelLop.getValueAt(row, 2);
+        for (int i = 0; i < jComboBox_TenKhoaCuaLop.getItemCount(); i++) {
+            if (tenKhoa.equals(jComboBox_TenKhoaCuaLop.getItemAt(i).getTenKhoa())) {
+                jComboBox_TenKhoaCuaLop.setSelectedIndex(i);
+            }
+        }
     }//GEN-LAST:event_jTable_DSLopMouseClicked
 
     private void jTable_DSKhoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_DSKhoaMouseClicked
@@ -1948,6 +1956,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                     xoaKhoa(maKhoa);
                     JOptionPane.showMessageDialog(this, "Xóa khoa thành công");
                     xoaDuLieuKhoa();
+                    showTenKhoa();
                     DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);
                 }
             }
@@ -1984,6 +1993,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 } else if (luaChon == JOptionPane.OK_OPTION) {
                     chinhSuaKhoa(maKhoa, tenKhoa);
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa khoa thành công!");
+                    showTenKhoa();
                     DataFromSQLServer.getAndShowData(jTable_DSKhoa, columnTitlesOfJTableKhoa, queryForJTableKhoa);
                 }
             }
@@ -2013,7 +2023,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn lớp bạn muốn chỉnh sửa");
         } else {
             String tenLop = jTextField_TenLop.getText();
-            String maKhoa = (String) jComboBox_MaKhoaCuaLop.getSelectedItem();
+            String maKhoa = (String) jComboBox_TenKhoaCuaLop.getSelectedItem();
             if (tenLop.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Tên lớp không được để trống!");
             } else {
@@ -2130,8 +2140,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private javax.swing.JButton jButton_XoaKhoa;
     private javax.swing.JButton jButton_XoaLop;
     private javax.swing.JButton jButton_XoaVaiTro;
-    private javax.swing.JComboBox<String> jComboBox_MaKhoaCuaLop;
-    private javax.swing.JComboBox<String> jComboBox_MaKhoaCuaLop1;
+    private javax.swing.JComboBox<Khoa> jComboBox_TenKhoaCuaLop;
+    private javax.swing.JComboBox<Khoa> jComboBox_TenKhoaCuaLop1;
     private javax.swing.JDialog jDialog_ThemKhoa;
     private javax.swing.JDialog jDialog_ThemLop;
     private javax.swing.JDialog jDialog_ThemVaiTro;
