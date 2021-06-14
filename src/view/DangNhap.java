@@ -5,6 +5,7 @@
  */
 package view;
 
+import hash.MD5;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
@@ -59,6 +60,7 @@ public class DangNhap extends javax.swing.JFrame {
         jTextFieldMatKhau = new javax.swing.JPasswordField();
         jButton_DangNhap = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
+        jLabelForgotPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình quản lý thư viện");
@@ -118,6 +120,22 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
 
+        jLabelForgotPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelForgotPassword.setForeground(new java.awt.Color(153, 255, 153));
+        jLabelForgotPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelForgotPassword.setText("Quên mật khẩu?");
+        jLabelForgotPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelForgotPasswordMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelForgotPasswordMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelForgotPasswordMouseExited(evt);
+            }
+        });
+
         jPanel1.setBackground(new Color(0, 0, 0, 70));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -140,10 +158,15 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelForgotPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(134, 134, 134))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +185,9 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelForgotPassword)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelBackgroundLayout = new javax.swing.GroupLayout(jPanelBackground);
@@ -189,6 +214,8 @@ public class DangNhap extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        jPanel1.getAccessibleContext().setAccessibleDescription("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,7 +241,7 @@ public class DangNhap extends javax.swing.JFrame {
                 Connection con = KetNoiSQL.layKetNoi();
                 PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, maNguoiDung);
-            ps.setString(2, matKhau);
+            ps.setString(2, MD5.encrypt(matKhau));
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 dispose();
@@ -242,6 +269,25 @@ public class DangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton_ThoatActionPerformed
+
+    private void jLabelForgotPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelForgotPasswordMouseEntered
+        // TODO add your handling code here:
+        jPanel1.setOpaque(false);
+        jLabelForgotPassword.setForeground(Color.GREEN);
+    }//GEN-LAST:event_jLabelForgotPasswordMouseEntered
+
+    private void jLabelForgotPasswordMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelForgotPasswordMouseExited
+        // TODO add your handling code here:
+        jPanel1.setOpaque(true);
+        jLabelForgotPassword.setForeground(new Color(153, 255, 153));
+    }//GEN-LAST:event_jLabelForgotPasswordMouseExited
+
+    private void jLabelForgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelForgotPasswordMouseClicked
+        // TODO add your handling code here:
+        jPanel1.setOpaque(true);
+        jLabelForgotPassword.setForeground(new Color(153, 255, 153));
+        JOptionPane.showMessageDialog(this, "Vui lòng liên hệ thủ thư thư viện và cung cấp mã độc giả để reset mật khẩu!", "Quên mật khẩu", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jLabelForgotPasswordMouseClicked
 
     /**
      * @param args the command line arguments
@@ -287,6 +333,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelForgotPassword;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelBackground;
     private javax.swing.JTextField jTextFieldMaNguoiDung;

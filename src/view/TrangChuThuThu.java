@@ -5,6 +5,7 @@
  */
 package view;
 
+import hash.MD5;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import ketnoi.KetNoiSQL;
@@ -1566,10 +1567,10 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel_SachMuonQuaHan, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel_SachMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_SachMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel_TienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1607,15 +1608,15 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel_Name)
-                            .addComponent(jLabel3))
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel_Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11)
                         .addGap(8, 8, 8))
                     .addComponent(jPanel31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1912,18 +1913,18 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         String cnfpass = String.valueOf(jPasswordField_cnfpass.getPassword());
         String oldpass = String.valueOf(jPasswordField_oldpass.getPassword());
 
-        if (!oldpass.equals(nd.getMatKhau())) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password cũ không đúng!");
-        } else if (!newpass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password mới không hợp lệ!");
+        if (oldpass.equals("") || newpass.equals("") || cnfpass.equals("")) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Vui lòng điền đầy đủ tất cả các field!");
+        } else if (!MD5.encrypt(oldpass).equals(nd.getMatKhau())) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Mật khẩu cũ không đúng!");
         } else if (!cnfpass.equals(newpass)) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password bạn nhập lại không hợp lệ!");
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Mật khẩu bạn nhập lại không hợp lệ!");
         } else {
             String sql = "update NGUOIDUNG set MATKHAU = ? where MANGUOIDUNG = ?";
             Connection con = KetNoiSQL.layKetNoi();
             try {
                 PreparedStatement ps = con.prepareStatement(sql);
-                ps.setString(1, newpass);
+                ps.setString(1, MD5.encrypt(newpass));
                 ps.setString(2, DangNhap.getMaNguoiDung());
                 ps.executeUpdate();
                 ps.close();

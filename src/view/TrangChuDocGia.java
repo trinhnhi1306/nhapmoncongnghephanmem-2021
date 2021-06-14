@@ -5,6 +5,7 @@
  */
 package view;
 
+import hash.MD5;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.sql.Connection;
@@ -369,26 +370,21 @@ public class TrangChuDocGia extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jDateChooser_NgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel15)
-                                            .addComponent(jLabel14))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)))
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField_MaNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                                     .addComponent(jTextField_TenNguoiDung)
@@ -1139,8 +1135,8 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
         jPanelSoSachDangMuon.setBackground(new java.awt.Color(0, 255, 204));
         jPanelSoSachDangMuon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPanelSoSachDangMuonMouseReleased(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelSoSachDangMuonMouseClicked(evt);
             }
         });
         jPanelSoSachDangMuon.setLayout(null);
@@ -1209,10 +1205,10 @@ public class TrangChuDocGia extends javax.swing.JFrame {
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(345, 345, 345)
+                        .addGap(262, 262, 262)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelTenDocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelTenDocGia, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11))
                     .addGroup(jPanel32Layout.createSequentialGroup()
@@ -1418,18 +1414,18 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         String cnfpass = String.valueOf(jPasswordField_cnfpass.getPassword());
         String oldpass = String.valueOf(jPasswordField_oldpass.getPassword());
 
-        if (!oldpass.equals(nd.getMatKhau())) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password cũ không đúng!");
-        } else if (!newpass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password mới không hợp lệ!");
+        if (oldpass.equals("") || newpass.equals("") || cnfpass.equals("")) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Vui lòng điền đầy đủ tất cả các field!");
+        } else if (!MD5.encrypt(oldpass).equals(nd.getMatKhau())) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Mật khẩu cũ không đúng!");
         } else if (!cnfpass.equals(newpass)) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password bạn nhập lại không hợp lệ!");
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Mật khẩu bạn nhập lại không hợp lệ!");
         } else {
             String sql = "update NGUOIDUNG set MATKHAU = ? where MANGUOIDUNG = ?";
             Connection con = KetNoiSQL.layKetNoi();
             try {
                 PreparedStatement ps = con.prepareStatement(sql);
-                ps.setString(1, newpass);
+                ps.setString(1, MD5.encrypt(newpass));
                 ps.setString(2, DangNhap.getMaNguoiDung());
                 ps.executeUpdate();
                 ps.close();
@@ -1499,13 +1495,6 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_LuuActionPerformed
 
-    private void jPanelSoSachDangMuonMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSoSachDangMuonMouseReleased
-        // TODO add your handling code here:
-        jDialogSachDangMuon.pack();
-        jDialogSachDangMuon.setLocationRelativeTo(this);
-        jDialogSachDangMuon.setVisible(true);
-    }//GEN-LAST:event_jPanelSoSachDangMuonMouseReleased
-
     private void jTextFieldKeywordSachDangMuonCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextFieldKeywordSachDangMuonCaretUpdate
         // TODO add your handling code here:
         String keyword = jTextFieldKeywordSachDangMuon.getText();
@@ -1551,6 +1540,13 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton_Thoat2ActionPerformed
+
+    private void jPanelSoSachDangMuonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSoSachDangMuonMouseClicked
+        // TODO add your handling code here:
+        jDialogSachDangMuon.pack();
+        jDialogSachDangMuon.setLocationRelativeTo(this);
+        jDialogSachDangMuon.setVisible(true);
+    }//GEN-LAST:event_jPanelSoSachDangMuonMouseClicked
 
     /**
      * @param args the command line arguments

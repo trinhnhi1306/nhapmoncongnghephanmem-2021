@@ -2139,9 +2139,9 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" pref="384" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel_Name" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_Name" alignment="1" min="-2" pref="296" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
@@ -2150,7 +2150,7 @@
                       <Component id="jPanel31" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel28" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -2410,10 +2410,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel_SachMuonQuaHan" min="-2" pref="220" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanel_SachMuon" min="-2" pref="220" max="-2" attributes="0"/>
+                      <Component id="jPanel_SachMuon" min="-2" pref="228" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanel_TienPhat" min="-2" pref="220" max="-2" attributes="0"/>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

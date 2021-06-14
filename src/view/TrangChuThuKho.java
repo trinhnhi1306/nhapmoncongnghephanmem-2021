@@ -5,9 +5,9 @@
  */
 package view;
 
+import hash.MD5;
 import java.awt.Graphics;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -590,6 +590,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trang chủ thủ kho");
+        setResizable(false);
 
         jPanel32.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -685,7 +686,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel28Layout.setHorizontalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton_DoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton_ThongTinCaNhan, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
@@ -695,10 +696,10 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                     .addComponent(jButton_ThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_TacGiaNXBTheLoai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_DangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                    .addComponent(jButton_Thoat, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(jButton_TacGiaNXBTheLoai, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                    .addComponent(jButton_DangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton_Thoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -789,11 +790,11 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGap(73, 73, 73)
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
+                .addGap(61, 61, 61)
                 .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(22, 22, 22))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -817,6 +818,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
 
         jLabel_Name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel_Name.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_Name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Name.setText("What is your name?");
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
@@ -824,20 +826,20 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPanel32Layout.setHorizontalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(428, 428, 428)
+                        .addGap(280, 280, 280)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel_Name)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)
+                        .addGap(10, 10, 10))
+                    .addComponent(jPanel31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1037,18 +1039,18 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         String cnfpass = String.valueOf(jPasswordField_cnfpass.getPassword());
         String oldpass = String.valueOf(jPasswordField_oldpass.getPassword());
 
-        if (!oldpass.equals(nd.getMatKhau())) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password cũ không đúng!");
-        } else if (!newpass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$")) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password mới không hợp lệ!");
+        if (oldpass.equals("") || newpass.equals("") || cnfpass.equals("")) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Vui lòng điền đầy đủ tất cả các field!");
+        } else if (!MD5.encrypt(oldpass).equals(nd.getMatKhau())) {
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Mật khẩu cũ không đúng!");
         } else if (!cnfpass.equals(newpass)) {
-            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Password bạn nhập lại không hợp lệ!");
+            JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Mật khẩu bạn nhập lại không hợp lệ!");
         } else {
             String sql = "update NGUOIDUNG set MATKHAU = ? where MANGUOIDUNG = ?";
             Connection con = KetNoiSQL.layKetNoi();
             try {
                 PreparedStatement ps = con.prepareStatement(sql);
-                ps.setString(1, newpass);
+                ps.setString(1, MD5.encrypt(newpass));
                 ps.setString(2, DangNhap.getMaNguoiDung());
                 ps.executeUpdate();
                 ps.close();

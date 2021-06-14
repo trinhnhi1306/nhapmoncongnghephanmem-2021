@@ -5,6 +5,7 @@
  */
 package view;
 
+import hash.MD5;
 import java.awt.Graphics;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -188,7 +189,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                     .addComponent(jPasswordFieldOldPassword, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPasswordFieldNewPassword)
                     .addComponent(jPasswordFieldConfirmPassword))
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -698,6 +699,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jLabel_Name.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel_Name.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_Name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Name.setText("What is your name?");
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
@@ -705,20 +707,20 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jPanel32Layout.setHorizontalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(428, 428, 428)
+                        .addGap(242, 242, 242)
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel_Name)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel11))
                     .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -847,12 +849,12 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         String confirmPassword = String.valueOf(jPasswordFieldConfirmPassword.getPassword());
         if (oldPassword.equals("") || newPassword.equals("") || confirmPassword.equals("")) {
             JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Vui lòng điền đầy đủ tất cả các field!");
-        } else if (!oldPassword.equals((String) table.NguoiDung.getColumnValue("MATKHAU", maNguoiDung))) {
+        } else if (!MD5.encrypt(oldPassword).equals((String) table.NguoiDung.getColumnValue("MATKHAU", maNguoiDung))) {
             JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Mật khẩu cũ không đúng!");
         } else if (!newPassword.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Nhập lại mật khẩu không khớp với mật khấu mới!");
         } else {
-            table.NguoiDung.updateColumn("MATKHAU", newPassword, maNguoiDung);
+            table.NguoiDung.updateColumn("MATKHAU", MD5.encrypt(newPassword), maNguoiDung);
             JOptionPane.showMessageDialog(jDialog_DoiMatKhau, "Đổi mật khẩu thành công!");
             jDialog_DoiMatKhau.dispose();
         }

@@ -5,6 +5,7 @@
  */
 package view;
 
+import hash.MD5;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +24,7 @@ import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import model.VaiTro;
 import table.DataFromSQLServer;
+import table.NguoiDung;
 
 /**
  *
@@ -119,6 +121,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         jButton_ThemNhanVien = new javax.swing.JButton();
         jButton_Sua = new javax.swing.JButton();
         jButton_Xoa = new javax.swing.JButton();
+        jButtonResetPassword = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jButton_TroVe1 = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
@@ -598,18 +601,29 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             }
         });
 
+        jButtonResetPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonResetPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/rotation-lock.png"))); // NOI18N
+        jButtonResetPassword.setText("Reset password");
+        jButtonResetPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResetPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
                 .addComponent(jButton_ThemNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addGap(11, 11, 11)
+                .addComponent(jButtonResetPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,7 +632,8 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ThemNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonResetPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -768,7 +783,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, maNV);
-            ps.setString(2, matKhauNV);
+            ps.setString(2, MD5.encrypt(matKhauNV));
             ps.setString(3, tenNV);
             ps.setString(4, gioiTinh);
             ps.setString(5, ngaySinh);
@@ -1072,6 +1087,21 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton_ThoatActionPerformed
 
+    private void jButtonResetPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetPasswordActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable_DSNhanVien.convertRowIndexToModel(jTable_DSNhanVien.getSelectedRow());
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên bạn muốn reset mật khẩu!");
+        } else {
+            String maNhanVien = (String) jTable_DSNhanVien.getModel().getValueAt(selectedRow, 0);
+            int option = JOptionPane.showConfirmDialog(this, "Reset mật khẩu trở về mặc định (trùng với mã độc giả). Bạn có chắc muốn reset mật khẩu của nhân viên này?", "Reset mật khẩu", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (option == JOptionPane.YES_OPTION) {
+                NguoiDung.updateColumn("MATKHAU", MD5.encrypt(maNhanVien), maNhanVien);
+                JOptionPane.showMessageDialog(this, "Reset mật khẩu thành công!");
+            }
+        }
+    }//GEN-LAST:event_jButtonResetPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1111,6 +1141,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton jButtonResetPassword;
     private javax.swing.JButton jButton_Sua;
     private javax.swing.JButton jButton_Them;
     private javax.swing.JButton jButton_ThemNhanVien;
