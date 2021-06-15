@@ -20,6 +20,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
+import model.QuyDinh;
 import table.DataFromSQLServer;
 import table.MuonTra;
 import table.Sach;
@@ -44,6 +45,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                                       + "WHERE S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI AND S.MANXB = NXB.MANXB";
     private String queryForJTableDocGia1 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
     private String queryForJTableDocGia2 = "SELECT * FROM NGUOIDUNG WHERE MAVAITRO = 'VT01'";
+    
+    private QuyDinh qd;
     /**
      * Creates new form BorrowReturnBookWindow
      */
@@ -53,6 +56,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
         DataFromSQLServer.getAndShowData(jTableDocGia1, columnTitlesOfJTableDocGia1, queryForJTableDocGia1);
         DataFromSQLServer.getAndShowData(jTableDocGia2, columnTitlesOfJTableDocGia2, queryForJTableDocGia2);
+        qd = QuyDinh.layThongTinQuyDinh();
     }
 
     /**
@@ -1076,8 +1080,8 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Số lượng sách này đã hết, không thể mượn. Vui lòng chọn sách khác!");
         } else if (DataFromSQLServer.exist(query)) {
             JOptionPane.showMessageDialog(this, "Không thể mượn sách mà độc giả đang mượn. Vui lòng chọn sách khác!");
-        } else if (numberOfBooksBorrowed >= MAX_NUMBER_OF_BORROWABLE_BOOKS) {
-            JOptionPane.showMessageDialog(this, "Độc giả đã mượn số sách tối đa được phép là 5. Không thể mượn thêm!");
+        } else if (numberOfBooksBorrowed >= qd.getSoSachMuonToiDa()) {
+            JOptionPane.showMessageDialog(this, "Độc giả đã mượn số sách tối đa được phép là " + qd.getSoSachMuonToiDa() +". Không thể mượn thêm!");
         } else if (expired(maDocGia)) {
             JOptionPane.showMessageDialog(this, "Vui lòng trả sách mượn quá hạn trước để có thể mượn sách mới!");
         } else {
@@ -1086,7 +1090,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
             Calendar calendar = Calendar.getInstance();
             jDateChooserNgayMuon.setDate(calendar.getTime());
-            calendar.add(Calendar.DATE, 7);
+            calendar.add(Calendar.DATE, qd.getSoNgayMuonToiDa());
             jDateChooserHanTra.setDate(calendar.getTime());
 
             jDialogMuonSach.pack();
@@ -1128,11 +1132,11 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(this, "Trả sách thành công!");
             } else {
-                int tienPhatQuaHan = TIEN_PHAT * (int) diffDays;
+                int tienPhatQuaHan = qd.getTienPhatQuaHan() * (int) diffDays;
                 
                 Object options[] = {"Đã thu tiền", "Hủy"};
                 int option = JOptionPane.showOptionDialog(this, "Độc giả trả sách quá hạn " + diffDays + " ngày so với hạn trả " + hanTra + 
-                                                                " nên phải nộp phạt số tiền " + diffDays + " * 2000 VNĐ/ngày = " + tienPhatQuaHan + 
+                                                                " nên phải nộp phạt số tiền " + diffDays + " * " + qd.getTienPhatQuaHan() + " VNĐ/ngày = " + tienPhatQuaHan + 
                                                                 " VNĐ.", "Trả sách", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 
                 // OK if reader already pays for the fine and vice versa
@@ -1285,14 +1289,14 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 ResultSet xuLyViPham = getXuLyViPham.executeQuery()) {
             int soLuongCo = (int) Sach.getColumnValue("SOLUONGCO", maSach);
             int giaTien = (int) Sach.getColumnValue("GIA", maSach);
-            int tienPhatHongMat = giaTien / 2;
-            int tienPhatQuaHan = TIEN_PHAT * (int) diffDays;
+            int tienPhatHongMat = (int) (giaTien * qd.getTienPhatHongMat());
+            int tienPhatQuaHan = qd.getTienPhatQuaHan() * (int) diffDays;
             
             Object options[] = {"Đã thu tiền", "Hủy"};
             
             // Check if the book is returned late or not
             if (diffDays <= 0) {
-                int option = JOptionPane.showOptionDialog(this, "Số tiền độc giả phải đền do làm hỏng mất sách (50% giá sách) là " + tienPhatHongMat + 
+                int option = JOptionPane.showOptionDialog(this, "Số tiền độc giả phải đền do làm hỏng mất sách (" + (int)(qd.getTienPhatHongMat()*100) + "% giá sách) là " + tienPhatHongMat + 
                                                                 " VNĐ.", "Báo hỏng mất sách", JOptionPane.OK_CANCEL_OPTION, 
                                                                 JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 // OK if reader already pays for the fine and vice versa
@@ -1314,9 +1318,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Báo hỏng mất sách thành công.");
                 } 
             } else {
-                int option = JOptionPane.showOptionDialog(this, "Tiền đền hỏng mất sách (50% giá sách): " + tienPhatHongMat + " VNĐ.\n" +
+                int option = JOptionPane.showOptionDialog(this, "Tiền đền hỏng mất sách (" + (int)(qd.getTienPhatHongMat()*100) + "% giá sách): " + tienPhatHongMat + " VNĐ.\n" +
                                                                 "Quá hạn trả sách " + diffDays + " ngày so với hạn trả " + hanTra + 
-                                                                ", nộp phạt " + diffDays + " * 2000 VNĐ/ngày = " + tienPhatQuaHan + " VNĐ.\n" +
+                                                                ", nộp phạt " + diffDays + " * " + qd.getTienPhatQuaHan() + " VNĐ/ngày = " + tienPhatQuaHan + " VNĐ.\n" +
                                                                 "Tổng số tiền độc giả phải nộp phạt: " + (tienPhatQuaHan + tienPhatHongMat) + " VNĐ.", 
                                                                 "Báo hỏng mất sách", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 // OK if reader already pays for the fine and vice versa
