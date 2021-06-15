@@ -77,15 +77,23 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jButton_TroVe1 = new javax.swing.JButton();
         jComboBoxGioiTinh = new javax.swing.JComboBox<>();
         jDateChooserNgaySinh = new com.toedter.calendar.JDateChooser();
-        jDialog_ThongBao = new javax.swing.JDialog();
+        jDialog_ThayDoiQuyDinh = new javax.swing.JDialog();
         jPanel9 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField_MaQuyDinh = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField_SoSachMuonToiDa = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jTextField_PhatQuaHan = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jTextField_SoNgayMuonToiDa = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jButton_Luu1 = new javax.swing.JButton();
         jButton_TroVe2 = new javax.swing.JButton();
+        jDateChooser_NgayThayDoi = new com.toedter.calendar.JDateChooser();
+        jTextField_PhatHongMat = new javax.swing.JTextField();
         jPanel32 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
@@ -93,7 +101,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jButton_ThongTinCaNhan = new javax.swing.JButton();
         jButton_LopKhoaVaiTro = new javax.swing.JButton();
         jButton_DoiMatKhau = new javax.swing.JButton();
-        jButton_ThongBao = new javax.swing.JButton();
+        jButton_ThayDoiQuyDinh = new javax.swing.JButton();
         jButton_DangXuat = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel() {
@@ -393,41 +401,52 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jDialog_ThongBao.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        jDialog_ThongBao.setTitle("Thông báo");
-        jDialog_ThongBao.setModal(true);
-
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 255, 0));
-        jLabel23.setText("THÔNG BÁO");
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 255, 0));
+        jLabel21.setText("THAY ĐỔI QUY ĐỊNH");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Nội dung");
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setText("Mã quy định");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextField_MaQuyDinh.setEditable(false);
+        jTextField_MaQuyDinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Từ");
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel23.setText("Số sách mượn tối đa");
 
-        jTextField3.setEditable(false);
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setText("Admin");
+        jTextField_SoSachMuonToiDa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel24.setText("Số ngày mượn tối đa");
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel25.setText("Phạt quá hạn");
+
+        jTextField_PhatQuaHan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel26.setText("Phạt hỏng mất");
+
+        jTextField_SoNgayMuonToiDa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel27.setText("Ngày thay đổi");
+
+        jButton_Luu1.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_Luu1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_Luu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/save (1).png"))); // NOI18N
+        jButton_Luu1.setText("Lưu");
 
         jButton_TroVe2.setBackground(new java.awt.Color(153, 255, 153));
         jButton_TroVe2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_TroVe2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
         jButton_TroVe2.setText("Trở về");
-        jButton_TroVe2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_TroVe2ActionPerformed(evt);
-            }
-        });
+
+        jDateChooser_NgayThayDoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jTextField_PhatHongMat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -436,49 +455,86 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                            .addComponent(jTextField3)))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(66, 66, 66)
+                                .addComponent(jTextField_PhatQuaHan))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel26)
+                                    .addComponent(jLabel27)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel24)
+                                    .addComponent(jLabel23))
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextField_SoSachMuonToiDa, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                            .addComponent(jTextField_SoNgayMuonToiDa)
+                                            .addComponent(jTextField_MaQuyDinh)))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField_PhatHongMat)
+                                            .addComponent(jDateChooser_NgayThayDoi, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108))
+                        .addGap(79, 79, 79)
+                        .addComponent(jLabel21))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton_Luu1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_MaQuyDinh, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_SoSachMuonToiDa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_SoNgayMuonToiDa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_PhatQuaHan, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_PhatHongMat, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(jDateChooser_NgayThayDoi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_Luu1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_TroVe2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jDialog_ThongBaoLayout = new javax.swing.GroupLayout(jDialog_ThongBao.getContentPane());
-        jDialog_ThongBao.getContentPane().setLayout(jDialog_ThongBaoLayout);
-        jDialog_ThongBaoLayout.setHorizontalGroup(
-            jDialog_ThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jDialog_ThayDoiQuyDinhLayout = new javax.swing.GroupLayout(jDialog_ThayDoiQuyDinh.getContentPane());
+        jDialog_ThayDoiQuyDinh.getContentPane().setLayout(jDialog_ThayDoiQuyDinhLayout);
+        jDialog_ThayDoiQuyDinhLayout.setHorizontalGroup(
+            jDialog_ThayDoiQuyDinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDialog_ThongBaoLayout.setVerticalGroup(
-            jDialog_ThongBaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jDialog_ThayDoiQuyDinhLayout.setVerticalGroup(
+            jDialog_ThayDoiQuyDinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -538,14 +594,14 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton_ThongBao.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton_ThongBao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/notification.png"))); // NOI18N
-        jButton_ThongBao.setText("Thông báo");
-        jButton_ThongBao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_ThongBao.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton_ThongBao.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThayDoiQuyDinh.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton_ThayDoiQuyDinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/rules.png"))); // NOI18N
+        jButton_ThayDoiQuyDinh.setText("Thay đổi quy định thư viện");
+        jButton_ThayDoiQuyDinh.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_ThayDoiQuyDinh.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton_ThayDoiQuyDinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ThongBaoActionPerformed(evt);
+                jButton_ThayDoiQuyDinhActionPerformed(evt);
             }
         });
 
@@ -579,7 +635,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton_ThongTinCaNhan, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                    .addComponent(jButton_ThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton_ThayDoiQuyDinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton_LopKhoaVaiTro, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
@@ -602,7 +658,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton_DoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_ThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton_ThayDoiQuyDinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -808,12 +864,12 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jDialog_DoiMatKhau.setVisible(true);
     }//GEN-LAST:event_jButton_DoiMatKhauActionPerformed1
 
-    private void jButton_ThongBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongBaoActionPerformed
+    private void jButton_ThayDoiQuyDinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThayDoiQuyDinhActionPerformed
         // TODO add your handling code here:
-        jDialog_ThongBao.pack();
-        jDialog_ThongBao.setLocationRelativeTo(this);
-        jDialog_ThongBao.setVisible(true);
-    }//GEN-LAST:event_jButton_ThongBaoActionPerformed
+        jDialog_ThayDoiQuyDinh.pack();
+        jDialog_ThayDoiQuyDinh.setLocationRelativeTo(this);
+        jDialog_ThayDoiQuyDinh.setVisible(true);
+    }//GEN-LAST:event_jButton_ThayDoiQuyDinhActionPerformed
 
     private void jButton_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatActionPerformed
         // TODO add your handling code here:
@@ -835,11 +891,6 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         jDialog_SuaThongTinCaNhan.dispose();
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
-
-    private void jButton_TroVe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe2ActionPerformed
-        // TODO add your handling code here:
-        jDialog_ThongBao.dispose();
-    }//GEN-LAST:event_jButton_TroVe2ActionPerformed
 
     private void jButton_XacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanActionPerformed
         // TODO add your handling code here:
@@ -933,9 +984,10 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton_DoiMatKhau;
     private javax.swing.JButton jButton_LopKhoaVaiTro;
     private javax.swing.JButton jButton_Luu;
+    private javax.swing.JButton jButton_Luu1;
     private javax.swing.JButton jButton_QLNhanVien;
+    private javax.swing.JButton jButton_ThayDoiQuyDinh;
     private javax.swing.JButton jButton_Thoat;
-    private javax.swing.JButton jButton_ThongBao;
     private javax.swing.JButton jButton_ThongTinCaNhan;
     private javax.swing.JButton jButton_TroVe;
     private javax.swing.JButton jButton_TroVe1;
@@ -943,9 +995,10 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JButton jButton_XacNhan;
     private javax.swing.JComboBox<String> jComboBoxGioiTinh;
     private com.toedter.calendar.JDateChooser jDateChooserNgaySinh;
+    private com.toedter.calendar.JDateChooser jDateChooser_NgayThayDoi;
     private javax.swing.JDialog jDialog_DoiMatKhau;
     private javax.swing.JDialog jDialog_SuaThongTinCaNhan;
-    private javax.swing.JDialog jDialog_ThongBao;
+    private javax.swing.JDialog jDialog_ThayDoiQuyDinh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -959,9 +1012,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel60;
@@ -986,13 +1043,15 @@ public class TrangChuAdmin extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordFieldConfirmPassword;
     private javax.swing.JPasswordField jPasswordFieldNewPassword;
     private javax.swing.JPasswordField jPasswordFieldOldPassword;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextFieldDiaChi;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldMaNguoiDung;
     private javax.swing.JTextField jTextFieldSDT;
     private javax.swing.JTextField jTextFieldTenNguoiDung;
+    private javax.swing.JTextField jTextField_MaQuyDinh;
+    private javax.swing.JTextField jTextField_PhatHongMat;
+    private javax.swing.JTextField jTextField_PhatQuaHan;
+    private javax.swing.JTextField jTextField_SoNgayMuonToiDa;
+    private javax.swing.JTextField jTextField_SoSachMuonToiDa;
     // End of variables declaration//GEN-END:variables
 }
