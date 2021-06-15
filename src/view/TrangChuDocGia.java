@@ -797,7 +797,6 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
         buttonGroupSachDangMuon.add(jRadioButtonMaSach);
         jRadioButtonMaSach.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaSach.setSelected(true);
         jRadioButtonMaSach.setText("Mã sách");
         jPanel13.add(jRadioButtonMaSach);
 
@@ -808,17 +807,18 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
         buttonGroupSachDangMuon.add(jRadioButtonMaTacGia);
         jRadioButtonMaTacGia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaTacGia.setText("Mã tác giả");
+        jRadioButtonMaTacGia.setText("Tác giả");
         jPanel13.add(jRadioButtonMaTacGia);
 
         buttonGroupSachDangMuon.add(jRadioButtonMaNXB);
         jRadioButtonMaNXB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaNXB.setText("Mã NXB");
+        jRadioButtonMaNXB.setSelected(true);
+        jRadioButtonMaNXB.setText("Nhà xuất bản");
         jPanel13.add(jRadioButtonMaNXB);
 
         buttonGroupSachDangMuon.add(jRadioButtonMaTheLoai);
         jRadioButtonMaTheLoai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaTheLoai.setText("Mã thể loại");
+        jRadioButtonMaTheLoai.setText("Thể loại");
         jPanel13.add(jRadioButtonMaTheLoai);
 
         jPanel12.setBackground(new java.awt.Color(255, 255, 204));
