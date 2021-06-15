@@ -1448,7 +1448,19 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
             String ngayMuon = dateFormatter.format(jDateChooserNgayMuon.getDate());
             String hanTra = dateFormatter.format(jDateChooserHanTra.getDate());
-
+            
+            // Calculate days between today and hanTra
+            LocalDate ngayMuonTemp = LocalDate.parse(ngayMuon);
+            LocalDate hanTraTemp = LocalDate.parse(hanTra);
+            Duration diff = Duration.between(ngayMuonTemp.atStartOfDay(), hanTraTemp.atStartOfDay());
+            long diffDays = diff.toDays();
+            
+            // check if ngayTra is 30 days older than ngayMuon
+            if (diffDays > qd.getSoNgayMuonToiDa()) {
+                JOptionPane.showMessageDialog(jDialogMuonSach, "Hạn trả tối đa là 30 ngày so với ngày mượn. Vui lòng chọn lại hạn trả và thử lại!");
+                return;
+            }
+            
             // Get maDocGia, maSach, soLuongCon from jTableDocGia1 and jTableSach
             int selectedRowOfJTableDocGia1 = jTableDocGia1.convertRowIndexToModel(jTableDocGia1.getSelectedRow());
             int selectedRowOfJTableSach = jTableSach.convertRowIndexToModel(jTableSach.getSelectedRow());
