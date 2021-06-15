@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import ketnoi.KetNoiSQL;
+import model.QuyDinh;
 
 /**
  *
@@ -22,6 +23,7 @@ import ketnoi.KetNoiSQL;
 public class DangNhap extends javax.swing.JFrame {
 
     private static String maNguoiDung;
+    private QuyDinh qd = QuyDinh.layThongTinQuyDinh();
 
     public static String getMaNguoiDung() {
         return maNguoiDung;
@@ -44,6 +46,11 @@ public class DangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog_QuyDinh = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea_QuyDinh = new javax.swing.JTextArea();
+        jButton_TroVe = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         jPanelBackground = new javax.swing.JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -61,6 +68,54 @@ public class DangNhap extends javax.swing.JFrame {
         jButton_DangNhap = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
         jLabelForgotPassword = new javax.swing.JLabel();
+        jLabel_ThongTinQuyDinh = new javax.swing.JLabel();
+
+        jTextArea_QuyDinh.setEditable(false);
+        jTextArea_QuyDinh.setColumns(20);
+        jTextArea_QuyDinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea_QuyDinh.setRows(5);
+        jScrollPane1.setViewportView(jTextArea_QuyDinh);
+
+        jButton_TroVe.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_TroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_TroVe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/return.png"))); // NOI18N
+        jButton_TroVe.setText("Trở về");
+        jButton_TroVe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TroVeActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 255, 0));
+        jLabel11.setText("QUY ĐỊNH THƯ VIỆN");
+
+        javax.swing.GroupLayout jDialog_QuyDinhLayout = new javax.swing.GroupLayout(jDialog_QuyDinh.getContentPane());
+        jDialog_QuyDinh.getContentPane().setLayout(jDialog_QuyDinhLayout);
+        jDialog_QuyDinhLayout.setHorizontalGroup(
+            jDialog_QuyDinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+            .addGroup(jDialog_QuyDinhLayout.createSequentialGroup()
+                .addGroup(jDialog_QuyDinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog_QuyDinhLayout.createSequentialGroup()
+                        .addGap(266, 266, 266)
+                        .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialog_QuyDinhLayout.createSequentialGroup()
+                        .addGap(218, 218, 218)
+                        .addComponent(jLabel11)))
+                .addContainerGap(227, Short.MAX_VALUE))
+        );
+        jDialog_QuyDinhLayout.setVerticalGroup(
+            jDialog_QuyDinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog_QuyDinhLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chương trình quản lý thư viện");
@@ -190,6 +245,13 @@ public class DangNhap extends javax.swing.JFrame {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
+        jLabel_ThongTinQuyDinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/information.png"))); // NOI18N
+        jLabel_ThongTinQuyDinh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_ThongTinQuyDinhMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBackgroundLayout = new javax.swing.GroupLayout(jPanelBackground);
         jPanelBackground.setLayout(jPanelBackgroundLayout);
         jPanelBackgroundLayout.setHorizontalGroup(
@@ -202,12 +264,17 @@ public class DangNhap extends javax.swing.JFrame {
                         .addGap(40, 40, 40))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackgroundLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackgroundLayout.createSequentialGroup()
+                        .addComponent(jLabel_ThongTinQuyDinh)
+                        .addContainerGap())))
         );
         jPanelBackgroundLayout.setVerticalGroup(
             jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBackgroundLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
+                .addComponent(jLabel_ThongTinQuyDinh)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,6 +299,20 @@ public class DangNhap extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private String showQuyDinh() {
+        String str = "";
+        str = str + "\n- Độc giả truy cập vào phần mềm để tra cứu sách bằng tài khoản đã được cung cấp và có thể thay đổi mật khẩu sau khi đăng nhập."
+                + "\n- Độc giả chọn tài liệu theo nhu cầu cá nhân, mỗi đầu sách chỉ được mượn 1 quyển."
+                + "\n   Số sách được mượn không quá " + qd.getSoSachMuonToiDa() + " quyển. Độc giả được mượn sách tối đa " + qd.getSoNgayMuonToiDa() + " ngày tính từ ngày mượn."
+                + "\n- Độc giả có trách nhiệm trả tài liệu đúng hạn cho thư viện, thanh toán các khoản phạt, bồi thường (nếu có)."
+                + "\n   Độc giả có trách nhiệm bảo quản tài liệu của Thư viện, các trường hợp làm mất, gây hư hỏng,... phải bồi thường theo quy định của Thư viện."
+                + "\n   Độc giả mượn sách đến hạn trả sách mà chưa trả sẽ bị phạt " + qd.getTienPhatQuaHan() + "/ngày trễ."
+                + "\n   Làm hỏng hoặc mất sách sẽ bị phạt " + qd.getTienPhatHongMat() * 100 + "% giá trên bìa sách."
+                + "\n- Độc giả phải trả sách mượn quá hạn mới được tiếp tục mượn sách."
+                + "\n\n\n\n\t\t\t\t\t\t " + qd.getNgayThayDoi();
+        return str;
+    }
+    
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
         // TODO add your handling code here:
         String sql = "SELECT * FROM NGUOIDUNG WHERE MANGUOIDUNG = ? AND MATKHAU = ?";
@@ -289,6 +370,19 @@ public class DangNhap extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Vui lòng liên hệ thủ thư thư viện và cung cấp mã độc giả để reset mật khẩu!", "Quên mật khẩu", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jLabelForgotPasswordMouseClicked
 
+    private void jLabel_ThongTinQuyDinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_ThongTinQuyDinhMouseClicked
+        // TODO add your handling code here:
+        jDialog_QuyDinh.pack();
+        jDialog_QuyDinh.setLocationRelativeTo(this);
+        jDialog_QuyDinh.setVisible(true);
+        jTextArea_QuyDinh.setText(showQuyDinh());
+    }//GEN-LAST:event_jLabel_ThongTinQuyDinhMouseClicked
+
+    private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
+        // TODO add your handling code here:
+        jDialog_QuyDinh.dispose();
+    }//GEN-LAST:event_jButton_TroVeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,13 +423,19 @@ public class DangNhap extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_DangNhap;
     private javax.swing.JButton jButton_Thoat;
+    private javax.swing.JButton jButton_TroVe;
+    private javax.swing.JDialog jDialog_QuyDinh;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelForgotPassword;
+    private javax.swing.JLabel jLabel_ThongTinQuyDinh;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelBackground;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea_QuyDinh;
     private javax.swing.JTextField jTextFieldMaNguoiDung;
     private javax.swing.JPasswordField jTextFieldMatKhau;
     // End of variables declaration//GEN-END:variables

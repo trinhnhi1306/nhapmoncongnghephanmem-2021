@@ -82,7 +82,6 @@ public class QuyDinh {
     
     public static QuyDinh layThongTinQuyDinh() {
         QuyDinh qd = null;
-        int maQuyDinh = 0;
         try {
             Connection con = KetNoiSQL.layKetNoi();
             PreparedStatement ps = con.prepareStatement("SELECT TOP 1 * FROM QUYDINH ORDER BY MAQUYDINH DESC");

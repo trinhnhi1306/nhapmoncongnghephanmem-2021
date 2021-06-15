@@ -3,36 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/TrangChuThuKho.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/ketnoi/KetNoiSQL.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/table/Sach.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/table/MuonTra.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/images/pexels-pixabay-460621.jpg</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QuanLyNhanVien.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/NguoiDung.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/TrangChuAdmin.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QuanLyLopKhoaVaiTro.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/table/DataFromSQLServer.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/DocGia.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/Lop.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QuanLyDocGia.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/Sach.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/QuyDinh.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/DangNhap.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/VaiTro.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/hash/MD5.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QuanLySach.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QuanLyTacGiaNXBTheLoai.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/table/NguoiDung.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/TrangChuDocGia.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/table/XuLyViPham.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/NXB.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/TrangChuThuThu.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/TacGia.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/images/pexels-janko-ferlic-590493.jpg</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/view/QuanLyMuonTra.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/Khoa.java</file>
-            <file>file:/D:/Java/Nhap%20mon%20cong%20nghe%20phan%20mem/nhapmoncongnghephanmem-2021/src/model/TheLoai.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/table/MuonTra.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/table/DataFromSQLServer.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/view/TrangChuDocGia.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/view/TrangChuThuKho.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/view/DangNhap.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/view/TrangChuAdmin.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/view/QuanLyMuonTra.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/view/QuanLySach.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/model/QuyDinh.java</file>
+            <file>file:/E:/Nam3/HocKyII/NhapMonCongNghePhanMem/nhapmoncongnghephanmem-2021/src/view/QuanLyDocGia.java</file>
         </group>
     </open-files>
 </project-private>

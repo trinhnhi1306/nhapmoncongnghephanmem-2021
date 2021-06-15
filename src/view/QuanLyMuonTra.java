@@ -1457,7 +1457,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
             
             // check if ngayTra is 30 days older than ngayMuon
             if (diffDays > qd.getSoNgayMuonToiDa()) {
-                JOptionPane.showMessageDialog(jDialogMuonSach, "Hạn trả tối đa là 30 ngày so với ngày mượn. Vui lòng chọn lại hạn trả và thử lại!");
+                JOptionPane.showMessageDialog(jDialogMuonSach, "Hạn trả tối đa là " + qd.getSoNgayMuonToiDa() + " ngày so với ngày mượn. Vui lòng chọn lại hạn trả và thử lại!");
                 return;
             }
             
