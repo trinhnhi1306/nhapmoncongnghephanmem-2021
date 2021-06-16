@@ -25,6 +25,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.QuyDinh;
 import model.TacGia;
 import model.TheLoai;
 import table.DataFromSQLServer;
@@ -70,7 +71,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextArea_ThongBao = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jButton_TroVe = new javax.swing.JButton();
@@ -214,11 +215,13 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Nội dung");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTextArea_ThongBao.setEditable(false);
+        jTextArea_ThongBao.setColumns(20);
+        jTextArea_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea_ThongBao.setLineWrap(true);
+        jTextArea_ThongBao.setRows(5);
+        jTextArea_ThongBao.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(jTextArea_ThongBao);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Từ");
@@ -1802,6 +1805,42 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         }
     }
 
+    private void thongBao() {
+        String str = "";
+        int dem = 0;
+        QuyDinh qdcu = null;
+        try {
+            Connection con = KetNoiSQL.layKetNoi();
+            PreparedStatement ps = con.prepareStatement("SELECT TOP 2 * FROM QUYDINH ORDER BY MAQUYDINH DESC");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                dem = dem + 1;
+                if (dem == 2) {
+                    qdcu = new QuyDinh(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getFloat(5), rs.getString(6));
+                }
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        QuyDinh qdmoi = QuyDinh.layThongTinQuyDinh();
+        if (qdcu == null) {
+            str = "Quy định: \n- Được mượn tối đa: " + qdmoi.getSoSachMuonToiDa() + " quyển."
+                    + "\n- Số ngày mượn tối đa: " + qdmoi.getSoNgayMuonToiDa() + " ngày."
+                    + "\n- Phạt trả sách quá hạn: " + qdmoi.getTienPhatQuaHan() + " đ/ngày quá hạn."
+                    + "\n- Phạt làm hỏng, mất sách: " + qdmoi.getTienPhatHongMat() * 100 + "% giá trên bìa sách.";
+        } else {
+            str = "Quy định đã được thay đổi vào ngày : " + qdmoi.getNgayThayDoi()
+                    + "\n- Được mượn tối đa: " + qdcu.getSoSachMuonToiDa() + " quyển ===> " + qdmoi.getSoSachMuonToiDa() + " quyển."
+                    + "\n- Số ngày mượn tối đa: " + qdcu.getSoNgayMuonToiDa() + " ngày ===> " + qdmoi.getSoNgayMuonToiDa() + " ngày."
+                    + "\n- Phạt trả sách quá hạn: " + qdcu.getTienPhatQuaHan() + " đ/ngày quá hạn ===> " + qdmoi.getTienPhatQuaHan() + " đ/ngày quá hạn."
+                    + "\n- Phạt làm hỏng, mất sách: " + qdcu.getTienPhatHongMat() * 100 + "% giá trên bìa sách ===> " + qdmoi.getTienPhatHongMat() * 100 + "% giá trên bìa sách.";
+        }
+        jTextArea_ThongBao.setText(str);
+    }
+
     private void jButton_QLDocGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QLDocGiaActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -1850,6 +1889,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
 
     private void jButton_ThongBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongBaoActionPerformed
         // TODO add your handling code here:
+        thongBao();
         jDialog_ThongBao.pack();
         jDialog_ThongBao.setLocationRelativeTo(this);
         jDialog_ThongBao.setVisible(true);
@@ -2269,7 +2309,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JTable jTable_DSSachMuon;
     private javax.swing.JTable jTable_DSSachMuonQuaHan;
     private javax.swing.JTable jTable_ThongKeDocGia;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea_ThongBao;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField_DiaChi;
     private javax.swing.JTextField jTextField_Email;

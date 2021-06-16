@@ -80,6 +80,7 @@ public class DangNhap extends javax.swing.JFrame {
         jTextArea_QuyDinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextArea_QuyDinh.setLineWrap(true);
         jTextArea_QuyDinh.setRows(5);
+        jTextArea_QuyDinh.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea_QuyDinh);
 
         jButton_TroVe.setBackground(new java.awt.Color(153, 255, 153));
@@ -325,7 +326,7 @@ public class DangNhap extends javax.swing.JFrame {
                 + "\n- Độc giả chọn tài liệu theo nhu cầu cá nhân, mỗi đầu sách chỉ được mượn 1 quyển."
                 + "\n   Số sách được mượn không quá " + qd.getSoSachMuonToiDa() + " quyển. Độc giả được mượn sách tối đa " + qd.getSoNgayMuonToiDa() + " ngày tính từ ngày mượn."
                 + "\n- Độc giả có trách nhiệm trả tài liệu đúng hạn cho thư viện, thanh toán các khoản phạt, bồi thường (nếu có)."
-                + "\n   Độc giả có trách nhiệm bảo quản tài liệu của Thư viện, các trường hợp làm mất, gây hư hỏng,... phải bồi    thường theo quy định của Thư viện."
+                + "\n   Độc giả có trách nhiệm bảo quản tài liệu của Thư viện, các trường hợp làm mất, gây hư hỏng,... phải bồi thường theo quy định của Thư viện."
                 + "\n   Độc giả mượn sách đến hạn trả sách mà chưa trả sẽ bị phạt " + qd.getTienPhatQuaHan() + "/ngày trễ."
                 + "\n   Làm hỏng hoặc mất sách sẽ bị phạt " + qd.getTienPhatHongMat() * 100 + "% giá trên bìa sách."
                 + "\n- Độc giả phải trả sách mượn quá hạn mới được tiếp tục mượn sách."
