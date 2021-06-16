@@ -1430,7 +1430,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
         // TODO add your handling code here:
         String maLop = jTextField_MaLop1.getText();
         String tenLop = jTextField_TenLop1.getText();
-        String maKhoa = (String) jComboBox_TenKhoaCuaLop1.getSelectedItem();
+        Khoa maKhoa = (Khoa) jComboBox_TenKhoaCuaLop1.getSelectedItem();
 
         if (maLop.equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã Lớp không được để trống!");
@@ -1440,7 +1440,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             if (kiemTraTonTaiLop(maLop) == 1) {
                 JOptionPane.showMessageDialog(jDialog_ThemLop, "Mã lớp đã tồn tại!");
             } else {
-                themMoiLop(maLop, tenLop, maKhoa);
+                themMoiLop(maLop, tenLop, maKhoa.getMaKhoa());
                 JOptionPane.showMessageDialog(jDialog_ThemLop, "Thêm lớp thành công!");
                 jDialog_ThemLop.dispose();
                 DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);

@@ -47,6 +47,7 @@ public class DangNhap extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog_QuyDinh = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea_QuyDinh = new javax.swing.JTextArea();
         jButton_TroVe = new javax.swing.JButton();
@@ -72,9 +73,12 @@ public class DangNhap extends javax.swing.JFrame {
 
         jDialog_QuyDinh.setTitle("Quy định");
 
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+
         jTextArea_QuyDinh.setEditable(false);
         jTextArea_QuyDinh.setColumns(20);
         jTextArea_QuyDinh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea_QuyDinh.setLineWrap(true);
         jTextArea_QuyDinh.setRows(5);
         jScrollPane1.setViewportView(jTextArea_QuyDinh);
 
@@ -92,31 +96,48 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 255, 0));
         jLabel11.setText("QUY ĐỊNH THƯ VIỆN");
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(jLabel11)
+                .addContainerGap(256, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(296, 296, 296))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(31, 31, 31)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(30, Short.MAX_VALUE)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 428, Short.MAX_VALUE)
+                .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(60, 60, 60)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                    .addGap(70, 70, 70)))
+        );
+
         javax.swing.GroupLayout jDialog_QuyDinhLayout = new javax.swing.GroupLayout(jDialog_QuyDinh.getContentPane());
         jDialog_QuyDinh.getContentPane().setLayout(jDialog_QuyDinhLayout);
         jDialog_QuyDinhLayout.setHorizontalGroup(
             jDialog_QuyDinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addGroup(jDialog_QuyDinhLayout.createSequentialGroup()
-                .addGroup(jDialog_QuyDinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDialog_QuyDinhLayout.createSequentialGroup()
-                        .addGap(266, 266, 266)
-                        .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jDialog_QuyDinhLayout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(jLabel11)))
-                .addContainerGap(227, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDialog_QuyDinhLayout.setVerticalGroup(
             jDialog_QuyDinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog_QuyDinhLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -437,6 +458,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelForgotPassword;
     private javax.swing.JLabel jLabel_ThongTinQuyDinh;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelBackground;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea_QuyDinh;
