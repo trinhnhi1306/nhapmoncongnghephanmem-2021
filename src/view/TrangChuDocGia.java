@@ -38,8 +38,8 @@ import table.DataFromSQLServer;
 public class TrangChuDocGia extends javax.swing.JFrame {
 
     private String maNguoiDung;
-    private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "TENTACGIA", "TENNXB",
-            "TENTHELOAI", "GIA", "VITRI", "SOLUONGCON"));
+    private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI", "TENTACGIA", "TENNXB",
+            "TENTHELOAI", "SOLUONGCON"));
     private ArrayList<String> columnTitlesOfJTableSachDangMuon = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI",
             "TENTACGIA", "TENNXB", "TENTHELOAI", "NGAYMUON", "HANTRA"));
     private String queryForJTableSach = "SELECT * "
@@ -154,6 +154,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jButton_Thoat2 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         buttonGroupSachDangMuon = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel32 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel28 = new javax.swing.JPanel();
@@ -601,11 +602,11 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Tác giả", "NXB", "Thể loại", "Số lượng có", "Số lượng còn"
+                "Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Tác giả", "NXB", "Thể loại", "Số lượng còn"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -636,23 +637,28 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Theo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 35, 10));
 
+        buttonGroup1.add(jRadioButton_MaSach);
         jRadioButton_MaSach.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton_MaSach.setSelected(true);
         jRadioButton_MaSach.setText("Mã sách");
         jPanel5.add(jRadioButton_MaSach);
 
+        buttonGroup1.add(jRadioButton_TenSach);
         jRadioButton_TenSach.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton_TenSach.setText("Tên sách");
         jPanel5.add(jRadioButton_TenSach);
 
+        buttonGroup1.add(jRadioButton_TenTacGia);
         jRadioButton_TenTacGia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton_TenTacGia.setText("Tác giả");
         jPanel5.add(jRadioButton_TenTacGia);
 
+        buttonGroup1.add(jRadioButton_NXB);
         jRadioButton_NXB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton_NXB.setText("NXB");
         jPanel5.add(jRadioButton_NXB);
 
+        buttonGroup1.add(jRadioButton_TheLoai);
         jRadioButton_TheLoai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton_TheLoai.setText("Thể loại");
         jPanel5.add(jRadioButton_TheLoai);
@@ -798,6 +804,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
         buttonGroupSachDangMuon.add(jRadioButtonMaSach);
         jRadioButtonMaSach.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButtonMaSach.setSelected(true);
         jRadioButtonMaSach.setText("Mã sách");
         jPanel13.add(jRadioButtonMaSach);
 
@@ -813,7 +820,6 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
         buttonGroupSachDangMuon.add(jRadioButtonMaNXB);
         jRadioButtonMaNXB.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButtonMaNXB.setSelected(true);
         jRadioButtonMaNXB.setText("Nhà xuất bản");
         jPanel13.add(jRadioButtonMaNXB);
 
@@ -1300,18 +1306,38 @@ public class TrangChuDocGia extends javax.swing.JFrame {
             trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
         }
         if (jRadioButton_TenTacGia.isSelected()) {
-            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 2));
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 5));
         }
         if (jRadioButton_NXB.isSelected()) {
-            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 3));
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 6));
         }
         if (jRadioButton_TheLoai.isSelected()) {
-            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 4));
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 7));
         }
     }//GEN-LAST:event_jTextField_KeywordCaretUpdate
 
     private void jButton_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimKiemActionPerformed
         // TODO add your handling code here:
+        String tuKhoa = jTextField_Keyword.getText();
+        DefaultTableModel model = (DefaultTableModel) jTable_DSSach.getModel();
+        TableRowSorter<DefaultTableModel> trs = new TableRowSorter<>(model);
+        jTable_DSSach.setRowSorter(trs);
+
+        if (jRadioButton_MaSach.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 0));
+        }
+        if (jRadioButton_TenSach.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 1));
+        }
+        if (jRadioButton_TenTacGia.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 5));
+        }
+        if (jRadioButton_NXB.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 6));
+        }
+        if (jRadioButton_TheLoai.isSelected()) {
+            trs.setRowFilter(RowFilter.regexFilter("(?i)" + tuKhoa, 7));
+        }
     }//GEN-LAST:event_jButton_TimKiemActionPerformed
 
     private void jButton_TroVe3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVe3ActionPerformed
@@ -1358,9 +1384,9 @@ public class TrangChuDocGia extends javax.swing.JFrame {
             Duration diff = Duration.between(today.atStartOfDay(), hanTra.atStartOfDay());
             long diffDays = diff.toDays();
             if (diffDays >= 0) {
-                str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " còn " + diffDays + " ngày nữa hết hạn\n";
+                str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " còn " + diffDays + " ngày nữa hết hạn mượn.\n";
             } else {
-                str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " đã hết hạn\n";
+                str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " đã hết hạn mượn.\n";
             }
             jButton_ThongBao.setForeground(Color.red);
             jButton_ThongBao.setText("Thông báo!!");
@@ -1490,6 +1516,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
                     NguoiDung.chinhSuaTTNguoiDung(maNguoiDung, chuanHoaDanhTuRieng(ten), gioiTinh, ngaySinh, diaChi, sdt, email);
                     JOptionPane.showMessageDialog(jDialog_SuaThongTinCaNhan, "Chỉnh sửa thông tin thành công!");
                     showThongTinNguoiDung();
+                    jDialog_SuaThongTinCaNhan.dispose();
                 }
             }
         }
@@ -1551,46 +1578,47 @@ public class TrangChuDocGia extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TrangChuDocGia().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(TrangChuDocGia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TrangChuDocGia().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroupSachDangMuon;
     private javax.swing.JButton jButtonTimKiemSachDangMuon;
     private javax.swing.JButton jButton_DangXuat;

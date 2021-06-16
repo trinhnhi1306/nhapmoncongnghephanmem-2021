@@ -100,33 +100,30 @@ public class DangNhap extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(242, 242, 242)
-                .addComponent(jLabel11)
-                .addContainerGap(256, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(296, 296, 296))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(31, 31, 31)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(30, Short.MAX_VALUE)))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(jLabel11))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 428, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(60, 60, 60)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                    .addGap(70, 70, 70)))
         );
 
         javax.swing.GroupLayout jDialog_QuyDinhLayout = new javax.swing.GroupLayout(jDialog_QuyDinh.getContentPane());
@@ -328,7 +325,7 @@ public class DangNhap extends javax.swing.JFrame {
                 + "\n- Độc giả chọn tài liệu theo nhu cầu cá nhân, mỗi đầu sách chỉ được mượn 1 quyển."
                 + "\n   Số sách được mượn không quá " + qd.getSoSachMuonToiDa() + " quyển. Độc giả được mượn sách tối đa " + qd.getSoNgayMuonToiDa() + " ngày tính từ ngày mượn."
                 + "\n- Độc giả có trách nhiệm trả tài liệu đúng hạn cho thư viện, thanh toán các khoản phạt, bồi thường (nếu có)."
-                + "\n   Độc giả có trách nhiệm bảo quản tài liệu của Thư viện, các trường hợp làm mất, gây hư hỏng,... phải bồi thường theo quy định của Thư viện."
+                + "\n   Độc giả có trách nhiệm bảo quản tài liệu của Thư viện, các trường hợp làm mất, gây hư hỏng,... phải bồi    thường theo quy định của Thư viện."
                 + "\n   Độc giả mượn sách đến hạn trả sách mà chưa trả sẽ bị phạt " + qd.getTienPhatQuaHan() + "/ngày trễ."
                 + "\n   Làm hỏng hoặc mất sách sẽ bị phạt " + qd.getTienPhatHongMat() * 100 + "% giá trên bìa sách."
                 + "\n- Độc giả phải trả sách mượn quá hạn mới được tiếp tục mượn sách."

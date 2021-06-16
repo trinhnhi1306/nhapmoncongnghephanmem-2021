@@ -2028,7 +2028,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn lớp bạn muốn chỉnh sửa");
         } else {
             String tenLop = jTextField_TenLop.getText();
-            String maKhoa = (String) jComboBox_TenKhoaCuaLop.getSelectedItem();
+            Khoa khoa = (Khoa) jComboBox_TenKhoaCuaLop.getSelectedItem();
             if (tenLop.equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(this, "Tên lớp không được để trống!");
             } else {
@@ -2036,7 +2036,7 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
                 if (luaChon == JOptionPane.CANCEL_OPTION) {
                     return;
                 } else if (luaChon == JOptionPane.OK_OPTION) {
-                    chinhSuaLop(maLop, tenLop, maKhoa);
+                    chinhSuaLop(maLop, tenLop, khoa.getMaKhoa());
                     JOptionPane.showMessageDialog(this, "Chỉnh sửa lớp thành công!");
                     DataFromSQLServer.getAndShowData(jTable_DSLop, columnTitlesOfJTableLop, queryForJTableLop);
                 }
@@ -2084,38 +2084,38 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new QuanLyLopKhoaVaiTro().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new QuanLyLopKhoaVaiTro().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
