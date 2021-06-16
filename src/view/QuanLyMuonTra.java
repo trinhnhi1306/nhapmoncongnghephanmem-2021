@@ -1061,12 +1061,12 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
     private void jButtonMuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMuonSachActionPerformed
         // Check if a row is selected in jTableDocGia1 and jTableSach
-        int selectedRowOfJTableDocGia1 = jTableDocGia1.convertRowIndexToModel(jTableDocGia1.getSelectedRow());
-        int selectedRowOfJTableSach = jTableSach.convertRowIndexToModel(jTableSach.getSelectedRow());
-        if (selectedRowOfJTableDocGia1 == -1 || selectedRowOfJTableSach == -1) {
+        if (jTableDocGia1.getSelectedRow() == -1 || jTableSach.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả và sách để mượn!");
             return;
         }
+        int selectedRowOfJTableDocGia1 = jTableDocGia1.convertRowIndexToModel(jTableDocGia1.getSelectedRow());
+        int selectedRowOfJTableSach = jTableSach.convertRowIndexToModel(jTableSach.getSelectedRow());
 
         // Get maDocGia, maSach and SoLuongCon from jTableDocGia1 and jTableSach
         String maDocGia = (String) jTableDocGia1.getModel().getValueAt(selectedRowOfJTableDocGia1, 0);
@@ -1103,12 +1103,12 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
     private void jButtonTraSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTraSachActionPerformed
         // Check if a row is selected in jTableDocGia2 and jTableSachDangMuon
-        int selectedRowOfJTableDocGia2 = jTableDocGia2.convertRowIndexToModel(jTableDocGia2.getSelectedRow());
-        int selectedRowOfJTableSachDangMuon = jTableSachDangMuon.convertRowIndexToModel(jTableSachDangMuon.getSelectedRow());
-        if (selectedRowOfJTableDocGia2 == -1 || selectedRowOfJTableSachDangMuon == -1) {
+        if (jTableDocGia2.getSelectedRow() == -1 || jTableSachDangMuon.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả và sách đang mượn để trả sách!");
             return;
         }
+        int selectedRowOfJTableDocGia2 = jTableDocGia2.convertRowIndexToModel(jTableDocGia2.getSelectedRow());
+        int selectedRowOfJTableSachDangMuon = jTableSachDangMuon.convertRowIndexToModel(jTableSachDangMuon.getSelectedRow());
 
         // Get maDocGia and maSach from jTableDocGia2 and jTableSachDangMuon
         String maDocGia = (String) jTableDocGia2.getModel().getValueAt(selectedRowOfJTableDocGia2, 0);
@@ -1270,12 +1270,12 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
     private void jButtonBaoHongMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBaoHongMatActionPerformed
         // Check if a row is selected in jTableDocGia2 and jTableSachDangMuon
-        int selectedRowOfJTableDocGia2 = jTableDocGia2.convertRowIndexToModel(jTableDocGia2.getSelectedRow());
-        int selectedRowOfJTableSachDangMuon = jTableSachDangMuon.convertRowIndexToModel(jTableSachDangMuon.getSelectedRow());
-        if (selectedRowOfJTableDocGia2 == -1 || selectedRowOfJTableSachDangMuon == -1) {
+        if (jTableDocGia2.getSelectedRow() == -1 || jTableSachDangMuon.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả và sách đang mượn để báo hỏng mất!");
             return;
         }
+        int selectedRowOfJTableDocGia2 = jTableDocGia2.convertRowIndexToModel(jTableDocGia2.getSelectedRow());
+        int selectedRowOfJTableSachDangMuon = jTableSachDangMuon.convertRowIndexToModel(jTableSachDangMuon.getSelectedRow());
 
         // Get maDocGia and maSach from jTableDocGia2 and jTableSachDangMuon
         String maDocGia = (String) jTableDocGia2.getModel().getValueAt(selectedRowOfJTableDocGia2, 0);
