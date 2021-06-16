@@ -411,6 +411,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jDialog_ThayDoiQuyDinh.setTitle("Thay đổi quy định");
+
         jPanel9.setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N

@@ -494,6 +494,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JDialog" name="jDialog_ThayDoiQuyDinh">
+      <Properties>
+        <Property name="title" type="java.lang.String" value="Thay &#x111;&#x1ed5;i quy &#x111;&#x1ecb;nh"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

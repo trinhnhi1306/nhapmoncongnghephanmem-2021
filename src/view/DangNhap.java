@@ -324,7 +324,7 @@ public class DangNhap extends javax.swing.JFrame {
         String str = "";
         str = str + "\n- Độc giả truy cập vào phần mềm để tra cứu sách bằng tài khoản đã được cung cấp và có thể thay đổi mật khẩu sau khi đăng nhập."
                 + "\n- Độc giả chọn tài liệu theo nhu cầu cá nhân, mỗi đầu sách chỉ được mượn 1 quyển."
-                + "\n   Số sách được mượn không quá " + qd.getSoSachMuonToiDa() + " quyển. Độc giả được mượn sách tối đa " + qd.getSoNgayMuonToiDa() + " ngày tính từ ngày mượn."
+                + "\n   Số sách được mượn không quá " + qd.getSoSachMuonToiDa() + " quyển. Độc giả được mượn sách tối đa " + qd.getSoNgayMuonToiDa() + " ngày tính từ ngày mượn sách."
                 + "\n- Độc giả có trách nhiệm trả tài liệu đúng hạn cho thư viện, thanh toán các khoản phạt, bồi thường (nếu có)."
                 + "\n   Độc giả có trách nhiệm bảo quản tài liệu của Thư viện, các trường hợp làm mất, gây hư hỏng,... phải bồi thường theo quy định của Thư viện."
                 + "\n   Độc giả mượn sách đến hạn trả sách mà chưa trả sẽ bị phạt " + qd.getTienPhatQuaHan() + "/ngày trễ."

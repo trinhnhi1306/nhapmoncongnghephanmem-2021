@@ -1389,7 +1389,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
                 str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " đã hết hạn mượn.\n";
             }
             jButton_ThongBao.setForeground(Color.red);
-            jButton_ThongBao.setText("Thông báo!!");
+            jButton_ThongBao.setText("Thông báo!!!");
         }
         jTextArea_ThongBao.setText(str);
     }

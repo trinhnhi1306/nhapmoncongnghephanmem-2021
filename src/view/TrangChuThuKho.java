@@ -6,6 +6,7 @@
 package view;
 
 import hash.MD5;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,6 +42,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel_SLDocGia.setText(String.valueOf(DataFromSQLServer.aggregate("select count(MANGUOIDUNG) from NGUOIDUNG where MAVAITRO = 'VT01'")));
         jLabel_SLSachCo.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT SUM(SOLUONGCO) FROM SACH")));
         jLabel_SLSachMuon.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT COUNT(*) FROM MUONTRA")));
+        thongBao();
     }
 
     /**
@@ -57,9 +59,9 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea_ThongBao = new javax.swing.JTextArea();
+        jTextArea_NoiDungThongBao = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField_ThongBaoTu = new javax.swing.JTextField();
         jButton_TroVe = new javax.swing.JButton();
         jDialog_SuaThongTinCaNhan = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
@@ -145,20 +147,20 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Nội dung");
 
-        jTextArea_ThongBao.setEditable(false);
-        jTextArea_ThongBao.setColumns(20);
-        jTextArea_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextArea_ThongBao.setLineWrap(true);
-        jTextArea_ThongBao.setRows(5);
-        jTextArea_ThongBao.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(jTextArea_ThongBao);
+        jTextArea_NoiDungThongBao.setEditable(false);
+        jTextArea_NoiDungThongBao.setColumns(20);
+        jTextArea_NoiDungThongBao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextArea_NoiDungThongBao.setLineWrap(true);
+        jTextArea_NoiDungThongBao.setRows(5);
+        jTextArea_NoiDungThongBao.setWrapStyleWord(true);
+        jScrollPane2.setViewportView(jTextArea_NoiDungThongBao);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Từ");
 
-        jTextField3.setEditable(false);
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setText("Admin");
+        jTextField_ThongBaoTu.setEditable(false);
+        jTextField_ThongBaoTu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField_ThongBaoTu.setText("Admin");
 
         jButton_TroVe.setBackground(new java.awt.Color(153, 255, 153));
         jButton_TroVe.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -184,7 +186,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                            .addComponent(jTextField3)))
+                            .addComponent(jTextField_ThongBaoTu)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -202,7 +204,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_ThongBaoTu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -949,13 +951,15 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                     + "\n- Phạt trả sách quá hạn: " + qdmoi.getTienPhatQuaHan() + " đ/ngày quá hạn."
                     + "\n- Phạt làm hỏng, mất sách: " + qdmoi.getTienPhatHongMat() * 100 + "% giá trên bìa sách.";
         } else {
+            jButton_ThongBao.setForeground(Color.red);
+            jButton_ThongBao.setText("Thông báo!!!");
             str = "Quy định đã được thay đổi vào ngày : " + qdmoi.getNgayThayDoi()
                     + "\n- Được mượn tối đa: " + qdcu.getSoSachMuonToiDa() + " quyển ===> " + qdmoi.getSoSachMuonToiDa() + " quyển."
                     + "\n- Số ngày mượn tối đa: " + qdcu.getSoNgayMuonToiDa() + " ngày ===> " + qdmoi.getSoNgayMuonToiDa() + " ngày."
                     + "\n- Phạt trả sách quá hạn: " + qdcu.getTienPhatQuaHan() + " đ/ngày quá hạn ===> " + qdmoi.getTienPhatQuaHan() + " đ/ngày quá hạn."
                     + "\n- Phạt làm hỏng, mất sách: " + qdcu.getTienPhatHongMat() * 100 + "% giá trên bìa sách ===> " + qdmoi.getTienPhatHongMat() * 100 + "% giá trên bìa sách.";
         }
-        jTextArea_ThongBao.setText(str);
+        jTextArea_NoiDungThongBao.setText(str);
     }
 
     private void jButton_ThongTinCaNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinCaNhanActionPerformed
@@ -1001,7 +1005,6 @@ public class TrangChuThuKho extends javax.swing.JFrame {
 
     private void jButton_ThongBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongBaoActionPerformed
         // TODO add your handling code here:
-        thongBao();
         jDialog_ThongBao.pack();
         jDialog_ThongBao.setLocationRelativeTo(this);
         jDialog_ThongBao.setVisible(true);
@@ -1224,12 +1227,12 @@ public class TrangChuThuKho extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable_ThongKeSach;
-    private javax.swing.JTextArea jTextArea_ThongBao;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea jTextArea_NoiDungThongBao;
     private javax.swing.JTextField jTextField_DiaChi;
     private javax.swing.JTextField jTextField_Email;
     private javax.swing.JTextField jTextField_MaNguoiDung;
     private javax.swing.JTextField jTextField_SDT;
     private javax.swing.JTextField jTextField_TenNguoiDung;
+    private javax.swing.JTextField jTextField_ThongBaoTu;
     // End of variables declaration//GEN-END:variables
 }
