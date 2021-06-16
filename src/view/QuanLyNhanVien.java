@@ -794,6 +794,8 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             ps.setString(11, maVaiTro);
             ps.setString(12, maLop);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -939,7 +941,7 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
         jTextField_DiaChi1.setText("");
         jTextField_Email1.setText("");
         jTextField_SDT1.setText("");
-        
+
         jDialog_ThemNhanVien.pack();
         jDialog_ThemNhanVien.setLocationRelativeTo(this);
         jDialog_ThemNhanVien.setVisible(true);
@@ -976,6 +978,8 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
             ps.setString(7, maVaiTro);
             ps.setString(8, maNV);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -984,7 +988,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
     private void jButton_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaActionPerformed
         // TODO add your handling code here:
         String maNV = jTextField_MaNV.getText();
-        int kt;
         if (maNV.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên bạn muốn chỉnh sửa");
         } else {
@@ -1058,7 +1061,6 @@ public class QuanLyNhanVien extends javax.swing.JFrame {
     private void jButton_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaActionPerformed
         // TODO add your handling code here:
         String maNV = jTextField_MaNV.getText();
-        int kt;
         if (maNV.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn nhân viên bạn muốn xóa");
         } else {

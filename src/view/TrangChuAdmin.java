@@ -866,7 +866,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jTextField_PhatHongMat.setText(String.valueOf(qd.getTienPhatHongMat()));
         jDateChooser_NgayThayDoi.setDate(ngayThayDoi.getTime());
     }
-    
+
     private void jButton_QLNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QLNhanVienActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -1009,17 +1009,13 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         }
         if (soSachMuonToiDa.equals("")) {
             JOptionPane.showMessageDialog(jDialog_ThayDoiQuyDinh, "Số sách mượn tối đa không được để trống!");
-        }
-        else if (soNgayMuonToiDa.equals("")) {
+        } else if (soNgayMuonToiDa.equals("")) {
             JOptionPane.showMessageDialog(jDialog_ThayDoiQuyDinh, "Số ngày mượn tối đa không được để trống!");
-        }
-        else if (phatQuaHan.equals("")) {
+        } else if (phatQuaHan.equals("")) {
             JOptionPane.showMessageDialog(jDialog_ThayDoiQuyDinh, "Tiền phạt quá hạn không được để trống!");
-        }
-        else if (phatHongMat.equals("")) {
+        } else if (phatHongMat.equals("")) {
             JOptionPane.showMessageDialog(jDialog_ThayDoiQuyDinh, "Tiền phạt hỏng mất không được để trống!");
-        }
-        else {
+        } else {
             if (!soSachMuonToiDa.matches("[1-9]+[0-9]*")) {
                 JOptionPane.showMessageDialog(jDialog_ThayDoiQuyDinh, "Số sách mượn chỉ gồm chữ số!");
             } else if (!soNgayMuonToiDa.matches("[1-9]+[0-9]*")) {
@@ -1043,6 +1039,8 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                         ps.setString(5, phatHongMat);
                         ps.setString(6, ngayThayDoi);
                         ps.executeUpdate();
+                        ps.close();
+                        con.close();
                     } catch (SQLException ex) {
                         System.out.println(ex.getMessage());
                     }

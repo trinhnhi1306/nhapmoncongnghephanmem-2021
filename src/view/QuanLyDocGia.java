@@ -834,6 +834,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             ps.setString(11, "VT01");
             ps.setString(12, maLop);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -979,7 +981,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 jDateChooser_NgaySinh.setDate(date);
             } catch (ParseException ex) {
                 System.out.println(ex.getMessage());
-
             }
         }
         jTextField_DiaChiDG.setText((String) model.getValueAt(row, 4));
@@ -994,7 +995,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 jDateChooser_NgayDangKy.setDate(date);
             } catch (ParseException ex) {
                 System.out.println(ex.getMessage());
-
             }
         }
         String ngayHetHan = (String) model.getValueAt(row, 8);
@@ -1006,7 +1006,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
                 jDateChooser_NgayHetHan.setDate(date);
             } catch (ParseException ex) {
                 System.out.println(ex.getMessage());
-
             }
         }
         jComboBox_MaLop.setSelectedItem(model.getValueAt(row, 9));
@@ -1027,7 +1026,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-
         }
         return tonTai;
     }
@@ -1047,7 +1045,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
-
         }
         return tonTai;
     }
@@ -1069,7 +1066,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private void jButton_XoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaActionPerformed
         // TODO add your handling code here:
         String maDG = jTextField_MaDG.getText();
-        int kt;
         if (maDG.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả bạn muốn xóa");
         } else {
@@ -1115,6 +1111,8 @@ public class QuanLyDocGia extends javax.swing.JFrame {
             ps.setString(9, maLop);
             ps.setString(10, maDG);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1123,7 +1121,6 @@ public class QuanLyDocGia extends javax.swing.JFrame {
     private void jButton_SuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaActionPerformed
         // TODO add your handling code here:
         String maDG = jTextField_MaDG.getText();
-        int kt;
         if (maDG.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn độc giả bạn muốn chỉnh sửa");
         } else {

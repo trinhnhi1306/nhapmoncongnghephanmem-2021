@@ -1419,6 +1419,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(2, tenLop);
             ps.setString(3, maKhoa);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1457,7 +1459,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_TroVe1ActionPerformed
 
     public void themMoiKhoa(String maKhoa, String tenKhoa) {
-
         String sql = "insert into KHOA values (?,?)";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -1465,6 +1466,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(1, maKhoa);
             ps.setString(2, tenKhoa);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1654,6 +1657,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(1, maVaiTro);
             ps.setString(2, tenVaiTro);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1861,7 +1866,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private void jButton_XoaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaLopActionPerformed
         // TODO add your handling code here:
         String maLop = jTextField_MaLop.getText();
-        int kt;
         if (maLop.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn lớp bạn muốn xóa");
         } else {
@@ -1915,7 +1919,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
-
         }
         return tonTai;
     }
@@ -1942,7 +1945,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private void jButton_XoaKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaKhoaActionPerformed
         // TODO add your handling code here:
         String maKhoa = jTextField_MaKhoa.getText();
-        int kt;
         if (maKhoa.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn khoa bạn muốn xóa");
         } else {
@@ -1972,6 +1974,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(1, tenKhoa);
             ps.setString(2, maKhoa);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2010,6 +2014,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(2, maKhoa);
             ps.setString(3, maLop);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2018,7 +2024,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private void jButton_SuaLopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaLopActionPerformed
         // TODO add your handling code here:
         String maLop = jTextField_MaLop.getText();
-        int kt;
         if (maLop.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn lớp bạn muốn chỉnh sửa");
         } else {
@@ -2040,7 +2045,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_SuaLopActionPerformed
 
     public void chinhSuaVaiTro(String maVaiTro, String tenVaiTro) {
-
         String sql = "update VAITRO set TENVAITRO = ? WHERE MAVAITRO = ?";
         Connection con = KetNoiSQL.layKetNoi();
         try {
@@ -2048,6 +2052,8 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
             ps.setString(1, tenVaiTro);
             ps.setString(2, maVaiTro);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyLopKhoaVaiTro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2056,7 +2062,6 @@ public class QuanLyLopKhoaVaiTro extends javax.swing.JFrame {
     private void jButton_SuaVaiTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaVaiTroActionPerformed
         // TODO add your handling code here:
         String maVaiTro = jTextField_MaVaiTro.getText();
-        int kt;
         if (maVaiTro.equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn vai trò bạn muốn chỉnh sửa");
         } else {

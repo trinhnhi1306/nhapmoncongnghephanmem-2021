@@ -878,7 +878,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void thongKeSach () {
+    public void thongKeSach() {
         String sql = "";
         if (jComboBox_TenLoaiTK.getSelectedItem().equals("Tác giả")) {
             jTable_ThongKeSach.getColumnModel().getColumn(0).setHeaderValue("Tên tác giả");
@@ -896,8 +896,8 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             Sach.aggregate(sql, jTable_ThongKeSach);
         }
     }
-    
-    public void showThongTinNguoiDung () {
+
+    public void showThongTinNguoiDung() {
         NguoiDung n = NguoiDung.layThongTinNguoiDung();
         jTextField_MaNguoiDung.setText(n.getMa());
         jTextField_TenNguoiDung.setText(n.getTen());
@@ -949,7 +949,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         jPasswordField_oldpass.setText("");
         jPasswordField_newpass.setText("");
         jPasswordField_cnfpass.setText("");
-        
+
         jDialog_DoiMatKhau.pack();
         jDialog_DoiMatKhau.setLocationRelativeTo(this);
         jDialog_DoiMatKhau.setVisible(true);

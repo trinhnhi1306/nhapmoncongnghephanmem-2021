@@ -15,7 +15,7 @@ public class TacGia {
 
     public TacGia() {
     }
-    
+
     public TacGia(String maTacGia, String tenTacGia) {
         this.maTacGia = maTacGia;
         this.tenTacGia = tenTacGia;
@@ -50,7 +50,7 @@ public class TacGia {
     public String getGhiChu() {
         return ghiChu;
     }
-    
+
     @Override
     public String toString() {
         return maTacGia + " - " + tenTacGia;

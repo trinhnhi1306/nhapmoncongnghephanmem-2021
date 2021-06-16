@@ -16,6 +16,7 @@ import ketnoi.KetNoiSQL;
  * @author Apple Bee
  */
 public class QuyDinh {
+
     private int maQuyDinh, soSachMuonToiDa, soNgayMuonToiDa, tienPhatQuaHan;
     private float tienPhatHongMat;
     private String ngayThayDoi;
@@ -79,19 +80,21 @@ public class QuyDinh {
     public void setNgayThayDoi(String ngayThayDoi) {
         this.ngayThayDoi = ngayThayDoi;
     }
-    
+
     public static QuyDinh layThongTinQuyDinh() {
         QuyDinh qd = null;
         try {
             Connection con = KetNoiSQL.layKetNoi();
             PreparedStatement ps = con.prepareStatement("SELECT TOP 1 * FROM QUYDINH ORDER BY MAQUYDINH DESC");
             ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 qd = new QuyDinh(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getFloat(5), rs.getString(6));
             }
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            System.out.println("lala");
         }
         return qd;
     }

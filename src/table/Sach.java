@@ -18,6 +18,7 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class Sach {
+
     public static void updateColumn(String columnName, Object columnValue, String maSach) {
         try (
                 Connection con = KetNoiSQL.layKetNoi();
@@ -25,11 +26,13 @@ public class Sach {
             rs.setObject(1, columnValue);
             rs.setString(2, maSach);
             rs.executeUpdate();
+            rs.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(Sach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
-    
+
     public static Object getColumnValue(String columnName, String maSach) {
         Object columnValue = null;
         try (
@@ -38,12 +41,15 @@ public class Sach {
                 ResultSet rs = ps.executeQuery()) {
             rs.next();
             columnValue = rs.getObject(columnName);
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(Sach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         return columnValue;
     }
-    
+
     public static void aggregate(String aggregateQuery, JTable tb) {
         DefaultTableModel model = (DefaultTableModel) tb.getModel();
         model.setNumRows(0);
@@ -51,9 +57,12 @@ public class Sach {
                 Connection con = KetNoiSQL.layKetNoi();
                 PreparedStatement ps = con.prepareStatement(aggregateQuery);
                 ResultSet rs = ps.executeQuery()) {
-            while(rs.next()){
-                model.addRow(new Object[] {rs.getString(1), rs.getString(2)});
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2)});
             }
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(Sach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }

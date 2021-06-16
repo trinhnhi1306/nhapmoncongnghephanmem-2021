@@ -10,8 +10,9 @@ package model;
  * @author Apple Bee
  */
 public class DocGia extends NguoiDung {
+
     private String ngayDangKy, ngayHetHan, maLop;
-    
+
     public DocGia() {
     }
 
@@ -45,6 +46,5 @@ public class DocGia extends NguoiDung {
     public void setMaLop(String maLop) {
         this.maLop = maLop;
     }
-    
-    
+
 }

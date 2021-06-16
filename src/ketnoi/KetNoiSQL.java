@@ -16,7 +16,6 @@ public class KetNoiSQL {
     /**
      * @param args the command line arguments
      */
-
     public static Connection layKetNoi() {
         Connection ketNoi = null;
         String uRL = "jdbc:sqlserver://;databaseName=QLTHUVIEN";

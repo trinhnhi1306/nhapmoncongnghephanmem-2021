@@ -16,6 +16,7 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class XuLyViPham {
+
     public static void insert(String maDocGia, int phatQuaHan, int phatHongMat, int soLanViPham) {
         try (
                 Connection con = KetNoiSQL.layKetNoi();
@@ -25,11 +26,13 @@ public class XuLyViPham {
             rs.setInt(3, phatHongMat);
             rs.setInt(4, soLanViPham);
             rs.executeUpdate();
+            rs.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
-    
+
     public static Object getColumnValue(String columnName, String maDocGia) {
         Object columnValue = null;
         try (
@@ -38,12 +41,15 @@ public class XuLyViPham {
                 ResultSet rs = ps.executeQuery()) {
             rs.next();
             columnValue = rs.getObject(columnName);
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         return columnValue;
     }
-    
+
     public static void updateColumn(String columnName, Object columnValue, String maDocGia) {
         try (
                 Connection con = KetNoiSQL.layKetNoi();
@@ -51,16 +57,20 @@ public class XuLyViPham {
             rs.setObject(1, columnValue);
             rs.setString(2, maDocGia);
             rs.executeUpdate();
+            rs.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
-    
+
     public static void deleteAll() {
         try (
                 Connection con = KetNoiSQL.layKetNoi();
                 PreparedStatement rs = con.prepareStatement("DELETE FROM XULYVIPHAM")) {
             rs.executeUpdate();
+            rs.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(XuLyViPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }

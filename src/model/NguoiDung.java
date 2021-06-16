@@ -124,6 +124,8 @@ public class NguoiDung {
             ps.setString(6, email);
             ps.setString(7, ma);
             ps.executeUpdate();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -148,7 +150,7 @@ public class NguoiDung {
         }
         return n;
     }
-    
+
     public static void aggregate(String aggregateQuery, JTable tb) {
         DefaultTableModel model = (DefaultTableModel) tb.getModel();
         model.setNumRows(0);
@@ -156,11 +158,14 @@ public class NguoiDung {
                 Connection con = KetNoiSQL.layKetNoi();
                 PreparedStatement ps = con.prepareStatement(aggregateQuery);
                 ResultSet rs = ps.executeQuery()) {
-            while(rs.next()){
-                model.addRow(new Object[] {rs.getString(1), rs.getString(2)});
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getString(1), rs.getString(2)});
             }
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(table.Sach.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NguoiDung.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
 }

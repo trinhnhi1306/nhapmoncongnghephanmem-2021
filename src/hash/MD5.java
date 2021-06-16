@@ -15,15 +15,16 @@ import java.security.NoSuchAlgorithmException;
  * @author COMPUTER
  */
 public class MD5 {
+
     public static String encrypt(String password) {
         String hashCode = "";
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(password.getBytes());
-            
+
             // Convert byte array into signum representation
-            BigInteger temp = new BigInteger(1, messageDigest); 
-            
+            BigInteger temp = new BigInteger(1, messageDigest);
+
             // Convert messageDigest into hex value
             hashCode = temp.toString(16);
             while (hashCode.length() < 32) {
@@ -34,9 +35,9 @@ public class MD5 {
         }
         return "0x" + hashCode;
     }
-    
-    public static void main(String[] args) {
-        System.out.println(encrypt("admin"));
-        System.out.println(table.NguoiDung.getColumnValue("MATKHAU", "admin1"));
-    }
+
+//    public static void main(String[] args) {
+//        System.out.println(encrypt("admin"));
+//        System.out.println(table.NguoiDung.getColumnValue("MATKHAU", "admin1"));
+//    }
 }

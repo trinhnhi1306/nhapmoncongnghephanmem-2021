@@ -309,10 +309,10 @@ public class DangNhap extends javax.swing.JFrame {
                 + "\n   Độc giả mượn sách đến hạn trả sách mà chưa trả sẽ bị phạt " + qd.getTienPhatQuaHan() + "/ngày trễ."
                 + "\n   Làm hỏng hoặc mất sách sẽ bị phạt " + qd.getTienPhatHongMat() * 100 + "% giá trên bìa sách."
                 + "\n- Độc giả phải trả sách mượn quá hạn mới được tiếp tục mượn sách."
-                + "\n\n\n\n\t\t\t\t\t\t " + qd.getNgayThayDoi();
+                + "\n\n\n\n\t\t\t\t\t\t" + qd.getNgayThayDoi();
         return str;
     }
-    
+
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
         // TODO add your handling code here:
         String sql = "SELECT * FROM NGUOIDUNG WHERE MANGUOIDUNG = ? AND MATKHAU = ?";
@@ -340,9 +340,11 @@ public class DangNhap extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Mã người dùng hoặc mật khẩu không chính xác! Vui lòng thử lại.");
             }
             rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(DangNhap.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
 
     }//GEN-LAST:event_jButton_DangNhapActionPerformed
 

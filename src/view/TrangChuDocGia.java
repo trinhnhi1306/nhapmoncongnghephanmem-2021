@@ -39,12 +39,13 @@ public class TrangChuDocGia extends javax.swing.JFrame {
 
     private String maNguoiDung;
     private ArrayList<String> columnTitlesOfJTableSach = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "TENTACGIA", "TENNXB",
-                                                                                       "TENTHELOAI", "GIA", "VITRI", "SOLUONGCON"));
+            "TENTHELOAI", "GIA", "VITRI", "SOLUONGCON"));
     private ArrayList<String> columnTitlesOfJTableSachDangMuon = new ArrayList<>(Arrays.asList("MASACH", "TENSACH", "NGAYNHAP", "GIA", "VITRI",
-                                                                                               "TENTACGIA", "TENNXB", "TENTHELOAI", "NGAYMUON", "HANTRA"));
+            "TENTACGIA", "TENNXB", "TENTHELOAI", "NGAYMUON", "HANTRA"));
     private String queryForJTableSach = "SELECT * "
-                                        + "FROM SACH S, NHAXUATBAN NXB, TACGIA TG, THELOAI TL "
-                                        + "WHERE S.MANXB = NXB.MANXB AND S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI";
+            + "FROM SACH S, NHAXUATBAN NXB, TACGIA TG, THELOAI TL "
+            + "WHERE S.MANXB = NXB.MANXB AND S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI";
+
     /**
      * Creates new form AdminHoneForm
      */
@@ -53,16 +54,16 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jLabelTenDocGia.setText((String) table.NguoiDung.getColumnValue("TENNGUOIDUNG", maNguoiDung));
-        
+
         // thong ke
         jLabel_SLSach.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT SUM(SOLUONGCO) FROM SACH")));
         jLabel_SLSachDangMuon.setText(String.valueOf(DataFromSQLServer.aggregate("SELECT COUNT(*) FROM MUONTRA WHERE MANGUOIDUNG = '" + maNguoiDung + "'")));
         demSoLuongDG();
-        
+
         DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTableSach, queryForJTableSach);
-        String query = "SELECT * " +
-                       "FROM MUONTRA M, SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL " +
-                       "WHERE M.MASACH = S.MASACH AND S.MANXB = NXB.MANXB AND S.MATHELOAI = TL.MATHELOAI AND S.MATACGIA = TG.MATACGIA AND MANGUOIDUNG = '" + maNguoiDung + "'";
+        String query = "SELECT * "
+                + "FROM MUONTRA M, SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL "
+                + "WHERE M.MASACH = S.MASACH AND S.MANXB = NXB.MANXB AND S.MATHELOAI = TL.MATHELOAI AND S.MATACGIA = TG.MATACGIA AND MANGUOIDUNG = '" + maNguoiDung + "'";
         DataFromSQLServer.getAndShowData(jTableSachDangMuon, columnTitlesOfJTableSachDangMuon, query);
         thongBao();
     }
@@ -1267,7 +1268,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
             ps.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TrangChuThuKho.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TrangChuDocGia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -1343,13 +1344,13 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         jPasswordField_oldpass.setText("");
         jPasswordField_newpass.setText("");
         jPasswordField_cnfpass.setText("");
-        
+
         jDialog_DoiMatKhau.pack();
         jDialog_DoiMatKhau.setLocationRelativeTo(this);
         jDialog_DoiMatKhau.setVisible(true);
     }//GEN-LAST:event_jButton_DoiMatKhauActionPerformed
 
-    public void thongBao () {
+    public void thongBao() {
         String str = "";
         LocalDate today = LocalDate.now();
         for (int i = 0; i < jTableSachDangMuon.getRowCount(); i++) {
@@ -1358,8 +1359,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
             long diffDays = diff.toDays();
             if (diffDays >= 0) {
                 str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " còn " + diffDays + " ngày nữa hết hạn\n";
-            }
-            else {
+            } else {
                 str += "Sách " + (String) jTableSachDangMuon.getModel().getValueAt(i, 0) + " đã hết hạn\n";
             }
             jButton_ThongBao.setForeground(Color.red);
@@ -1367,7 +1367,7 @@ public class TrangChuDocGia extends javax.swing.JFrame {
         }
         jTextArea_ThongBao.setText(str);
     }
-    
+
     private void jButton_ThongBaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongBaoActionPerformed
         // TODO add your handling code here:
         jDialog_ThongBao.pack();

@@ -20,6 +20,7 @@ import ketnoi.KetNoiSQL;
  * @author COMPUTER
  */
 public class DataFromSQLServer {
+
     public static void getAndShowData(JTable jTable, ArrayList<String> ColumnTitles, String selectQuery) {
         DefaultTableModel dtm = (DefaultTableModel) jTable.getModel();
         dtm.setRowCount(0);
@@ -34,11 +35,14 @@ public class DataFromSQLServer {
                 }
                 dtm.addRow(rowData);
             }
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(DataFromSQLServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
-    
+
     public static boolean exist(String selectQuery) {
         try (
                 Connection con = KetNoiSQL.layKetNoi();
@@ -50,7 +54,7 @@ public class DataFromSQLServer {
         }
         return false;
     }
-    
+
     public static int aggregate(String aggregateQuery) {
         try (
                 Connection con = KetNoiSQL.layKetNoi();

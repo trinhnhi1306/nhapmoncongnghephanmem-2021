@@ -1687,6 +1687,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 }
                 dtm.addRow(rowData);
             }
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(TrangChuThuThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -1708,6 +1711,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 }
                 dtm.addRow(rowData);
             }
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(TrangChuThuThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -1729,6 +1735,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 }
                 dtm.addRow(rowData);
             }
+            rs.close();
+            ps.close();
+            con.close();
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(TrangChuThuThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -1748,7 +1757,6 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 jDateChooser_NgaySinh.setDate(date);
             } catch (ParseException ex) {
                 System.out.println(ex.getMessage());
-
             }
         }
         jTextField_DiaChi.setText(n.getDiaChi());
