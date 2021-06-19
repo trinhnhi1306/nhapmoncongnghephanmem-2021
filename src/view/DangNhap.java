@@ -57,7 +57,7 @@ public class DangNhap extends javax.swing.JFrame {
         jPanelBackground = new javax.swing.JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon img = new ImageIcon("\\images\\pexels-janko-ferlic-590493.jpg");
+                ImageIcon img = new ImageIcon("images\\pexels-janko-ferlic-590493.jpg");
                 g.drawImage(img.getImage(), 0, 0, jPanelBackground);
             }
         };
