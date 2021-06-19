@@ -180,7 +180,7 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanelBackground">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    public void paintComponent(Graphics g) {&#xa;        super.paintComponent(g);&#xa;        ImageIcon img = new ImageIcon(&quot;src\\images\\pexels-janko-ferlic-590493.jpg&quot;);&#xa;        g.drawImage(img.getImage(), 0, 0, jPanelBackground);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xa;    public void paintComponent(Graphics g) {&#xa;        super.paintComponent(g);&#xa;        ImageIcon img = new ImageIcon(&quot;\\images\\pexels-janko-ferlic-590493.jpg&quot;);&#xa;        g.drawImage(img.getImage(), 0, 0, jPanelBackground);&#xa;    }&#xa;}"/>
       </AuxValues>
 
       <Layout>
