@@ -7,7 +7,9 @@ package table;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -81,12 +83,17 @@ public class DocGhiFile {
     
     public static void xuatFilePDF(String fileName, String paragraph) {
         Document document = new Document();
+        File fontFile = new File("vuArial.ttf");
         try {
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
+            BaseFont bf = BaseFont.createFont(fontFile.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(bf, 15);
             document.open();
-            document.add(new Paragraph(paragraph));
+            document.add(new Paragraph(paragraph, font));
             document.close();
         } catch (FileNotFoundException | DocumentException ex) {
+            Logger.getLogger(DocGhiFile.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(DocGhiFile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
