@@ -953,7 +953,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
         } else {
             jButton_ThongBao.setForeground(Color.red);
             jButton_ThongBao.setText("Thông báo!!!");
-            str = "Quy định đã được thay đổi vào ngày : " + qdmoi.getNgayThayDoi()
+            str = "Quy định đã được thay đổi vào ngày: " + qdmoi.getNgayThayDoi()
                     + "\n- Được mượn tối đa: " + qdcu.getSoSachMuonToiDa() + " quyển ===> " + qdmoi.getSoSachMuonToiDa() + " quyển."
                     + "\n- Số ngày mượn tối đa: " + qdcu.getSoNgayMuonToiDa() + " ngày ===> " + qdmoi.getSoNgayMuonToiDa() + " ngày."
                     + "\n- Phạt trả sách quá hạn: " + qdcu.getTienPhatQuaHan() + " đ/ngày quá hạn ===> " + qdmoi.getTienPhatQuaHan() + " đ/ngày quá hạn."

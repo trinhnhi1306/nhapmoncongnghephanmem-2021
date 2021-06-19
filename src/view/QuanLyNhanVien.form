@@ -420,10 +420,10 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jPanel4" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jPanel7" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jPanel6" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
@@ -1026,13 +1026,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton_ThemNhanVien" min="-2" pref="129" max="-2" attributes="0"/>
+                      <Component id="jButton_ThemNhanVien" min="-2" pref="120" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton_Sua" min="-2" pref="129" max="-2" attributes="0"/>
+                      <Component id="jButton_Sua" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton_Xoa" min="-2" pref="129" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="jButtonResetPassword" max="32767" attributes="0"/>
+                      <Component id="jButton_Xoa" min="-2" pref="115" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonResetPassword" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton_XuatFileExcel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1046,6 +1048,7 @@
                           <Component id="jButton_Sua" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="jButton_Xoa" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="jButtonResetPassword" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="jButton_XuatFileExcel" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
@@ -1109,6 +1112,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonResetPasswordActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="jButton_XuatFileExcel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/excel.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t file Excel"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_XuatFileExcelActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel7">
@@ -1132,11 +1149,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="jButton_TroVe1" min="-2" pref="129" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton_Thoat" min="-2" pref="129" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jButton_TroVe1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton_Thoat" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

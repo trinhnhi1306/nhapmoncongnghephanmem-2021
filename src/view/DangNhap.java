@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import ketnoi.KetNoiSQL;
 import model.QuyDinh;
+import table.DocGhiFile;
 
 /**
  *
@@ -52,6 +53,7 @@ public class DangNhap extends javax.swing.JFrame {
         jTextArea_QuyDinh = new javax.swing.JTextArea();
         jButton_TroVe = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jButton_XuatFilePDF = new javax.swing.JButton();
         jPanelBackground = new javax.swing.JPanel() {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -97,14 +99,20 @@ public class DangNhap extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(0, 255, 0));
         jLabel11.setText("QUY ĐỊNH THƯ VIỆN");
 
+        jButton_XuatFilePDF.setBackground(new java.awt.Color(153, 255, 153));
+        jButton_XuatFilePDF.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_XuatFilePDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pdf.png"))); // NOI18N
+        jButton_XuatFilePDF.setText("Xuất file PDF");
+        jButton_XuatFilePDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XuatFilePDFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(296, 296, 296))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -114,6 +122,12 @@ public class DangNhap extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton_XuatFilePDF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125)
+                .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(190, 190, 190))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +137,9 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_XuatFilePDF, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -399,12 +415,21 @@ public class DangNhap extends javax.swing.JFrame {
         jDialog_QuyDinh.setLocationRelativeTo(this);
         jDialog_QuyDinh.setVisible(true);
         jTextArea_QuyDinh.setText(showQuyDinh());
+
     }//GEN-LAST:event_jLabel_ThongTinQuyDinhMouseClicked
 
     private void jButton_TroVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TroVeActionPerformed
         // TODO add your handling code here:
         jDialog_QuyDinh.dispose();
     }//GEN-LAST:event_jButton_TroVeActionPerformed
+
+    private void jButton_XuatFilePDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XuatFilePDFActionPerformed
+        // TODO add your handling code here:
+        String paragraph = "                    " + jLabel11.getText()
+                + "\n     " + jTextArea_QuyDinh.getText();
+        DocGhiFile.xuatFilePDF("QuyDinh.pdf", paragraph);
+        JOptionPane.showMessageDialog(jDialog_QuyDinh, "Xuất file PDF thành công!");
+    }//GEN-LAST:event_jButton_XuatFilePDFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,6 +472,7 @@ public class DangNhap extends javax.swing.JFrame {
     private javax.swing.JButton jButton_DangNhap;
     private javax.swing.JButton jButton_Thoat;
     private javax.swing.JButton jButton_TroVe;
+    private javax.swing.JButton jButton_XuatFilePDF;
     private javax.swing.JDialog jDialog_QuyDinh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

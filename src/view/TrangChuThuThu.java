@@ -30,6 +30,7 @@ import model.QuyDinh;
 import model.TacGia;
 import model.TheLoai;
 import table.DataFromSQLServer;
+import table.DocGhiFile;
 import table.XuLyViPham;
 
 /**
@@ -121,6 +122,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jButton_Thoat = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jButtonReset = new javax.swing.JButton();
+        jButton_XuatFileExcelTienPhat = new javax.swing.JButton();
         jDialog_SachMuon = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -136,6 +138,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jButton_TroVe4 = new javax.swing.JButton();
         jButton_Thoat1 = new javax.swing.JButton();
+        jButton_XuatFileExcelSachMuon = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -158,6 +161,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jPanel18 = new javax.swing.JPanel();
         jButton_TroVe5 = new javax.swing.JButton();
         jButton_Thoat2 = new javax.swing.JButton();
+        jButton_XuatFileExcelSachMuonQuaHan = new javax.swing.JButton();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jDialog_ThongKeDocGia = new javax.swing.JDialog();
         jPanel20 = new javax.swing.JPanel();
@@ -702,7 +706,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_TroVe3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 204));
@@ -717,20 +721,33 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
 
+        jButton_XuatFileExcelTienPhat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_XuatFileExcelTienPhat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/excel.png"))); // NOI18N
+        jButton_XuatFileExcelTienPhat.setText("Xuất file Excel");
+        jButton_XuatFileExcelTienPhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XuatFileExcelTienPhatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addGap(159, 159, 159)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jButton_XuatFileExcelTienPhat)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(53, 53, 53))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addComponent(jButtonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_XuatFileExcelTienPhat, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -766,7 +783,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDialog_TienPhatLayout = new javax.swing.GroupLayout(jDialog_TienPhat.getContentPane());
@@ -906,16 +923,27 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
 
+        jButton_XuatFileExcelSachMuon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_XuatFileExcelSachMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/excel.png"))); // NOI18N
+        jButton_XuatFileExcelSachMuon.setText("Xuất file Excel");
+        jButton_XuatFileExcelSachMuon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XuatFileExcelSachMuonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(280, 280, 280)
+                .addGap(140, 140, 140)
+                .addComponent(jButton_XuatFileExcelSachMuon)
+                .addGap(143, 143, 143)
                 .addComponent(jButton_TroVe4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(161, 161, 161)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_Thoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(140, 140, 140))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -923,7 +951,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_TroVe4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Thoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Thoat1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_XuatFileExcelSachMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1027,7 +1056,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 423, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -1170,16 +1199,27 @@ public class TrangChuThuThu extends javax.swing.JFrame {
             }
         });
 
+        jButton_XuatFileExcelSachMuonQuaHan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_XuatFileExcelSachMuonQuaHan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/excel.png"))); // NOI18N
+        jButton_XuatFileExcelSachMuonQuaHan.setText("Xuất file Excel");
+        jButton_XuatFileExcelSachMuonQuaHan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XuatFileExcelSachMuonQuaHanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(280, 280, 280)
+                .addGap(135, 135, 135)
+                .addComponent(jButton_XuatFileExcelSachMuonQuaHan)
+                .addGap(162, 162, 162)
                 .addComponent(jButton_TroVe5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(161, 161, 161)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_Thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(123, 123, 123))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1187,7 +1227,8 @@ public class TrangChuThuThu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_TroVe5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Thoat2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_XuatFileExcelSachMuonQuaHan, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1508,7 +1549,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         jLabel61.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel61.setText("Số sách mượn quá hạn");
         jPanel_SachMuonQuaHan.add(jLabel61);
-        jLabel61.setBounds(0, 10, 220, 30);
+        jLabel61.setBounds(10, 10, 210, 30);
 
         jLabel_SLSachQuaHan.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel_SLSachQuaHan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1836,7 +1877,7 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         } else {
             jButton_ThongBao.setForeground(Color.red);
             jButton_ThongBao.setText("Thông báo!!!");
-            str = "Quy định đã được thay đổi vào ngày : " + qdmoi.getNgayThayDoi()
+            str = "Quy định đã được thay đổi vào ngày: " + qdmoi.getNgayThayDoi()
                     + "\n- Được mượn tối đa: " + qdcu.getSoSachMuonToiDa() + " quyển ===> " + qdmoi.getSoSachMuonToiDa() + " quyển."
                     + "\n- Số ngày mượn tối đa: " + qdcu.getSoNgayMuonToiDa() + " ngày ===> " + qdmoi.getSoNgayMuonToiDa() + " ngày."
                     + "\n- Phạt trả sách quá hạn: " + qdcu.getTienPhatQuaHan() + " đ/ngày quá hạn ===> " + qdmoi.getTienPhatQuaHan() + " đ/ngày quá hạn."
@@ -2157,6 +2198,27 @@ public class TrangChuThuThu extends javax.swing.JFrame {
         getAndShowDataSachMuon("SELECT * FROM MUONTRA, SACH WHERE MUONTRA.MASACH = SACH.MASACH");
     }//GEN-LAST:event_jButton_ThongKeTatCaActionPerformed
 
+    private void jButton_XuatFileExcelSachMuonQuaHanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XuatFileExcelSachMuonQuaHanActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> columnTitlesOfJTable_DSSachMuonQuaHan = new ArrayList<>(Arrays.asList("Mã người dùng", "Tên sách", "Ngày mượn", "Hạn trả"));
+        DocGhiFile.xuatFileExcel("QUAHAN", columnTitlesOfJTable_DSSachMuonQuaHan, jTable_DSSachMuonQuaHan, "SachMuonQuaHan.xlsx", true);
+        JOptionPane.showMessageDialog(jDialog_SachMuonQuaHan, "Xuất file excel thành công!");
+    }//GEN-LAST:event_jButton_XuatFileExcelSachMuonQuaHanActionPerformed
+
+    private void jButton_XuatFileExcelTienPhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XuatFileExcelTienPhatActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> columnTitlesOfJTable_DSDocGiaNopPhat = new ArrayList<>(Arrays.asList("Mã người dùng", "Phạt quá hạn", "Phạt hỏng mất", "Số lần vi phạm"));
+        DocGhiFile.xuatFileExcel("NOPPHAT", columnTitlesOfJTable_DSDocGiaNopPhat, jTable_DSDocGiaNopPhat, "NopPhat.xlsx", true);
+        JOptionPane.showMessageDialog(this, "Xuất file excel thành công!");
+    }//GEN-LAST:event_jButton_XuatFileExcelTienPhatActionPerformed
+
+    private void jButton_XuatFileExcelSachMuonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XuatFileExcelSachMuonActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> columnTitlesOfJTable_DSSachMuon = new ArrayList<>(Arrays.asList("Mã người dùng", "Tên sách", "Ngày mượn", "Hạn trả"));
+        DocGhiFile.xuatFileExcel("SACHMUON", columnTitlesOfJTable_DSSachMuon, jTable_DSSachMuon, "SachMuon.xlsx", true);
+        JOptionPane.showMessageDialog(jDialog_SachMuonQuaHan, "Xuất file excel thành công!");
+    }//GEN-LAST:event_jButton_XuatFileExcelSachMuonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2219,6 +2281,9 @@ public class TrangChuThuThu extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe5;
     private javax.swing.JButton jButton_TroVe6;
     private javax.swing.JButton jButton_XacNhan;
+    private javax.swing.JButton jButton_XuatFileExcelSachMuon;
+    private javax.swing.JButton jButton_XuatFileExcelSachMuonQuaHan;
+    private javax.swing.JButton jButton_XuatFileExcelTienPhat;
     private javax.swing.JComboBox<String> jComboBox_GioiTinh;
     private javax.swing.JComboBox<TacGia> jComboBox_TacGia;
     private javax.swing.JComboBox<String> jComboBox_TenLoaiTK;

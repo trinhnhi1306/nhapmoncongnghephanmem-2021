@@ -22,6 +22,7 @@ import javax.swing.table.TableRowSorter;
 import ketnoi.KetNoiSQL;
 import model.QuyDinh;
 import table.DataFromSQLServer;
+import table.DocGhiFile;
 import table.MuonTra;
 import table.Sach;
 import table.XuLyViPham;
@@ -176,7 +177,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         jButtonMuon.setBackground(new java.awt.Color(153, 255, 153));
         jButtonMuon.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonMuon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-borrow-book-32.png"))); // NOI18N
-        jButtonMuon.setText("Mượn");
+        jButtonMuon.setText("Mượn và xuất phiếu");
         jButtonMuon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMuonActionPerformed(evt);
@@ -228,10 +229,10 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                             .addComponent(jDateChooserHanTra, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldMaSach, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jButtonMuon, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButtonTroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addComponent(jButtonMuon)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButtonTroVe))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(jLabel11)))
@@ -1485,6 +1486,16 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
             // Refresh jTableSach
             DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
+            
+            //Lưu file pdf
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String paragraph = "                              " + jLabel11.getText()
+                    + "\n     " + jLabel12.getText() + ": " + jTextFieldMaDocGia.getText()
+                    + "\n     " + jLabel13.getText() + ": " + jTextFieldMaSach.getText()
+                    + "\n     " + jLabel19.getText() + ": " + sdf.format(jDateChooserNgayMuon.getDate())
+                    + "\n     " + jLabel20.getText() + ": " + sdf.format(jDateChooserHanTra.getDate());
+            DocGhiFile.xuatFilePDF("PhieuMuon.pdf", paragraph);
+            JOptionPane.showMessageDialog(this, "Xuất file PDF thành công!");
         } else {
             JOptionPane.showMessageDialog(jDialogMuonSach, "Hạn trả phải lớn hơn ngày mượn. Vui lòng chọn lại ngày và thử lại!");
         }

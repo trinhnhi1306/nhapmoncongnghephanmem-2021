@@ -68,10 +68,10 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="jButtonMuon" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="jButtonTroVe" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="jButtonMuon" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              <Component id="jButtonTroVe" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
@@ -174,7 +174,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icon/icons8-borrow-book-32.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="M&#x1b0;&#x1ee3;n"/>
+                <Property name="text" type="java.lang.String" value="M&#x1b0;&#x1ee3;n v&#xe0; xu&#x1ea5;t phi&#x1ebf;u"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMuonActionPerformed"/>

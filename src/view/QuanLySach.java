@@ -26,6 +26,7 @@ import model.NXB;
 import model.TacGia;
 import model.TheLoai;
 import table.DataFromSQLServer;
+import table.DocGhiFile;
 
 /**
  *
@@ -122,6 +123,7 @@ public class QuanLySach extends javax.swing.JFrame {
         jButton_Them = new javax.swing.JButton();
         jButton_Sua = new javax.swing.JButton();
         jButton_Xoa = new javax.swing.JButton();
+        jButton_XuatFileExcel = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jButton_TroVe = new javax.swing.JButton();
         jButton_Thoat = new javax.swing.JButton();
@@ -635,18 +637,29 @@ public class QuanLySach extends javax.swing.JFrame {
             }
         });
 
+        jButton_XuatFileExcel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton_XuatFileExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/excel.png"))); // NOI18N
+        jButton_XuatFileExcel.setText("Xuất file Excel");
+        jButton_XuatFileExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XuatFileExcelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap()
                 .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(18, 18, 18)
+                .addComponent(jButton_XuatFileExcel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -655,8 +668,9 @@ public class QuanLySach extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_Sua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton_Xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_XuatFileExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 204));
@@ -685,11 +699,11 @@ public class QuanLySach extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(49, 49, 49)
                 .addComponent(jButton_TroVe, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(jButton_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -718,7 +732,7 @@ public class QuanLySach extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1180,6 +1194,13 @@ public class QuanLySach extends javax.swing.JFrame {
         DataFromSQLServer.getAndShowData(jTable_DSSach, columnTitlesOfJTable_DSSach, "SELECT S.*, TG.TENTACGIA, NXB.TENNXB, TL.TENTHELOAI FROM SACH S, TACGIA TG, NHAXUATBAN NXB, THELOAI TL WHERE S.MATACGIA = TG.MATACGIA AND S.MATHELOAI = TL.MATHELOAI AND S.MANXB = NXB.MANXB");
     }//GEN-LAST:event_jButton_ThemActionPerformed
 
+    private void jButton_XuatFileExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XuatFileExcelActionPerformed
+        // TODO add your handling code here:
+        ArrayList<String> columnTitlesOfJTable_DSSach = new ArrayList<>(Arrays.asList("Mã sách", "Tên sách", "Ngày nhập", "Giá", "Vị trí", "Tên tác giả", "Tên NXB", "Tên thể loại", "Số lượng có", "Số lượng còn"));
+        DocGhiFile.xuatFileExcel("DSSACH", columnTitlesOfJTable_DSSach, jTable_DSSach, "Sach.xlsx", false);
+        JOptionPane.showMessageDialog(this, "Xuất file excel thành công!");
+    }//GEN-LAST:event_jButton_XuatFileExcelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1232,6 +1253,7 @@ public class QuanLySach extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TroVe;
     private javax.swing.JButton jButton_TroVe1;
     private javax.swing.JButton jButton_Xoa;
+    private javax.swing.JButton jButton_XuatFileExcel;
     private javax.swing.JComboBox<NXB> jComboBox_NXB;
     private javax.swing.JComboBox<NXB> jComboBox_NXB1;
     private javax.swing.JComboBox<TacGia> jComboBox_TacGia;
