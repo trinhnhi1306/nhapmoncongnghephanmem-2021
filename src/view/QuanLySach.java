@@ -652,7 +652,7 @@ public class QuanLySach extends javax.swing.JFrame {
 
         jButton_NhapFileExcel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton_NhapFileExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/excel.png"))); // NOI18N
-        jButton_NhapFileExcel.setText("Nhập file Excel");
+        jButton_NhapFileExcel.setText("Mở file Excel");
         jButton_NhapFileExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_NhapFileExcelActionPerformed(evt);
@@ -754,7 +754,7 @@ public class QuanLySach extends javax.swing.JFrame {
                                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
