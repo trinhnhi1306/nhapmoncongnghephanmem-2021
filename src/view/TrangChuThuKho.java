@@ -935,7 +935,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             while (rs.next()) {
                 dem = dem + 1;
                 if (dem == 2) {
-                    qdcu = new QuyDinh(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getFloat(5), rs.getString(6));
+                    qdcu = new QuyDinh(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getString(6));
                 }
             }
             rs.close();
@@ -949,7 +949,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
             str = "Quy định: \n- Được mượn tối đa: " + qdmoi.getSoSachMuonToiDa() + " quyển."
                     + "\n- Số ngày mượn tối đa: " + qdmoi.getSoNgayMuonToiDa() + " ngày."
                     + "\n- Phạt trả sách quá hạn: " + qdmoi.getTienPhatQuaHan() + " đ/ngày quá hạn."
-                    + "\n- Phạt làm hỏng, mất sách: " + qdmoi.getTienPhatHongMat() * 100 + "% giá trên bìa sách.";
+                    + "\n- Phạt làm hỏng, mất sách: " + qdmoi.getTienPhatHongMat() + "% giá trên bìa sách.";
         } else {
             jButton_ThongBao.setForeground(Color.red);
             jButton_ThongBao.setText("Thông báo!!!");
@@ -957,7 +957,7 @@ public class TrangChuThuKho extends javax.swing.JFrame {
                     + "\n- Được mượn tối đa: " + qdcu.getSoSachMuonToiDa() + " quyển ===> " + qdmoi.getSoSachMuonToiDa() + " quyển."
                     + "\n- Số ngày mượn tối đa: " + qdcu.getSoNgayMuonToiDa() + " ngày ===> " + qdmoi.getSoNgayMuonToiDa() + " ngày."
                     + "\n- Phạt trả sách quá hạn: " + qdcu.getTienPhatQuaHan() + " đ/ngày quá hạn ===> " + qdmoi.getTienPhatQuaHan() + " đ/ngày quá hạn."
-                    + "\n- Phạt làm hỏng, mất sách: " + qdcu.getTienPhatHongMat() * 100 + "% giá trên bìa sách ===> " + qdmoi.getTienPhatHongMat() * 100 + "% giá trên bìa sách.";
+                    + "\n- Phạt làm hỏng, mất sách: " + qdcu.getTienPhatHongMat() + "% giá trên bìa sách ===> " + qdmoi.getTienPhatHongMat() + "% giá trên bìa sách.";
         }
         jTextArea_NoiDungThongBao.setText(str);
     }

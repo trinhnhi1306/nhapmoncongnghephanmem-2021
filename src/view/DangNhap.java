@@ -344,7 +344,7 @@ public class DangNhap extends javax.swing.JFrame {
                 + "\n- Độc giả có trách nhiệm trả tài liệu đúng hạn cho thư viện, thanh toán các khoản phạt, bồi thường (nếu có)."
                 + "\n   Độc giả có trách nhiệm bảo quản tài liệu của Thư viện, các trường hợp làm mất, gây hư hỏng,... phải bồi thường theo quy định của Thư viện."
                 + "\n   Độc giả mượn sách đến hạn trả sách mà chưa trả sẽ bị phạt " + qd.getTienPhatQuaHan() + "/ngày trễ."
-                + "\n   Làm hỏng hoặc mất sách sẽ bị phạt " + qd.getTienPhatHongMat() * 100 + "% giá trên bìa sách."
+                + "\n   Làm hỏng hoặc mất sách sẽ bị phạt " + qd.getTienPhatHongMat() + "% giá trên bìa sách."
                 + "\n- Độc giả phải trả sách mượn quá hạn mới được tiếp tục mượn sách."
                 + "\n\n\n\n\t\t\t\t\t\t" + qd.getNgayThayDoi();
         return str;

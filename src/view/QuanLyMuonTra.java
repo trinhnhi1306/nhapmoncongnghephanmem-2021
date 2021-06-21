@@ -1295,14 +1295,14 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                 ResultSet xuLyViPham = getXuLyViPham.executeQuery()) {
             int soLuongCo = (int) Sach.getColumnValue("SOLUONGCO", maSach);
             int giaTien = (int) Sach.getColumnValue("GIA", maSach);
-            int tienPhatHongMat = (int) (giaTien * qd.getTienPhatHongMat());
+            int tienPhatHongMat = (int) (giaTien * qd.getTienPhatHongMat() / 100);
             int tienPhatQuaHan = qd.getTienPhatQuaHan() * (int) diffDays;
 
             Object options[] = {"Đã thu tiền", "Hủy"};
 
             // Check if the book is returned late or not
             if (diffDays <= 0) {
-                int option = JOptionPane.showOptionDialog(this, "Số tiền độc giả phải đền do làm hỏng mất sách (" + (int) (qd.getTienPhatHongMat() * 100) + "% giá sách) là " + tienPhatHongMat
+                int option = JOptionPane.showOptionDialog(this, "Số tiền độc giả phải đền do làm hỏng mất sách (" + (int) qd.getTienPhatHongMat() + "% giá sách) là " + tienPhatHongMat
                         + " VNĐ.", "Báo hỏng mất sách", JOptionPane.OK_CANCEL_OPTION,
                         JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 // OK if reader already pays for the fine and vice versa
@@ -1324,7 +1324,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Báo hỏng mất sách thành công.");
                 }
             } else {
-                int option = JOptionPane.showOptionDialog(this, "Tiền đền hỏng mất sách (" + (int) (qd.getTienPhatHongMat() * 100) + "% giá sách): " + tienPhatHongMat + " VNĐ.\n"
+                int option = JOptionPane.showOptionDialog(this, "Tiền đền hỏng mất sách (" + (int) qd.getTienPhatHongMat() + "% giá sách): " + tienPhatHongMat + " VNĐ.\n"
                         + "Quá hạn trả sách " + diffDays + " ngày so với hạn trả " + hanTra
                         + ", nộp phạt " + diffDays + " * " + qd.getTienPhatQuaHan() + " VNĐ/ngày = " + tienPhatQuaHan + " VNĐ.\n"
                         + "Tổng số tiền độc giả phải nộp phạt: " + (tienPhatQuaHan + tienPhatHongMat) + " VNĐ.",

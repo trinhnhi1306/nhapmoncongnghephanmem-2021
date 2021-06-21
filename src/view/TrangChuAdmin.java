@@ -471,7 +471,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
 
         jSpinner_PhatQuaHan.setModel(new javax.swing.SpinnerNumberModel(1000, 1000, null, 500));
 
-        jSpinner_PhatHongMat.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 10));
+        jSpinner_PhatHongMat.setModel(new javax.swing.SpinnerNumberModel(100, 0, null, 10));
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel28.setText("ngày");
@@ -480,7 +480,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jLabel29.setText("đồng/ngày");
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel30.setText("% giá sách");
+        jLabel30.setText("% giá bìa sách");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -862,7 +862,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         jSpinner_SoSachMuonToiDa.setValue(qd.getSoSachMuonToiDa());
         jSpinner_SoNgayMuonToiDa.setValue(qd.getSoNgayMuonToiDa());
         jSpinner_PhatQuaHan.setValue(qd.getTienPhatQuaHan());
-        jSpinner_PhatHongMat.setValue(qd.getTienPhatHongMat()*100);
+        jSpinner_PhatHongMat.setValue(qd.getTienPhatHongMat());
         jDateChooser_NgayThayDoi.setDate(ngayThayDoi.getTime());
     }
 
@@ -999,7 +999,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         String soSachMuonToiDa = jSpinner_SoSachMuonToiDa.getValue().toString();
         String soNgayMuonToiDa = jSpinner_SoNgayMuonToiDa.getValue().toString();
         String phatQuaHan = jSpinner_PhatQuaHan.getValue().toString();
-        float phatHongMat = Float.parseFloat(jSpinner_PhatHongMat.getValue().toString()) / 100;
+        String phatHongMat = jSpinner_PhatHongMat.getValue().toString();
         Date date = jDateChooser_NgayThayDoi.getDate();
         String ngayThayDoi;
         if (date == null) {
@@ -1007,7 +1007,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
         } else {
             ngayThayDoi = sdf.format(jDateChooser_NgayThayDoi.getDate());
         }
-        
+
         int luaChon = JOptionPane.showConfirmDialog(jDialog_ThayDoiQuyDinh, "Bạn có chắc chắn muốn chỉnh sửa?", "Xác nhận", 0);
         if (luaChon == JOptionPane.CANCEL_OPTION) {
             return;
@@ -1019,7 +1019,7 @@ public class TrangChuAdmin extends javax.swing.JFrame {
                 ps.setString(2, soSachMuonToiDa);
                 ps.setString(3, soNgayMuonToiDa);
                 ps.setString(4, phatQuaHan);
-                ps.setFloat(5, phatHongMat);
+                ps.setString(5, phatHongMat);
                 ps.setString(6, ngayThayDoi);
                 ps.executeUpdate();
                 ps.close();

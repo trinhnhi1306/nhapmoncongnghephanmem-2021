@@ -17,14 +17,13 @@ import ketnoi.KetNoiSQL;
  */
 public class QuyDinh {
 
-    private int maQuyDinh, soSachMuonToiDa, soNgayMuonToiDa, tienPhatQuaHan;
-    private float tienPhatHongMat;
+    private int maQuyDinh, soSachMuonToiDa, soNgayMuonToiDa, tienPhatQuaHan, tienPhatHongMat;
     private String ngayThayDoi;
 
     public QuyDinh() {
     }
 
-    public QuyDinh(int maQuyDinh, int soSachMuonToiDa, int soNgayMuonToiDa, int tienPhatQuaHan, float tienPhatHongMat, String ngayThayDoi) {
+    public QuyDinh(int maQuyDinh, int soSachMuonToiDa, int soNgayMuonToiDa, int tienPhatQuaHan, int tienPhatHongMat, String ngayThayDoi) {
         this.maQuyDinh = maQuyDinh;
         this.soSachMuonToiDa = soSachMuonToiDa;
         this.soNgayMuonToiDa = soNgayMuonToiDa;
@@ -65,11 +64,11 @@ public class QuyDinh {
         this.tienPhatQuaHan = tienPhatQuaHan;
     }
 
-    public float getTienPhatHongMat() {
+    public int getTienPhatHongMat() {
         return tienPhatHongMat;
     }
 
-    public void setTienPhatHongMat(float tienPhatHongMat) {
+    public void setTienPhatHongMat(int tienPhatHongMat) {
         this.tienPhatHongMat = tienPhatHongMat;
     }
 
@@ -88,7 +87,7 @@ public class QuyDinh {
             PreparedStatement ps = con.prepareStatement("SELECT TOP 1 * FROM QUYDINH ORDER BY MAQUYDINH DESC");
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                qd = new QuyDinh(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getFloat(5), rs.getString(6));
+                qd = new QuyDinh(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getString(6));
             }
             rs.close();
             ps.close();
