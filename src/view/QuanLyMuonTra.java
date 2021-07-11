@@ -1060,6 +1060,28 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         return false;
     }
 
+    private boolean expiredUser(String maDocGia) {
+        LocalDate today = LocalDate.now();
+        try (
+                Connection con = KetNoiSQL.layKetNoi();
+                PreparedStatement ps = con.prepareStatement("SELECT NGAYHETHAN FROM NGUOIDUNG WHERE MANGUOIDUNG = '" + maDocGia + "'");
+                ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                // Calculate days between today and ngayHetHan
+                LocalDate ngayHetHan = LocalDate.parse(rs.getString("NGAYHETHAN"));
+                Duration diff = Duration.between(ngayHetHan.atStartOfDay(), today.atStartOfDay());
+                long diffDays = diff.toDays();
+
+                if (diffDays > 0) {
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(QuanLyMuonTra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     private void jButtonMuonSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMuonSachActionPerformed
         // Check if a row is selected in jTableDocGia1 and jTableSach
         if (jTableDocGia1.getSelectedRow() == -1 || jTableSach.getSelectedRow() == -1) {
@@ -1079,7 +1101,9 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
         int numberOfBooksBorrowed = DataFromSQLServer.aggregate("SELECT COUNT(*) FROM MUONTRA WHERE MANGUOIDUNG = '" + maDocGia + "'");
 
         // Check if a book is borrowable
-        if (soLuongCon == 0) {
+        if (expiredUser(maDocGia)) {
+            JOptionPane.showMessageDialog(this, "Tài khoản độc giả đã hết hạn. Vui lòng gia hạn thêm để tiếp tục mượn sách");
+        } else if (soLuongCon == 0) {
             JOptionPane.showMessageDialog(this, "Số lượng sách này đã hết, không thể mượn. Vui lòng chọn sách khác!");
         } else if (DataFromSQLServer.exist(query)) {
             JOptionPane.showMessageDialog(this, "Không thể mượn sách mà độc giả đang mượn. Vui lòng chọn sách khác!");
@@ -1486,7 +1510,7 @@ public class QuanLyMuonTra extends javax.swing.JFrame {
 
             // Refresh jTableSach
             DataFromSQLServer.getAndShowData(jTableSach, columnTitlesOfJTableSach, queryForJTableSach);
-            
+
             //Lưu file pdf
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String paragraph = "                              " + jLabel11.getText()
