@@ -1,0 +1,12 @@
+- Quản trị:
+admin1
+admin
+- Thủ thư:
+thuthu
+thuthu
+- Thủ kho:
+thukho1
+thukho
+- Độc giả:
+D04
+D04
